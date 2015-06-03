@@ -1,14 +1,22 @@
 package Actions;
 
 public class Coordonnees {
-	public int _x;
-	public int _y;
-	public int _z;
+	public int x;
+	public int y;
+	public int z;
 	
-	Coordonnees(int x, int y, int z) {
-		_x=x;
-		_y=y;
-		_z=z;
+	public Coordonnees(int _x, int _y, int _z) 
+	{
+		x = _x;
+		y = _y;
+		z = _z;
+	}
+
+	public Coordonnees(Coordonnees pos) 
+	{
+		x = pos.x;
+		y = pos.y;
+		z = pos.z;
 	}
 	
 	

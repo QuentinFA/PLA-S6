@@ -11,7 +11,7 @@ import org.jsfml.graphics.*;
  */
 public class Ressources 
 {
-	static Texture texture_block0 = new Texture(); //Block de base
+	static Texture texture_block1 = new Texture(); //Block de base
 	
 	/**
 	 * Charge les images
@@ -19,6 +19,6 @@ public class Ressources
 	 */
 	static void initialiser() throws IOException
 	{
-		texture_block0.loadFromFile(Paths.get("images/block0.png"));
+		texture_block1.loadFromFile(Paths.get("images/block1.png"));
 	}
 }
