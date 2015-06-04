@@ -6,6 +6,7 @@ import java.util.List;
 import org.jsfml.system.Vector2f;
 
 import UI.Graphic;
+import UI.Menu;
 import Actions.Coordonnees;
 
 public class World 
@@ -30,9 +31,9 @@ public class World
 	}
 	
 	/**
-	 * Place un block en fonction de ses coordonnées matricielles
+	 * Place un block en fonction de ses coordonnï¿½es matricielles
 	 * @param pos: la position matricielle
-	 * @return: la position à l'écran
+	 * @return: la position ï¿½ l'ï¿½cran
 	 */
 	public Vector2f placeMe(Coordonnees pos)
 	{
