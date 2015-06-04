@@ -1,11 +1,10 @@
 package Actions;
 
-public class BoundException extends Exception 
+public class OutOfMapException extends Exception 
 {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	public BoundException() {}
+	private static final long serialVersionUID = -4965242282052744338L;
 }
