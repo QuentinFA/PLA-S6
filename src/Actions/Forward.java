@@ -5,6 +5,10 @@ public class Forward extends Action
 {
 	public Forward() {}
 	
+	/**
+	 * Calcule la nouvelle coordonnée. Puis demande au monde si elle peut déplacer le character à cet emplacement.
+	 * @param p Character à déplacer. 
+	 */
 	public void execute(Character p) 
 	{
 		Coordonnees c = p.getPosition();

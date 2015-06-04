@@ -7,9 +7,12 @@ public class Character
 	//private List<Action> _l;
 	
 	private Coordonnees position;
+	
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
+	
     private int c;
 	
+    
 	Character(Coordonnees pos,int ori) 
 	{
 		position = pos;
@@ -44,6 +47,11 @@ public class Character
 		}
 	}*/
 	
+	/**
+	 *  Effectue l'action pour le character
+	 * @param a Action à effectuer par le character
+	 * @throws OutOfMapException Exception si le character sors de la map à l'issue de son déplacement
+	 */
 	public void use_Action(Action a) throws OutOfMapException {
 		a.execute(this);
 	}
