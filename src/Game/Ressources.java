@@ -11,10 +11,13 @@ import org.jsfml.graphics.*;
  */
 public class Ressources 
 {
-	static Ressources RESSOURCES = new Ressources();
+	public static Ressources RESSOURCES = new Ressources();
 	
 	private Texture texture_block1 = new Texture(); //Block de base
 	public Texture getTexture1() {return texture_block1;}
+	
+	private Texture texture_bouton = new Texture(); //Block de base
+	public Texture getTextureBouton() {return texture_bouton;}
 	
 	/**
 	 * Charge les images
@@ -23,5 +26,6 @@ public class Ressources
 	public void initialiser() throws IOException
 	{
 		texture_block1.loadFromFile(Paths.get("images/block1.png"));
+		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
 	}
 }
