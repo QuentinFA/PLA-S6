@@ -27,8 +27,9 @@ public class Graphic
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS);
 	
 	public void draw(Drawable object) {fenetre.draw(object);}
+	public Vector2f getCenterCamera() {return new Vector2f(camera.getCenter().x , camera.getCenter().y);}
 	public Vector2i getSizeFenetre() {return new Vector2i(width, height);}
-	
+	public Vector2i getPositionCamera() {return new Vector2i((int)(camera.getCenter().x - width/2.f) , (int)(camera.getCenter().y - height/2.f));};
 	/**
 	 * Initialise la fenetre avec une taille
 	 * @param width
@@ -92,7 +93,7 @@ public class Graphic
 	}
 	
 	/**
-	 * Gère les évenements clavier et souris
+	 * Gï¿½re les ï¿½venements clavier et souris
 	 */
 	public boolean input()
 	{
