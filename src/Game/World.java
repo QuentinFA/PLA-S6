@@ -40,8 +40,8 @@ public class World
 		float pos_x, pos_y;
 		Vector2f center = new Vector2f(Graphic.SFML.getSizeFenetre().x/2, Graphic.SFML.getSizeFenetre().y/2);
 		
-		pos_x = center.x + 37 * pos.getX() - 37 * pos.getY();
-		pos_y = center.y - 21 * pos.getX() - 21 * pos.getY() - 29 * pos.getZ();
+		pos_x = center.x + 40 * pos.getX() - 40 * pos.getY();
+		pos_y = center.y - 23 * pos.getX() - 23 * pos.getY() - 26 * pos.getZ();
 		
 		return new Vector2f(pos_x, pos_y);
 	}

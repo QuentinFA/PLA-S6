@@ -56,6 +56,21 @@ public class Coordonnees {
 		this.z = _z;
 	}
 	
+	public void incrX(int incr)
+	{
+		this.x += incr;
+	}
+	
+	public void incrY(int incr)
+	{
+		this.y += incr;
+	}
+	
+	public void incrZ(int incr)
+	{
+		this.z += incr;
+	}
+	
 	/**
 	 * Deux coordonnées égales : x = x', y = y', z = z'
 	 */

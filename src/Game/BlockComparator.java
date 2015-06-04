@@ -7,19 +7,19 @@ public class BlockComparator implements Comparator<Block>
 	@Override
 	public int compare(Block b1, Block b2) 
 	{
-		if (b1.getCoord().y > b2.getCoord().y)
+		if (b1.getCoord().getY() > b2.getCoord().getY())
 			return -1;
-		else if (b1.getCoord().y < b2.getCoord().y)
+		else if (b1.getCoord().getY() < b2.getCoord().getY())
 			return 1;
 		
-		if (b1.getCoord().x > b2.getCoord().x)
+		if (b1.getCoord().getX() > b2.getCoord().getX())
 			return -1;
-		else if (b1.getCoord().x < b2.getCoord().x)
+		else if (b1.getCoord().getX() < b2.getCoord().getX())
 			return 1;
 		
-		if (b1.getCoord().z > b2.getCoord().z)
+		if (b1.getCoord().getZ() > b2.getCoord().getZ())
 			return 1;
-		else if (b1.getCoord().z < b2.getCoord().z)
+		else if (b1.getCoord().getZ() < b2.getCoord().getZ())
 			return -1;
 		
 		return 0;
