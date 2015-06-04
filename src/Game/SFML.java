@@ -8,6 +8,7 @@ import org.jsfml.window.event.Event;
 public class SFML 
 {
 	static RenderWindow fenetre; //Fenetre du programme
+	static View camera;
 	static int width;
 	static int height;
 	static VertexArray fond = new VertexArray(PrimitiveType.QUADS);
@@ -21,13 +22,24 @@ public class SFML
 	{
 		 fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
 		 fenetre.setVerticalSyncEnabled(true);
+		 camera = new View();
+		 
 		 width = w;
 		 height = h;
 		 
-		 fond.add(new Vertex(new Vector2f(0, 0), Color.CYAN));
-		 fond.add(new Vertex(new Vector2f(width, 0), Color.CYAN));
-		 fond.add(new Vertex(new Vector2f(width, height), Color.WHITE));
-		 fond.add(new Vertex(new Vector2f(0, height), Color.WHITE));
+		 camera_ini();
+	}
+	
+	static void camera_ini()
+	{
+		camera.setCenter(new Vector2f(width/2.f, height/2.f));
+		camera.setSize(new Vector2f(width, height));
+		
+		fond.clear();
+		fond.add(new Vertex(new Vector2f(0, 0), Color.CYAN));
+		fond.add(new Vertex(new Vector2f(width, 0), Color.CYAN));
+		fond.add(new Vertex(new Vector2f(width, height), Color.WHITE));
+		fond.add(new Vertex(new Vector2f(0, height), Color.WHITE));
 	}
 	
 	/**
@@ -35,6 +47,16 @@ public class SFML
 	 */
 	static void afficher()
 	{
+		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
+		{
+			width = fenetre.getSize().x;
+			height = fenetre.getSize().y;
+			
+			camera_ini();
+		}
+		
+		fenetre.setView(camera);
+		 
 		fenetre.clear(Color.WHITE);
 		fenetre.draw(fond);
 		
@@ -51,7 +73,7 @@ public class SFML
         Event event = fenetre.pollEvent(); //Evenements
         if (event != null) 
         { 
-            if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Keyboard.Key.ESCAPE))
+            if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
                 fenetre.close();
         }
 	}

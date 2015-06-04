@@ -9,7 +9,8 @@ public class Character
 	private Coordonnees position;
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
 	
-	Character(Coordonnees pos,int ori) {
+	Character(Coordonnees pos,int ori) 
+	{
 		position = pos;
 		orientation = ori;
 	}

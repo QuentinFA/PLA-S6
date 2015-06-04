@@ -40,8 +40,6 @@ public class World
 		pos_x = center.x + 37 * pos.x - 37 * pos.y;
 		pos_y = center.y - 21 * pos.x - 21 * pos.y - 29 * pos.z;
 		
-		System.out.println(pos.x + "   " + pos.y);
-		
 		return new Vector2f(pos_x, pos_y);
 	}
 	
