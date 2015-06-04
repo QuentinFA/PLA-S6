@@ -42,9 +42,10 @@ public class Menu
 	}
 	public Menu()
 	{
-		
+		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
 		bouton.setPosition(Graphic.SFML.getCenterCamera());		
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
+		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
+		
 	}
 	public boolean gerer()
 	{

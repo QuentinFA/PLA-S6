@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import org.jsfml.graphics.*;
 
 /**
- * Contient toutes les images chargées
+ * Contient toutes les images chargï¿½es
  * @author Florian
  *
  */
@@ -19,6 +19,8 @@ public class Ressources
 	private Texture texture_bouton = new Texture(); //Block de base
 	public Texture getTextureBouton() {return texture_bouton;}
 	
+	private Texture texture_bouton_sound = new Texture(); //Block de base
+	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
 	/**
 	 * Charge les images
 	 * @throws IOException 
@@ -27,5 +29,6 @@ public class Ressources
 	{
 		texture_block1.loadFromFile(Paths.get("images/block1.png"));
 		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
+		texture_bouton_sound.loadFromFile(Paths.get("image/boutonsound.png"));
 	}
 }
