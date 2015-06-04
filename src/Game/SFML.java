@@ -30,16 +30,23 @@ public class SFML
 		 camera_ini();
 	}
 	
+	static void placerFond()
+	{
+		FloatRect rect = new FloatRect(camera.getCenter().x - width/2.f, camera.getCenter().y - height/2.f, width, height);
+		
+		fond.clear();
+		fond.add(new Vertex(new Vector2f(rect.left, rect.top), Color.CYAN));
+		fond.add(new Vertex(new Vector2f(rect.left + rect.width, rect.top), Color.CYAN));
+		fond.add(new Vertex(new Vector2f(rect.left + rect.width, rect.top + rect.height), Color.WHITE));
+		fond.add(new Vertex(new Vector2f(rect.left, rect.top + rect.height), Color.WHITE));
+	}
+	
 	static void camera_ini()
 	{
 		camera.setCenter(new Vector2f(width/2.f, height/2.f));
 		camera.setSize(new Vector2f(width, height));
 		
-		fond.clear();
-		fond.add(new Vertex(new Vector2f(0, 0), Color.CYAN));
-		fond.add(new Vertex(new Vector2f(width, 0), Color.CYAN));
-		fond.add(new Vertex(new Vector2f(width, height), Color.WHITE));
-		fond.add(new Vertex(new Vector2f(0, height), Color.WHITE));
+		placerFond();
 	}
 	
 	/**
@@ -75,6 +82,19 @@ public class SFML
         { 
             if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
                 fenetre.close();
+        }
+        if (Keyboard.isKeyPressed(Key.UP) || Keyboard.isKeyPressed(Key.RIGHT) || Keyboard.isKeyPressed(Key.DOWN) || Keyboard.isKeyPressed(Key.LEFT))
+        {
+	        if (Keyboard.isKeyPressed(Key.UP))
+	        	camera.move(new Vector2f(0, -5));
+	        if (Keyboard.isKeyPressed(Key.RIGHT))
+	        	camera.move(new Vector2f(5, 0));
+	        if (Keyboard.isKeyPressed(Key.DOWN))
+	        	camera.move(new Vector2f(0, 5));
+	        if (Keyboard.isKeyPressed(Key.LEFT))
+	        	camera.move(new Vector2f(-5, 0));
+	        
+	        placerFond();
         }
 	}
 	
