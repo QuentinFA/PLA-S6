@@ -21,6 +21,7 @@ public class Ressources
 	
 	private Texture texture_bouton_sound = new Texture(); //Block de base
 	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
+	
 	/**
 	 * Charge les images
 	 * @throws IOException 

@@ -40,15 +40,15 @@ public class Reader
 							World.WORLD.addBlock(new Block(Character.getNumericValue(c), new Coordonnees(pos)));
 						//else if ...
 						
-						pos.x += 1;
+						pos.incrX(1);
 					}
-					pos.x = 0;
-					pos.y -= 1;
+					pos.setX(0);
+					pos.incrY(-1);
 				}
 				else
 				{
-					pos.y = width-1;
-					pos.z += 1;
+					pos.setY(width-1);
+					pos.incrZ(1);
 				}
 			}
 			br.close(); 
