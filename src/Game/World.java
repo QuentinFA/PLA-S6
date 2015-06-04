@@ -10,7 +10,8 @@ import Actions.Coordonnees;
 
 public class World 
 {
-	public static World WORLD;
+	public static World WORLD = null;
+	public static Menu MENU = null;
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	
