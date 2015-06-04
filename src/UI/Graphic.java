@@ -1,9 +1,17 @@
 package UI;
-import org.jsfml.graphics.*;
+import org.jsfml.graphics.Color;
+import org.jsfml.graphics.Drawable;
+import org.jsfml.graphics.FloatRect;
+import org.jsfml.graphics.PrimitiveType;
+import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Vertex;
+import org.jsfml.graphics.VertexArray;
+import org.jsfml.graphics.View;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
-import org.jsfml.window.*;
+import org.jsfml.window.Keyboard;
 import org.jsfml.window.Keyboard.Key;
+import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
 import Game.World;
@@ -76,7 +84,10 @@ public class Graphic
 		fenetre.clear(Color.WHITE);
 		fenetre.draw(fond);
 		
-		World.WORLD.afficherBlocks();
+		if (World.WORLD != null)
+			World.WORLD.afficherBlocks();
+		if (Menu.MENU != null)
+			Menu.MENU.afficher();
 		
 		fenetre.display();
 	}
