@@ -1,5 +1,6 @@
 package Actions;
-import java.util.List;
+
+import Game.World;
 
 
 public class Character 
@@ -52,14 +53,19 @@ public class Character
 	 * @param a Action à effectuer par le character
 	 * @throws OutOfMapException Exception si le character sors de la map à l'issue de son déplacement
 	 */
-	public void use_Action(Action a) throws OutOfMapException {
-		a.execute(this);
+	public void use_Action(Action a)
+	{
+		Coordonnees np = a.execute(position, orientation);
+		
+		try
+		{
+			World.WORLD.isValidPosition(np);
+			this.position = np;
+		} 
+		catch (OutOfMapException e)
+		{
+			// TODO Tomber
+			e.printStackTrace();
+		}
 	}
-	
-	
-	
-	
-	
-	
-
 }

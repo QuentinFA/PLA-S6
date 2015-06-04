@@ -14,15 +14,15 @@ public class LightBot
 		try {Ressources.RESSOURCES.initialiser();}
 		catch (IOException e) {e.printStackTrace();}
 		
-		Menu.init();
+		//Menu.init();
 		
 		while (!Graphic.SFML.input()) //Boucle principale
 		{
-			if (Menu.MENU.gerer())
+			/*if (Menu.MENU.gerer())
 			{
 				Menu.MENU = null;
 				Reader.READER.read("src/Levels/lvl1.txt");
-			}
+			}*/
 			//TODO
 			//Main
 			
