@@ -18,8 +18,8 @@ public class Graphic
 	private int height;
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS);
 	
-	void draw(Drawable object) {fenetre.draw(object);}
-	Vector2i getSizeFenetre() {return new Vector2i(width, height);}
+	public void draw(Drawable object) {fenetre.draw(object);}
+	public Vector2i getSizeFenetre() {return new Vector2i(width, height);}
 	
 	/**
 	 * Initialise la fenetre avec une taille
