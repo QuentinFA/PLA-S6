@@ -25,10 +25,7 @@ public class Menu
 	{
 		
 		bouton.setPosition(Graphic.SFML.getCenterCamera());		
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
-		
-		
-		
+		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
 		
 	}
 	public boolean gerer()
