@@ -10,7 +10,9 @@ import Game.World;
 
 public class Reader 
 {
-	public static void read(String arg)
+	public static Reader READER = new Reader();
+	
+	public void read(String arg)
 	{
 		//Lecture
 		try

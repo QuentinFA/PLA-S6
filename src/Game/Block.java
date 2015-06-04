@@ -3,6 +3,7 @@ import java.util.Comparator;
 
 import org.jsfml.graphics.*;
 
+import UI.Graphic;
 import Actions.Coordonnees;
 
 public class Block
@@ -17,7 +18,7 @@ public class Block
 	public Block(int i, Coordonnees pos)
 	{
 		if (i == 1)
-			sprite.setTexture(Ressources.texture_block1);
+			sprite.setTexture(Ressources.RESSOURCES.getTexture1());
 		else
 			System.out.println("Problème de level...");
 		
@@ -33,6 +34,6 @@ public class Block
 	 */
 	public void afficher()
 	{
-		SFML.fenetre.draw(sprite);
+		Graphic.SFML.draw(sprite);
 	}
 }

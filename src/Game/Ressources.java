@@ -11,13 +11,16 @@ import org.jsfml.graphics.*;
  */
 public class Ressources 
 {
-	static Texture texture_block1 = new Texture(); //Block de base
+	static Ressources RESSOURCES = new Ressources();
+	
+	private Texture texture_block1 = new Texture(); //Block de base
+	public Texture getTexture1() {return texture_block1;}
 	
 	/**
 	 * Charge les images
 	 * @throws IOException 
 	 */
-	static void initialiser() throws IOException
+	public void initialiser() throws IOException
 	{
 		texture_block1.loadFromFile(Paths.get("images/block1.png"));
 	}

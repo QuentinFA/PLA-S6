@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.jsfml.system.Vector2f;
 
+import UI.Graphic;
 import Actions.Coordonnees;
 
 public class World 
@@ -35,7 +36,7 @@ public class World
 	public Vector2f placeMe(Coordonnees pos)
 	{
 		float pos_x, pos_y;
-		Vector2f center = new Vector2f(SFML.width/2, SFML.height/2);
+		Vector2f center = new Vector2f(Graphic.SFML.getSizeFenetre().x/2, Graphic.SFML.getSizeFenetre().y/2);
 		
 		pos_x = center.x + 37 * pos.x - 37 * pos.y;
 		pos_y = center.y - 21 * pos.x - 21 * pos.y - 29 * pos.z;
