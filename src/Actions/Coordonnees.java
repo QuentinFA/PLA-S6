@@ -18,7 +18,4 @@ public class Coordonnees {
 		y = pos.y;
 		z = pos.z;
 	}
-	
-	
-	
 }

@@ -1,11 +1,15 @@
 package Actions;
 
-public class Light {
+import Game.World;
+
+public class Light 
+{
 	public Light() {}
 	
-	public void execute(Character p) {
-		Coordonnees c=p.getPosition();
-		c._z -= 1; //Car le personnage est une case au dessus
-		world.changeColor(c);
+	public void execute(Character p) 
+	{
+		Coordonnees c = p.getPosition();
+		c.z -= 1; //Car le personnage est une case au dessus
+		World.WORLD.changeColor(c);
 	}
 }

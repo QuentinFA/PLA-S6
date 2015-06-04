@@ -2,50 +2,40 @@ package Actions;
 import java.util.List;
 
 
-public class Character {
-	
-	
-	private Coordonnees _position;
+public class Character 
+{	
 	private List<Action> _l;
-	private Sens _sens;
 	
-	Character(Coordonnees c,Sens s) {
-		_position=c;
-		_sens=s;
+	private Coordonnees position;
+	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
+	
+	Character(Coordonnees pos,int ori) {
+		position = pos;
+		orientation = ori;
 	}
 	
-	public Coordonnees getPosition() {
-		return _position;
-	}
+	public Coordonnees getPosition() {return position;}
 	
-	public void setPosition(Coordonnees c) {
-		this._position=c;
-	}
+	public void setPosition(Coordonnees pos) {position = pos;}
 	
-	public Sens getSens() {
-		return _sens;
-	}
+	public int getOrientation() {return orientation;}
 	
-	public void setSens(Sens s) {
-		this._sens=s;
-	}
-	public void add_action(Action a) {
-		_l.add(a);
-	}
+	public void setOrientation(int ori) {orientation = ori;}
 	
+	public void add_action(Action a) {_l.add(a);}
 	
-	public void use_actions() {
-		try {
-			Action a;
-			int i=0;
-			while(!(_l.isEmpty())) {
-				a=_l.get(i);
-				_l.remove(i);
-				i++;
-				a.execute(this);
-			}
-		}catch(deplacement_impossible e) { }
-	}*/
+	public void use_actions() throws BoundException 
+	{
+		Action a;
+		int i=0;
+		while (!_l.isEmpty()) 
+		{
+			a=_l.get(i);
+			_l.remove(i);
+			i++;
+			a.execute(this);
+		}
+	}
 	
 	
 	
