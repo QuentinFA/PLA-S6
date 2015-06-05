@@ -59,12 +59,31 @@ public class Character
 		
 		try
 		{
-			World.WORLD.isValidPosition(np);
-			this.position = np;
+			if(a instanceof Jump)
+			{
+				Coordonnees zm2 = a.execute(new Coordonnees(position.getX(),  position.getY(), position.getZ() - 2), orientation);
+				
+				if(World.WORLD.isValidPosition(np))
+					this.position = np;
+				else if(World.WORLD.isValidPosition(zm2))
+					this.position = zm2;
+				else
+					// TODO Animation
+				{}
+			}
+			else if(a instanceof Light)
+			{
+				World.WORLD.light(np);
+			}
+			else if(World.WORLD.isValidPosition(np))
+				this.position = np;
+			else
+				// TODO Animation
+			{}
 		} 
 		catch (OutOfMapException e)
 		{
-			// TODO Tomber
+			// TODO Tomber Animation
 			e.printStackTrace();
 		}
 	}
