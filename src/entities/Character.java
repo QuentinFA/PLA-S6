@@ -1,5 +1,6 @@
-package Actions;
+package entities;
 
+import Actions.*;
 import Game.World;
 
 
