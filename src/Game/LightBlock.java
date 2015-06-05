@@ -20,7 +20,7 @@ public class LightBlock extends Block {
 		position = pos;
 		isOn = false;
 		
-		sprite.setPosition(World.WORLD.placeMe(pos));
+		//sprite.setPosition(World.WORLD.placeMe(pos));
 	}
 
 	public boolean getLight() {return this.isOn;}

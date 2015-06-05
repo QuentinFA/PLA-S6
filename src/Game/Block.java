@@ -1,5 +1,6 @@
 package Game;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
 import UI.Graphic;
@@ -10,6 +11,16 @@ public abstract class Block
 	protected Coordonnees position;
 	
 	public Coordonnees getCoord() {return position;}
+	
+	public Vector2f getPosSprite()
+	{
+		return this.sprite.getPosition();
+	}
+	
+	public void setPosSprite(Vector2f pos)
+	{
+		this.sprite.setPosition(pos);
+	}
 	
 	/**
 	 * Afficher un block

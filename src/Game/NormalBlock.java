@@ -17,6 +17,6 @@ public class NormalBlock extends Block {
 				
 		position = pos;
 		
-		sprite.setPosition(World.WORLD.placeMe(pos));
+		//sprite.setPosition(World.WORLD.placeMe(pos));
 	}
 }
