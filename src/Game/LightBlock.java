@@ -2,7 +2,9 @@ package Game;
 
 import org.jsfml.graphics.IntRect;
 
+import Actions.Color;
 import Actions.Coordonnees;
+import Entities.Character;
 
 public class LightBlock extends Block {
 	
@@ -25,12 +27,16 @@ public class LightBlock extends Block {
 
 	public boolean getLight() {return this.isOn;}
 	
-	public void setLight(boolean lumiere) {
-		this.isOn = lumiere;
+	public void reverseLight() {
+		this.isOn = !this.isOn;
 		if(this.isOn)
 			sprite.setTextureRect(new IntRect(83, 83, 81, 81));  
 		else
 			sprite.setTextureRect(new IntRect(1, 83, 81, 81));
+	}
+	
+	public void perform(Character p) {
+		this.reverseLight();
 	}
 	
 }

@@ -1,5 +1,5 @@
 package Actions;
-import entities.Character;
+import Entities.Character;
 
 public class Right_turn 
 {

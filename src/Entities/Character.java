@@ -66,8 +66,10 @@ public class Character
 				
 				if(World.WORLD.isValidPosition(np))
 					this.position = np;
+					//TODO Animation
 				else if(World.WORLD.isValidPosition(zm2))
 					this.position = zm2;
+				//TODO Animation
 				else
 					// TODO Animation
 				{}
@@ -78,6 +80,7 @@ public class Character
 			}
 			else if(World.WORLD.isValidPosition(np))
 				this.position = np;
+				//TODO Animation
 			else
 				// TODO Animation
 			{}

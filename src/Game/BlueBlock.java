@@ -1,8 +1,9 @@
 package Game;
-
 import org.jsfml.graphics.IntRect;
 
+import Actions.Color;
 import Actions.Coordonnees;
+import Entities.Character;
 
 public class BlueBlock extends Block {
 	
@@ -19,5 +20,12 @@ public class BlueBlock extends Block {
 		
 		sprite.setPosition(World.WORLD.placeMe(pos));
 	}
+	
+	public void perform(Character p) {
+		int c = Color.BLEU;
+		p.setColor(c);
+		//TODO Colorer personnage
+	}
+	
 }
 
