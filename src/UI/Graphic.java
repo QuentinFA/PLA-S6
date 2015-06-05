@@ -27,7 +27,7 @@ public class Graphic
 	private int height;
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS);
 	
-	public void draw(Drawable object) {fenetre.draw(object);
+	public void draw(Drawable object) {fenetre.draw(object);};
 	public Vector2i getPositionMouse() {return Mouse.getPosition(fenetre);}
 	public Vector2f getCenterCamera() {return new Vector2f(camera.getCenter().x , camera.getCenter().y);}
 	public Vector2i getSizeFenetre() {return new Vector2i(width, height);}
@@ -77,6 +77,8 @@ public class Graphic
 	 */
 	public void afficher()
 	{
+		input();
+		
 		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
 		{
 			width = fenetre.getSize().x;
@@ -103,7 +105,7 @@ public class Graphic
 	 */
 	public boolean input()
 	{
-        Event event = fenetre.pollEvent(); //Evenements
+       /* Event event = fenetre.pollEvent(); //Evenements
         if (event != null) 
         { 
             if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
@@ -124,7 +126,7 @@ public class Graphic
 	        	camera.move(new Vector2f(-5, 0));
 	        
 	        placerFond();
-        }
+        }*/
         return false;
 	}
 }

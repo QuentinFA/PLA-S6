@@ -45,10 +45,11 @@ public class Menu
 	}
 	public boolean gerer()
 	{
-		if (Input.INPUT.isPressed(Input.BUTTON.MLEFT))
+		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
-		    System.out.println("mouse: " + Mouse.getPosition());
-		    System.out.println("boutonSound" + boutonSound.getPosition());
+		   // System.out.println("mouse: " + Mouse.getPosition());
+		   // System.out.println("boutonSound" + boutonSound.getPosition());
+		    
 			if (isOnSprite(bouton)) //Play
 			{				
 				MENU = null;
@@ -57,18 +58,18 @@ public class Menu
 			}
 			if (isOnSprite(boutonSound))
 			{
-				
+				 System.out.println(mute);
 				if(mute == true)
 				{
 					mute = false;
 					boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
-					//Ressources.RESSOURCES.getMusic().stop();
+					Ressources.RESSOURCES.getMusic().stop();
 				}
-				if(mute == false)
+				else if(mute == false)
 				{
 					mute = true;
 					boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-					//Ressources.RESSOURCES.getMusic().play();
+					Ressources.RESSOURCES.getMusic().play();
 				}
 			}
 		}

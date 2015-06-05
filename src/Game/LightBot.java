@@ -2,12 +2,10 @@ package Game;
 
 import java.io.IOException;
 
-
 import Levels.Reader;
 import UI.Graphic;
-import UI.Menu;
 import UI.Input;
-
+import UI.Menu;
 
 public class LightBot
 {
