@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import Actions.Coordonnees;
 import Game.Block;
+import Game.RedBlock;
 import Game.World;
 
 public class Reader 
@@ -36,8 +37,8 @@ public class Reader
 					for (int i=0; i < width; i++)
 					{
 						char c = str.charAt(i);
-						if (Character.getNumericValue(c) == 1)
-							World.WORLD.addBlock(new Block(Character.getNumericValue(c), new Coordonnees(pos)));
+						//if (Character.getNumericValue(c) == 1)
+							World.WORLD.addBlock(new RedBlock(new Coordonnees(pos)));
 						//else if ...
 						
 						pos.incrX(1);
