@@ -2,6 +2,7 @@ package UI;
 
 
 import org.jsfml.graphics.FloatRect;
+import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
@@ -13,7 +14,7 @@ import Game.Ressources;
 public class Menu 
 {
 
-	
+	boolean mute = true;
 	Sprite bouton = new Sprite();
 	Sprite boutonSound = new Sprite();
 	
@@ -31,36 +32,46 @@ public class Menu
 	}
 	public Menu()
 	{
-		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
-		bouton.setPosition(Graphic.SFML.getCenterCamera());		
+//		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
+		bouton.setPosition(Graphic.SFML.getCenterCamera().x-bouton.getGlobalBounds().);	
+		System.out.println(Graphic.SFML.getCenterCamera());
 		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
-		boutonSound.setPosition(Graphic.SFML.getCenterCamera());
+		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
+		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
+//		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
+//		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
+//		boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
+		
 	}
 	public boolean gerer()
 	{
-		if (Mouse.isButtonPressed(Button.LEFT))
+		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
+		   // System.out.println("mouse: " + Mouse.getPosition());
+		   // System.out.println("boutonSound" + boutonSound.getPosition());
+		    
 			if (isOnSprite(bouton)) //Play
-			{
+			{				
 				MENU = null;
 				Menu_Level.MENU_LEVEL  = new Menu_Level();
 				return true;
 			}
 			if (isOnSprite(boutonSound))
 			{
-				//Change sound
-				if(Ressources.RESSOURCES.on_off.equals(Ressources.Sound.On))
+				 System.out.println(mute);
+				if(mute == true)
 				{
-					Ressources.RESSOURCES.on_off = Ressources.Sound.Off;
+					mute = false;
+					boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
 					Ressources.RESSOURCES.getMusic().stop();
 				}
-				if(Ressources.RESSOURCES.on_off.equals(Ressources.Sound.Off))
+				else if(mute == false)
 				{
-					Ressources.RESSOURCES.on_off = Ressources.Sound.On;
+					mute = true;
+					boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
 					Ressources.RESSOURCES.getMusic().play();
 				}
-				return true;
 			}
 		}
 		
@@ -70,8 +81,9 @@ public class Menu
 	{
 		FloatRect rectangle = s.getGlobalBounds();
 		
-		Vector2i pos_mouse = Mouse.getPosition();
-		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera());
+		Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
+		System.out.println("mouse in isOnSprite: " + pos_mouse);
+		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
 		
 		if (real_pos.x > rectangle.left && 
 				real_pos.x < (rectangle.left+rectangle.width) &&

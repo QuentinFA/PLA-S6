@@ -11,6 +11,7 @@ import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
 import org.jsfml.window.Keyboard;
 import org.jsfml.window.Keyboard.Key;
+import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
@@ -26,10 +27,13 @@ public class Graphic
 	private int height;
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS);
 	
-	public void draw(Drawable object) {fenetre.draw(object);}
+	public void draw(Drawable object) {fenetre.draw(object);};
+	public Vector2i getPositionMouse() {return Mouse.getPosition(fenetre);}
 	public Vector2f getCenterCamera() {return new Vector2f(camera.getCenter().x , camera.getCenter().y);}
 	public Vector2i getSizeFenetre() {return new Vector2i(width, height);}
-	public Vector2i getPositionCamera() {return new Vector2i((int)(camera.getCenter().x - width/2.f) , (int)(camera.getCenter().y - height/2.f));};
+	public Vector2i getPositionCamera_i() {return new Vector2i((int)(camera.getCenter().x - width/2.f) , (int)(camera.getCenter().y - height/2.f));};	
+	public Vector2f getPositionCamera_f() {return new Vector2f(camera.getCenter().x - width/2.f,camera.getCenter().y - height/2.f);};
+	public Event getEvent(){return fenetre.pollEvent();}
 	/**
 	 * Initialise la fenetre avec une taille
 	 * @param width
@@ -73,6 +77,8 @@ public class Graphic
 	 */
 	public void afficher()
 	{
+		input();
+		
 		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
 		{
 			width = fenetre.getSize().x;
@@ -99,7 +105,7 @@ public class Graphic
 	 */
 	public boolean input()
 	{
-        Event event = fenetre.pollEvent(); //Evenements
+       /* Event event = fenetre.pollEvent(); //Evenements
         if (event != null) 
         { 
             if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
@@ -120,7 +126,7 @@ public class Graphic
 	        	camera.move(new Vector2f(-5, 0));
 	        
 	        placerFond();
-        }
+        }*/
         return false;
 	}
 }

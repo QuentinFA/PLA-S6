@@ -8,6 +8,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.jsfml.audio.Music;
 import org.jsfml.graphics.Texture;
+import org.jsfml.system.Vector2f;
 
 
 
@@ -19,9 +20,6 @@ import org.jsfml.graphics.Texture;
 
 public class Ressources 
 {
-	public enum Sound{
-		On, Off
-	}
 	public static Ressources RESSOURCES = new Ressources();
 	
 	private Texture texture_block1 = new Texture(); //Blocks
@@ -29,6 +27,7 @@ public class Ressources
 	
 	private Texture texture_bouton = new Texture(); //Blocks
 	public Texture getTextureBouton() {return texture_bouton;}
+	public Vector2f getSizeTextureBouton() {return new Vector2f(texture_bouton.getSize().x/2.f, texture_bouton.getSize().y/2.f);}
 	
 	private Texture texture_bouton_sound = new Texture(); //Blocks
 	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
@@ -36,7 +35,6 @@ public class Ressources
 	/**
 	 * pour le audio
      */
-	public Sound  on_off = Sound.On;
 	private Music music = new Music();
 	public Music getMusic(){return music;}
 

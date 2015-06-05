@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import Levels.Reader;
 import UI.Graphic;
+import UI.Input;
+import UI.Menu;
 
 public class LightBot
 {
@@ -14,18 +16,19 @@ public class LightBot
 		try {Ressources.RESSOURCES.initialiser();}
 		catch (IOException e) {e.printStackTrace();}
 		
-		Reader.READER.read("src/Levels/lvl1.txt");
-		Graphic.SFML.placeCamera();
+		//Reader.READER.read("src/Levels/lvl1.txt");
+		//Graphic.SFML.placeCamera();
 		
-		//Menu.init();
+	    Menu.init();
+
 		
-		while (!Graphic.SFML.input()) //Boucle principale
+	    while (!Input.INPUT.gerer()) //Boucle principale
 		{
-			/*if (Menu.MENU.gerer())
+			if (Menu.MENU.gerer())
 			{
 				Menu.MENU = null;
 				Reader.READER.read("src/Levels/lvl1.txt");
-			}*/
+			}
 			//TODO
 			//Main
 			
