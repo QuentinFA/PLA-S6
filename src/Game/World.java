@@ -60,6 +60,11 @@ public class World
 	 */
 	public void addBlock(Block b) {blockList.add(b);}
 	
+	public List<Block> getBlockList()
+	{
+		return this.blockList;
+	}
+	
 	/**
 	 * Afficher tous les blocks
 	 */
