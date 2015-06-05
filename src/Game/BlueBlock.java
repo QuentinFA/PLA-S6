@@ -18,7 +18,7 @@ public class BlueBlock extends Block {
 				
 		position = pos;
 		
-		sprite.setPosition(World.WORLD.placeMe(pos));
+		//sprite.setPosition(World.WORLD.placeMe(pos));
 	}
 	
 	public void perform(Character p) {

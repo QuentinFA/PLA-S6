@@ -18,12 +18,15 @@ public class LightBot
 		try {Ressources.RESSOURCES.initialiser();}
 		catch (IOException e) {e.printStackTrace();}
 		
+		Reader.read("levels/level1-1.xml");
+		Graphic.SFML.placeCamera();
+		
+		System.out.println(World.WORLD.getBlockList().toString());
+		
 		//Reader.READER.read("src/Levels/lvl1.txt");
 		//Graphic.SFML.placeCamera();
 		Menu.change = 1;
 		Menu.change_menu();
-
-
 		
 	    while (!Input.INPUT.gerer()) //Boucle principale
 		{

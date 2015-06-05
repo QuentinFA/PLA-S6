@@ -1,13 +1,13 @@
 package Actions;
-
+import Entities.Character;
 
 public class Light extends Action
 {
-	public Light() {}
+	public Light(int color) {c = color;}
 
-	@Override
-	public Coordonnees execute(Coordonnees p, int orientation)
-	{
-		return p;
-	}
+	//Inutile
+	public Coordonnees execute(Coordonnees p, int orientation){return p;}
+	
+	//Inutile
+	public void execute(Character p) {}
 }

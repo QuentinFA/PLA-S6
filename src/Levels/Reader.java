@@ -1,64 +1,118 @@
 package Levels;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jdom2.DataConversionException;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import Actions.Coordonnees;
 import Game.Block;
 import Game.BlueBlock;
+import Game.LightBlock;
+import Game.NormalBlock;
 import Game.RedBlock;
 import Game.World;
 
 public class Reader 
 {
+	public static final String B_LEVEL_NAME = "level_name";
+	public static final String B_LENGTH = "length";
+	public static final String B_HEIGTH = "heigth";
+	public static final String B_WIDTH = "width";
+	public static final String B_FLOOR = "floor";
+	public static final String B_BLOCK = "block";
+	public static final String B_BLOCK_TYPE = "type";
+	public static final String B_X = "x";
+	public static final String B_Y = "y";
+	public static final String B_LEVEL = "level";
+	
 	public static Reader READER = new Reader();
 	
-	public void read(String arg)
+	public static void read(String arg)
 	{
-		//Lecture
+		SAXBuilder sxb = new SAXBuilder();
+		int heigth = 0, length = 0, width = 0;
+		String name = "Failling world !";
+		Element root;
+		List<Element> le;
+		Document doc;
+		List<Block> lb = new ArrayList<Block>();
+		
 		try
 		{
-			InputStream ips = new FileInputStream(arg); 
-			InputStreamReader ipsr = new InputStreamReader(ips);
-			BufferedReader br = new BufferedReader(ipsr);
-			
-			int width = Integer.parseInt(br.readLine());
-			int height = Integer.parseInt(br.readLine());
-			
-			new World(width, height);
-			
-			Coordonnees pos = new Coordonnees(0, width-1, 0);
-			
-			String str;
-			while ((str = br.readLine()) != null)
+			doc = sxb.build(new File(arg));
+		} 
+		catch (JDOMException e)
+		{
+			e.printStackTrace();
+			return;
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			return;
+		}
+		
+		root = doc.getRootElement();
+		le = root.getChildren();
+		
+		for(Element e : le)
+		{
+			// Récupérationdes blocks d'un étage
+			if(e.getName() == B_FLOOR)
 			{
-				if (!str.isEmpty())
+				int z;
+				
+				try
 				{
-					for (int i=0; i < width; i++)
-					{
-						char c = str.charAt(i);
-						//if (Character.getNumericValue(c) == 1)
-							World.WORLD.addBlock(new BlueBlock(new Coordonnees(pos)));
-						//else if ...
-						
-						pos.incrX(1);
-					}
-					pos.setX(0);
-					pos.incrY(-1);
+					z = e.getAttribute(B_LEVEL).getIntValue();
+				} 
+				catch (DataConversionException e1)
+				{
+					e1.printStackTrace();
+					return;
 				}
-				else
+				
+				for(Element block : e.getChildren())
 				{
-					pos.setY(width-1);
-					pos.incrZ(1);
+					String t = block.getAttribute(B_BLOCK_TYPE).getValue();
+					int x = Integer.valueOf(block.getChild(B_X).getValue());
+					int y = Integer.valueOf(block.getChild(B_Y).getValue());
+					switch(t)
+					{
+						case "Normal" :
+							lb.add(new NormalBlock(new Coordonnees(x, y, z)));
+							break;
+						case "Blue" :
+							lb.add(new BlueBlock(new Coordonnees(x, y, z)));
+							break;
+						case "Light" :
+							lb.add(new LightBlock(new Coordonnees(x, y, z)));
+							break;
+						case "Red" :
+						default :
+							lb.add(new RedBlock(new Coordonnees(x, y, z)));
+							break;
+					}
 				}
 			}
-			br.close(); 
-		}		
-		catch (Exception e)
-		{
-			System.out.println("Impossible d'ouvir le fichier " + arg + " ...");
+			else if(e.getName() == B_LENGTH)
+				length = Integer.valueOf(e.getValue());
+			else if(e.getName() == B_WIDTH)
+				width = Integer.valueOf(e.getValue());
+			else if(e.getName() == B_HEIGTH)
+				heigth = Integer.valueOf(e.getValue());
+			else if(e.getName() == B_LEVEL_NAME)
+				name = e.getValue();
 		}
+		
+		World.WORLD = new World(length, width, name, lb);
 	}
 	
 }
