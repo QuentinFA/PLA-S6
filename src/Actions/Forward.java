@@ -4,7 +4,7 @@ import Entities.Character;
 public class Forward extends Action
 {
 	public Forward(int color) {c = color;}
-
+	
 	@Override
 	public Coordonnees execute(Coordonnees p, int orientation)
 	{

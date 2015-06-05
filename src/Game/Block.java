@@ -25,7 +25,7 @@ public abstract class Block
 	{
 		this.sprite.setPosition(pos);
 	}
-
+	
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}
 	
 	/**

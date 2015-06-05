@@ -11,9 +11,13 @@ public class Menu_Level extends Menu{
 	//public static Menu_Level MENU_LEVEL = null;
 	boolean mute = true;
 	Sprite boutonSound = new Sprite();
+<<<<<<< HEAD
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
 
+=======
+	
+>>>>>>> 2cbeb62f718326bdd12195f1cb41bba2e7ddd194
 	public  void init()
 	{
 //		MENU_LEVEL  = new Menu_Level();
@@ -41,7 +45,7 @@ public class Menu_Level extends Menu{
 		{
 			if (isOnSprite(boutonSound))
 			{
-				 System.out.println(mute);
+				System.out.println(mute);
 				if(mute == true)
 				{
 					mute = false;
@@ -69,9 +73,9 @@ public class Menu_Level extends Menu{
 		
 		if (real_pos.x > rectangle.left && 
 				real_pos.x < (rectangle.left+rectangle.width) &&
-				   real_pos.y > rectangle.top &&
-				     real_pos.y < (rectangle.top+rectangle.height))
-				return true;
+				real_pos.y > rectangle.top &&
+				real_pos.y < (rectangle.top+rectangle.height))
+			return true;
 		return false;
 	}
 }

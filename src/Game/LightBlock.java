@@ -2,7 +2,6 @@ package Game;
 
 import org.jsfml.graphics.IntRect;
 
-import Actions.Color;
 import Actions.Coordonnees;
 import Entities.Character;
 
@@ -18,13 +17,13 @@ public class LightBlock extends Block {
 	{
 		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
 		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
-				
+		
 		position = pos;
 		isOn = false;
 		
 		//sprite.setPosition(World.WORLD.placeMe(pos));
 	}
-
+	
 	public boolean getLight() {return this.isOn;}
 	
 	public void reverseLight() {

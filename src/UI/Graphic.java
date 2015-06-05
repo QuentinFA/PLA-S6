@@ -42,14 +42,14 @@ public class Graphic
 	 */
 	public void initialiser(int w, int h)
 	{
-		 fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
-		 fenetre.setVerticalSyncEnabled(true);
-		 camera = new View();
-		 
-		 width = w;
-		 height = h;
-		 
-		 camera_ini();
+		fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
+		fenetre.setVerticalSyncEnabled(true);
+		camera = new View();
+		
+		width = w;
+		height = h;
+		
+		camera_ini();
 	}
 	
 	public void placeCamera() {camera.setCenter(World.WORLD.getCenterWorld());}
@@ -80,7 +80,7 @@ public class Graphic
 	{
 		if (input())
 			return;
-			
+		
 		
 		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
 		{
@@ -91,7 +91,7 @@ public class Graphic
 		}
 		
 		fenetre.setView(camera);
-		 
+		
 		fenetre.clear(Color.WHITE);
 		fenetre.draw(fond);
 		
@@ -106,7 +106,7 @@ public class Graphic
 	public void moveCamera(Vector2f delta)
 	{
 		camera.move(delta);
-    	placerFond();
+		placerFond();
 	}
 	
 	/**
@@ -114,25 +114,25 @@ public class Graphic
 	 */
 	public boolean input()
 	{
-        Event event = fenetre.pollEvent(); //Evenements
-        if (event != null) 
-        { 
-            if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
-            {
-                fenetre.close();
-                return true;
-            }
-        }
-        
-        if (Input.INPUT.isPressed(BUTTON.UP))
-        	moveCamera(new Vector2f(0, -5));
-        if (Input.INPUT.isPressed(BUTTON.RIGHT))
-        	moveCamera(new Vector2f(5, 0));
-        if (Input.INPUT.isPressed(BUTTON.DOWN))
-        	moveCamera(new Vector2f(0, 5));
-        if (Input.INPUT.isPressed(BUTTON.LEFT))
-        	moveCamera(new Vector2f(5, 0));
-          
-        return false;
+		Event event = fenetre.pollEvent(); //Evenements
+		if (event != null) 
+		{ 
+			if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
+			{
+				fenetre.close();
+				return true;
+			}
+		}
+		
+		if (Input.INPUT.isPressed(BUTTON.UP))
+			moveCamera(new Vector2f(0, -5));
+		if (Input.INPUT.isPressed(BUTTON.RIGHT))
+			moveCamera(new Vector2f(5, 0));
+		if (Input.INPUT.isPressed(BUTTON.DOWN))
+			moveCamera(new Vector2f(0, 5));
+		if (Input.INPUT.isPressed(BUTTON.LEFT))
+			moveCamera(new Vector2f(-5, 0));
+		
+		return false;
 	}
 }

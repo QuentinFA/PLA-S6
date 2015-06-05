@@ -2,7 +2,7 @@ package Actions;
 
 public class OutOfMapException extends Exception 
 {
-
+	
 	/**
 	 * 
 	 */
