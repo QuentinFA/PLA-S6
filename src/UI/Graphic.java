@@ -15,6 +15,7 @@ import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
+import UI.Input.BUTTON;
 import Game.World;
 
 public class Graphic 
@@ -77,7 +78,9 @@ public class Graphic
 	 */
 	public void afficher()
 	{
-		input();
+		if (input())
+			return;
+			
 		
 		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
 		{
@@ -100,12 +103,18 @@ public class Graphic
 		fenetre.display();
 	}
 	
+	public void moveCamera(Vector2f delta)
+	{
+		camera.move(delta);
+    	placerFond();
+	}
+	
 	/**
 	 * G�re les �venements clavier et souris
 	 */
 	public boolean input()
 	{
-       /* Event event = fenetre.pollEvent(); //Evenements
+        Event event = fenetre.pollEvent(); //Evenements
         if (event != null) 
         { 
             if (event.type == Event.Type.CLOSED || Keyboard.isKeyPressed(Key.ESCAPE))
@@ -114,19 +123,16 @@ public class Graphic
                 return true;
             }
         }
-        if (Keyboard.isKeyPressed(Key.UP) || Keyboard.isKeyPressed(Key.RIGHT) || Keyboard.isKeyPressed(Key.DOWN) || Keyboard.isKeyPressed(Key.LEFT))
-        {
-	        if (Keyboard.isKeyPressed(Key.UP))
-	        	camera.move(new Vector2f(0, -5));
-	        if (Keyboard.isKeyPressed(Key.RIGHT))
-	        	camera.move(new Vector2f(5, 0));
-	        if (Keyboard.isKeyPressed(Key.DOWN))
-	        	camera.move(new Vector2f(0, 5));
-	        if (Keyboard.isKeyPressed(Key.LEFT))
-	        	camera.move(new Vector2f(-5, 0));
-	        
-	        placerFond();
-        }*/
+        
+        if (Input.INPUT.isPressed(BUTTON.UP))
+        	moveCamera(new Vector2f(0, -5));
+        if (Input.INPUT.isPressed(BUTTON.RIGHT))
+        	moveCamera(new Vector2f(5, 0));
+        if (Input.INPUT.isPressed(BUTTON.DOWN))
+        	moveCamera(new Vector2f(0, 5));
+        if (Input.INPUT.isPressed(BUTTON.LEFT))
+        	moveCamera(new Vector2f(5, 0));
+          
         return false;
 	}
 }

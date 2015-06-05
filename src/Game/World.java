@@ -46,20 +46,24 @@ public class World
 	
 	public Vector2f getCenterWorld()
 	{
-		float left = Float.MAX_VALUE;
-		float top = Float.MAX_VALUE;
-		float width = 0;
-		float height = 0;
-		/*
+		float min_x = Float.MAX_VALUE;
+		float min_y = Float.MAX_VALUE;
+		float max_x = Float.MIN_VALUE;
+		float max_y = Float.MIN_VALUE;
+		
 		for (int i=0; i < blockList.size(); i++)
 		{
-			if (blockList.get(i).getGlobalBounds().left < rect.left)
-				rect.left = blockList.get(i).getGlobalBounds().left;
-			if (blockList.get(i).getGlobalBounds().top < rect.top)
-				rect.top = blockList.get(i).getGlobalBounds().top;
-				
-		}*/
-		return new Vector2f(0, 0);
+			if (blockList.get(i).getGlobalBounds().left < min_x)
+				min_x = blockList.get(i).getGlobalBounds().left;
+			if (blockList.get(i).getGlobalBounds().top < min_y)
+				min_y = blockList.get(i).getGlobalBounds().top;
+			
+			if (blockList.get(i).getGlobalBounds().left + blockList.get(i).getGlobalBounds().width > max_x)
+				max_x = blockList.get(i).getGlobalBounds().left + blockList.get(i).getGlobalBounds().width;
+			if (blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height > max_y)
+				max_y = blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height;	
+		}
+		return new Vector2f((max_x - min_x)/2.f, (max_y - min_y)/2.f);
 	}
 	
 	/**
