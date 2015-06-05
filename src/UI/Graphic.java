@@ -131,7 +131,7 @@ public class Graphic
         if (Input.INPUT.isPressed(BUTTON.DOWN))
         	moveCamera(new Vector2f(0, 5));
         if (Input.INPUT.isPressed(BUTTON.LEFT))
-        	moveCamera(new Vector2f(5, 0));
+        	moveCamera(new Vector2f(-5, 0));
           
         return false;
 	}
