@@ -32,8 +32,9 @@ public class Menu
 	}
 	public Menu()
 	{
-		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
-		bouton.setPosition(Graphic.SFML.getCenterCamera());		
+//		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
+		bouton.setPosition(Graphic.SFML.getCenterCamera().x-bouton.getGlobalBounds().);	
+		System.out.println(Graphic.SFML.getCenterCamera());
 		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
 		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
@@ -81,7 +82,7 @@ public class Menu
 		FloatRect rectangle = s.getGlobalBounds();
 		
 		Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-		System.out.println("mouse in siOnSprite: " + pos_mouse);
+		System.out.println("mouse in isOnSprite: " + pos_mouse);
 		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
 		
 		if (real_pos.x > rectangle.left && 
