@@ -11,17 +11,9 @@ public class Menu_Level extends Menu{
 	//public static Menu_Level MENU_LEVEL = null;
 	boolean mute = true;
 	Sprite boutonSound = new Sprite();
-<<<<<<< HEAD
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
 
-=======
-	
->>>>>>> 2cbeb62f718326bdd12195f1cb41bba2e7ddd194
-	public  void init()
-	{
-//		MENU_LEVEL  = new Menu_Level();
-	}
 	public void afficher()
 	{
 		Graphic.SFML.draw(boutonSound);
