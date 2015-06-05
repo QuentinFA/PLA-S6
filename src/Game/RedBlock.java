@@ -2,7 +2,9 @@ package Game;
 
 import org.jsfml.graphics.IntRect;
 
+import Actions.Color;
 import Actions.Coordonnees;
+import Entities.Character;
 
 public class RedBlock extends Block{
 	
@@ -13,11 +15,17 @@ public class RedBlock extends Block{
 	public RedBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
-		sprite.setTextureRect(new IntRect(84, 1, 81, 81));
+		sprite.setTextureRect(new IntRect(83, 1, 81, 81));
 				
 		position = pos;
 		
 		//sprite.setPosition(World.WORLD.placeMe(pos));
+	}
+	
+	public void perform(Character p) {
+		int c = Color.ROUGE;
+		p.setColor(c);
+		//TODO Colorer personnage
 	}
 }
 

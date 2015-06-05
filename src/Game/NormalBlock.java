@@ -3,6 +3,7 @@ package Game;
 import org.jsfml.graphics.IntRect;
 
 import Actions.Coordonnees;
+import Entities.Character;
 
 public class NormalBlock extends Block {
 	
@@ -18,5 +19,9 @@ public class NormalBlock extends Block {
 		position = pos;
 		
 		//sprite.setPosition(World.WORLD.placeMe(pos));
+	}
+	
+	public void perform(Character p) {
+		//Ne fait rien
 	}
 }

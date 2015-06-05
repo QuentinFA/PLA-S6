@@ -64,11 +64,19 @@ public class World
 	
 	public Vector2f getCenterWorld()
 	{
-		FloatRect rect = new FloatRect(Float.MAX_VALUE, Float.MAX_VALUE, 0, 0);
+		float left = Float.MAX_VALUE;
+		float top = Float.MAX_VALUE;
+		float width = 0;
+		float height = 0;
+		/*
 		for (int i=0; i < blockList.size(); i++)
 		{
-			
-		}
+			if (blockList.get(i).getGlobalBounds().left < rect.left)
+				rect.left = blockList.get(i).getGlobalBounds().left;
+			if (blockList.get(i).getGlobalBounds().top < rect.top)
+				rect.top = blockList.get(i).getGlobalBounds().top;
+				
+		}*/
 		return new Vector2f(0, 0);
 	}
 	
@@ -95,7 +103,8 @@ public class World
 	
 	/**
 	 * Vérification de la validité d'une position</br>
-	 * Si un bloc se trouve à cette position ou qu'il n'y en a pas en dessous, la position n'est pas valide
+	 * Si un bloc se trouve
+	 *  à cette position ou qu'il n'y en a pas en dessous, la position n'est pas valide
 	 * @param p : La position à vérifier
 	 * @return Selon si la position est valide
 	 * @throws OutOfMapException : Si la position est en dehors de la map
@@ -111,5 +120,51 @@ public class World
 	{
 		// TODO Light
 		
+	}
+	
+	/**
+	 * Renvoie la liste des blocks de la map de type du block b
+	 * @param b : Le typage de ce block correspondra à la liste des blocks qu'on renverra
+	 * @return l : Liste des blocks de la map du même type que b
+	 */
+	public List<Block> getBlocksT(Block b) {
+		
+		List<Block> l = new ArrayList<Block>();
+		
+		if(b instanceof NormalBlock) {
+			for(Block bl : blockList){
+				if(bl instanceof NormalBlock) {
+					l.add(bl);
+				}
+			}
+		}
+		
+		else if(b instanceof RedBlock) {
+			for(Block bl : blockList){
+				if(bl instanceof RedBlock) {
+					l.add(bl);
+				}
+			}
+		}
+		
+		else if(b instanceof BlueBlock) {
+			for(Block bl : blockList){
+				if(bl instanceof BlueBlock) {
+					l.add(bl);
+				}
+			}
+		}
+		
+		else if(b instanceof LightBlock) {
+			for(Block bl : blockList){
+				if(bl instanceof LightBlock) {
+					l.add(bl);
+				}
+			}
+		}
+		
+		//TODO : block teleporteurs
+		
+		return l;
 	}
 }
