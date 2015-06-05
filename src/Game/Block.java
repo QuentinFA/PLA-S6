@@ -4,6 +4,7 @@ import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.Sprite;
 
 import Actions.Coordonnees;
+import Entities.Character;
 import UI.Graphic;
 
 public abstract class Block

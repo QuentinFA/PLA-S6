@@ -2,6 +2,7 @@ package Game;
 
 import Actions.Color;
 import Actions.Coordonnees;
+import Entities.Character;
 
 public class TeleporterBlock extends Block{
 	private TeleporterBlock destination = null;
@@ -26,4 +27,10 @@ public class TeleporterBlock extends Block{
 	Coordonnees getSortie(){
 		return destination.position;
 	}
+
+	public void perform(Character p) {
+		p.setPosition(getSortie());
+		//TODO Animation
+	}
+
 }

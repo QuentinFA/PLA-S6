@@ -1,4 +1,4 @@
-package entities;
+package Entities;
 
 import Actions.*;
 import Game.World;
