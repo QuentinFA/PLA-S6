@@ -28,8 +28,8 @@ public class Ressources
 	 */
 	public void initialiser() throws IOException
 	{
-		texture_block1.loadFromFile(Paths.get("images/block1.png"));
+		texture_block1.loadFromFile(Paths.get("images/block.png"));
 		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
-		texture_bouton_sound.loadFromFile(Paths.get("image/boutonsound.png"));
+		texture_bouton_sound.loadFromFile(Paths.get("images/boutonSound.png"));
 	}
 }

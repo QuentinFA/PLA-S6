@@ -1,10 +1,9 @@
 package Game;
-import java.util.Comparator;
+import org.jsfml.graphics.IntRect;
+import org.jsfml.graphics.Sprite;
 
-import org.jsfml.graphics.*;
-
-import UI.Graphic;
 import Actions.Coordonnees;
+import UI.Graphic;
 
 public class Block
 {
@@ -18,7 +17,10 @@ public class Block
 	public Block(int i, Coordonnees pos)
 	{
 		if (i == 1)
+		{
 			sprite.setTexture(Ressources.RESSOURCES.getTexture1());
+			sprite.setTextureRect(new IntRect(1, 1, 81, 81));
+		}
 		else
 			System.out.println("Problème de level...");
 		

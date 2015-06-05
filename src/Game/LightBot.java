@@ -16,6 +16,8 @@ public class LightBot
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.READER.read("src/Levels/lvl1.txt");
+		Graphic.SFML.placeCamera();
+		
 		//Menu.init();
 		
 		while (!Graphic.SFML.input()) //Boucle principale

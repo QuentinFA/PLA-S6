@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.jsfml.graphics.FloatRect;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
@@ -44,6 +45,16 @@ public class World
 		pos_y = center.y - 23 * pos.getX() - 23 * pos.getY() - 26 * pos.getZ();
 		
 		return new Vector2f(pos_x, pos_y);
+	}
+	
+	public Vector2f getCenterWorld()
+	{
+		FloatRect rect = new FloatRect(Float.MAX_VALUE, Float.MAX_VALUE, 0, 0);
+		for (int i=0; i < blockList.size(); i++)
+		{
+			
+		}
+		return new Vector2f(0, 0);
 	}
 	
 	/**

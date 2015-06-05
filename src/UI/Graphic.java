@@ -47,6 +47,8 @@ public class Graphic
 		 camera_ini();
 	}
 	
+	public void placeCamera() {camera.setCenter(World.WORLD.getCenterWorld());}
+	
 	private void placerFond()
 	{
 		FloatRect rect = new FloatRect(camera.getCenter().x - width/2.f, camera.getCenter().y - height/2.f, width, height);
