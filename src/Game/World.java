@@ -42,7 +42,7 @@ public class World
 		pos_y = center.y - 23 * pos.getX() - 23 * pos.getY() - 26 * pos.getZ();
 		
 		return new Vector2f(pos_x, pos_y);
-	}_
+	}
 	
 	public Vector2f getCenterWorld()
 	{
@@ -50,7 +50,7 @@ public class World
 		float top = Float.MAX_VALUE;
 		float width = 0;
 		float height = 0;
-		
+		/*
 		for (int i=0; i < blockList.size(); i++)
 		{
 			if (blockList.get(i).getGlobalBounds().left < rect.left)
@@ -58,7 +58,7 @@ public class World
 			if (blockList.get(i).getGlobalBounds().top < rect.top)
 				rect.top = blockList.get(i).getGlobalBounds().top;
 				
-		}
+		}*/
 		return new Vector2f(0, 0);
 	}
 	

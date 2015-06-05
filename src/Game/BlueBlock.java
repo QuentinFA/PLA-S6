@@ -13,7 +13,7 @@ public class BlueBlock extends Block {
 	public BlueBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
-		sprite.setTextureRect(new IntRect(250, 1, 81, 81));
+		sprite.setTextureRect(new IntRect(246, 1, 81, 81));
 				
 		position = pos;
 		
