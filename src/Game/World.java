@@ -66,7 +66,7 @@ public class World
 	 * Vérification de la validité d'une position</br>
 	 * Si un bloc se trouve à cette position ou qu'il n'y en a pas en dessous, la position n'est pas valide
 	 * @param p : La position à vérifier
-	 * @return : Selon si la position est valide
+	 * @return Selon si la position est valide
 	 * @throws OutOfMapException : Si la position est en dehors de la map
 	 */
 	public boolean isValidPosition(Coordonnees p) throws OutOfMapException
@@ -74,5 +74,11 @@ public class World
 		if(p.getX() > width || p.getY() > height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
 			throw new OutOfMapException();
 		return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()-1));
+	}
+
+	public void light(Coordonnees np)
+	{
+		// TODO Light
+		
 	}
 }

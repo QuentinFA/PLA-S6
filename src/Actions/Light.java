@@ -1,19 +1,13 @@
 package Actions;
 
-import Game.World;
 
-public class Light 
+public class Light extends Action
 {
 	public Light() {}
-	
-	/**
-	 * Change la couleur de la case se trouver à un niveau en dessous de la case du personnage si c'est possible
-	 * @param p Character.
-	 */
-	public void execute(Character p) 
+
+	@Override
+	public Coordonnees execute(Coordonnees p, int orientation)
 	{
-		Coordonnees c = p.getPosition();
-		c.z -= 1; //Car le personnage est une case au dessus
-		World.WORLD.changeColor(c);
+		return p;
 	}
 }
