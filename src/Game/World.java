@@ -19,9 +19,6 @@ public class World
 	
 	private int width;
 	private int height;
-
-	//TODO matrice
-	//private matrice = ;
 	
 	public World(int w, int h) 
 	{
@@ -70,6 +67,11 @@ public class World
 	 * @param b
 	 */
 	public void addBlock(Block b) {blockList.add(b);}
+	
+	public List<Block> getBlockList()
+	{
+		return this.blockList;
+	}
 	
 	/**
 	 * Afficher tous les blocks
