@@ -1,9 +1,9 @@
 package Actions;
-
+import Entities.Character;
 
 public class Jump extends Action
 {
-	public Jump() {}
+	public Jump(int color) {c = color;}
 
 	@Override
 	public Coordonnees execute(Coordonnees p, int orientation)
@@ -21,4 +21,7 @@ public class Jump extends Action
 				return new Coordonnees(p.getX() + 1, p.getY(), p.getZ() + 1);
 		}
 	}
+	
+	//inutile
+	public void execute(Character p) {}
 }
