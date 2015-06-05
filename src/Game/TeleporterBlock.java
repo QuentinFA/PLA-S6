@@ -27,10 +27,10 @@ public class TeleporterBlock extends Block{
 	Coordonnees getSortie(){
 		return destination.position;
 	}
-
+	
 	public void perform(Character p) {
 		p.setPosition(getSortie());
 		//TODO Animation
 	}
-
+	
 }

@@ -18,7 +18,7 @@ public class Coordonnees {
 		y = _y;
 		z = _z;
 	}
-
+	
 	public Coordonnees(Coordonnees pos) 
 	{
 		x = pos.x;

@@ -37,7 +37,7 @@ public class Reader
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int heigth = 0, length = 0, width = 0;
+		int length = 0, width = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -106,8 +106,6 @@ public class Reader
 				length = Integer.valueOf(e.getValue());
 			else if(e.getName() == B_WIDTH)
 				width = Integer.valueOf(e.getValue());
-			else if(e.getName() == B_HEIGTH)
-				heigth = Integer.valueOf(e.getValue());
 			else if(e.getName() == B_LEVEL_NAME)
 				name = e.getValue();
 		}

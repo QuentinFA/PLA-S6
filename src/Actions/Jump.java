@@ -4,7 +4,7 @@ import Entities.Character;
 public class Jump extends Action
 {
 	public Jump(int color) {c = color;}
-
+	
 	@Override
 	public Coordonnees execute(Coordonnees p, int orientation)
 	{

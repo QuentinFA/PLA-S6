@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.jsfml.graphics.FloatRect;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
@@ -119,7 +118,7 @@ public class World
 			throw new OutOfMapException();
 		return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()-1));
 	}
-
+	
 	public void light(Coordonnees np)
 	{
 		// TODO Light

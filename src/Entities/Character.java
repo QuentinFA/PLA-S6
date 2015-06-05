@@ -12,9 +12,9 @@ public class Character
 	
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
 	
-    private int c;
+	private int c;
 	
-    
+	
 	Character(Coordonnees pos,int ori) 
 	{
 		position = pos;
@@ -31,7 +31,7 @@ public class Character
 	public void setOrientation(int ori) {orientation = ori;}
 	
 	public void setColor(int _c) {c = _c;}
-
+	
 	public int getColor() {return c;}
 	
 	/*public void add_action(Action a) {_l.add(a);}
@@ -66,7 +66,7 @@ public class Character
 				
 				if(World.WORLD.isValidPosition(np))
 					this.position = np;
-					//TODO Animation
+				//TODO Animation
 				else if(World.WORLD.isValidPosition(zm2))
 					this.position = zm2;
 				//TODO Animation
@@ -80,7 +80,7 @@ public class Character
 			}
 			else if(World.WORLD.isValidPosition(np))
 				this.position = np;
-				//TODO Animation
+			//TODO Animation
 			else
 				// TODO Animation
 			{}

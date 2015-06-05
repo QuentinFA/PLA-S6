@@ -34,23 +34,23 @@ public class Ressources
 	
 	/**
 	 * pour le audio
-     */
+	 */
 	private Music music = new Music();
 	public Music getMusic(){return music;}
-
 	
-    /**
+	
+	/**
 	 * Charge les images
 	 * @throws IOException 
-     * @throws UnsupportedAudioFileException 
-     * @throws LineUnavailableException 
+	 * @throws UnsupportedAudioFileException 
+	 * @throws LineUnavailableException 
 	 */
 	public void initialiser() throws IOException
 	{
 		texture_block1.loadFromFile(Paths.get("images/block.png"));
 		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
 		texture_bouton_sound.loadFromFile(Paths.get("images/boutonSound.png"));
-
+		
 		music.openFromFile(Paths.get("audio/audio.wav"));
 		music.setLoop(true);
 		music.play();

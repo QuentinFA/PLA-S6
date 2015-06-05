@@ -16,7 +16,7 @@ public class RedBlock extends Block{
 	{
 		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
 		sprite.setTextureRect(new IntRect(83, 1, 81, 81));
-				
+		
 		position = pos;
 		
 		//sprite.setPosition(World.WORLD.placeMe(pos));

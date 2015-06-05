@@ -8,7 +8,6 @@
 <map>
 	<level_name>1-1</level_name>
 	<length>1</length>
-	<heigth>1</heigth>
 	<width>3</width>
 	<floor level="0">
 		<block type="Normal">
