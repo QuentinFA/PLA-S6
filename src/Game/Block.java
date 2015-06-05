@@ -23,4 +23,6 @@ public abstract class Block
 	{
 		Graphic.SFML.draw(sprite);
 	}
+	
+	public abstract void perform(Character p);
 }
