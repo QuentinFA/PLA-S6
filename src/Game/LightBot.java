@@ -18,6 +18,8 @@ public class LightBot
 		Reader.READER.read("src/Levels/lvl1.txt");
 		Graphic.SFML.placeCamera();
 		
+		//System.out.println("Hey !");
+		
 		//Menu.init();
 		
 		while (!Graphic.SFML.input()) //Boucle principale

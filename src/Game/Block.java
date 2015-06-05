@@ -1,4 +1,5 @@
 package Game;
+import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 
@@ -30,6 +31,8 @@ public class Block
 	}
 	
 	public Coordonnees getCoord() {return position;}
+	
+	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}
 	
 	/**
 	 * Afficher un block
