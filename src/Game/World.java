@@ -19,9 +19,6 @@ public class World
 	
 	private int width;
 	private int height;
-
-	//TODO matrice
-	//private matrice = ;
 	
 	public World(int w, int h) 
 	{

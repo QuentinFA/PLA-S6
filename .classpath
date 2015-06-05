@@ -4,5 +4,6 @@
 	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="lib" path="lib/jsfml.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

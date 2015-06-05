@@ -1,13 +1,13 @@
 package Game;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Paths;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import org.jsfml.audio.Music;
-import org.jsfml.graphics.*;
+import org.jsfml.graphics.Texture;
 
 
 
