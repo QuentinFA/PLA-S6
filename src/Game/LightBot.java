@@ -8,6 +8,7 @@ import UI.Graphic;
 import UI.Menu;
 import UI.Input;
 
+
 public class LightBot
 {
 	public static void main(String[] args)
