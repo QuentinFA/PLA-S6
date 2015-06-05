@@ -32,9 +32,10 @@ public class Menu
 	}
 	public Menu()
 	{
-		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
+		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
+		bouton.setOrigin(Ressources.RESSOURCES.getSizeTextureBouton());
 		bouton.setPosition(Graphic.SFML.getCenterCamera());		
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
+			
 		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
 		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
