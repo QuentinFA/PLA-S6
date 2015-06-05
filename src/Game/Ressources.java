@@ -24,13 +24,13 @@ public class Ressources
 	}
 	public static Ressources RESSOURCES = new Ressources();
 	
-	private Texture texture_block1 = new Texture(); //Block de base
+	private Texture texture_block1 = new Texture(); //Blocks
 	public Texture getTexture1() {return texture_block1;}
 	
-	private Texture texture_bouton = new Texture(); //Block de base
+	private Texture texture_bouton = new Texture(); //Blocks
 	public Texture getTextureBouton() {return texture_bouton;}
 	
-	private Texture texture_bouton_sound = new Texture(); //Block de base
+	private Texture texture_bouton_sound = new Texture(); //Blocks
 	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
 	
 	/**
