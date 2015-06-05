@@ -13,4 +13,5 @@ public class Right_turn extends Action
 	
 	//Inutile
 	public Coordonnees execute(Coordonnees p, int orientation){return p;}
+
 }
