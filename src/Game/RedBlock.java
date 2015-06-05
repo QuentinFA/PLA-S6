@@ -13,7 +13,7 @@ public class RedBlock extends Block{
 	public RedBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
-		sprite.setTextureRect(new IntRect(84, 1, 81, 81));
+		sprite.setTextureRect(new IntRect(83, 1, 81, 81));
 				
 		position = pos;
 		

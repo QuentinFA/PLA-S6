@@ -11,6 +11,7 @@ public abstract class Block
 	protected Sprite sprite = new Sprite(); //Sprite du block
 	protected Coordonnees position;
 	
+	
 	public Coordonnees getCoord() {return position;}
 	
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}

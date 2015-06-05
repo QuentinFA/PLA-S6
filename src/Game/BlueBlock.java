@@ -5,6 +5,7 @@ import org.jsfml.graphics.IntRect;
 import Actions.Coordonnees;
 
 public class BlueBlock extends Block {
+	
 	/**
 	 * Crée un bloc qui colorie le personnage en bleu 
 	 * @param pos : Coordonnées de ce bloc
