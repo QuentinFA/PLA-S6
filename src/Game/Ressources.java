@@ -19,9 +19,6 @@ import org.jsfml.graphics.*;
 
 public class Ressources 
 {
-	public enum Sound{
-		On, Off
-	}
 	public static Ressources RESSOURCES = new Ressources();
 	
 	private Texture texture_block1 = new Texture(); //Block de base
@@ -36,7 +33,6 @@ public class Ressources
 	/**
 	 * pour le audio
      */
-	public Sound  on_off = Sound.On;
 	private Music music = new Music();
 	public Music getMusic(){return music;}
 
