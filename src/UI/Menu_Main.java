@@ -11,7 +11,7 @@ import org.jsfml.window.Mouse.Button;
 
 import Game.Ressources;
 
-public class Menu 
+public class Menu_Main extends Menu
 {
 
 	boolean mute = true;
@@ -20,42 +20,41 @@ public class Menu
 	
 	
 	
-	public static Menu MENU = null;
-	public static void init()
+	public static Menu_Main MENU_MAIN = null;
+	public  void init()
 	{
-		MENU  = new Menu();
+       MENU_MAIN  = new Menu_Main();
 	}
 	public void afficher()
 	{
 		Graphic.SFML.draw(bouton);
 		Graphic.SFML.draw(boutonSound);
 	}
-	public Menu()
+	public Menu_Main()
 	{
-//		bouton.setOrigin(bouton.getTextureRect().width/2 , bouton.getTextureRect().height/2);
-		bouton.setPosition(Graphic.SFML.getCenterCamera().x-bouton.getGlobalBounds().);	
-		System.out.println(Graphic.SFML.getCenterCamera());
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());		
+		
+		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
+		bouton.setOrigin(Ressources.RESSOURCES.getSizeTextureBouton());
+		bouton.setPosition(Graphic.SFML.getCenterCamera());		
+			
+
 		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
 		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-//		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
-//		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
-//		boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
+
 		
 	}
 	public boolean gerer()
 	{
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
-		   // System.out.println("mouse: " + Mouse.getPosition());
-		   // System.out.println("boutonSound" + boutonSound.getPosition());
-		    
+		 
 			if (isOnSprite(bouton)) //Play
 			{				
-				MENU = null;
-				Menu_Level.MENU_LEVEL  = new Menu_Level();
-				return true;
+				Menu.change = 2;
+                Menu.change_menu();
+                System.out.println("mute");
+                return true;
 			}
 			if (isOnSprite(boutonSound))
 			{
@@ -82,7 +81,7 @@ public class Menu
 		FloatRect rectangle = s.getGlobalBounds();
 		
 		Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-		System.out.println("mouse in isOnSprite: " + pos_mouse);
+//		System.out.println("mouse in isOnSprite: " + pos_mouse);
 		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
 		
 		if (real_pos.x > rectangle.left && 
