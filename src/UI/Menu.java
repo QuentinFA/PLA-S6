@@ -11,13 +11,13 @@ public abstract class Menu {
 			{
 				 System.out.println("lalalalalaal change");
 				Mymenu = new Menu_Main();
-			    Mymenu.init();
+			   // Mymenu.init();
 			}
 			else if(change == 2)
 			{
 				 System.out.println("lalalalalaal change 2222");
 					Mymenu = new Menu_Level();
-				    Mymenu.init();
+				  //  Mymenu.init();
 			}
 			else if(change == 3)
 			{
@@ -28,5 +28,5 @@ public abstract class Menu {
 	}
     public abstract boolean gerer();
     public abstract void afficher();
-    public abstract void init();
+    //public abstract void init();
 }

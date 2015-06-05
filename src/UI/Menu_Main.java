@@ -20,10 +20,10 @@ public class Menu_Main extends Menu
 	
 	
 	
-	public static Menu_Main MENU_MAIN = null;
+//	public static Menu_Main MENU_MAIN = null;
 	public  void init()
 	{
-       MENU_MAIN  = new Menu_Main();
+//       MENU_MAIN  = new Menu_Main();
 	}
 	public void afficher()
 	{

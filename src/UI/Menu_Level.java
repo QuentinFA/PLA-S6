@@ -8,23 +8,32 @@ import org.jsfml.system.Vector2i;
 import Game.Ressources;
 
 public class Menu_Level extends Menu{
-	public static Menu_Level MENU_LEVEL = null;
+	//public static Menu_Level MENU_LEVEL = null;
 	boolean mute = true;
 	Sprite boutonSound = new Sprite();
+	Sprite fleche_right = new Sprite();
+	Sprite fleche_left = new Sprite();
 
 	public  void init()
 	{
-		MENU_LEVEL  = new Menu_Level();
+//		MENU_LEVEL  = new Menu_Level();
 	}
 	public void afficher()
 	{
 		Graphic.SFML.draw(boutonSound);
+		Graphic.SFML.draw(fleche_right);
 	}
 	public Menu_Level()
 	{				
 		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
 		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));		
+		
+		fleche_right.setTexture(Ressources.RESSOURCES.getTextureFleche());
+		fleche_right.setOrigin(Ressources.RESSOURCES.getSizeTextureFleche());
+		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x+Graphic.SFML.getSizeFenetre().x/4.f,
+				Graphic.SFML.getCenterCamera().y);	
+		fleche_right.setTextureRect(new IntRect(1 , 1 , 100 , 100));
 	}
 	public boolean gerer()
 	{

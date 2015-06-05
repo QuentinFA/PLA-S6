@@ -32,6 +32,10 @@ public class Ressources
 	private Texture texture_bouton_sound = new Texture(); //Blocks
 	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
 	
+	private Texture texture_fleche = new Texture(); //Blocks
+	public Texture getTextureFleche() {return texture_fleche;}
+	public Vector2f getSizeTextureFleche() {return new Vector2f(texture_fleche.getSize().x/2.f, texture_fleche.getSize().y/2.f);}
+	
 	/**
 	 * pour le audio
      */
@@ -50,6 +54,8 @@ public class Ressources
 		texture_block1.loadFromFile(Paths.get("images/block.png"));
 		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
 		texture_bouton_sound.loadFromFile(Paths.get("images/boutonSound.png"));
+		texture_fleche.loadFromFile(Paths.get("images/fleches.png"));
+		
 
 		music.openFromFile(Paths.get("audio/audio.wav"));
 		music.setLoop(true);
