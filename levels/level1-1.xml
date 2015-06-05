@@ -7,53 +7,19 @@
 
 <map>
 	<level_name>1-1</level_name>
-	<length>8</length>
-	<heigth>8</heigth>
-	<width>8</width>
+	<length>1</length>
+	<heigth>1</heigth>
+	<width>3</width>
 	<floor level="0">
 		<block type="Normal">
 			<x>1</x>
-			<y>1</y>
+			<y>3</y>
 		</block>
-	</floor>
-	<floor level="1">
 		<block type="Normal">
 			<x>1</x>
-			<y>1</y>
+			<y>2</y>
 		</block>
-	</floor>
-	<floor level="2">
-		<block type="Normal">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="3">
-		<block type="Normal">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="4">
-		<block type="Normal">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="5">
-		<block type="Normal">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="6">
-		<block type="Normal">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="7">
-		<block type="blue">
+		<block type="Light">
 			<x>1</x>
 			<y>1</y>
 		</block>
