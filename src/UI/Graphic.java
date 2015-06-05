@@ -97,8 +97,8 @@ public class Graphic
 		
 		if (World.WORLD != null)
 			World.WORLD.afficherBlocks();
-		if (Menu.MENU != null)
-			Menu.MENU.afficher();
+		if (Menu.Mymenu != null)
+			Menu.Mymenu.afficher();
 		
 		fenetre.display();
 	}

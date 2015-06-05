@@ -1,8 +1,9 @@
 package Actions;
+import Entities.Character;
 
 public class Forward extends Action
 {
-	public Forward() {}
+	public Forward(int color) {c = color;}
 
 	@Override
 	public Coordonnees execute(Coordonnees p, int orientation)
@@ -20,4 +21,7 @@ public class Forward extends Action
 				return new Coordonnees(p.getX() + 1, p.getY(), p.getZ());
 		}
 	}
+	
+	//Inutile
+	public void execute(Character p) {}
 }

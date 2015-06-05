@@ -10,7 +10,7 @@ import Actions.Coordonnees;
 import Actions.OutOfMapException;
 import UI.Graphic;
 
-public class World 
+public class World
 {
 	public static World WORLD = null;
 	//public static Menu MENU = null;
@@ -20,10 +20,28 @@ public class World
 	private int width;
 	private int height;
 	
+	private String name;
+	
 	public World(int w, int h) 
 	{
 		width = w;
 		height = h;
+		name = "Testing World !";
+		
+		WORLD = this;
+	}
+	
+	public World(int w, int h, String name, List<Block> lb) 
+	{
+		width = w;
+		height = h;
+		this.name = name;
+		
+		for(Block b : lb)
+			blockList.add(b);
+		
+		for(Block b : blockList)
+			b.setPosSprite(placeMe(b.getCoord()));
 		
 		WORLD = this;
 	}

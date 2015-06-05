@@ -2,6 +2,7 @@ package Game;
 
 import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
 import Entities.Character;
@@ -15,6 +16,16 @@ public abstract class Block
 	
 	public Coordonnees getCoord() {return position;}
 	
+	public Vector2f getPosSprite()
+	{
+		return this.sprite.getPosition();
+	}
+	
+	public void setPosSprite(Vector2f pos)
+	{
+		this.sprite.setPosition(pos);
+	}
+
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}
 	
 	/**
