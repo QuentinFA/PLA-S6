@@ -53,7 +53,7 @@
 		</block>
 	</floor>
 	<floor level="7">
-		<block type="Normal">
+		<block type="blue">
 			<x>1</x>
 			<y>1</y>
 		</block>
