@@ -25,9 +25,7 @@ public class Input {
 	public Input ()
 	{
 		for(int i = 0 ; i < BUTTON.getValeur(BUTTON.LASTKEY) ; i++)
-		{
 			this.TAB[i] = 0;
-		}
 	}
 	public boolean isPressed(BUTTON b)
 	{
