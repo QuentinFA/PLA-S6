@@ -35,6 +35,8 @@ public class Graphic
 	public Vector2i getPositionCamera_i() {return new Vector2i((int)(camera.getCenter().x - width/2.f) , (int)(camera.getCenter().y - height/2.f));};	
 	public Vector2f getPositionCamera_f() {return new Vector2f(camera.getCenter().x - width/2.f,camera.getCenter().y - height/2.f);};
 	public Event getEvent(){return fenetre.pollEvent();}
+	public void invisible_cursor() 	{fenetre.setMouseCursorVisible(false);}
+	public void visible_cursor() 	{fenetre.setMouseCursorVisible(true);}
 	/**
 	 * Initialise la fenetre avec une taille
 	 * @param width

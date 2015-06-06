@@ -19,12 +19,13 @@ public abstract class Menu {
 			}
 			else if(change == 3)
 			{
-				
+				System.out.println("lalalalalaal change 3333");
+				Mymenu = new Menu_Map();
 			}
 		}
 		change = 0;
 	}
-    public abstract boolean gerer();
+    public abstract void gerer();
     public abstract void afficher();
 
 }
