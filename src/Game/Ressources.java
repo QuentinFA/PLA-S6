@@ -54,13 +54,7 @@ public class Ressources
 		texture_block1.loadFromFile(Paths.get("images/block.png"));
 		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
 		texture_bouton_sound.loadFromFile(Paths.get("images/boutonSound.png"));
-<<<<<<< HEAD
 		texture_fleche.loadFromFile(Paths.get("images/fleches.png"));
-		
-
-=======
-		
->>>>>>> 2cbeb62f718326bdd12195f1cb41bba2e7ddd194
 		music.openFromFile(Paths.get("audio/audio.wav"));
 		music.setLoop(true);
 		music.play();

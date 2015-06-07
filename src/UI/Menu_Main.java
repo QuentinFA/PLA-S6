@@ -38,7 +38,8 @@ public class Menu_Main extends Menu
 		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
 		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
 
-		cursor.setTexture(Ressources.RESSOURCES.getTextureCursor());
+		// cursor.setTexture(Ressources.RESSOURCES.getTextureCursor()); TODO PB
+		cursor.setTexture(Ressources.RESSOURCES.getTexture1());
 
 
 	}

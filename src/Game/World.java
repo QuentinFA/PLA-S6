@@ -1,4 +1,5 @@
 package Game;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -43,6 +44,11 @@ public class World
 			b.setPosSprite(placeMe(b.getCoord()));
 		
 		WORLD = this;
+	}
+	
+	public String getName()
+	{
+		return this.name;
 	}
 	
 	/**
@@ -126,47 +132,20 @@ public class World
 	}
 	
 	/**
-	 * Renvoie la liste des blocks de la map de type du block b
-	 * @param b : Le typage de ce block correspondra à la liste des blocks qu'on renverra
-	 * @return l : Liste des blocks de la map du même type que b
+	 * Tri des blocs de la maps selon un type</br>
+	 * Exemple d'utilisation : getBlocksT(Block.class)
+	 * @param blockType : Le type de blocs à récupérer
+	 * @return Liste de bloc de type blockType
 	 */
-	public List<Block> getBlocksT(Block b) {
-		
+	public List<Block> getBlocksByType(Class<? extends Block> blockType)
+	{
 		List<Block> l = new ArrayList<Block>();
 		
-		if(b instanceof NormalBlock) {
-			for(Block bl : blockList){
-				if(bl instanceof NormalBlock) {
-					l.add(bl);
-				}
-			}
+		for(Block b : blockList)
+		{
+			if(b.getClass().equals(blockType))
+				l.add(b);
 		}
-		
-		else if(b instanceof RedBlock) {
-			for(Block bl : blockList){
-				if(bl instanceof RedBlock) {
-					l.add(bl);
-				}
-			}
-		}
-		
-		else if(b instanceof BlueBlock) {
-			for(Block bl : blockList){
-				if(bl instanceof BlueBlock) {
-					l.add(bl);
-				}
-			}
-		}
-		
-		else if(b instanceof LightBlock) {
-			for(Block bl : blockList){
-				if(bl instanceof LightBlock) {
-					l.add(bl);
-				}
-			}
-		}
-		
-		//TODO : block teleporteurs
 		
 		return l;
 	}
