@@ -23,7 +23,8 @@ public class Menu_Level extends Menu
 	Sprite fleche_left = new Sprite();
 
 	public Menu_Level()
-	{			
+	{	
+		//Graphic.SFML.visible_cursor();
 		Sprite spr;
 		
 		spr = new Sprite();

@@ -2,6 +2,7 @@ package UI;
 
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
+import org.jsfml.system.Vector2i;
 
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
@@ -10,7 +11,9 @@ public class Menu_Main extends Menu
 {
 	private static float boutonPlay_scale;
 	private boolean increase_boutonPlay_scale;
+	private boolean cursor_control = false;
 	Sprite boutonPlay = new Sprite();
+	Sprite cursor = new Sprite();
 	
 	Sprite title = new Sprite();
 	private static float title_scale;
@@ -35,12 +38,16 @@ public class Menu_Main extends Menu
 		increase_title_scale = true;
 		title_rotation = 0.f;
 		increase_title_rotation = true;
+		
+		cursor.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CURSOR));
 	}
 	
 	public void afficher()
 	{
 		Graphic.SFML.draw(boutonPlay);
 		Graphic.SFML.draw(title);
+		if(!cursor_control)
+			Graphic.SFML.draw(cursor);
 	}
 	
 	public void gerer()
@@ -95,5 +102,30 @@ public class Menu_Main extends Menu
 			if (Graphic.isOnSprite(boutonPlay)) //Play
 				Menu.change_menu(Menu.MENU.LEVEL);
 		}
+/*<<<<<<< HEAD
+=======
+		if(Graphic.isOnSprite(boutonPlay))
+		{
+			if(cursor_control)
+			{
+				cursor_control = false;//show another image for remplacing the cursor
+			    Graphic.SFML.invisible_cursor();
+			}
+			    Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
+			    Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
+			    cursor.setPosition(new Vector2f((float)real_pos.x,(float)real_pos.y));
+		
+		}
+		else
+		{
+			//System.out.println("show my cursor");
+			if(!cursor_control)
+			{
+				Graphic.SFML.visible_cursor();
+				cursor_control = true;
+			}
+		}
+		return false;
+>>>>>>> 034bffc15c9e7be7622f98b53bcdbf023570f03d*/
 	}
 }
