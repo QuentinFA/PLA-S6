@@ -1,10 +1,10 @@
-package Game;
+package Entities;
 
 import org.jsfml.graphics.IntRect;
 
 import Actions.Color;
 import Actions.Coordonnees;
-import Entities.Character;
+import Game.Ressources;
 import Game.Ressources.TEXTURE;
 
 public class RedBlock extends Block

@@ -1,5 +1,6 @@
 package Actions;
 import Entities.Character;
+import Game.World;
 
 public class Jump extends Action
 {
@@ -10,17 +11,20 @@ public class Jump extends Action
 		if (p.getColor() == couleur)
 		{
 			Coordonnees coord = p.getCoord();
+			Coordonnees check = new Coordonnees(0,0,0);
 			switch (p.getOrientation())
 			{
 				case Direction.NORTH:
-					p.setCoord(new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()+1)); break;
+					check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()+1); break;
 				case Direction.EAST:
-					p.setCoord(new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()+1)); break;
+					check = new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()+1); break;
 				case Direction.SOUTH:
-					p.setCoord(new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()+1)); break;
+					check = new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()+1); break;
 				case Direction.WEST:
-					p.setCoord(new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()+1)); break;
+					check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()+1); break;
 			}
+			if(World.WORLD.isValidPosition(check))	
+				p.setCoord(check);
 		}
 	}
 }

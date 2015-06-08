@@ -14,7 +14,11 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Actions.Coordonnees;
-import Game.*;
+
+import Entities.Block;
+
+import Game.World;
+
 
 public class Reader 
 {

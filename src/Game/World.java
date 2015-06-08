@@ -7,7 +7,7 @@ import java.util.List;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
-import Actions.OutOfMapException;
+import Entities.Block;
 import UI.Graphic;
 
 public class World
@@ -120,10 +120,10 @@ public class World
 	 * @return Selon si la position est valide
 	 * @throws OutOfMapException : Si la position est en dehors de la map
 	 */
-	public boolean isValidPosition(Coordonnees p) throws OutOfMapException
+	public boolean isValidPosition(Coordonnees p)
 	{
-		if (p.getX() >= width || p.getY() >= height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
-			throw new OutOfMapException();
+		/*if (p.getX() >= width || p.getY() >= height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
+			throw new OutOfMapException();*/
 		return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()-1));
 	}
 	
