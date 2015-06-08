@@ -3,17 +3,14 @@ package Actions;
 /**
  * Type couleur
  */
-public abstract class Color 
+public enum Color
 {
-	public enum COLOR
-	{
-		DEFAUT,
-		ROUGE,
-		BLEU,
-		VERT,
-		JAUNE,
-		MAGENTA,
-		AZUR,
-		NOIR
-	}
+	DEFAUT,
+	ROUGE,
+	BLEU,
+	VERT,
+	JAUNE,
+	MAGENTA,
+	AZUR,
+	NOIR
 }

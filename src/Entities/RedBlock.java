@@ -21,7 +21,7 @@ public class RedBlock extends Block
 		coord = pos;
 	}
 	
-	public void perform(Character p) {p.setColor(Color.COLOR.ROUGE);}
+	public void perform(Character p) {p.setColor(Color.ROUGE);}
 }
 
 

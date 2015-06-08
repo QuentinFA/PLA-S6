@@ -1,3 +1,4 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
 <!-- Un fichier par level
 	Heigth = Hauteur
 	Length = Longueur
@@ -9,7 +10,6 @@
 		- Actions dans main : attribut action_nb
 		- Si procédures : <procedure nb="2"/>
 -->
-<!-- <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>  -->
 
 <map>
 	<level_name>1-1</level_name>

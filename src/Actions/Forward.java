@@ -4,7 +4,7 @@ import Game.World;
 
 public class Forward extends Action
 {
-	public Forward(Color.COLOR c) {couleur = c;}
+	public Forward(Color c) {couleur = c;}
 	
 	public void execute(Character p)
 	{

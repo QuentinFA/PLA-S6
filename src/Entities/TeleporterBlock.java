@@ -6,15 +6,15 @@ import Actions.Coordonnees;
 public class TeleporterBlock extends Block
 {
 	private TeleporterBlock destination = null;
-	private Color.COLOR couleur;
+	private Color couleur;
 	
 	public TeleporterBlock()
 	{
 		coord = new Coordonnees(0,0,0);
-		couleur = Color.COLOR.DEFAUT;
+		couleur = Color.DEFAUT;
 	}
 	
-	public TeleporterBlock(Coordonnees c, Color.COLOR col)
+	public TeleporterBlock(Coordonnees c, Color col)
 	{
 		coord = c;
 		couleur = col;

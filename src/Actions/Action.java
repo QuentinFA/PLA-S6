@@ -3,10 +3,10 @@ import Entities.Character;
 
 public abstract class Action 
 {
-	protected Color.COLOR couleur; // Couleur de l'action
+	protected Color couleur; // Couleur de l'action
 	
-	public Color.COLOR getColor() {return couleur;}
-	public void setColor(Color.COLOR c) {couleur = c;}
+	public Color getColor() {return couleur;}
+	public void setColor(Color c) {couleur = c;}
 	
 	/**
 	 * Application d'une action pour un personnage

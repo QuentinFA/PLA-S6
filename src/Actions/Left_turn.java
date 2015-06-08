@@ -3,11 +3,11 @@ import Entities.Character;
 
 public class Left_turn extends Action
 {
-	public Left_turn(Color.COLOR c) {couleur = c;}
+	public Left_turn(Color c) {couleur = c;}
 	
 	/**
 	 * Tourne le character
-	 * @param p Character a tourner
+	 * @param p Character aï¿½tourner
 	 */
 	public void execute(Character p)  
 	{

@@ -9,21 +9,21 @@ public class Character extends Entities
 {	
 	private List<Action> lActions;
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
-	private Color.COLOR couleur;
+	private Color couleur;
 	
 	Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
 		orientation = ori;
-		couleur = Color.COLOR.DEFAUT;
+		couleur = Color.DEFAUT;
 	}
 	
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
 	public void setOrientation(int ori) {orientation = ori;}
-	public void setColor(Color.COLOR c) {couleur = c;}
-	public Color.COLOR getColor() {return couleur;}
+	public void setColor(Color c) {couleur = c;}
+	public Color getColor() {return couleur;}
 	
 	public void add_action(Action a) {lActions.add(a);}
 	

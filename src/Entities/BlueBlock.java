@@ -20,6 +20,6 @@ public class BlueBlock extends Block {
 		coord = c;
 	}
 	
-	public void perform(Character p) {p.setColor(Color.COLOR.BLEU);}
+	public void perform(Character p) {p.setColor(Color.BLEU);}
 }
 

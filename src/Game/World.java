@@ -16,8 +16,11 @@ public class World
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	
+	// TODO Utile ?
 	private int width;
 	private int height;
+	
+	private Coordonnees begining;
 	
 	private String name;
 	
@@ -30,11 +33,12 @@ public class World
 		WORLD = this;
 	}
 	
-	public World(int w, int h, String n, List<Block> lb) 
+	public World(int w, int h, String n, List<Block> lb, Coordonnees begining) 
 	{
 		width = w;
 		height = h;
 		name = n;
+		this.begining = begining;
 		
 		for (Block b : lb)
 			blockList.add(b);
@@ -45,11 +49,12 @@ public class World
 		WORLD = this;
 	}
 	
-
+	// TODO Doc
 	public boolean gerer()
 	{
 		return false;
 	}
+	
 	public String getName()
 	{
 		return this.name;

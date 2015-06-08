@@ -1,11 +1,7 @@
 package Entities;
 
 import org.jsfml.graphics.FloatRect;
-import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
-
-import Actions.Coordonnees;
-import UI.Graphic;
 
 public abstract class Block extends Entities
 {

@@ -3,7 +3,6 @@ package Game;
 import java.io.IOException;
 
 import Game.Ressources.MUSIC;
-import Levels.Reader;
 import UI.Graphic;
 import UI.Input;
 import UI.Menu;

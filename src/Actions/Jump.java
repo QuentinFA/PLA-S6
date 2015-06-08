@@ -4,7 +4,7 @@ import Game.World;
 
 public class Jump extends Action
 {
-	public Jump(Color.COLOR c) {couleur = c;}
+	public Jump(Color c) {couleur = c;}
 	
 	public void execute(Character p)
 	{

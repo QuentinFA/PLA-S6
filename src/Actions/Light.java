@@ -6,7 +6,7 @@ import Game.World;
 
 public class Light extends Action
 {
-	public Light(Color.COLOR c) {couleur = c;}
+	public Light(Color c) {couleur = c;}
 	
 	public void execute(Character p) 
 	{
