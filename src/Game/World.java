@@ -143,10 +143,8 @@ public class World
 		List<Block> l = new ArrayList<Block>();
 		
 		for(Block b : blockList)
-		{
 			if(b.getClass().equals(blockType))
 				l.add(b);
-		}
 		
 		return l;
 	}

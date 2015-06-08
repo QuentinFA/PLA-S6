@@ -39,7 +39,7 @@ public class LightBot
 				if (Menu.Mymenu.gerer())
 					Menu.Mymenu = null;
 			}
-			else if (World.WORLD != null)
+			if (World.WORLD != null)
 				World.WORLD.gerer();
 			
 			Graphic.SFML.afficher();
