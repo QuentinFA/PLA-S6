@@ -7,6 +7,7 @@ import java.util.List;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
+import Actions.Direction;
 import Entities.Block;
 import Entities.Character;
 import Entities.Entities;
@@ -26,6 +27,7 @@ public class World
 	private int height;
 	
 	private Coordonnees begining;
+	private int starting_direction;
 	
 	private String name;
 	
@@ -38,7 +40,7 @@ public class World
 		WORLD = this;
 	}
 	
-	public World(int w, int h, String n, List<Block> lb, Coordonnees begining) 
+	public World(int w, int h, String n, List<Block> lb, Coordonnees begining, int direction) 
 	{
 		width = w;
 		height = h;
@@ -50,6 +52,8 @@ public class World
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
+		
+		this.starting_direction = direction;
 		
 		WORLD = this;
 	}

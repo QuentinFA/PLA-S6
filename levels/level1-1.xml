@@ -15,6 +15,7 @@
 	<level_name>1-1</level_name>
 	<length>1</length>
 	<width>3</width>
+	<starting_dir>NORTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
 			<x>1</x>

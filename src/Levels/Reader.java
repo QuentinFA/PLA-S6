@@ -17,6 +17,7 @@ import org.jdom2.input.SAXBuilder;
 import Actions.Action;
 import Actions.Color;
 import Actions.Coordonnees;
+import Actions.Direction;
 import Entities.Block;
 import Game.World;
 import UI.Gui;
@@ -42,13 +43,14 @@ public class Reader
 	public static final String B_ACTION_MAIN = "nb_action";
 	public static final String B_PROCEDURE = "procedure";
 	public static final String B_PROCEDURE_NB = "nb_proc";
+	public static final String B_STARTING_DIRECTION = "starting_dir";
 	
 	public static Reader READER = new Reader();
 	
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int length = 0, width = 0, nbA = 0, nbP = 0;
+		int length = 0, width = 0, nbA = 0, nbP = 0, dir = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -150,6 +152,7 @@ public class Reader
 						}
 					}
 					else if(f.getValue().equals(B_PROCEDURE))
+					{
 						try
 						{
 							nbP = f.getAttribute(B_PROCEDURE_NB).getIntValue();
@@ -159,11 +162,31 @@ public class Reader
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+					}
+				}
+			}
+			else if(e.getName().equals(B_STARTING_DIRECTION))
+			{
+				switch(e.getValue())
+				{
+					case "NORTH" :
+						dir = Direction.NORTH;
+						break;
+					case "SOUTH" :
+						dir = Direction.SOUTH;
+						break;
+					case "EAST" :
+						dir = Direction.EAST;
+						break;
+					case "WEST" :
+					default :
+						dir = Direction.WEST;
+						break;
 				}
 			}
 		}
 		
-		World.WORLD = new World(length, width, name, lb, bng);
+		World.WORLD = new World(length, width, name, lb, bng, dir);
 		Gui.GUI = new Gui(la, nbA, nbP);
 	}
 	

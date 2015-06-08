@@ -2,7 +2,11 @@ package Entities;
 
 import java.util.List;
 
+import org.jsfml.graphics.IntRect;
+
 import Actions.*;
+import Game.Ressources;
+import Game.Ressources.TEXTURE;
 
 
 public class Character extends Entities
@@ -16,6 +20,8 @@ public class Character extends Entities
 		coord = pos;
 		orientation = ori;
 		couleur = Color.DEFAUT;
+		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
+		setTexture(ori);
 	}
 	
 	public Coordonnees getCoord() {return coord;}
@@ -24,6 +30,7 @@ public class Character extends Entities
 	public void setOrientation(int ori) {orientation = ori;}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
+	public void setTexture(int ori) {sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));}
 	
 	public void add_action(Action a) {lActions.add(a);}
 	
