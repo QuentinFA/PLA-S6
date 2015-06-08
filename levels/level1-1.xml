@@ -34,7 +34,7 @@
 		<action>Light</action>
 	</action_list>
 	<functions>
-		<main action_nb="3"/>
+		<main nb_action="3"/>
 		<!-- <procedure nb="0"/> -->
 	</functions>
 </map>
