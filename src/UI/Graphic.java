@@ -163,6 +163,8 @@ public class Graphic
 			World.WORLD.afficherBlocks();
 		if (Menu.Mymenu != null)
 			Menu.Mymenu.afficher();
+		if (Gui.GUI != null)
+			Gui.GUI.afficher();
 		
 		fenetre.display();
 	}
