@@ -2,6 +2,7 @@
 	Heigth = Hauteur
 	Length = Longueur
 	Width = Largeur
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible
 	Type des blocks = Nom des classes
 -->
 <!-- <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>  -->
@@ -11,7 +12,7 @@
 	<length>1</length>
 	<width>3</width>
 	<floor level="0">
-		<block type="NormalBlock">
+		<block type="NormalBlock" is_start="true">
 			<x>1</x>
 			<y>3</y>
 		</block>
@@ -24,4 +25,8 @@
 			<y>1</y>
 		</block>
 	</floor>
+	<action_list>
+		<action>Forward</action>
+		<action>Light</action>
+	</action_list>
 </map>
