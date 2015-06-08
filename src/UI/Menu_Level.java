@@ -24,7 +24,7 @@ public class Menu_Level extends Menu
 
 	public Menu_Level()
 	{	
-		//Graphic.SFML.visible_cursor();
+		Graphic.SFML.visible_cursor();
 		Sprite spr;
 		
 		spr = new Sprite();

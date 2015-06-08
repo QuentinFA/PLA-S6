@@ -11,7 +11,8 @@ public class Menu_Main extends Menu
 {
 	private static float boutonPlay_scale;
 	private boolean increase_boutonPlay_scale;
-	private boolean cursor_control = false;
+	private boolean cursor_control;
+	
 	Sprite boutonPlay = new Sprite();
 	Sprite cursor = new Sprite();
 	
@@ -40,13 +41,14 @@ public class Menu_Main extends Menu
 		increase_title_rotation = true;
 		
 		cursor.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CURSOR));
+		cursor_control = false;
 	}
 	
 	public void afficher()
 	{
 		Graphic.SFML.draw(boutonPlay);
 		Graphic.SFML.draw(title);
-		if(!cursor_control)
+		if (cursor_control)
 			Graphic.SFML.draw(cursor);
 	}
 	
@@ -97,35 +99,25 @@ public class Menu_Main extends Menu
 				increase_title_rotation = true;
 		}
 			
-		if (Input.INPUT.again(Input.BUTTON.MLEFT))
+		if (Graphic.isOnSprite(boutonPlay)) //Play
 		{
-			if (Graphic.isOnSprite(boutonPlay)) //Play
+			if (Input.INPUT.again(Input.BUTTON.MLEFT))
 				Menu.change_menu(Menu.MENU.LEVEL);
-		}
-/*<<<<<<< HEAD
-=======
-		if(Graphic.isOnSprite(boutonPlay))
-		{
-			if(cursor_control)
+
+			if (!cursor_control)
 			{
-				cursor_control = false;//show another image for remplacing the cursor
-			    Graphic.SFML.invisible_cursor();
-			}
-			    Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-			    Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
-			    cursor.setPosition(new Vector2f((float)real_pos.x,(float)real_pos.y));
-		
-		}
-		else
-		{
-			//System.out.println("show my cursor");
-			if(!cursor_control)
-			{
-				Graphic.SFML.visible_cursor();
+				Graphic.SFML.invisible_cursor();
 				cursor_control = true;
 			}
+			Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
+			Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
+			cursor.setPosition(new Vector2f((float)real_pos.x,(float)real_pos.y));
+		
 		}
-		return false;
->>>>>>> 034bffc15c9e7be7622f98b53bcdbf023570f03d*/
+		else if (cursor_control)
+		{
+			Graphic.SFML.visible_cursor();
+			cursor_control = false;
+		}
 	}
 }
