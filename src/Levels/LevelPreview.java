@@ -10,7 +10,7 @@ import UI.Menu;
 
 public class LevelPreview
 {
-	private static String levelPath = "levels/level1-3.xml";
+	private static String levelPath = "levels/level1-3.xml"; //Le level a charger
 	
 	public static void main(String[] args)
 	{
@@ -20,7 +20,6 @@ public class LevelPreview
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.read(levelPath);
-		//Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{
@@ -28,10 +27,7 @@ public class LevelPreview
 				return;
 			
 			if (Menu.Mymenu != null)
-			{
-				if (Menu.Mymenu.gerer())
-					Menu.Mymenu = null;
-			}
+				Menu.Mymenu.gerer();
 			
 			if (Gui.GUI != null)
 				Gui.GUI.gerer();

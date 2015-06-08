@@ -8,13 +8,16 @@ import org.jsfml.system.Vector2f;
 
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
-import Game.World;
 import Levels.Reader;
 
 public class Menu_Level extends Menu
 {
 	ArrayList<Sprite> monde_list = new ArrayList<Sprite>();
 	ArrayList<ArrayList<Sprite>> nbr_level_list = new ArrayList<ArrayList<Sprite>>();
+	
+	Sprite aura = new Sprite();
+	private static float title_scale;
+	private boolean increase_title_scale;
 	
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
@@ -25,34 +28,28 @@ public class Menu_Level extends Menu
 		
 		spr = new Sprite();
 		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.MONDE1));
-		spr.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.MONDE1));
+		spr.setTextureRect(new IntRect(1, 1, 400, 400));
+		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
 		spr.setPosition(Graphic.SFML.getCenterCamera());
 		monde_list.add(spr);
 		
-		//Niveau 1
-		nbr_level_list.add(new ArrayList<Sprite>());
-		spr = new Sprite();
-		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
-		spr.setTextureRect(new IntRect(1 , 1 , 80 , 80));
-		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
-		nbr_level_list.get(0).add(spr);
+		aura.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.AURA));
+		aura.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.AURA));
+		title_scale = 1.25f;
+		increase_title_scale = true;
 		
-		
-		//Niveau 2
-		nbr_level_list.add(new ArrayList<Sprite>());
-		spr = new Sprite();
-		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
-		spr.setTextureRect(new IntRect(83 , 1 , 80 , 80));
-		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
-		nbr_level_list.get(0).add(spr);
-		
-		//Niveau 3
-		nbr_level_list.add(new ArrayList<Sprite>());
-		spr = new Sprite();
-		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
-		spr.setTextureRect(new IntRect(166 , 1 , 80 , 80));
-		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
-		nbr_level_list.get(0).add(spr);
+		for (int i=0; i < monde_list.size(); i++)
+		{
+			nbr_level_list.add(new ArrayList<Sprite>());
+			for (int j=0; j < 4; j++)
+			{
+				spr = new Sprite();
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
+				spr.setTextureRect(new IntRect(1+89*j, 1, 88, 88));
+				spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, 0));
+				nbr_level_list.get(0).add(spr);
+			}
+		}
 		
 		fleche_right.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_FLECHE));
 		fleche_right.setTextureRect(new IntRect(1 , 1 , 100 , 100));
@@ -64,21 +61,43 @@ public class Menu_Level extends Menu
 	{
 		Graphic.SFML.draw(fleche_right);
 		for (Sprite spr : monde_list)
+		{
+			Graphic.SFML.draw(aura);
 			Graphic.SFML.draw(spr);
+		}
 		
 		for (ArrayList<Sprite> arr : nbr_level_list)
 			for (Sprite spr : arr)
 				Graphic.SFML.draw(spr);
 	}
 	
-	public boolean gerer()
+	public void gerer()
 	{
 		for (Sprite spr : monde_list)
+		{
 			spr.setPosition(Graphic.SFML.getCenterCamera());
+			aura.setPosition(new Vector2f(spr.getPosition().x, spr.getPosition().y - 50));
+		}
 		
-		for (ArrayList<Sprite> arr : nbr_level_list)
-			for (int i=0; i < arr.size(); i++)
-				arr.get(i).setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + (i-1.5f)*arr.get(i).getTextureRect().width, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
+		aura.setScale(title_scale, title_scale);
+		aura.setRotation(aura.getRotation()+1);
+		if (increase_title_scale)
+		{
+			title_scale *= 1.01f;
+			if (title_scale >= 2.25f)
+				increase_title_scale = false;
+		}
+		else
+		{
+			title_scale /= 1.01f;
+			if (title_scale <= 1.25f)
+				increase_title_scale = true;
+		}
+			
+		for (int j=0; j < nbr_level_list.size(); j++)
+			for (int i=0; i < nbr_level_list.get(j).size(); i++)
+				nbr_level_list.get(j).get(i).setPosition(new Vector2f(monde_list.get(j).getPosition().x + (i-1.5f)*nbr_level_list.get(j).get(i).getTextureRect().width, 
+						monde_list.get(j).getGlobalBounds().top + monde_list.get(j).getTextureRect().height));
 			
 		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
 		
@@ -86,29 +105,15 @@ public class Menu_Level extends Menu
 		{
 			for (ArrayList<Sprite> arr : nbr_level_list)
 				for (int i=0; i < arr.size(); i++)
-				{
 					if (Graphic.isOnSprite(arr.get(i)))
 					{
 						if (i == 0)
-						{
 							Reader.read("levels/level1-1.xml");
-						//	Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
-						}
-						
 						else if (i == 1)
-						{
 							Reader.read("levels/level1-2.xml");
-							//Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
-						}
 						else if (i == 2)
-						{
 							Reader.read("levels/level1-3.xml");
-						//	Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
-						}
-						return true;
 					}
-				}
 		}
-		return false;
 	}
 }

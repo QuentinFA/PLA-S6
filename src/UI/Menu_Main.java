@@ -43,7 +43,7 @@ public class Menu_Main extends Menu
 		Graphic.SFML.draw(title);
 	}
 	
-	public boolean gerer()
+	public void gerer()
 	{
 		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
 		boutonPlay.setScale(boutonPlay_scale, boutonPlay_scale);
@@ -95,7 +95,5 @@ public class Menu_Main extends Menu
 			if (Graphic.isOnSprite(boutonPlay)) //Play
 				Menu.change_menu(Menu.MENU.LEVEL);
 		}
-		
-		return false;
 	}
 }

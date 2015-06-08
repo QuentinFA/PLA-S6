@@ -25,17 +25,18 @@ public class TeleporterBlock extends Block
 	
 	public void lier(TeleporterBlock dest) {destination = dest;}
 	
-	Coordonnees getSortie() {
+	Coordonnees getSortie() 
+	{
 		if (destination != null)
 			return destination.coord;
 		else
 			return null;
-		}
+	}
 	
-	public void perform(Character p) {
+	public void perform(Character p) 
+	{
 		Coordonnees s = getSortie();
 		if (s != null)
 			p.setCoord(s);
-			//TODO Animation de téléportation et déplacement du personnage
-		}
+	}
 }

@@ -21,6 +21,7 @@ public class Ressources
 		NBR_LEVEL(),
 		ACTION(),
 		PERSO(),
+		AURA(),
 		NUAGE();
 		
 		private Texture texture;
@@ -52,6 +53,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.BOUTON_FLECHE, Paths.get("images/fleches.png"));
 		TEXTURE.loadFromFile(TEXTURE.TITLE, Paths.get("images/title.png"));
 		TEXTURE.loadFromFile(TEXTURE.NUAGE, Paths.get("images/nuages.png"));
+		TEXTURE.loadFromFile(TEXTURE.AURA, Paths.get("images/aura.png"));
 		
 		TEXTURE.loadFromFile(TEXTURE.MONDE1, Paths.get("images/monde1.png"));
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));

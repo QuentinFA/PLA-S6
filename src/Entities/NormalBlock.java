@@ -8,10 +8,6 @@ import Game.Ressources.TEXTURE;
 
 public class NormalBlock extends Block 
 {
-	/**
-	 * Cree un bloc normal (gris)
-	 * @param pos : Coordonnees de ce bloc
-	 */
 	public NormalBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));

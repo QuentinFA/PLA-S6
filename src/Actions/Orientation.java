@@ -1,6 +1,6 @@
 package Actions;
 
-public abstract class Direction
+public abstract class Orientation
 {
 	public final static int NORTH = 0; //Nord
 	public final static int EAST = 1; //Est

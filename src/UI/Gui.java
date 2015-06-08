@@ -70,11 +70,8 @@ public class Gui
 		{
 			for (int i=0; i < spriteList.size(); i++)
 			{
-				if (Graphic.SFML.isOnSprite(spriteList.get(i)))
-				{
-					System.out.println(actionList.get(i));
+				if (Graphic.isOnSprite(spriteList.get(i)))
 					World.WORLD.getCharacterList().get(0).use_Action(actionList.get(i));
-				}
 			}
 		}
 	}

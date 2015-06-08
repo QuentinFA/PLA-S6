@@ -57,6 +57,11 @@ public class Graphic
 	
 	public Event getEvent() {return fenetre.pollEvent();}
 	
+	/**
+	 * Permet de savoir si la souris est placee sur un sprite
+	 * @param s Le sprite a tester
+	 * @return True si c'est le cas, false sinon
+	 */
 	static boolean isOnSprite(Sprite s)
 	{
 		FloatRect rectangle = s.getGlobalBounds();
@@ -109,6 +114,10 @@ public class Graphic
 		}
 	}
 	
+	/**
+	 * Centre la camera sur une position (replace egalement le fond)
+	 * @param pos La position
+	 */
 	public void setCenterCamera(Vector2f pos) 
 	{
 		camera.setCenter(pos);
@@ -116,6 +125,9 @@ public class Graphic
 		placerFond();
 	}
 	
+	/**
+	 * Replace le fond en fonction de la camera
+	 */
 	private void placerFond()
 	{
 		FloatRect rect = getViewCamera();
@@ -127,16 +139,20 @@ public class Graphic
 		fond.add(new Vertex(new Vector2f(rect.left, rect.top + rect.height), Color.WHITE));
 	}
 	
+	/**
+	 * Initialise la camera sur le centre de la fenetre (replace egalement le fond)
+	 */
 	public void camera_ini()
 	{
-		camera.setCenter(new Vector2f(width/2.f, height/2.f));
 		camera.setSize(new Vector2f(width, height));
-		
-		placerFond();
+		if (World.WORLD == null)
+			setCenterCamera(new Vector2f(width/2.f, height/2.f));
+		else
+			setCenterCamera(World.WORLD.getCenterWorld());
 	}
 	
 	/**
-	 * Afficher le programme
+	 * Afficher le TOUT le programme (personnages, blocks, ...)
 	 */
 	public void afficher()
 	{
@@ -160,7 +176,7 @@ public class Graphic
 		draw(boutonSound);
 		
 		if (World.WORLD != null)
-			World.WORLD.afficherBlocks();
+			World.WORLD.afficher();
 		if (Menu.Mymenu != null)
 			Menu.Mymenu.afficher();
 		if (Gui.GUI != null)
@@ -169,12 +185,20 @@ public class Graphic
 		fenetre.display();
 	}
 	
+	/**
+	 * Translate la camera
+	 * @param delta La translation
+	 */
 	public void moveCamera(Vector2f delta)
 	{
 		camera.move(delta);
 		placerFond();
 	}
 	
+	/**
+	 * Gere les evenements camera, le fond, les nuages...
+	 * @return True si fin du programme (fermeture de la fenetre), false sinon
+	 */
 	public boolean gerer()
 	{
 		Event event = fenetre.pollEvent(); //Evenements
@@ -224,7 +248,7 @@ public class Graphic
 				{
 					Sprite sprite = new Sprite();
 					sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NUAGE));
-					sprite.setTextureRect(new IntRect(1, 1+(new Random().nextInt(3)*155), 312, 154));
+					sprite.setTextureRect(new IntRect(1, 1+(new Random().nextInt(4)*155), 312, 154));
 					
 					int scale = new Random().nextInt(8)+1;
 					sprite.setScale(5.f/scale, 5.f/scale);

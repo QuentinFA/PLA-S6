@@ -7,8 +7,7 @@ public abstract class Menu
 	public enum MENU
 	{
 		MAIN,
-		LEVEL,
-		MAP
+		LEVEL
 	}
 	
 	public static void change_menu(MENU m)
@@ -17,10 +16,8 @@ public abstract class Menu
 			Mymenu = new Menu_Main();
 		else if (m == MENU.LEVEL)
 			Mymenu = new Menu_Level();
-		else if (m == MENU.MAP)
-			Mymenu = new Menu_Map();
 	}
 	
-    public abstract boolean gerer();
+    public abstract void gerer();
     public abstract void afficher();
 }

@@ -12,7 +12,7 @@ public class LightBlock extends Block
 	
 	/**
 	 * Cree un bloc lumiere eteind. Peut etre allume.
-	 * @param pos : Coordonnees de ce bloc
+	 * @param pos Coordonnees de ce bloc
 	 */
 	public LightBlock(Coordonnees pos)
 	{

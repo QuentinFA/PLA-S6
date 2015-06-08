@@ -12,7 +12,7 @@ import Game.Ressources.TEXTURE;
 public class Character extends Entities
 {	
 	private List<Action> lActions;
-	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
+	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
 	private Color couleur;
 	
 	public Character(Coordonnees pos, int ori) 
@@ -21,7 +21,7 @@ public class Character extends Entities
 		orientation = ori;
 		couleur = Color.DEFAUT;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
-		setTexture(ori);
+		setTextureOrientation(orientation);
 	}
 	
 	public Coordonnees getCoord() {return coord;}
@@ -30,7 +30,7 @@ public class Character extends Entities
 	public void setOrientation(int ori) {orientation = ori;}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
-	public void setTexture(int ori) {sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));}
+	public void setTextureOrientation(int ori) {sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));}
 	
 	public void add_action(Action a) {lActions.add(a);}
 	
@@ -49,12 +49,10 @@ public class Character extends Entities
 	
 	/**
 	 *  Effectue l'action pour le personnage
-	 * @param a Action a� effectuer par le personnage
-	 * @throws OutOfMapException Exception si le personnage sors de la map a�l'issue de son deplacement
+	 * @param a Action a effectuer par le personnage
 	 */
 	public void use_Action(Action a) 
 	{	
 		a.execute(this);
-		//TODO Animation Et gérer exception si on sort de la map
 	}
 }

@@ -8,28 +8,25 @@ public class Forward extends Action
 	
 	public void execute(Character p)
 	{
-		if (p.getColor() == couleur || couleur == Color.DEFAUT)
+		Coordonnees coord = p.getCoord();
+		Coordonnees check;
+		switch (p.getOrientation())
 		{
-			Coordonnees coord = p.getCoord();
-			Coordonnees check = new Coordonnees(0,0,0);
-			switch (p.getOrientation())
-			{
-				case Direction.NORTH:
-					check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()); break;
-				case Direction.EAST:
-					check = new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()); break;
-				case Direction.SOUTH:
-					check = new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()); break;
-				case Direction.WEST:
-					check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()); break;
-			}
-			
-			if (World.WORLD.isValidPosition(check))
-			{
-				p.setCoord(check);
-				p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
-			}
-			//TODO Animation du personnage qui avance ou qui reste sur place ou qui tombe dans le vide
+			case Orientation.NORTH:
+				check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()); break;
+			case Orientation.EAST:
+				check = new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()); break;
+			case Orientation.SOUTH:
+				check = new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()); break;
+			case Orientation.WEST:
+			default:
+				check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()); break;
+		}
+		
+		if (World.WORLD.isValidPosition(check))
+		{
+			p.setCoord(check);
+			p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		}
 	}
 }

@@ -6,12 +6,8 @@ import Actions.Coordonnees;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 
-public class BlueBlock extends Block {
-	
-	/**
-	 * Cree un bloc qui colorie le personnage en bleu 
-	 * @param pos : Coordonnees de ce bloc
-	 */
+public class BlueBlock extends Block 
+{
 	public BlueBlock(Coordonnees c)
 	{
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));

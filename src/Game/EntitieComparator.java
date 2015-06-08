@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import Entities.Entities;
 
-public class BlockComparator implements Comparator<Entities> 
+public class EntitieComparator implements Comparator<Entities> 
 {
 	public int compare(Entities b1, Entities b2) 
 	{

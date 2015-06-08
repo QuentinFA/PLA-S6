@@ -19,10 +19,11 @@ import org.jdom2.input.SAXBuilder;
 import Actions.Action;
 import Actions.Color;
 import Actions.Coordonnees;
-import Actions.Direction;
+import Actions.Orientation;
 import Entities.Block;
 import Game.World;
 import UI.Gui;
+import UI.Menu;
 
 
 public class Reader 
@@ -33,7 +34,7 @@ public class Reader
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int length = 0, width = 0, nbA = 0, nbP = 0, dir = 0;
+		int nbA = 0, nbP = 0, dir = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -95,10 +96,6 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(BeaconXML.B_LENGTH))
-				length = Integer.valueOf(e.getValue());
-			else if(e.getName().equals(BeaconXML.B_WIDTH))
-				width = Integer.valueOf(e.getValue());
 			else if(e.getName().equals(BeaconXML.B_LEVEL_NAME))
 				name = e.getValue();
 			else if(e.getName().equals(BeaconXML.B_ACTION_LIST))
@@ -153,17 +150,17 @@ public class Reader
 				switch(e.getValue())
 				{
 					case "NORTH" :
-						dir = Direction.NORTH;
+						dir = Orientation.NORTH;
 						break;
 					case "SOUTH" :
-						dir = Direction.SOUTH;
+						dir = Orientation.SOUTH;
 						break;
 					case "EAST" :
-						dir = Direction.EAST;
+						dir = Orientation.EAST;
 						break;
 					case "WEST" :
 					default :
-						dir = Direction.WEST;
+						dir = Orientation.WEST;
 						break;
 				}
 			}
@@ -173,7 +170,8 @@ public class Reader
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
 		
-		World.WORLD = new World(length, width, name, lb, bng, dir);
+		Menu.Mymenu = null;
+		World.WORLD = new World(name, lb, bng, dir);
 		Gui.GUI = new Gui(la, nbA, nbP);
 	}
 	

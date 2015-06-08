@@ -19,7 +19,7 @@ public abstract class Entities {
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}
 	
 	/**
-	 * Afficher un block
+	 * Afficher une entite (block, personnage, ...)
 	 */
 	public void afficher() {Graphic.SFML.draw(sprite);}
 }

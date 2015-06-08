@@ -10,7 +10,7 @@ public abstract class Action
 	
 	/**
 	 * Application d'une action pour un personnage
-	 * @param p : Le personnage dont il est question
+	 * @param p Le personnage dont il est question
 	 */
 	public abstract void execute(Character p);
 }

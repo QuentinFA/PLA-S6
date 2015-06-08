@@ -9,10 +9,6 @@ import Game.Ressources.TEXTURE;
 
 public class RedBlock extends Block
 {
-	/**
-	 * Cree un bloc qui colorie le personnage en rouge quand il marche dessus
-	 * @param pos : Coordonnees de ce bloc
-	 */
 	public RedBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
@@ -23,5 +19,3 @@ public class RedBlock extends Block
 	
 	public void perform(Character p) {p.setColor(Color.ROUGE);}
 }
-
-

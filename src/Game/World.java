@@ -17,42 +17,33 @@ public class World
 	public static World WORLD = null;
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
-	private List<Character> characterList = new ArrayList<Character>();
+	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
 	
-	private List<Entities> allList = new ArrayList<Entities>();
+	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
-	// TODO Utile ?
-	private int width;
-	private int height;
-	
-	private Coordonnees begining;
-	private int starting_direction;
+	private Coordonnees coordStart; //Coordonnees du d�part
+	private int orientStart; //Orientation du d�part
+	private Vector2f centerWorld = null;
 	
 	private String name;
 	
-	public World(int w, int h) 
+	/**
+	 * Constructeur de niveau
+	 * @param n Le nom du niveau
+	 * @param lb La liste des blocks du niveau
+	 * @param cStart Les coordonnees de depart du personnage
+	 * @param oStart L'orientation de depart du personnage
+	 */
+	public World(String n, List<Block> lb, Coordonnees cStart, int oStart) 
 	{
-		width = w;
-		height = h;
-		name = "Testing World !";
-		
-		WORLD = this;
-	}
-	
-	public World(int w, int h, String n, List<Block> lb, Coordonnees begining, int direction) 
-	{
-		width = w;
-		height = h;
 		name = n;
-		this.begining = begining;
-		this.starting_direction = direction;
+		coordStart = cStart;
+		orientStart = oStart;
 		
 		for (Block b : lb)
 			addBlock(b);
 
-		addCharacter(new Character(begining, direction));
-		
-		Graphic.SFML.setCenterCamera(getCenterWorld());
+		addCharacter(new Character(coordStart, orientStart));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
@@ -60,64 +51,76 @@ public class World
 		for (Character c : characterList)
 			c.setPosSprite(placeMe(c.getCoord()));
 		
-		
-		
 		WORLD = this;
-	}
-	
-	// TODO Doc
-	public boolean gerer()
-	{
-		return false;
-	}
-	
-	public String getName()
-	{
-		return this.name;
-
+		
+		Graphic.SFML.setCenterCamera(getCenterWorld());
 	}
 	
 	/**
-	 * Place un block en fonction de ses coordonnees matricielles
-	 * @param pos: la position matricielle
-	 * @return: la position a l'ecran
+	 * Gerer le monde (animation du monde)
 	 */
-	public Vector2f placeMe(Coordonnees pos)
+	public void gerer()
+	{
+	}
+	
+	/**
+	 * Recuperer le nom du niveau actuel
+	 * @return Le nom du niveau actuel
+	 */
+	public String getName() {return name;}
+	
+	/**
+	 * Place un objet en fonction de ses coordonnees matricielles
+	 * @param c La position matricielle
+	 * @return La position a l'ecran
+	 */
+	public Vector2f placeMe(Coordonnees c)
 	{
 		float pos_x, pos_y;
-		Vector2f center = Graphic.SFML.getCenterCamera();
-		
-		pos_x = center.x + 40 * pos.getX() - 40 * pos.getY();
-		pos_y = center.y - 23 * pos.getX() - 23 * pos.getY() - 26 * pos.getZ();
+
+		pos_x = 40 * c.getX() - 40 * c.getY();
+		pos_y = - 23 * c.getX() - 23 * c.getY() - 26 * c.getZ();
 		
 		return new Vector2f(pos_x, pos_y);
 	}
 	
+	/**
+	 * Calcule (une seule fois) et renvoie la centre du monde (pour centrer la camera)
+	 * @return Le centre du monde
+	 */
 	public Vector2f getCenterWorld()
 	{
-		float min_x = Float.MAX_VALUE;
-		float min_y = Float.MAX_VALUE;
-		float max_x = Float.MIN_VALUE;
-		float max_y = Float.MIN_VALUE;
-		
-		for (int i=0; i < blockList.size(); i++)
+		if (centerWorld == null)
 		{
-			if (blockList.get(i).getGlobalBounds().left < min_x)
-				min_x = blockList.get(i).getGlobalBounds().left;
-			if (blockList.get(i).getGlobalBounds().top < min_y)
-				min_y = blockList.get(i).getGlobalBounds().top;
+			float min_x = Float.MAX_VALUE;
+			float min_y = Float.MAX_VALUE;
 			
-			if (blockList.get(i).getGlobalBounds().left + blockList.get(i).getGlobalBounds().width > max_x)
-				max_x = blockList.get(i).getGlobalBounds().left + blockList.get(i).getGlobalBounds().width;
-			if (blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height > max_y)
-				max_y = blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height;	
+			float max_x = Float.MIN_VALUE;
+			float max_y = Float.MIN_VALUE;
+			
+			for (int i=0; i < blockList.size(); i++)
+			{
+				if (blockList.get(i).getCoord().getX() < min_x)
+					min_x = blockList.get(i).getCoord().getX();
+				if (blockList.get(i).getCoord().getY() < min_y)
+					min_y = blockList.get(i).getCoord().getY();
+				
+				if (blockList.get(i).getCoord().getX() > max_x)
+					max_x = blockList.get(i).getCoord().getX();
+				if (blockList.get(i).getCoord().getY() > max_y)
+					max_y = blockList.get(i).getCoord().getY();
+			}
+			centerWorld = new Vector2f(
+					(int)(40*(max_x+min_x)/2 - 40*(max_y+min_y)/2 + 81/2.f), 
+					(int)(- 23*(max_x+min_x)/2 - 23*(max_y+min_y)/2 + 81/2.f)
+					);
 		}
-		return new Vector2f((max_x + min_x)/2.f, (max_y + min_y)/2.f);
+		return centerWorld;
 	}
 	
 	/**
 	 * Ajoute un block au monde
-	 * @param b
+	 * @param b Le block a ajouter
 	 */
 	public void addBlock(Block b) 
 	{
@@ -125,48 +128,58 @@ public class World
 		allList.add(b);
 	}
 	
+	/**
+	 * Ajoute un personnage au monde
+	 * @param c Le personnage a ajouter
+	 */
 	public void addCharacter(Character c) 
 	{
 		characterList.add(c);
 		allList.add(c);
 	}
 	
+	/**
+	 * Recuperer la liste des blocks
+	 * @return La liste des blocks
+	 */
 	public List<Block> getBlockList() {return blockList;}
 	
+	/**
+	 * Recuperer la liste des personnages
+	 * @return La liste des personnages
+	 */
 	public List<Character> getCharacterList() {return characterList;}
 	
 	/**
-	 * Afficher tous les blocks
+	 * Afficher tous les objets du monde (blocks, personnages, ...)
 	 */
-	public void afficherBlocks()
+	public void afficher()
 	{
-		Collections.sort(allList, new BlockComparator());
+		Collections.sort(allList, new EntitieComparator());
 		for (Entities obj : allList)
 			obj.afficher();
 	}
 	
 	/**
-	 * Vérification de la validité d'une position</br>
-	 * Si un bloc se trouve
-	 *  à cette position ou qu'il n'y en a pas en dessous, la position n'est pas valide
-	 * @param p : La position à vérifier
-	 * @return Selon si la position est valide
-	 * @throws OutOfMapException : Si la position est en dehors de la map
+	 * Verification de la validite d'une coordonne</br>
+	 * Si quelque chose se trouve�a cette coordonne, la coordonne n'est pas valide
+	 * @param c La coordonne a�verifier
+	 * @return True si valide, false sinon
 	 */
 	public boolean isValidPosition(Coordonnees c)
 	{
-		for(Entities b : allList) {
+		for(Entities b : allList)
 			if(b.getCoord().equals(c))
 				return false;
-		}
+		
 		return true;
 	}
 	
 	/**
-	 * Tri des blocs de la maps selon un type</br>
+	 * Recupere la liste des blocks d'un type</br>
 	 * Exemple d'utilisation : getBlocksT(Block.class)
-	 * @param blockType : Le type de blocs à récupérer
-	 * @return Liste de bloc de type blockType
+	 * @param blockType Le type de blocs a recuperer
+	 * @return La liste des blocks du type blockType
 	 */
 	public List<Block> getBlocksByType(Class<? extends Block> blockType)
 	{
@@ -181,8 +194,8 @@ public class World
 
 	/**
 	 * Retourne le block en dessous de la coordonnee passee en parametre
-	 * @param coord
-	 * @return 
+	 * @param coord La coordonnee a tester
+	 * @return Le block sous la coordonnee, null si rien
 	 */
 	public Block getUnderBlock(Coordonnees coord)
 	{

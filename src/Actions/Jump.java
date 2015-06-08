@@ -11,18 +11,20 @@ public class Jump extends Action
 		if (p.getColor() == couleur)
 		{
 			Coordonnees coord = p.getCoord();
-			Coordonnees check = new Coordonnees(0,0,0);
+			Coordonnees check;
 			switch (p.getOrientation())
 			{
-				case Direction.NORTH:
+				case Orientation.NORTH:
 					check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()+1); break;
-				case Direction.EAST:
+				case Orientation.EAST:
 					check = new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()+1); break;
-				case Direction.SOUTH:
+				case Orientation.SOUTH:
 					check = new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()+1); break;
-				case Direction.WEST:
+				case Orientation.WEST:
+				default:
 					check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()+1); break;
 			}
+			
 			if(World.WORLD.isValidPosition(check))	
 				p.setCoord(check);
 		}
