@@ -3,7 +3,6 @@ package Levels;
 import java.io.IOException;
 
 import Game.Ressources;
-import Game.World;
 import UI.Graphic;
 import UI.Gui;
 import UI.Input;
@@ -11,7 +10,7 @@ import UI.Menu;
 
 public class LevelPreview
 {
-	private static String levelPath = "levels/level1-1.xml";
+	private static String levelPath = "levels/level1-3.xml";
 	
 	public static void main(String[] args)
 	{
@@ -21,7 +20,7 @@ public class LevelPreview
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.read(levelPath);
-		Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+		//Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{

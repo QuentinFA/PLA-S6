@@ -16,7 +16,7 @@
 	<length>1</length>
 	<width>3</width>
 	<floor level="0">
-		<block type="NormalBlock">
+		<block type="NormalBlock" is_start ="true">
 			<x>-1</x>
 			<y>1</y>
 		</block>
