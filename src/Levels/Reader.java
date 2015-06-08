@@ -27,25 +27,6 @@ import UI.Gui;
 
 public class Reader 
 {
-	public static final String B_LEVEL_NAME = "level_name";
-	public static final String B_LENGTH = "length";
-	public static final String B_HEIGTH = "heigth";
-	public static final String B_WIDTH = "width";
-	public static final String B_FLOOR = "floor";
-	public static final String B_BLOCK = "block";
-	public static final String B_BLOCK_TYPE = "type";
-	public static final String B_X = "x";
-	public static final String B_Y = "y";
-	public static final String B_STARTING_BLOCK = "is_start";
-	public static final String B_LEVEL = "level";
-	public static final String B_ACTION_LIST = "action_list";
-	public static final String B_ACTION = "action";
-	public static final String B_FUNCTIONS = "functions";
-	public static final String B_MAIN = "main";
-	public static final String B_ACTION_MAIN = "nb_action";
-	public static final String B_PROCEDURE = "procedure";
-	public static final String B_PROCEDURE_NB = "nb_proc";
-	public static final String B_STARTING_DIRECTION = "starting_dir";
 	
 	public static Reader READER = new Reader();
 	
@@ -77,13 +58,13 @@ public class Reader
 		for(Element e : le)
 		{
 			// Recuperation des blocks d'un etage
-			if(e.getName().equals(B_FLOOR))
+			if(e.getName().equals(BeaconXML.B_FLOOR))
 			{
 				int z;
 				
 				try
 				{
-					z = e.getAttribute(B_LEVEL).getIntValue();
+					z = e.getAttribute(BeaconXML.B_LEVEL).getIntValue();
 				} 
 				catch (DataConversionException e1)
 				{
@@ -93,10 +74,10 @@ public class Reader
 				
 				for(Element block : e.getChildren())
 				{
-					String t = block.getAttribute(B_BLOCK_TYPE).getValue();
-					Attribute begin = block.getAttribute(B_STARTING_BLOCK);
-					int x = Integer.valueOf(block.getChild(B_X).getValue());
-					int y = Integer.valueOf(block.getChild(B_Y).getValue());
+					String t = block.getAttribute(BeaconXML.B_BLOCK_TYPE).getValue();
+					Attribute begin = block.getAttribute(BeaconXML.B_STARTING_BLOCK);
+					int x = Integer.valueOf(block.getChild(BeaconXML.B_X).getValue());
+					int y = Integer.valueOf(block.getChild(BeaconXML.B_Y).getValue());
 					
 					if(begin != null)
 						bng = new Coordonnees(x, y, z + 1);
@@ -114,13 +95,13 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(B_LENGTH))
+			else if(e.getName().equals(BeaconXML.B_LENGTH))
 				length = Integer.valueOf(e.getValue());
-			else if(e.getName().equals(B_WIDTH))
+			else if(e.getName().equals(BeaconXML.B_WIDTH))
 				width = Integer.valueOf(e.getValue());
-			else if(e.getName().equals(B_LEVEL_NAME))
+			else if(e.getName().equals(BeaconXML.B_LEVEL_NAME))
 				name = e.getValue();
-			else if(e.getName().equals(B_ACTION_LIST))
+			else if(e.getName().equals(BeaconXML.B_ACTION_LIST))
 			{
 				for(Element a : e.getChildren())
 				{
@@ -137,15 +118,15 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(B_FUNCTIONS))
+			else if(e.getName().equals(BeaconXML.B_FUNCTIONS))
 			{
 				for(Element f : e.getChildren())
 				{
-					if(f.getValue().equals(B_MAIN))
+					if(f.getValue().equals(BeaconXML.B_MAIN))
 					{
 						try
 						{
-							nbA = f.getAttribute(B_ACTION_MAIN).getIntValue();
+							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
 						} 
 						catch (DataConversionException e1)
 						{
@@ -153,11 +134,11 @@ public class Reader
 							e1.printStackTrace();
 						}
 					}
-					else if(f.getValue().equals(B_PROCEDURE))
+					else if(f.getValue().equals(BeaconXML.B_PROCEDURE))
 					{
 						try
 						{
-							nbP = f.getAttribute(B_PROCEDURE_NB).getIntValue();
+							nbP = f.getAttribute(BeaconXML.B_PROCEDURE_NB).getIntValue();
 						} 
 						catch (DataConversionException e1)
 						{
@@ -167,7 +148,7 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(B_STARTING_DIRECTION))
+			else if(e.getName().equals(BeaconXML.B_STARTING_DIRECTION))
 			{
 				switch(e.getValue())
 				{

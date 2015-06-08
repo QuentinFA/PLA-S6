@@ -1,8 +1,9 @@
-package Game;
+package Levels;
 
 import java.io.IOException;
 
-import Levels.Reader;
+import Game.Ressources;
+import Game.World;
 import UI.Graphic;
 import UI.Gui;
 import UI.Input;
