@@ -1,13 +1,18 @@
 package Actions;
 import Entities.Character;
+import Game.Block;
+import Game.LightBlock;
+import Game.World;
 
 public class Light extends Action
 {
-	public Light(int color) {c = color;}
+	public Light(Color.COLOR c) {couleur = c;}
 	
-	//Inutile
-	public Coordonnees execute(Coordonnees p, int orientation){return p;}
-	
-	//Inutile
-	public void execute(Character p) {}
+	public void execute(Character p) 
+	{
+		Block b = World.WORLD.getUnderBlock(p.getCoord());
+		if (b != null)
+			if (b instanceof LightBlock)
+				((LightBlock) b).reverseLight();
+	}
 }

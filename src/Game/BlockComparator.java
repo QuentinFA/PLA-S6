@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class BlockComparator implements Comparator<Block> 
 {
-	@Override
 	public int compare(Block b1, Block b2) 
 	{
 		if (b1.getCoord().getY() > b2.getCoord().getY())
@@ -24,5 +23,4 @@ public class BlockComparator implements Comparator<Block>
 		
 		return 0;
 	}
-	
 }

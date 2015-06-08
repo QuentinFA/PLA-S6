@@ -1,68 +1,54 @@
 package Game;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.jsfml.audio.Music;
 import org.jsfml.graphics.Texture;
 import org.jsfml.system.Vector2f;
 
-
-
-/**
- * Contient toutes les images charg�es
- * @author Florian
- *
- */
-
 public class Ressources 
 {
-	public static Ressources RESSOURCES = new Ressources();
-	
-	private Texture texture_block1 = new Texture(); //Blocks
-	public Texture getTexture1() {return texture_block1;}
-	
-	private Texture texture_bouton = new Texture(); //Blocks
-	public Texture getTextureBouton() {return texture_bouton;}
-	public Vector2f getSizeTextureBouton() {return new Vector2f(texture_bouton.getSize().x/2.f, texture_bouton.getSize().y/2.f);}
-	
-	private Texture texture_bouton_sound = new Texture(); //Blocks
-	public Texture getTextureBoutonSound() {return texture_bouton_sound;}
-	
-	private Texture texture_fleche = new Texture(); //Blocks
-	public Texture getTextureFleche() {return texture_fleche;}
-	public Vector2f getSizeTextureFleche() {return new Vector2f(texture_fleche.getSize().x/2.f, texture_fleche.getSize().y/2.f);}
-	
-	/**
-	 * pour le audio
-	 */
-	private Music music = new Music();
-	public Music getMusic(){return music;}
-	
-	
-	/**
-	 * Charge les images
-	 * @throws IOException 
-	 * @throws UnsupportedAudioFileException 
-	 * @throws LineUnavailableException 
-	 */
-	public void initialiser() throws IOException
+	public enum TEXTURE
 	{
-		texture_block1.loadFromFile(Paths.get("images/block.png"));
-		texture_bouton.loadFromFile(Paths.get("images/bouton.png"));
-		texture_bouton_sound.loadFromFile(Paths.get("images/boutonSound.png"));
-<<<<<<< HEAD
-		texture_fleche.loadFromFile(Paths.get("images/fleches.png"));
+		BLOCK(),
+		BOUTON_PLAY(),
+		BOUTON_SOUND(),
+		BOUTON_FLECHE(),
+		TITLE(),
+		NUAGE();
 		
-
-=======
+		private Texture texture;
 		
->>>>>>> 2cbeb62f718326bdd12195f1cb41bba2e7ddd194
-		music.openFromFile(Paths.get("audio/audio.wav"));
-		music.setLoop(true);
-		music.play();
+		private TEXTURE() {texture = new Texture();}
+		public static void loadFromFile(TEXTURE t, Path p) throws IOException {t.texture.loadFromFile(p);}
+		
+		public static Texture getTexture(TEXTURE t) {return t.texture;}
+		public static Vector2f getHalfSize(TEXTURE t) {return new Vector2f(t.texture.getSize().x/2.f, t.texture.getSize().y/2.f);}
+	}
+	
+	public enum MUSIC
+	{
+		MARIO();
+		
+		private Music music;
+		
+		private MUSIC() {music = new Music();}
+		public static void loadFromFile(MUSIC m, Path p) throws IOException {m.music.openFromFile(p);}
+		
+		public static Music getMusic(MUSIC m) {return m.music;}
+	}
+	
+	public static void initialiser() throws IOException
+	{
+		TEXTURE.loadFromFile(TEXTURE.BLOCK, Paths.get("images/block.png"));
+		TEXTURE.loadFromFile(TEXTURE.BOUTON_PLAY, Paths.get("images/boutonPlay.png"));
+		TEXTURE.loadFromFile(TEXTURE.BOUTON_SOUND, Paths.get("images/boutonSound.png"));
+		TEXTURE.loadFromFile(TEXTURE.BOUTON_FLECHE, Paths.get("images/fleches.png"));
+		TEXTURE.loadFromFile(TEXTURE.TITLE, Paths.get("images/title.png"));
+		TEXTURE.loadFromFile(TEXTURE.NUAGE, Paths.get("images/nuages.png"));
+		
+		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
 }

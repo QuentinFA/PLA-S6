@@ -5,28 +5,23 @@ import org.jsfml.graphics.IntRect;
 import Actions.Color;
 import Actions.Coordonnees;
 import Entities.Character;
+import Game.Ressources.TEXTURE;
 
-public class RedBlock extends Block{
-	
+public class RedBlock extends Block
+{
 	/**
-	 * Crée un bloc qui colorie le personnage en rouge quand il marche dessus
-	 * @param pos : Coordonnées de ce bloc
+	 * Cree un bloc qui colorie le personnage en rouge quand il marche dessus
+	 * @param pos : Coordonnees de ce bloc
 	 */
 	public RedBlock(Coordonnees pos)
 	{
-		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
+		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		sprite.setTextureRect(new IntRect(83, 1, 81, 81));
 		
-		position = pos;
-		
-		//sprite.setPosition(World.WORLD.placeMe(pos));
+		coord = pos;
 	}
 	
-	public void perform(Character p) {
-		int c = Color.ROUGE;
-		p.setColor(c);
-		//TODO Colorer personnage
-	}
+	public void perform(Character p) {p.setColor(Color.COLOR.ROUGE);}
 }
 
 

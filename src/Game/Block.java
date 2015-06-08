@@ -11,30 +11,17 @@ import UI.Graphic;
 public abstract class Block
 {
 	protected Sprite sprite = new Sprite(); //Sprite du block
-	protected Coordonnees position;
+	protected Coordonnees coord;
 	
-	
-	public Coordonnees getCoord() {return position;}
-	
-	public Vector2f getPosSprite()
-	{
-		return this.sprite.getPosition();
-	}
-	
-	public void setPosSprite(Vector2f pos)
-	{
-		this.sprite.setPosition(pos);
-	}
-	
+	public Coordonnees getCoord() {return coord;}
+	public Vector2f getPosSprite() {return sprite.getPosition();}
+	public void setPosSprite(Vector2f pos) {sprite.setPosition(pos);}
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}
 	
 	/**
 	 * Afficher un block
 	 */
-	public void afficher()
-	{
-		Graphic.SFML.draw(sprite);
-	}
+	public void afficher() {Graphic.SFML.draw(sprite);}
 	
 	public abstract void perform(Character p);
 }

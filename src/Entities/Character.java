@@ -8,31 +8,23 @@ public class Character
 {	
 	//private List<Action> _l;
 	
-	private Coordonnees position;
-	
+	private Coordonnees coord;
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
+	private Color.COLOR couleur;
 	
-	private int c;
-	
-	
-	Character(Coordonnees pos,int ori) 
+	Character(Coordonnees pos, int ori) 
 	{
-		position = pos;
+		coord = pos;
 		orientation = ori;
-		c = Color.GRIS;
+		couleur = Color.COLOR.DEFAUT;
 	}
 	
-	public Coordonnees getPosition() {return position;}
-	
-	public void setPosition(Coordonnees pos) {position = pos;}
-	
+	public Coordonnees getCoord() {return coord;}
+	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
-	
 	public void setOrientation(int ori) {orientation = ori;}
-	
-	public void setColor(int _c) {c = _c;}
-	
-	public int getColor() {return c;}
+	public void setColor(Color.COLOR c) {couleur = c;}
+	public Color.COLOR getColor() {return couleur;}
 	
 	/*public void add_action(Action a) {_l.add(a);}
 	
@@ -50,13 +42,13 @@ public class Character
 	}*/
 	
 	/**
-	 *  Effectue l'action pour le character
-	 * @param a Action √† effectuer par le character
-	 * @throws OutOfMapException Exception si le character sors de la map √† l'issue de son d√©placement
+	 *  Effectue l'action pour le personnage
+	 * @param a Action a† effectuer par le personnage
+	 * @throws OutOfMapException Exception si le personnage sors de la map a†l'issue de son deplacement
 	 */
 	public void use_Action(Action a)
 	{
-		Coordonnees np = a.execute(position, orientation);
+		/*Coordonnees np = a.execute(position, orientation);
 		
 		try
 		{
@@ -89,6 +81,6 @@ public class Character
 		{
 			// TODO Tomber Animation
 			e.printStackTrace();
-		}
+		}*/
 	}
 }

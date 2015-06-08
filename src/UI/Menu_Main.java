@@ -1,85 +1,100 @@
 package UI;
 
-
-import org.jsfml.graphics.FloatRect;
-import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
-import org.jsfml.system.Vector2i;
+import org.jsfml.system.Vector2f;
 
 import Game.Ressources;
+import Game.Ressources.TEXTURE;
 
 public class Menu_Main extends Menu
 {
+	private static float boutonPlay_scale;
+	private boolean increase_boutonPlay_scale;
+	Sprite boutonPlay = new Sprite();
 	
-	boolean mute = true;
-	Sprite bouton = new Sprite();
-	Sprite boutonSound = new Sprite();
+	Sprite title = new Sprite();
+	private static float title_scale;
+	private boolean increase_title_scale;
+	private static float title_rotation;
+	private boolean increase_title_rotation;
 	
+	public Menu_Main()
+	{
+		boutonPlay.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_PLAY));
+		boutonPlay.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.BOUTON_PLAY));
+		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
+		
+		boutonPlay_scale = 1.f;
+		increase_boutonPlay_scale = true;
+		
+		title.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.TITLE));
+		title.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.TITLE));
+		title.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/4.f));
+		
+		title_scale = 1.f;
+		increase_title_scale = true;
+		title_rotation = 0.f;
+		increase_title_rotation = true;
+	}
 	
 	public void afficher()
 	{
-		Graphic.SFML.draw(bouton);
-		Graphic.SFML.draw(boutonSound);
+		Graphic.SFML.draw(boutonPlay);
+		Graphic.SFML.draw(title);
 	}
-	public Menu_Main()
-	{
-		
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
-		bouton.setOrigin(Ressources.RESSOURCES.getSizeTextureBouton());
-		bouton.setPosition(Graphic.SFML.getCenterCamera());		
-		
-		
-		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
-		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
-		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-		
-		
-	}
+	
 	public boolean gerer()
 	{
-		if (Input.INPUT.again(Input.BUTTON.MLEFT))
+		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
+		boutonPlay.setScale(boutonPlay_scale, boutonPlay_scale);
+		if (increase_boutonPlay_scale)
 		{
-			
-			if (isOnSprite(bouton)) //Play
-			{				
-				Menu.change = 2;
-				Menu.change_menu();
-				System.out.println("mute");
-				return true;
-			}
-			if (isOnSprite(boutonSound))
-			{
-				System.out.println(mute);
-				if(mute == true)
-				{
-					mute = false;
-					boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
-					Ressources.RESSOURCES.getMusic().stop();
-				}
-				else if(mute == false)
-				{
-					mute = true;
-					boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-					Ressources.RESSOURCES.getMusic().play();
-				}
-			}
+			boutonPlay_scale *= 1.005f;
+			if (boutonPlay_scale >= 1.1f)
+				increase_boutonPlay_scale = false;
+		}
+		else
+		{
+			boutonPlay_scale /= 1.005f;
+			if (boutonPlay_scale <= 0.9f)
+				increase_boutonPlay_scale = true;
 		}
 		
-		return false;
-	}
-	static boolean isOnSprite(Sprite s)
-	{
-		FloatRect rectangle = s.getGlobalBounds();
+		title.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/4.f));
+		title.setScale(title_scale, title_scale);
+		title.setRotation(title_rotation);
 		
-		Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-		//		System.out.println("mouse in isOnSprite: " + pos_mouse);
-		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
+		if (increase_title_scale)
+		{
+			title_scale *= 1.005f;
+			if (title_scale >= 1.25f)
+				increase_title_scale = false;
+		}
+		else
+		{
+			title_scale /= 1.005f;
+			if (title_scale <= 0.75f)
+				increase_title_scale = true;
+		}
 		
-		if (real_pos.x > rectangle.left && 
-				real_pos.x < (rectangle.left+rectangle.width) &&
-				real_pos.y > rectangle.top &&
-				real_pos.y < (rectangle.top+rectangle.height))
-			return true;
+		if (increase_title_rotation)
+		{
+			title_rotation += 0.5f;
+			if (title_rotation >= 15.f)
+				increase_title_rotation = false;
+		}
+		else
+		{
+			title_rotation -= 0.5f;
+			if (title_rotation <= -15.f)
+				increase_title_rotation = true;
+		}
+			
+		if (Input.INPUT.again(Input.BUTTON.MLEFT))
+		{
+			if (Graphic.isOnSprite(boutonPlay)) //Play
+				Menu.change_menu(Menu.MENU.LEVEL);
+		}
 		return false;
 	}
 }

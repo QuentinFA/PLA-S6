@@ -4,33 +4,26 @@ import Actions.Color;
 import Actions.Coordonnees;
 import Entities.Character;
 
-public class TeleporterBlock extends Block{
+public class TeleporterBlock extends Block
+{
 	private TeleporterBlock destination = null;
-	private int couleur;
+	private Color.COLOR couleur;
 	
 	public TeleporterBlock()
 	{
-		this.position = new Coordonnees(0,0,0);
-		this.couleur = Color.GRIS;
+		coord = new Coordonnees(0,0,0);
+		couleur = Color.COLOR.DEFAUT;
 	}
 	
-	public TeleporterBlock(Coordonnees entree, int coul)
+	public TeleporterBlock(Coordonnees c, Color.COLOR col)
 	{
-		entree = this.position;
-		coul = this.couleur;
+		coord = c;
+		couleur = col;
 	}
 	
-	public void lier(TeleporterBlock copain){
-		this.destination = copain;
-	}
+	public void lier(TeleporterBlock dest) {destination = dest;}
 	
-	Coordonnees getSortie(){
-		return destination.position;
-	}
+	Coordonnees getSortie() {return destination.coord;}
 	
-	public void perform(Character p) {
-		p.setPosition(getSortie());
-		//TODO Animation
-	}
-	
+	public void perform(Character p) {p.setCoord(getSortie());}
 }
