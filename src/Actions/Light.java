@@ -1,7 +1,7 @@
 package Actions;
+import Entities.Block;
 import Entities.Character;
-import Game.Block;
-import Game.LightBlock;
+import Entities.LightBlock;
 import Game.World;
 
 public class Light extends Action

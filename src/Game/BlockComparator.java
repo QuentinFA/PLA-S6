@@ -2,6 +2,8 @@ package Game;
 
 import java.util.Comparator;
 
+import Entities.Block;
+
 public class BlockComparator implements Comparator<Block> 
 {
 	public int compare(Block b1, Block b2) 

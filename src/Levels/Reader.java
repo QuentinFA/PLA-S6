@@ -2,6 +2,8 @@ package Levels;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,11 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Actions.Coordonnees;
-import Game.Block;
-import Game.BlueBlock;
-import Game.LightBlock;
-import Game.NormalBlock;
-import Game.RedBlock;
+
+import Entities.Block;
+
 import Game.World;
+
 
 public class Reader 
 {
@@ -84,21 +85,16 @@ public class Reader
 					String t = block.getAttribute(B_BLOCK_TYPE).getValue();
 					int x = Integer.valueOf(block.getChild(B_X).getValue());
 					int y = Integer.valueOf(block.getChild(B_Y).getValue());
-					switch(t)
+					try
 					{
-						case "Normal" :
-							lb.add(new NormalBlock(new Coordonnees(x, y, z)));
-							break;
-						case "Blue" :
-							lb.add(new BlueBlock(new Coordonnees(x, y, z)));
-							break;
-						case "Light" :
-							lb.add(new LightBlock(new Coordonnees(x, y, z)));
-							break;
-						case "Red" :
-						default :
-							lb.add(new RedBlock(new Coordonnees(x, y, z)));
-							break;
+						Class<?> c = Class.forName("Game." + t);
+						Constructor<?> constructor = c.getConstructor(Coordonnees.class);
+						lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
+					} 
+					catch (ClassNotFoundException | SecurityException | IllegalArgumentException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 				}
 			}

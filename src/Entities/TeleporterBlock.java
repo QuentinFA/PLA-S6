@@ -1,8 +1,7 @@
-package Game;
+package Entities;
 
 import Actions.Color;
 import Actions.Coordonnees;
-import Entities.Character;
 
 public class TeleporterBlock extends Block
 {

@@ -2,6 +2,7 @@
 	Heigth = Hauteur
 	Length = Longueur
 	Width = Largeur
+	Type des blocks = Nom des classes
 -->
 <!-- <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>  -->
 
@@ -10,15 +11,15 @@
 	<length>1</length>
 	<width>3</width>
 	<floor level="0">
-		<block type="Normal">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>3</y>
 		</block>
-		<block type="Normal">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>2</y>
 		</block>
-		<block type="Light">
+		<block type="LightBlock">
 			<x>1</x>
 			<y>1</y>
 		</block>
