@@ -17,20 +17,14 @@
 	<width>3</width>
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
-		<block type="LightBlock" is_start="true">
+		<block type="NormalBlock" is_start="true">
 			<x>1</x>
 			<y>3</y>
 		</block>
-		<block type="LightBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>2</y>
 		</block>
-		<block type="LightBlock">
-			<x>1</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="1">
 		<block type="LightBlock">
 			<x>1</x>
 			<y>1</y>
