@@ -29,10 +29,28 @@ public class Menu_Level extends Menu
 		spr.setPosition(Graphic.SFML.getCenterCamera());
 		monde_list.add(spr);
 		
+		//Niveau 1
 		nbr_level_list.add(new ArrayList<Sprite>());
 		spr = new Sprite();
 		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
 		spr.setTextureRect(new IntRect(1 , 1 , 80 , 80));
+		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
+		nbr_level_list.get(0).add(spr);
+		
+		
+		//Niveau 2
+		nbr_level_list.add(new ArrayList<Sprite>());
+		spr = new Sprite();
+		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
+		spr.setTextureRect(new IntRect(83 , 1 , 80 , 80));
+		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
+		nbr_level_list.get(0).add(spr);
+		
+		//Niveau 3
+		nbr_level_list.add(new ArrayList<Sprite>());
+		spr = new Sprite();
+		spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NBR_LEVEL));
+		spr.setTextureRect(new IntRect(166 , 1 , 80 , 80));
 		spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
 		nbr_level_list.get(0).add(spr);
 		
@@ -74,6 +92,17 @@ public class Menu_Level extends Menu
 						if (i == 0)
 						{
 							Reader.read("levels/level1-1.xml");
+							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+						}
+						
+						else if (i == 1)
+						{
+							Reader.read("levels/level1-2.xml");
+							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+						}
+						else if (i == 2)
+						{
+							Reader.read("levels/level1-3.xml");
 							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 						}
 						return true;

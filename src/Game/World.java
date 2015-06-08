@@ -7,8 +7,9 @@ import java.util.List;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
-import Actions.Direction;
 import Entities.Block;
+import Entities.Character;
+import Entities.Entities;
 import UI.Graphic;
 
 public class World
@@ -16,6 +17,9 @@ public class World
 	public static World WORLD = null;
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
+	private List<Character> characterList = new ArrayList<Character>();
+	
+	private List<Entities> allList = new ArrayList<Entities>();
 	
 	// TODO Utile ?
 	private int width;
@@ -43,10 +47,15 @@ public class World
 		this.begining = begining;
 		
 		for (Block b : lb)
-			blockList.add(b);
+			addBlock(b);
+
+		addCharacter(new Character(begining, direction));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
+		
+		for (Character c : characterList)
+			c.setPosSprite(placeMe(c.getCoord()));
 		
 		this.starting_direction = direction;
 		
@@ -107,18 +116,30 @@ public class World
 	 * Ajoute un block au monde
 	 * @param b
 	 */
-	public void addBlock(Block b) {blockList.add(b);}
+	public void addBlock(Block b) 
+	{
+		blockList.add(b);
+		allList.add(b);
+	}
+	
+	public void addCharacter(Character c) 
+	{
+		characterList.add(c);
+		allList.add(c);
+	}
 	
 	public List<Block> getBlockList() {return blockList;}
+	
+	public List<Character> getCharacterList() {return characterList;}
 	
 	/**
 	 * Afficher tous les blocks
 	 */
 	public void afficherBlocks()
 	{
-		Collections.sort(blockList, new BlockComparator());
-		for (int i=0; i < blockList.size(); i++)
-			blockList.get(i).afficher();
+		Collections.sort(allList, new BlockComparator());
+		for (Entities obj : allList)
+			obj.afficher();
 	}
 	
 	/**

@@ -3,10 +3,11 @@ package Game;
 import java.util.Comparator;
 
 import Entities.Block;
+import Entities.Entities;
 
-public class BlockComparator implements Comparator<Block> 
+public class BlockComparator implements Comparator<Entities> 
 {
-	public int compare(Block b1, Block b2) 
+	public int compare(Entities b1, Entities b2) 
 	{
 		if (b1.getCoord().getY() > b2.getCoord().getY())
 			return -1;
