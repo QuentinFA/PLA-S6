@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import Game.Ressources.MUSIC;
 import UI.Graphic;
+import UI.Gui;
 import UI.Input;
 import UI.Menu;
 import UI.Menu.MENU;
@@ -39,8 +40,9 @@ public class LightBot
 				if (Menu.Mymenu.gerer())
 					Menu.Mymenu = null;
 			}
-			//if (World.WORLD != null)
-			//	World.WORLD.gerer();
+			
+			if (Gui.GUI != null)
+				Gui.GUI.gerer();
 			
 			Graphic.SFML.afficher();
 		}
