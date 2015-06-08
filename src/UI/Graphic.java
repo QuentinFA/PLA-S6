@@ -55,6 +55,8 @@ public class Graphic
 	public Vector2f getPositionCamera_f() {return Vector2f.sub(camera.getCenter(), Vector2f.div(camera.getSize(), 2));}
 	public Vector2i getPositionCamera_i() {return new Vector2i((int)getPositionCamera_f().x , (int)getPositionCamera_f().y);}
 	
+	public void invisible_cursor(){fenetre.setMouseCursorVisible(false);}
+	public void visible_cursor(){fenetre.setMouseCursorVisible(true);}
 	public Event getEvent() {return fenetre.pollEvent();}
 	
 	static boolean isOnSprite(Sprite s)

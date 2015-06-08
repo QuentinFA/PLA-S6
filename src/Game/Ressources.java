@@ -21,7 +21,8 @@ public class Ressources
 		NBR_LEVEL(),
 		ACTION(),
 		PERSO(),
-		NUAGE();
+		NUAGE(),
+		CURSOR();
 		
 		private Texture texture;
 		
@@ -57,7 +58,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
-		
+		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
 }
