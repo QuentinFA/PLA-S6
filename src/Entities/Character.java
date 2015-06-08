@@ -15,7 +15,7 @@ public class Character extends Entities
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche 
 	private Color couleur;
 	
-	Character(Coordonnees pos, int ori) 
+	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
 		orientation = ori;

@@ -7,7 +7,6 @@ import java.util.List;
 import org.jsfml.system.Vector2f;
 
 import Actions.Coordonnees;
-import Actions.Direction;
 import Entities.Block;
 import Entities.Character;
 import Entities.Entities;
@@ -48,10 +47,15 @@ public class World
 		this.begining = begining;
 		
 		for (Block b : lb)
-			blockList.add(b);
+			addBlock(b);
+
+		addCharacter(new Character(begining, direction));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
+		
+		for (Character c : characterList)
+			c.setPosSprite(placeMe(c.getCoord()));
 		
 		this.starting_direction = direction;
 		
