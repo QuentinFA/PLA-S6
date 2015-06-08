@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
@@ -185,6 +187,10 @@ public class Reader
 				}
 			}
 		}
+		
+		Set<Block> set = new HashSet<Block>();
+		set.addAll(lb);
+		lb = new ArrayList<Block>(set);
 		
 		World.WORLD = new World(length, width, name, lb, bng, dir);
 		Gui.GUI = new Gui(la, nbA, nbP);
