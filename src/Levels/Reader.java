@@ -19,6 +19,7 @@ import Actions.Color;
 import Actions.Coordonnees;
 import Entities.Block;
 import Game.World;
+import UI.Gui;
 
 
 public class Reader 
@@ -38,13 +39,16 @@ public class Reader
 	public static final String B_ACTION = "action";
 	public static final String B_FUNCTIONS = "functions";
 	public static final String B_MAIN = "main";
+	public static final String B_ACTION_MAIN = "nb_action";
+	public static final String B_PROCEDURE = "procedure";
+	public static final String B_PROCEDURE_NB = "nb_proc";
 	
 	public static Reader READER = new Reader();
 	
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int length = 0, width = 0;
+		int length = 0, width = 0, nbA = 0, nbP = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -133,14 +137,35 @@ public class Reader
 			{
 				for(Element f : e.getChildren())
 				{
-					// TODO
+					if(f.getValue().equals(B_MAIN))
+					{
+						try
+						{
+							nbA = f.getAttribute(B_ACTION_MAIN).getIntValue();
+						} 
+						catch (DataConversionException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					else if(f.getValue().equals(B_PROCEDURE))
+						try
+						{
+							nbP = f.getAttribute(B_PROCEDURE_NB).getIntValue();
+						} 
+						catch (DataConversionException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 				}
 			}
 		}
 		
 		World.WORLD = new World(length, width, name, lb, bng);
-		System.out.println(la.toString());
-		// TODO New GUI
+		// TODO Envoyer nbP (nombre de procédures) au GUI
+		Gui.GUI = new Gui(la, nbA);
 	}
 	
 }

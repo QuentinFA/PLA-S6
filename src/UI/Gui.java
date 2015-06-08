@@ -7,14 +7,18 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import UI.Input.BUTTON;
-import Actions.*;
+import Actions.Action;
+import Actions.Forward;
+import Actions.Jump;
+import Actions.Left_turn;
+import Actions.Right_turn;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import UI.Input.BUTTON;
 
 public class Gui 
 {
-	static Gui GUI = null;
+	public static Gui GUI = null;
 	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Action> actionList = new ArrayList<Action>();

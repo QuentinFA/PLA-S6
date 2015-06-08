@@ -8,7 +8,7 @@
 	Nom des actions disponnibles : Nom des classes
 	Procédures et nombre d'actions :
 		- Actions dans main : attribut action_nb
-		- Si procédures : <procedure nb="2"/>
+		- Si procédures : <procedure nb_proc="2"/>
 -->
 
 <map>
@@ -35,6 +35,6 @@
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
-		<!-- <procedure nb="0"/> -->
+		<!-- <procedure nb_proc="0"/> -->
 	</functions>
 </map>
