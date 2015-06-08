@@ -7,10 +7,15 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import Actions.*;
+import Actions.Action;
+import Actions.Forward;
+import Actions.Jump;
+import Actions.Left_turn;
+import Actions.Light;
+import Actions.Right_turn;
 import Game.Ressources;
-import Game.World;
 import Game.Ressources.TEXTURE;
+import Game.World;
 import UI.Input.BUTTON;
 
 public class Gui 

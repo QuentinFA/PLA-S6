@@ -2,7 +2,6 @@ package Game;
 
 import java.util.Comparator;
 
-import Entities.Block;
 import Entities.Entities;
 
 public class BlockComparator implements Comparator<Entities> 

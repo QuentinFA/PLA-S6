@@ -161,11 +161,6 @@ public class World
 		return true;
 	}
 	
-	public void light(Coordonnees np)
-	{
-		// TODO Light
-	}
-	
 	/**
 	 * Tri des blocs de la maps selon un type</br>
 	 * Exemple d'utilisation : getBlocksT(Block.class)
