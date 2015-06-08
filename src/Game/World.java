@@ -91,7 +91,7 @@ public class World
 			if (blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height > max_y)
 				max_y = blockList.get(i).getGlobalBounds().top + blockList.get(i).getGlobalBounds().height;	
 		}
-		return new Vector2f((max_x - min_x)/2.f, (max_y - min_y)/2.f);
+		return new Vector2f((max_x + min_x)/2.f, (max_y + min_y)/2.f);
 	}
 	
 	/**

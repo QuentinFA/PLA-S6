@@ -6,7 +6,6 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import Game.Block;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
@@ -74,7 +73,7 @@ public class Menu_Level extends Menu
 					{
 						if (i == 0)
 						{
-							Reader.read("src/Levels/lvl1.txt");
+							Reader.read("levels/level1-1.xml");
 							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 						}
 						return true;

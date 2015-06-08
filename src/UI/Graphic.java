@@ -109,7 +109,12 @@ public class Graphic
 		}
 	}
 	
-	public void setCenterCamera(Vector2f pos) {camera.setCenter(pos);}
+	public void setCenterCamera(Vector2f pos) 
+	{
+		camera.setCenter(pos);
+		boutonSound.setPosition(getPositionCamera_f());
+		placerFond();
+	}
 	
 	private void placerFond()
 	{

@@ -87,7 +87,7 @@ public class Reader
 					int y = Integer.valueOf(block.getChild(B_Y).getValue());
 					try
 					{
-						Class<?> c = Class.forName("Game." + t);
+						Class<?> c = Class.forName("Entities." + t);
 						Constructor<?> constructor = c.getConstructor(Coordonnees.class);
 						lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 					} 
