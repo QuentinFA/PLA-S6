@@ -19,6 +19,8 @@ public class Ressources
 		TITLE(),
 		MONDE1(),
 		NBR_LEVEL(),
+		ACTION(),
+		PERSO(),
 		NUAGE();
 		
 		private Texture texture;
@@ -53,6 +55,8 @@ public class Ressources
 		
 		TEXTURE.loadFromFile(TEXTURE.MONDE1, Paths.get("images/monde1.png"));
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
+		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
+		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
