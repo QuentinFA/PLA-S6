@@ -48,8 +48,7 @@
 			<x>-3</x>
 			<y>-1</y>
 		</block>
-	
-		
+
 	</floor>
 	<action_list>
 		<action>Forward</action>

@@ -98,12 +98,12 @@ public class Menu_Level extends Menu
 						else if (i == 1)
 						{
 							Reader.read("levels/level1-2.xml");
-							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+							//Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 						}
 						else if (i == 2)
 						{
 							Reader.read("levels/level1-3.xml");
-							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+						//	Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 						}
 						return true;
 					}
