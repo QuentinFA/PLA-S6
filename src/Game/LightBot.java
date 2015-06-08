@@ -2,43 +2,46 @@ package Game;
 
 import java.io.IOException;
 
-import Levels.Reader;
+import Game.Ressources.MUSIC;
 import UI.Graphic;
 import UI.Input;
 import UI.Menu;
+import UI.Menu.MENU;
 
 public class LightBot
 {
 	public static void main(String[] args)
 	{
-		Graphic.SFML.initialiser(800, 600);
+		Graphic.SFML.initialiser(1240, 780);
 		
-		try {Ressources.RESSOURCES.initialiser();}
+		try {Ressources.initialiser();}
 		catch (IOException e) {e.printStackTrace();}
 		
-		Reader.read("levels/level1-1.xml");
-		Graphic.SFML.placeCamera();
+		//Reader.read("levels/level1-1.xml");
+		//Graphic.SFML.placeCamera();
 		
-		System.out.println(World.WORLD.getBlockList().toString());
+		//System.out.println(World.WORLD.getBlockList().toString());
 		
 		//Reader.READER.read("src/Levels/lvl1.txt");
 		//Graphic.SFML.placeCamera();
-		Menu.change = 1;
-		Menu.change_menu();
+		
+		Menu.change_menu(MENU.MAIN);
+		Ressources.MUSIC.getMusic(MUSIC.MARIO).play();
+		Ressources.MUSIC.getMusic(MUSIC.MARIO).setLoop(true);
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{
+			if (Graphic.SFML.gerer()) 
+				return;
 			
-			//			if (Menu.Mymenu.gerer())
-			//			{
-			//				System.out.println("lightbot");
-			//				Menu_Main.MENU_MAIN = null;
-			//				Menu_Level.MENU_LEVEL.init();
-			//Reader.READER.read("src/Levels/lvl1.txt");
-			//			}
-			//TODO
-			//Main
-			Menu.Mymenu.gerer();
+			if (Menu.Mymenu != null)
+			{
+				if (Menu.Mymenu.gerer())
+					Menu.Mymenu = null;
+			}
+			else if (World.WORLD != null)
+				World.WORLD.gerer();
+			
 			Graphic.SFML.afficher();
 		}
 	}

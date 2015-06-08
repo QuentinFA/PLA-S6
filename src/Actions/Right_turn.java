@@ -3,15 +3,15 @@ import Entities.Character;
 
 public class Right_turn extends Action
 {
-	public Right_turn(int color) {c = color;}
+	public Right_turn(Color.COLOR c) {couleur = c;}
 	
 	/**
 	 * Tourne le character
-	 * @param p Character Ã  tourner
+	 * @param p Character a tourner
 	 */
-	public void execute(Character p)  {p.setOrientation((p.getOrientation()+1) % 4);}
-	
-	//Inutile
-	public Coordonnees execute(Coordonnees p, int orientation){return p;}
-	
+	public void execute(Character p)  
+	{
+		if (p.getColor() == couleur)
+			p.setOrientation((p.getOrientation()+1) % 4);
+	}
 }

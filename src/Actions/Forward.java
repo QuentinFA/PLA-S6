@@ -3,25 +3,24 @@ import Entities.Character;
 
 public class Forward extends Action
 {
-	public Forward(int color) {c = color;}
+	public Forward(Color.COLOR c) {couleur = c;}
 	
-	@Override
-	public Coordonnees execute(Coordonnees p, int orientation)
+	public void execute(Character p)
 	{
-		switch(orientation)
+		if (p.getColor() == couleur)
 		{
-			case Direction.NORTH :
-				return new Coordonnees(p.getX(), p.getY() + 1, p.getZ());
-			case Direction.WEST :
-				return new Coordonnees(p.getX() - 1, p.getY(), p.getZ());
-			case Direction.SOUTH :
-				return new Coordonnees(p.getX(), p.getY() - 1, p.getZ());
-			case Direction.EST :
-			default :
-				return new Coordonnees(p.getX() + 1, p.getY(), p.getZ());
+			Coordonnees coord = p.getCoord();
+			switch (p.getOrientation())
+			{
+				case Direction.NORTH:
+					p.setCoord(new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ())); break;
+				case Direction.EAST:
+					p.setCoord(new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ())); break;
+				case Direction.SOUTH:
+					p.setCoord(new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ())); break;
+				case Direction.WEST:
+					p.setCoord(new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ())); break;
+			}
 		}
 	}
-	
-	//Inutile
-	public void execute(Character p) {}
 }

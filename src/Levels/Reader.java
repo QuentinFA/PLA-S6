@@ -61,7 +61,7 @@ public class Reader
 		
 		for(Element e : le)
 		{
-			// Récupérationdes blocks d'un étage
+			// Recuperation des blocks d'un etage
 			if(e.getName() == B_FLOOR)
 			{
 				int z;

@@ -3,21 +3,14 @@ import Entities.Character;
 
 public abstract class Action 
 {
+	protected Color.COLOR couleur; // Couleur de l'action
+	
+	public Color.COLOR getColor() {return couleur;}
+	public void setColor(Color.COLOR c) {couleur = c;}
+	
 	/**
-	 * Application d'une action à partir d'une position
-	 * @param p : La position à partir de laquelle appliquer l'action
-	 * @param orientation : L'orientation pour effectuer l'action
-	 * @return : La coordonnées résultante
+	 * Application d'une action pour un personnage
+	 * @param p : Le personnage dont il est question
 	 */
-	
-	protected int c;
-	
-	public int getColor() {return c;}
-	
-	public void setColor(int color) {c = color;}
-	
-	public abstract Coordonnees execute(Coordonnees p, int orientation);
-	
-	//Pour left_turn et right_turn
 	public abstract void execute(Character p);
 }

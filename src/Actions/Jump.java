@@ -3,25 +3,24 @@ import Entities.Character;
 
 public class Jump extends Action
 {
-	public Jump(int color) {c = color;}
+	public Jump(Color.COLOR c) {couleur = c;}
 	
-	@Override
-	public Coordonnees execute(Coordonnees p, int orientation)
+	public void execute(Character p)
 	{
-		switch(orientation)
+		if (p.getColor() == couleur)
 		{
-			case Direction.NORTH :
-				return new Coordonnees(p.getX(), p.getY() + 1, p.getZ() + 1);
-			case Direction.WEST :
-				return new Coordonnees(p.getX() - 1, p.getY(), p.getZ() + 1);
-			case Direction.SOUTH :
-				return new Coordonnees(p.getX(), p.getY() - 1, p.getZ() + 1);
-			case Direction.EST :
-			default :
-				return new Coordonnees(p.getX() + 1, p.getY(), p.getZ() + 1);
+			Coordonnees coord = p.getCoord();
+			switch (p.getOrientation())
+			{
+				case Direction.NORTH:
+					p.setCoord(new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ()+1)); break;
+				case Direction.EAST:
+					p.setCoord(new Coordonnees(coord.getX()+1, coord.getY(), coord.getZ()+1)); break;
+				case Direction.SOUTH:
+					p.setCoord(new Coordonnees(coord.getX(), coord.getY()-1, coord.getZ()+1)); break;
+				case Direction.WEST:
+					p.setCoord(new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()+1)); break;
+			}
 		}
 	}
-	
-	//inutile
-	public void execute(Character p) {}
 }

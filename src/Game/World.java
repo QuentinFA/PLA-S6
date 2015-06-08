@@ -13,7 +13,6 @@ import UI.Graphic;
 public class World
 {
 	public static World WORLD = null;
-	//public static Menu MENU = null;
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	
@@ -31,35 +30,41 @@ public class World
 		WORLD = this;
 	}
 	
-	public World(int w, int h, String name, List<Block> lb) 
+	public World(int w, int h, String n, List<Block> lb) 
 	{
 		width = w;
 		height = h;
-		this.name = name;
+		name = n;
 		
-		for(Block b : lb)
+		for (Block b : lb)
 			blockList.add(b);
 		
-		for(Block b : blockList)
+		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
 		
 		WORLD = this;
 	}
 	
+
+	public boolean gerer()
+	{
+		return false;
+	}
 	public String getName()
 	{
 		return this.name;
+
 	}
 	
 	/**
-	 * Place un block en fonction de ses coordonn�es matricielles
+	 * Place un block en fonction de ses coordonnees matricielles
 	 * @param pos: la position matricielle
-	 * @return: la position � l'�cran
+	 * @return: la position a l'ecran
 	 */
 	public Vector2f placeMe(Coordonnees pos)
 	{
 		float pos_x, pos_y;
-		Vector2f center = new Vector2f(Graphic.SFML.getSizeFenetre().x/2, Graphic.SFML.getSizeFenetre().y/2);
+		Vector2f center = Graphic.SFML.getCenterCamera();
 		
 		pos_x = center.x + 40 * pos.getX() - 40 * pos.getY();
 		pos_y = center.y - 23 * pos.getX() - 23 * pos.getY() - 26 * pos.getZ();
@@ -95,10 +100,7 @@ public class World
 	 */
 	public void addBlock(Block b) {blockList.add(b);}
 	
-	public List<Block> getBlockList()
-	{
-		return this.blockList;
-	}
+	public List<Block> getBlockList() {return blockList;}
 	
 	/**
 	 * Afficher tous les blocks
@@ -120,7 +122,7 @@ public class World
 	 */
 	public boolean isValidPosition(Coordonnees p) throws OutOfMapException
 	{
-		if(p.getX() > width || p.getY() > height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
+		if (p.getX() >= width || p.getY() >= height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
 			throw new OutOfMapException();
 		return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()-1));
 	}
@@ -128,7 +130,6 @@ public class World
 	public void light(Coordonnees np)
 	{
 		// TODO Light
-		
 	}
 	
 	/**
@@ -149,4 +150,19 @@ public class World
 		
 		return l;
 	}
+
+	/**
+	 * Retourne le block en dessous de la coordonnee passee en parametre
+	 * @param coord
+	 * @return 
+	 */
+	public Block getUnderBlock(Coordonnees coord)
+	{
+		for (Block b : blockList)
+			if (b.getCoord().equals(new Coordonnees(coord.getX(), coord.getY(), coord.getZ() - 1)))
+				return b;
+
+		return null;
+	}
+
 }

@@ -1,114 +1,101 @@
 package UI;
 
-
-import org.jsfml.graphics.FloatRect;
-import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
-import org.jsfml.system.Vector2i;
 
 import Game.Ressources;
+import Game.Ressources.TEXTURE;
 
 public class Menu_Main extends Menu
 {
-
-	boolean mute = true;
-	boolean cursor_control = false;
-	Sprite bouton = new Sprite();
-	Sprite boutonSound = new Sprite();
-	Sprite cursor = new Sprite();
-
-
-	public void afficher()
-	{
-		Graphic.SFML.draw(bouton);
-		Graphic.SFML.draw(boutonSound);
-		if(!cursor_control)
-			Graphic.SFML.draw(cursor);
-	}
+	private static float boutonPlay_scale;
+	private boolean increase_boutonPlay_scale;
+	Sprite boutonPlay = new Sprite();
+	
+	Sprite title = new Sprite();
+	private static float title_scale;
+	private boolean increase_title_scale;
+	private static float title_rotation;
+	private boolean increase_title_rotation;
+	
 	public Menu_Main()
 	{
-
-		bouton.setTexture(Ressources.RESSOURCES.getTextureBouton());
-		bouton.setOrigin(Ressources.RESSOURCES.getSizeTextureBouton());
-		bouton.setPosition(Graphic.SFML.getCenterCamera());		
-
-
-		boutonSound.setPosition(Graphic.SFML.getPositionCamera_f());
-		boutonSound.setTexture(Ressources.RESSOURCES.getTextureBoutonSound());
-		boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-
-		// cursor.setTexture(Ressources.RESSOURCES.getTextureCursor()); TODO PB
-		cursor.setTexture(Ressources.RESSOURCES.getTexture1());
-
-
-	}
-	public void gerer()
-	{
-		if (Input.INPUT.again(Input.BUTTON.MLEFT))
-		{
-
-			if (isOnSprite(bouton)) //Play
-			{				
-				Menu.change = 2;
-				Menu.change_menu();
-				System.out.println("mute");
-				//				return true;
-			}
-			if (isOnSprite(boutonSound))
-			{
-				System.out.println(mute);
-				if(mute == true)
-				{
-					mute = false;
-					boutonSound.setTextureRect(new IntRect(102 , 1 , 100 , 100));
-					Ressources.RESSOURCES.getMusic().stop();
-				}
-				else if(mute == false)
-				{
-					mute = true;
-					boutonSound.setTextureRect(new IntRect(1 , 1 , 100 , 100));
-					Ressources.RESSOURCES.getMusic().play();
-				}
-			}
-		}
-		if(isOnSprite(bouton))
-		{
-			if(cursor_control)
-			{
-				cursor_control = false;//show another image for remplacing the cursor
-			    Graphic.SFML.invisible_cursor();
-			}
-			    Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-			    Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
-			    cursor.setPosition(new Vector2f((float)real_pos.x,(float)real_pos.y));
+		boutonPlay.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_PLAY));
+		boutonPlay.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.BOUTON_PLAY));
+		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
 		
+		boutonPlay_scale = 1.f;
+		increase_boutonPlay_scale = true;
+		
+		title.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.TITLE));
+		title.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.TITLE));
+		title.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/4.f));
+		
+		title_scale = 1.f;
+		increase_title_scale = true;
+		title_rotation = 0.f;
+		increase_title_rotation = true;
+	}
+	
+	public void afficher()
+	{
+		Graphic.SFML.draw(boutonPlay);
+		Graphic.SFML.draw(title);
+	}
+	
+	public boolean gerer()
+	{
+		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
+		boutonPlay.setScale(boutonPlay_scale, boutonPlay_scale);
+		if (increase_boutonPlay_scale)
+		{
+			boutonPlay_scale *= 1.005f;
+			if (boutonPlay_scale >= 1.1f)
+				increase_boutonPlay_scale = false;
 		}
 		else
 		{
-			System.out.println("show my cursor");
-			if(!cursor_control)
-			{
-				Graphic.SFML.visible_cursor();
-				cursor_control = true;
-			}
+			boutonPlay_scale /= 1.005f;
+			if (boutonPlay_scale <= 0.9f)
+				increase_boutonPlay_scale = true;
 		}
 
-		//		return false;
-	}
-	static boolean isOnSprite(Sprite s)
-	{
-		FloatRect rectangle = s.getGlobalBounds();
-
-		Vector2i pos_mouse = Graphic.SFML.getPositionMouse();
-		//		System.out.println("mouse in isOnSprite: " + pos_mouse);
-		Vector2i real_pos = Vector2i.add(pos_mouse, Graphic.SFML.getPositionCamera_i());
-
-		if (real_pos.x > rectangle.left && 
-				real_pos.x < (rectangle.left+rectangle.width) &&
-				real_pos.y > rectangle.top &&
-				real_pos.y < (rectangle.top+rectangle.height))
-			return true;
+		title.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/4.f));
+		title.setScale(title_scale, title_scale);
+		title.setRotation(title_rotation);
+		
+		if (increase_title_scale)
+		{
+			title_scale *= 1.005f;
+			if (title_scale >= 1.25f)
+				increase_title_scale = false;
+		}
+		else
+		{
+			title_scale /= 1.005f;
+			if (title_scale <= 0.75f)
+				increase_title_scale = true;
+		}
+		
+		if (increase_title_rotation)
+		{
+			title_rotation += 0.5f;
+			if (title_rotation >= 15.f)
+				increase_title_rotation = false;
+		}
+		else
+		{
+			title_rotation -= 0.5f;
+			if (title_rotation <= -15.f)
+				increase_title_rotation = true;
+		}
+			
+		if (Input.INPUT.again(Input.BUTTON.MLEFT))
+		{
+			if (Graphic.isOnSprite(boutonPlay)) //Play
+				Menu.change_menu(Menu.MENU.LEVEL);
+		}
+		
 		return false;
 	}
 }

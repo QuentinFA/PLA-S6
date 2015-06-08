@@ -1,31 +1,26 @@
 package UI;
 
-public abstract class Menu {
+public abstract class Menu 
+{
 	public static Menu Mymenu;
-	public static int change;
-	public static void change_menu()
+	
+	public enum MENU
 	{
-		if(change != 0)
-		{
-			if(change == 1)
-			{
-				System.out.println("lalalalalaal change");
-				Mymenu = new Menu_Main();
-			}
-			else if(change == 2)
-			{
-				System.out.println("lalalalalaal change 2222");
-				Mymenu = new Menu_Level();
-			}
-			else if(change == 3)
-			{
-				System.out.println("lalalalalaal change 3333");
-				Mymenu = new Menu_Map();
-			}
-		}
-		change = 0;
+		MAIN,
+		LEVEL,
+		MAP
 	}
-    public abstract void gerer();
+	
+	public static void change_menu(MENU m)
+	{
+		if (m == MENU.MAIN)
+			Mymenu = new Menu_Main();
+		else if (m == MENU.LEVEL)
+			Mymenu = new Menu_Level();
+		else if (m == MENU.MAP)
+			Mymenu = new Menu_Map();
+	}
+	
+    public abstract boolean gerer();
     public abstract void afficher();
-
 }

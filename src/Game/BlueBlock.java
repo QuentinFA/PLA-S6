@@ -4,28 +4,22 @@ import org.jsfml.graphics.IntRect;
 import Actions.Color;
 import Actions.Coordonnees;
 import Entities.Character;
+import Game.Ressources.TEXTURE;
 
 public class BlueBlock extends Block {
 	
 	/**
-	 * Crée un bloc qui colorie le personnage en bleu 
-	 * @param pos : Coordonnées de ce bloc
+	 * Cree un bloc qui colorie le personnage en bleu 
+	 * @param pos : Coordonnees de ce bloc
 	 */
-	public BlueBlock(Coordonnees pos)
+	public BlueBlock(Coordonnees c)
 	{
-		sprite.setTexture(Ressources.RESSOURCES.getTexture1());
+		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		sprite.setTextureRect(new IntRect(247, 1, 81, 81));
 		
-		position = pos;
-		
-		//sprite.setPosition(World.WORLD.placeMe(pos));
+		coord = c;
 	}
 	
-	public void perform(Character p) {
-		int c = Color.BLEU;
-		p.setColor(c);
-		//TODO Colorer personnage
-	}
-	
+	public void perform(Character p) {p.setColor(Color.COLOR.BLEU);}
 }
 
