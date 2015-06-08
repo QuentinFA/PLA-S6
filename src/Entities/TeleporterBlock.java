@@ -14,6 +14,9 @@ public class TeleporterBlock extends Block
 		couleur = Color.DEFAUT;
 	}
 	
+	public void setColor(Color c) {couleur = c;}
+	public Color getColor(){return couleur;}
+	
 	public TeleporterBlock(Coordonnees c, Color col)
 	{
 		coord = c;
@@ -22,7 +25,17 @@ public class TeleporterBlock extends Block
 	
 	public void lier(TeleporterBlock dest) {destination = dest;}
 	
-	Coordonnees getSortie() {return destination.coord;}
+	Coordonnees getSortie() {
+		if (destination != null)
+			return destination.coord;
+		else
+			return null;
+		}
 	
-	public void perform(Character p) {p.setCoord(getSortie());}
+	public void perform(Character p) {
+		Coordonnees s = getSortie();
+		if (s != null)
+			p.setCoord(s);
+			//TODO Animation de téléportation et déplacement du personnage
+		}
 }
