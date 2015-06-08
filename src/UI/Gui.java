@@ -9,6 +9,7 @@ import org.jsfml.system.Vector2f;
 
 import Actions.*;
 import Game.Ressources;
+import Game.World;
 import Game.Ressources.TEXTURE;
 import UI.Input.BUTTON;
 
@@ -66,7 +67,8 @@ public class Gui
 			{
 				if (Graphic.SFML.isOnSprite(spriteList.get(i)))
 				{
-					//TODO
+					System.out.println(actionList.get(i));
+					World.WORLD.getCharacterList().get(0).use_Action(actionList.get(i));
 				}
 			}
 		}

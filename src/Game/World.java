@@ -45,11 +45,14 @@ public class World
 		height = h;
 		name = n;
 		this.begining = begining;
+		this.starting_direction = direction;
 		
 		for (Block b : lb)
 			addBlock(b);
 
 		addCharacter(new Character(begining, direction));
+		
+		Graphic.SFML.setCenterCamera(getCenterWorld());
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
@@ -57,7 +60,7 @@ public class World
 		for (Character c : characterList)
 			c.setPosSprite(placeMe(c.getCoord()));
 		
-		this.starting_direction = direction;
+		
 		
 		WORLD = this;
 	}
@@ -154,7 +157,8 @@ public class World
 	{
 		/*if (p.getX() >= width || p.getY() >= height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
 			throw new OutOfMapException();*/
-		return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()-1));
+		//return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()));
+		return true;
 	}
 	
 	public void light(Coordonnees np)

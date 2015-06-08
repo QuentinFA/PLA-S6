@@ -74,7 +74,7 @@ public class Menu_Level extends Menu
 						if (i == 0)
 						{
 							Reader.read("levels/level1-1.xml");
-							Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
+						//	Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 						}
 						return true;
 					}

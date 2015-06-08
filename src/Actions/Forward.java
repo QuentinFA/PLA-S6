@@ -8,7 +8,7 @@ public class Forward extends Action
 	
 	public void execute(Character p)
 	{
-		if (p.getColor() == couleur)
+		if (p.getColor() == couleur || couleur == Color.DEFAUT)
 		{
 			Coordonnees coord = p.getCoord();
 			Coordonnees check = new Coordonnees(0,0,0);
@@ -23,8 +23,12 @@ public class Forward extends Action
 				case Direction.WEST:
 					check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()); break;
 			}
-			if(World.WORLD.isValidPosition(check))	
+			
+			if (World.WORLD.isValidPosition(check))
+			{
 				p.setCoord(check);
+				p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
+			}
 			//TODO Animation du personnage qui avance ou qui reste sur place ou qui tombe dans le vide
 		}
 	}
