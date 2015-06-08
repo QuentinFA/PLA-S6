@@ -4,6 +4,10 @@
 	Width = Largeur
 	is_start : Uniquement sur le block de départ /!\ Un seul départ possible
 	Type des blocks = Nom des classes
+	Nom des actions disponnibles : Nom des classes
+	Procédures et nombre d'actions :
+		- Actions dans main : attribut action_nb
+		- Si procédures : <procedure nb="2"/>
 -->
 <!-- <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>  -->
 
@@ -29,4 +33,8 @@
 		<action>Forward</action>
 		<action>Light</action>
 	</action_list>
+	<functions>
+		<main action_nb="3"/>
+		<!-- <procedure nb="0"/> -->
+	</functions>
 </map>
