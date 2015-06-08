@@ -164,8 +164,7 @@ public class Reader
 		}
 		
 		World.WORLD = new World(length, width, name, lb, bng);
-		// TODO Envoyer nbP (nombre de procédures) au GUI
-		Gui.GUI = new Gui(la, nbA);
+		Gui.GUI = new Gui(la, nbA, nbP);
 	}
 	
 }
