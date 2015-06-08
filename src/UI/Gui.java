@@ -7,11 +7,7 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import Actions.Action;
-import Actions.Forward;
-import Actions.Jump;
-import Actions.Left_turn;
-import Actions.Right_turn;
+import Actions.*;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import UI.Input.BUTTON;
@@ -41,6 +37,8 @@ public class Gui
 				spr.setTextureRect(new IntRect(163, 1, 80, 80));
 			else if (act instanceof Jump)
 				spr.setTextureRect(new IntRect(244, 1, 80, 80));
+			else if (act instanceof Light)
+				spr.setTextureRect(new IntRect(325, 1, 80, 80));
 				
 			spriteList.add(spr);
 		}
