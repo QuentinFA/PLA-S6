@@ -153,11 +153,12 @@ public class World
 	 * @return Selon si la position est valide
 	 * @throws OutOfMapException : Si la position est en dehors de la map
 	 */
-	public boolean isValidPosition(Coordonnees p)
+	public boolean isValidPosition(Coordonnees c)
 	{
-		/*if (p.getX() >= width || p.getY() >= height || p.getX() < 0 || p.getY() < 0 || p.getZ() < 0)
-			throw new OutOfMapException();*/
-		//return !blockList.contains(p) && blockList.contains(new Coordonnees(p.getX(), p.getY(), p.getZ()));
+		for(Entities b : allList) {
+			if(b.getCoord().equals(c))
+				return false;
+		}
 		return true;
 	}
 	
