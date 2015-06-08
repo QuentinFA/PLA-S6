@@ -59,7 +59,7 @@ public class Menu_Main extends Menu
 			if (boutonPlay_scale <= 0.9f)
 				increase_boutonPlay_scale = true;
 		}
-		
+
 		title.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/4.f));
 		title.setScale(title_scale, title_scale);
 		title.setRotation(title_rotation);
@@ -95,6 +95,7 @@ public class Menu_Main extends Menu
 			if (Graphic.isOnSprite(boutonPlay)) //Play
 				Menu.change_menu(Menu.MENU.LEVEL);
 		}
+		
 		return false;
 	}
 }

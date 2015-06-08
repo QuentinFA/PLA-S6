@@ -31,7 +31,6 @@ public class Menu_Level extends Menu
 		
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
-			
 		}
 		return false;
 	}

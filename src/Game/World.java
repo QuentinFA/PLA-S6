@@ -1,4 +1,5 @@
 package Game;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -44,9 +45,15 @@ public class World
 		WORLD = this;
 	}
 	
+<<<<<<< HEAD
 	public boolean gerer()
 	{
 		return false;
+=======
+	public String getName()
+	{
+		return this.name;
+>>>>>>> 4beea97a641d1aa8c45a7c0bfb69b9fb7a242141
 	}
 	
 	/**
@@ -126,6 +133,7 @@ public class World
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Renvoie la liste des blocks de la map de type du block b
 	 * @param b : Le typage de ce block correspondra a la liste des blocks qu'on renverra
 	 * @return l : Liste des blocks de la map du meme type que b
@@ -157,12 +165,26 @@ public class World
 			for (Block bl : blockList)
 				if (bl instanceof LightBlock) 
 					l.add(bl);
-		}
+=======
+	 * Tri des blocs de la maps selon un type</br>
+	 * Exemple d'utilisation : getBlocksT(Block.class)
+	 * @param blockType : Le type de blocs à récupérer
+	 * @return Liste de bloc de type blockType
+	 */
+	public List<Block> getBlocksByType(Class<? extends Block> blockType)
+	{
+		List<Block> l = new ArrayList<Block>();
 		
-		//TODO : block teleporteurs
+		for(Block b : blockList)
+		{
+			if(b.getClass().equals(blockType))
+				l.add(b);
+>>>>>>> 4beea97a641d1aa8c45a7c0bfb69b9fb7a242141
+		}
 		
 		return l;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Retourne le block en dessous de la coordonnee passee en parametre
@@ -178,3 +200,6 @@ public class World
 		return null;
 	}
 }
+=======
+}
+>>>>>>> 4beea97a641d1aa8c45a7c0bfb69b9fb7a242141
