@@ -14,13 +14,14 @@ import Game.Ressources.TEXTURE;
 
 public class Gui 
 {
-	static Gui GUI = null;
+	public static Gui GUI = null;
 	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Action> actionList = new ArrayList<Action>();
 	private int nbrAction;
+	private int nbrProc;
 	
-	public Gui(List<Action> nameList, int nbrA)
+	public Gui(List<Action> nameList, int nbrA, int nbrP)
 	{
 		Sprite spr;
 		for (Action act : nameList)
@@ -41,6 +42,7 @@ public class Gui
 		}
 		
 		nbrAction = nbrA;
+		nbrProc = nbrP;
 		actionList = nameList;
 		GUI = this;
 	}
