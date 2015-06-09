@@ -91,7 +91,7 @@ public class Menu_Level extends Menu
 		{
 			Graphic.SFML.draw(spr);
 		}
-		
+
 
 		for (ArrayList<Sprite> arr : nbr_level_list)
 			for (Sprite spr : arr)
@@ -136,17 +136,28 @@ public class Menu_Level extends Menu
 
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
-			for (ArrayList<Sprite> arr : nbr_level_list)
-				for (int i=0; i < arr.size(); i++)
-					if (Graphic.isOnSprite(arr.get(i)))
+			for (int i = 0; i< nbr_level_list.size() ; i++)
+				for (int j=0; j < nbr_level_list.get(i).size(); j++)
+				{	
+					if (i == 0 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
-						if (i == 0)
+						if (j == 0)
 							Reader.read("levels/level1-1.xml");
-						else if (i == 1)
+						else if (j == 1)
 							Reader.read("levels/level1-2.xml");
-						else if (i == 2)
+						else if (j == 2)
 							Reader.read("levels/level1-3.xml");
+						else if (j == 3)
+							Reader.read("levels/level1-4.xml");
 					}
+					else if(i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					{
+						if (j == 0)
+							Reader.read("levels/levelfor-1.xml");
+						else if (j == 1)
+							Reader.read("levels/levelfor-2.xml");
+					}
+				}
 			if(Graphic.isOnSprite(fleche_right))
 			{
 				if(nbr_monde<3)//nombre de niveau
