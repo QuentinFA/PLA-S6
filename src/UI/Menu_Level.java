@@ -31,7 +31,6 @@ public class Menu_Level extends Menu
 		Graphic.SFML.visible_cursor();
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
-		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
 		Sprite spr;
 		for(int i = 0 ; i < 2 ; i++)
 		{
@@ -103,6 +102,8 @@ public class Menu_Level extends Menu
 
 	public void gerer()
 	{
+
+		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
 		for (int i = 0 ; i < monde_list.size(); i++)
 		{
 			monde_list.get(i).setPosition(new Vector2f((i-nbr_monde)*Graphic.SFML.getSizeCamera().x+Graphic.SFML.getCenterCamera().x , Graphic.SFML.getCenterCamera().y));
