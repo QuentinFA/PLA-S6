@@ -78,7 +78,7 @@
 		<!--  <action>Fork</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="12"/>
+		<main nb_action="8"/>
 		<!-- <procedure nb_proc="1"/> -->
 	</functions>
 </map>

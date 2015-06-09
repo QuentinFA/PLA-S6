@@ -7,12 +7,7 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import Actions.Action;
-import Actions.Forward;
-import Actions.Jump;
-import Actions.Left_turn;
-import Actions.Light;
-import Actions.Right_turn;
+import Actions.*;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;

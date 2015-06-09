@@ -39,7 +39,7 @@
 			<x>1</x>
 			<y>1</y>
 		</block>
-		<block type="RedBlock">
+		<block type="TeleporterBlock">
 			<x>2</x>
 			<y>2</y>
 		</block>
@@ -51,7 +51,7 @@
 			<x>2</x>
 			<y>1</y>
 		</block>
-		<block type="RedBlock">
+		<block type="TeleporterBlock">
 			<x>2</x>
 			<y>5</y>
 		</block>
@@ -91,6 +91,10 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>Jump</action>
+		<action>Left_turn</action>
+		<action>Right_turn</action>
+		<action>Teleporter</action>
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
