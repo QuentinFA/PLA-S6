@@ -17,7 +17,7 @@ public class Ressources
 		BOUTON_SOUND(),
 		BOUTON_FLECHE(),
 		TITLE(),
-		MONDE1(),
+		MONDE(),
 		NBR_LEVEL(),
 		ACTION(),
 		PERSO(),
@@ -56,7 +56,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.NUAGE, Paths.get("images/nuages.png"));
 		TEXTURE.loadFromFile(TEXTURE.AURA, Paths.get("images/aura.png"));
 		
-		TEXTURE.loadFromFile(TEXTURE.MONDE1, Paths.get("images/monde1.png"));
+		TEXTURE.loadFromFile(TEXTURE.MONDE, Paths.get("images/monde.png"));
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
