@@ -9,7 +9,7 @@ import Actions.Coordonnees;
 
 public abstract class Entities {
 	
-	protected Sprite sprite = new Sprite(); //Sprite du block ou personnage
+	protected Sprite sprite = new Sprite(); //Sprite du block ou personnage ou chest
 	protected Coordonnees coord;
 	
 	public Coordonnees getCoord() {return coord;}

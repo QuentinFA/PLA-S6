@@ -14,14 +14,16 @@ public class Character extends Entities
 	private List<Action> lActions;
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
 	private Color couleur;
+	private Chest coffre;
 	
 	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
 		orientation = ori;
 		couleur = Color.DEFAUT;
+		coffre = null;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
-		setTextureOrientation(orientation);
+		setTextureOrientation();
 	}
 	
 	public Coordonnees getCoord() {return coord;}
@@ -30,11 +32,13 @@ public class Character extends Entities
 	public void setOrientation(int ori) 
 	{
 		orientation = ori;
-		setTextureOrientation(orientation);
+		setTextureOrientation();
 	}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
-	public void setTextureOrientation(int ori) {sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));}
+	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(1+82*orientation, 1, 81, 81));}
+	public Chest getChest() {return coffre;}
+	public void setChest(Chest c) {coffre = c;}
 	
 	public void add_action(Action a) {lActions.add(a);}
 	
