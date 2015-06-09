@@ -12,9 +12,8 @@
 -->
 
 <map>
+<!-- TODO PB : Hauteurs de 2 blocs pour descendre -->
 	<level_name>for-2</level_name>
-	<length>7</length>
-	<width>7</width>
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock">

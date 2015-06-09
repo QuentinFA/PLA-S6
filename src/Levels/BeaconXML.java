@@ -3,9 +3,6 @@ package Levels;
 public abstract class BeaconXML
 {
 	public static final String B_LEVEL_NAME = "level_name";
-	public static final String B_LENGTH = "length";
-	public static final String B_HEIGTH = "heigth";
-	public static final String B_WIDTH = "width";
 	public static final String B_FLOOR = "floor";
 	public static final String B_BLOCK = "block";
 	public static final String B_BLOCK_TYPE = "type";

@@ -13,8 +13,6 @@
 
 <map>
 	<level_name>fork-1</level_name>
-	<length>5</length>
-	<width>5</width>
 	<starting_dir>EAST</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
