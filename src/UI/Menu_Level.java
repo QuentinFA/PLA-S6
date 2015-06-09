@@ -32,7 +32,7 @@ public class Menu_Level extends Menu
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
 		Sprite spr;
-		for(int i = 0 ; i < 2 ; i++)
+		for(int i = 0 ; i < 3 ; i++)
 		{
 			spr = new Sprite();
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.MONDE));
