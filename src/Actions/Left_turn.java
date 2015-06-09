@@ -7,6 +7,6 @@ public class Left_turn extends Action
 	
 	public void execute(Character p)  
 	{
-		p.setOrientation((p.getOrientation()+1) % 4);
+		p.setOrientation((p.getOrientation()-1) % 4);
 	}
 }
