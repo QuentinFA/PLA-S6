@@ -62,7 +62,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
 		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
-		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/Menu.png"));
+		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/return.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
