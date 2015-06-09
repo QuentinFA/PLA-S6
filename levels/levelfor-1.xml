@@ -72,7 +72,7 @@
 		<action>Forward</action>
 		<action>Light</action>
 		<action>Jump</action>
-		<!--<action>Des</action>-->
+		<!--<action>For</action>-->
 	</action_list>
 	<functions>
 		<main nb_action="6"/>

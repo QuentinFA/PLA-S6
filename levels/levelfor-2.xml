@@ -12,7 +12,6 @@
 -->
 
 <map>
-<!-- TODO PB : Hauteurs de 2 blocs pour descendre -->
 	<level_name>for-2</level_name>
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
@@ -209,7 +208,7 @@
 		<action>Jump</action>
 		<action>Left_turn</action>
 		<action>Right_turn</action>
-		<!--  <action>Des</action> -->
+		<!--  <action>For</action> -->
 	</action_list>
 	<functions>
 		<main nb_action="12"/>

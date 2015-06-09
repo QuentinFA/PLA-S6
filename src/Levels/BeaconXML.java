@@ -2,6 +2,7 @@ package Levels;
 
 public abstract class BeaconXML
 {
+	public static final String B_MAP = "map";
 	public static final String B_LEVEL_NAME = "level_name";
 	public static final String B_FLOOR = "floor";
 	public static final String B_BLOCK = "block";

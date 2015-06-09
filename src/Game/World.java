@@ -9,6 +9,7 @@ import org.jsfml.system.Vector2f;
 import Actions.Coordonnees;
 import Entities.Block;
 import Entities.Character;
+import Entities.EntitieComparator;
 import Entities.Entities;
 import UI.Graphic;
 
@@ -21,8 +22,8 @@ public class World
 	
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
-	private Coordonnees coordStart; //Coordonnees du départ
-	private int orientStart; //Orientation du départ
+	private Coordonnees coordStart; //Coordonnees du dï¿½part
+	private int orientStart; //Orientation du dï¿½part
 	private Vector2f centerWorld = null;
 	
 	private String name;
@@ -162,8 +163,8 @@ public class World
 	
 	/**
 	 * Verification de la validite d'une coordonne</br>
-	 * Si quelque chose se trouve a cette coordonne, la coordonne n'est pas valide
-	 * @param c La coordonne a verifier
+	 * Si quelque chose se trouveï¿½a cette coordonne, la coordonne n'est pas valide
+	 * @param c La coordonne aï¿½verifier
 	 * @return True si valide, false sinon
 	 */
 	public boolean isValidPosition(Coordonnees c)
