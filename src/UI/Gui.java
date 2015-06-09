@@ -51,6 +51,8 @@ public class Gui
 				spr.setTextureRect(new IntRect(244, 1, 80, 80));
 			else if (act instanceof Light)
 				spr.setTextureRect(new IntRect(325, 1, 80, 80));
+			else if (act instanceof Teleporter)
+				spr.setTextureRect(new IntRect(406, 1, 80, 80));
 				
 			spriteList.add(spr);
 		}
