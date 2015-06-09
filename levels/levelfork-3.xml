@@ -1,0 +1,484 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Un fichier par level
+	Heigth = Hauteur
+	Length = Longueur
+	Width = Largeur
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible
+	Type des blocks = Nom des classes
+	Nom des actions disponnibles : Nom des classes
+	Procédures et nombre d'actions :
+		- Actions dans main : attribut action_nb
+		- Si procédures : <procedure nb_proc="2"/>
+-->
+
+<map>
+	<level_name>fork-2</level_name>
+	<starting_dir>NORTH</starting_dir>
+	<floor level="0">
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>-1</y>
+		</block>
+		<block type="LightBlock">
+			<x>-4</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<floor level="1">
+		<block type="LightBlock">
+			<x>-4</x>
+			<y>-2</y>
+		</block>
+		<block type="LightBlock">
+			<x>-2</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<floor level="2">
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<floor level="3">
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<floor level="4">
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock" is_start="true">
+			<x>0</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="LightBlock">
+			<x>-5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-4</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<action_list>
+		<action>Forward</action>
+		<action>Light</action>
+		<action>Jump</action>
+		<action>Left_turn</action>
+		<action>Right_turn</action>
+		<!--  <action>Des</action> -->
+		<!--  <action>Fork</action> -->
+	</action_list>
+	<functions>
+		<main nb_action="12"/>
+		<!-- <procedure nb_proc="1"/> -->
+	</functions>
+</map>
