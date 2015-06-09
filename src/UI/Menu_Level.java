@@ -7,6 +7,7 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 import Game.Ressources;
+import Game.World;
 import Game.Ressources.TEXTURE;
 import Levels.Reader;
 
@@ -20,6 +21,7 @@ public class Menu_Level extends Menu
 	private static float title_scale;
 	private boolean increase_title_scale;
 	private int nbr_monde = 0;
+	private Sprite returnMenu = new Sprite();
 
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
@@ -27,6 +29,9 @@ public class Menu_Level extends Menu
 	public Menu_Level()
 	{	
 		Graphic.SFML.visible_cursor();
+		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
+		returnMenu.setTextureRect(new IntRect(1,1,100,100));
+		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
 		Sprite spr;
 		for(int i = 0 ; i < 2 ; i++)
 		{
@@ -93,6 +98,7 @@ public class Menu_Level extends Menu
 				Graphic.SFML.draw(spr);
 		if(nbr_monde > 0)
 			Graphic.SFML.draw(fleche_left);
+		Graphic.SFML.draw(returnMenu);
 	}
 
 	public void gerer()
@@ -153,6 +159,10 @@ public class Menu_Level extends Menu
 				if(nbr_monde>0)
 					nbr_monde--;
 
+			}
+			if (Graphic.isOnSprite(this.returnMenu))
+			{
+				Menu.change_menu(Menu.MENU.MAIN);
 			}
 		}
 
