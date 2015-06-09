@@ -8,10 +8,11 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 import Actions.*;
+import Game.Input;
 import Game.Ressources;
+import Game.Input.BUTTON;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import UI.Input.BUTTON;
 
 public class Gui 
 {

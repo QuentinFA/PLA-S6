@@ -22,7 +22,8 @@ import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
-import UI.Input.BUTTON;
+import Game.Input;
+import Game.Input.BUTTON;
 import Game.Ressources;
 import Game.Ressources.MUSIC;
 import Game.Ressources.TEXTURE;

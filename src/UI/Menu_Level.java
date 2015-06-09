@@ -6,10 +6,12 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
+import Game.Input;
 import Game.Ressources;
 import Game.World;
 import Game.Ressources.TEXTURE;
 import Levels.Reader;
+import UI.Menu.MENU;
 
 public class Menu_Level extends Menu
 {
@@ -157,6 +159,15 @@ public class Menu_Level extends Menu
 							Reader.read("levels/levelfor-1.xml");
 						else if (j == 1)
 							Reader.read("levels/levelfor-2.xml");
+					}
+					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					{
+						if (j == 0)
+							Reader.read("levels/levelfork-1.xml");
+						else if (j == 1)
+							Reader.read("levels/levelfork-2.xml");
+						else if (j == 2)
+							Reader.read("levels/levelfork-3.xml");
 					}
 				}
 			if(Graphic.isOnSprite(fleche_right))

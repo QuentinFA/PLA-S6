@@ -5,7 +5,6 @@ import java.io.IOException;
 import Game.Ressources.MUSIC;
 import UI.Graphic;
 import UI.Gui;
-import UI.Input;
 import UI.Menu;
 import UI.Menu.MENU;
 

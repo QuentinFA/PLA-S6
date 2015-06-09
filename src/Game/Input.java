@@ -1,10 +1,12 @@
-package UI;
+package Game;
 
 import org.jsfml.window.Keyboard;
 import org.jsfml.window.Keyboard.Key;
 import org.jsfml.window.Mouse;
 import org.jsfml.window.Mouse.Button;
 import org.jsfml.window.event.Event;
+
+import UI.Graphic;
 
 public class Input 
 {

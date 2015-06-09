@@ -2,10 +2,10 @@ package Levels;
 
 import java.io.IOException;
 
+import Game.Input;
 import Game.Ressources;
 import UI.Graphic;
 import UI.Gui;
-import UI.Input;
 import UI.Menu;
 
 public class LevelPreview
