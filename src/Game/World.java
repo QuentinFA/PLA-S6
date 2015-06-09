@@ -21,8 +21,8 @@ public class World
 	
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
-	private Coordonnees coordStart; //Coordonnees du d�part
-	private int orientStart; //Orientation du d�part
+	private Coordonnees coordStart; //Coordonnees du d�part
+	private int orientStart; //Orientation du d�part
 	private Vector2f centerWorld = null;
 	
 	private String name;
@@ -162,8 +162,8 @@ public class World
 	
 	/**
 	 * Verification de la validite d'une coordonne</br>
-	 * Si quelque chose se trouve�a cette coordonne, la coordonne n'est pas valide
-	 * @param c La coordonne a�verifier
+	 * Si quelque chose se trouve�a cette coordonne, la coordonne n'est pas valide
+	 * @param c La coordonne a�verifier
 	 * @return True si valide, false sinon
 	 */
 	public boolean isValidPosition(Coordonnees c)
@@ -173,6 +173,19 @@ public class World
 				return false;
 		
 		return true;
+	}
+	
+	/**
+	 * Renvoie l'entité qui se trouve à la coordonnée donnée
+	 * @param c La coordonnee où l'on cherche l'entité
+	 * @return renvoie l'entité si elle existe, sinon null
+	 */
+	public Entities getEntitiesAt(Coordonnees c) {
+		for(Entities b : allList)
+			if(b.getCoord().equals(c))
+				return b;
+		
+		return null;
 	}
 	
 	/**
@@ -188,6 +201,23 @@ public class World
 		for(Block b : blockList)
 			if(b.getClass().equals(blockType))
 				l.add(b);
+		
+		return l;
+	}
+	
+	/**
+	 * Recupere la liste des entities d'un type</br>
+	 * Exemple d'utilisation : getEntitiesByType(Entities.class)
+	 * @param EntitesType Le type de l'entité a recuperer
+	 * @return La liste des entities du type entitiesType
+	 */
+	public List<Entities> getEntitiesByType(Class<? extends Entities> EntitiesType)
+	{
+		List<Entities> l = new ArrayList<Entities>();
+		
+		for(Entities e : this.allList)
+			if(e.getClass().equals(EntitiesType))
+				l.add(e);
 		
 		return l;
 	}

@@ -24,7 +24,8 @@ public class Ressources
 		AURA(),
 		NUAGE(),
 		CURSOR(),
-		RETURN_MENU;
+		RETURN_MENU(),
+		CHEST();
 
 		private Texture texture;
 		
@@ -63,7 +64,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
 		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/return.png"));
-		
+		TEXTURE.loadFromFile(TEXTURE.CHEST, Paths.get("images/chest.png"));
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
 }
