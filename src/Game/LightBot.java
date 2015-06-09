@@ -21,7 +21,6 @@ public class LightBot
 		Menu.change_menu(MENU.MAIN);
 		Ressources.MUSIC.getMusic(MUSIC.MARIO).play();
 		Ressources.MUSIC.getMusic(MUSIC.MARIO).setLoop(true);
-		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{
 			if (Graphic.SFML.gerer()) 

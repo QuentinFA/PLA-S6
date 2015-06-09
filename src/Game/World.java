@@ -177,6 +177,19 @@ public class World
 	}
 	
 	/**
+	 * Renvoie l'entité qui se trouve à la coordonnée donnée
+	 * @param c La coordonnee où l'on cherche l'entité
+	 * @return renvoie l'entité si elle existe, sinon null
+	 */
+	public Entities getEntitiesAt(Coordonnees c) {
+		for(Entities b : allList)
+			if(b.getCoord().equals(c))
+				return b;
+		
+		return null;
+	}
+	
+	/**
 	 * Recupere la liste des blocks d'un type</br>
 	 * Exemple d'utilisation : getBlocksT(Block.class)
 	 * @param blockType Le type de blocs a recuperer
@@ -189,6 +202,23 @@ public class World
 		for(Block b : blockList)
 			if(b.getClass().equals(blockType))
 				l.add(b);
+		
+		return l;
+	}
+	
+	/**
+	 * Recupere la liste des entities d'un type</br>
+	 * Exemple d'utilisation : getEntitiesByType(Entities.class)
+	 * @param EntitesType Le type de l'entité a recuperer
+	 * @return La liste des entities du type entitiesType
+	 */
+	public List<Entities> getEntitiesByType(Class<? extends Entities> EntitiesType)
+	{
+		List<Entities> l = new ArrayList<Entities>();
+		
+		for(Entities e : this.allList)
+			if(e.getClass().equals(EntitiesType))
+				l.add(e);
 		
 		return l;
 	}

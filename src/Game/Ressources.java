@@ -17,13 +17,15 @@ public class Ressources
 		BOUTON_SOUND(),
 		BOUTON_FLECHE(),
 		TITLE(),
-		MONDE1(),
+		MONDE(),
 		NBR_LEVEL(),
 		ACTION(),
 		PERSO(),
 		AURA(),
 		NUAGE(),
-		CURSOR();
+		CURSOR(),
+		RETURN_MENU(),
+		CHEST();
 
 		private Texture texture;
 		
@@ -56,12 +58,13 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.NUAGE, Paths.get("images/nuages.png"));
 		TEXTURE.loadFromFile(TEXTURE.AURA, Paths.get("images/aura.png"));
 		
-		TEXTURE.loadFromFile(TEXTURE.MONDE1, Paths.get("images/monde1.png"));
+		TEXTURE.loadFromFile(TEXTURE.MONDE, Paths.get("images/monde.png"));
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
 		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
-		
+		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/return.png"));
+		TEXTURE.loadFromFile(TEXTURE.CHEST, Paths.get("images/chest.png"));
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
 }
