@@ -11,6 +11,8 @@
 		- Si procédures : <procedure nb_proc="2"/>
 -->
 
+
+<!-- Ifthenelse level easy -->
 <map>
 	<level_name>1-1</level_name>
 	<starting_dir>SOUTH</starting_dir>
