@@ -27,7 +27,11 @@ public class Character extends Entities
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
-	public void setOrientation(int ori) {orientation = ori;}
+	public void setOrientation(int ori) 
+	{
+		orientation = ori;
+		setTextureOrientation(orientation);
+	}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
 	public void setTextureOrientation(int ori) {sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));}

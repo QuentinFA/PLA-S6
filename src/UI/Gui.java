@@ -37,9 +37,9 @@ public class Gui
 			
 			if (act instanceof Forward)
 				spr.setTextureRect(new IntRect(1, 1, 80, 80));
-			else if (act instanceof Left_turn)
-				spr.setTextureRect(new IntRect(82, 1, 80, 80));
 			else if (act instanceof Right_turn)
+				spr.setTextureRect(new IntRect(82, 1, 80, 80));
+			else if (act instanceof Left_turn)
 				spr.setTextureRect(new IntRect(163, 1, 80, 80));
 			else if (act instanceof Jump)
 				spr.setTextureRect(new IntRect(244, 1, 80, 80));
