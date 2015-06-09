@@ -9,6 +9,7 @@ import org.jsfml.system.Vector2f;
 import Actions.Coordonnees;
 import Entities.Block;
 import Entities.Character;
+import Entities.EntitieComparator;
 import Entities.Entities;
 import UI.Graphic;
 
