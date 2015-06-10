@@ -2,11 +2,11 @@ package Entities;
 
 import org.jsfml.graphics.IntRect;
 
-import Actions.Color;
-import Actions.Coordonnees;
-import Actions.Forward;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Forward;
 
 public class ChestForward extends Chest 
 {

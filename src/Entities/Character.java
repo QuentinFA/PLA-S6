@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.jsfml.graphics.IntRect;
 
-import Actions.*;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.*;
 
 
 public class Character extends Entities

@@ -1,6 +1,6 @@
 package Entities;
 
-import Actions.Action;
+import Prog.Action;
 
 public abstract class Chest extends Entities 
 {

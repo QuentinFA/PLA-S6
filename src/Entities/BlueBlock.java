@@ -1,10 +1,10 @@
 package Entities;
 import org.jsfml.graphics.IntRect;
 
-import Actions.Color;
-import Actions.Coordonnees;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.Color;
+import Prog.Coordonnees;
 
 public class BlueBlock extends Block 
 {

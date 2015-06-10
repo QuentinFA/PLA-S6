@@ -11,14 +11,14 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import Actions.Action;
-import Actions.Color;
-import Actions.Coordonnees;
-import Actions.Forward;
-import Actions.Orientation;
 import Entities.Block;
 import Entities.BlockComparator;
 import Entities.NormalBlock;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Forward;
+import Prog.Orientation;
 
 public class Writer
 {

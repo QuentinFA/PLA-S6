@@ -1,10 +1,10 @@
 package Entities;
 
-import Actions.Color;
-import Actions.Coordonnees;
-import Actions.Right_turn;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Right_turn;
 
 public class ChestRight_turn extends Chest 
 {

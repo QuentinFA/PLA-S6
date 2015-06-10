@@ -1,10 +1,10 @@
 package Entities;
 
-import Actions.Color;
-import Actions.Coordonnees;
-import Actions.Light;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Light;
 
 public class ChestLight extends Chest 
 {

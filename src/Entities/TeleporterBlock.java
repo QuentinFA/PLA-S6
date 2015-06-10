@@ -1,7 +1,7 @@
 package Entities;
 
-import Actions.Color;
-import Actions.Coordonnees;
+import Prog.Color;
+import Prog.Coordonnees;
 
 public class TeleporterBlock extends Block
 {

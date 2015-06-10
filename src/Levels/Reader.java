@@ -16,12 +16,12 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import Actions.Action;
-import Actions.Color;
-import Actions.Coordonnees;
-import Actions.Orientation;
 import Entities.Block;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Orientation;
 import UI.Gui;
 import UI.Menu;
 

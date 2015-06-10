@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.jsfml.system.Vector2f;
 
-import Actions.Coordonnees;
 import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
+import Prog.Coordonnees;
 import UI.Graphic;
 
 public class World

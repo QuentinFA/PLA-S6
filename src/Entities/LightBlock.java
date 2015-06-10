@@ -2,9 +2,9 @@ package Entities;
 
 import org.jsfml.graphics.IntRect;
 
-import Actions.Coordonnees;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Prog.Coordonnees;
 
 public class LightBlock extends Block 
 {

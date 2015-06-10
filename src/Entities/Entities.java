@@ -4,8 +4,8 @@ import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
+import Prog.Coordonnees;
 import UI.Graphic;
-import Actions.Coordonnees;
 
 public abstract class Entities {
 	

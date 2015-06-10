@@ -1,4 +1,4 @@
-package Actions;
+package Prog;
 
 /**
  * Type couleur

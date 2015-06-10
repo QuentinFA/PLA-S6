@@ -1,4 +1,4 @@
-package Actions;
+package Prog;
 
 import Entities.Block;
 import Entities.Character;

@@ -1,4 +1,4 @@
-package Actions;
+package Prog;
 import Entities.Character;
 
 public class Left_turn extends Action

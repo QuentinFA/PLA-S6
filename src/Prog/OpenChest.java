@@ -1,4 +1,4 @@
-package Actions;
+package Prog;
 
 import Entities.Character;
 import Entities.Chest;
