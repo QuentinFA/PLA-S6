@@ -1,6 +1,7 @@
 package Prog;
 
-public enum TypeProcedure {
+public enum TypeProcedure 
+{
 	COMMUN,
 	FORK
 }

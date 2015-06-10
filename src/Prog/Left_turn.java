@@ -7,9 +7,7 @@ public class Left_turn extends Action
 
 	public void execute(Character p)  
 	{
-		if ( (p.getColor() == Color.DEFAUT) || (p.getColor() == couleur) )
-		{
+		if (p.getColor() == Color.DEFAUT || p.getColor() == couleur)
 			p.setOrientation((4+p.getOrientation()-1) % 4);
-		}
 	}
 }

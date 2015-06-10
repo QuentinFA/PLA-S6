@@ -8,10 +8,8 @@ import org.jsfml.system.Vector2f;
 
 import Game.Input;
 import Game.Ressources;
-import Game.World;
 import Game.Ressources.TEXTURE;
 import Levels.Reader;
-import UI.Menu.MENU;
 
 public class Menu_Level extends Menu
 {
@@ -19,7 +17,7 @@ public class Menu_Level extends Menu
 	ArrayList<ArrayList<Sprite>> nbr_level_list = new ArrayList<ArrayList<Sprite>>();
 
 	ArrayList<Sprite> aura_list = new ArrayList<Sprite>();
-	//private Sprite aura
+
 	private static float title_scale;
 	private boolean increase_title_scale;
 	private int nbr_monde = 0;
@@ -47,7 +45,6 @@ public class Menu_Level extends Menu
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.AURA));
 			spr.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.AURA));
 			aura_list.add(spr);
-
 		}
 
 		title_scale = 1.25f;
@@ -75,19 +72,14 @@ public class Menu_Level extends Menu
 		fleche_left.setTextureRect(new IntRect(102 , 1 , 100 , 100));
 		fleche_left.setOrigin(new Vector2f(fleche_left.getTextureRect().width/2.f, fleche_left.getTextureRect().height/2.f));
 		fleche_left.setPosition(Graphic.SFML.getCenterCamera().x - Graphic.SFML.getSizeCamera().x/2.f + fleche_left.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
-
-
-
 	}
 
 	public void afficher()
 	{
-		if(nbr_monde<3)
+		if(nbr_monde < 3)
 			Graphic.SFML.draw(fleche_right);
 		for(Sprite spr: aura_list)
-		{
 			Graphic.SFML.draw(spr);
-		}
 		for (Sprite spr : monde_list)
 		{
 			Graphic.SFML.draw(spr);
@@ -97,6 +89,7 @@ public class Menu_Level extends Menu
 		for (ArrayList<Sprite> arr : nbr_level_list)
 			for (Sprite spr : arr)
 				Graphic.SFML.draw(spr);
+		
 		if(nbr_monde > 0)
 			Graphic.SFML.draw(fleche_left);
 		Graphic.SFML.draw(returnMenu);
@@ -107,10 +100,8 @@ public class Menu_Level extends Menu
 
 		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
 		for (int i = 0 ; i < monde_list.size(); i++)
-		{
 			monde_list.get(i).setPosition(new Vector2f((i-nbr_monde)*Graphic.SFML.getSizeCamera().x+Graphic.SFML.getCenterCamera().x , Graphic.SFML.getCenterCamera().y));
-
-		}
+		
 		for(int i = 0; i < aura_list.size(); i++)
 		{
 			aura_list.get(i).setPosition(monde_list.get(i).getPosition());
@@ -170,25 +161,17 @@ public class Menu_Level extends Menu
 							Reader.read("levels/levelfork-3.xml");
 					}
 				}
+			
 			if(Graphic.isOnSprite(fleche_right))
-			{
-				if(nbr_monde<3)//nombre de niveau
+				if(nbr_monde < 3) //Nombre de monde
 					nbr_monde++;
-
-
-			}
+			
 			if(Graphic.isOnSprite(fleche_left))
-			{
-				if(nbr_monde>0)
+				if(nbr_monde > 0)
 					nbr_monde--;
-
-			}
+			
 			if (Graphic.isOnSprite(this.returnMenu))
-			{
 				Menu.change_menu(Menu.MENU.MAIN);
-			}
 		}
-
-
 	}
 }

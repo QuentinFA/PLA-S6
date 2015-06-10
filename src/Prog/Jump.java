@@ -8,7 +8,7 @@ public class Jump extends Action
 	
 	public void execute(Character p)
 	{
-		if ( (p.getColor() == Color.DEFAUT) || (p.getColor() == couleur) )
+		if (p.getColor() == Color.DEFAUT || p.getColor() == couleur)
 		{
 			Coordonnees coord = p.getCoord();
 			Coordonnees check;

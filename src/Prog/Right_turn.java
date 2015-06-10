@@ -7,9 +7,7 @@ public class Right_turn extends Action
 
 	public void execute(Character p)  
 	{
-		if ( (p.getColor() == Color.DEFAUT) || (p.getColor() == couleur) )
-		{
+		if (p.getColor() == Color.DEFAUT || p.getColor() == couleur)
 			p.setOrientation((p.getOrientation()+1) % 4);
-		}
 	}
 }

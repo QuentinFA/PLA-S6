@@ -1,6 +1,6 @@
 package Prog;
-import Entities.Block;
 import Entities.Character;
+import Entities.Entities;
 import Entities.LightBlock;
 import Game.World;
 
@@ -10,9 +10,9 @@ public class Light extends Action
 
 	public void execute(Character p) 
 	{
-		if ( (p.getColor() == Color.DEFAUT) || (p.getColor() == couleur) )
+		if (p.getColor() == Color.DEFAUT || p.getColor() == couleur)
 		{
-			Block b = World.WORLD.getUnderBlock(p.getCoord());
+			Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
 			if (b != null)
 				if (b instanceof LightBlock)
 					((LightBlock) b).reverseLight();

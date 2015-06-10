@@ -92,28 +92,15 @@ public class Gui
 				Menu.change_menu(Menu.MENU.LEVEL);
 			}
 			else
-			{
 				for (int i=0; i < spriteList.size(); i++)
-				{
 					if (Graphic.isOnSprite(spriteList.get(i)))
 						World.WORLD.getCharacterList().get(0).use_Action(actionList.get(i));
-				}
-			}
 		}
 	}
 
-	public int getNbrAction()
-	{
-		return nbrAction;
-	}
+	public int getNbrAction() {return nbrAction;}
 
-	public int getNbrProc()
-	{
-		return nbrProc;
-	}
+	public int getNbrProc() {return nbrProc;}
 	
-	public List<Action> getActionList()
-	{
-		return actionList;
-	}
+	public List<Action> getActionList() {return actionList;}
 }

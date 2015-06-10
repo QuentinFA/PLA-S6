@@ -59,8 +59,5 @@ public class Character extends Entities
 	 *  Effectue l'action pour le personnage
 	 * @param a Action a effectuer par le personnage
 	 */
-	public void use_Action(Action a) 
-	{	
-		a.execute(this);
-	}
+	public void use_Action(Action a) {a.execute(this);}
 }

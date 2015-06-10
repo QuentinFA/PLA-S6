@@ -1,3 +1,4 @@
+
 package Entities;
 
 import java.util.Comparator;
@@ -19,6 +20,7 @@ public class EntitieComparator implements Comparator<Entities>
 		}
 		
 		return y;*/
+		
 		if (b1.getCoord().getY() > b2.getCoord().getY())
 			return -1;
 		else if (b1.getCoord().getY() < b2.getCoord().getY())

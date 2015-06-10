@@ -27,14 +27,13 @@ public class Writer
 	 * @param fileName : Le nom du fichier.xml
 	 * @param levelName : Le nom du niveau
 	 * @param blockList : La liste des blocs composant le niveau
-	 * @param startingOrientation : L'orientation de début
-	 * @param startingPosition : La position de départ (doit correspondre aux coordonnées d'un bloc existant)
-	 * @param allowedActions : Liste des actions autorisées pour ce niveau
+	 * @param startingOrientation : L'orientation de debut
+	 * @param startingPosition : La position de depart (doit correspondre aux coordonnees d'un bloc existant)
+	 * @param allowedActions : Liste des actions autorisees pour ce niveau
 	 * @param nbActionMain : Le nombre d'actions possibles dans la procédure main
-	 * @param nbProcedures : Le nombre de procédure autorisées pour le niveau
+	 * @param nbProcedures : Le nombre de procedure autorisees pour le niveau
 	 */
-	public static void write(String fileName, World w, List<Action> allowedActions,
-			int nbActionMain, int nbProcedures)
+	public static void write(String fileName, World w, List<Action> allowedActions, int nbActionMain, int nbProcedures)
 	{
 		Element root = new Element(BeaconXML.B_MAP);
 		Document doc = new Document(root);
@@ -78,9 +77,7 @@ public class Writer
 				floor.setAttribute(new Attribute(BeaconXML.B_LEVEL, String.valueOf(floor_level)));
 			}
 			Element block = new Element(BeaconXML.B_BLOCK);
-			if(b.getCoord().equals(new Coordonnees(w.getStartingPosition().getX(), 
-					w.getStartingPosition().getY(),
-					w.getStartingPosition().getZ() - 1)))
+			if (b.getCoord().equals(new Coordonnees(w.getStartingCoord().getX(), w.getStartingCoord().getY(), w.getStartingCoord().getZ() - 1)))
 				block.setAttribute(BeaconXML.B_STARTING_BLOCK, "true");
 			block.setAttribute(BeaconXML.B_BLOCK_TYPE, b.getClass().getSimpleName());
 			block.addContent(new Element(BeaconXML.B_X).setText(String.valueOf(b.getCoord().getX())));
@@ -107,7 +104,7 @@ public class Writer
 		
 		root.setContent(content);
 		
-		// Ecriture du fichier
+		//Ecriture du fichier
 		try
 		{
 			XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());

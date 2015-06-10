@@ -93,7 +93,7 @@ public class Reader
 					} 
 					catch (ClassNotFoundException | SecurityException | IllegalArgumentException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e1)
 					{
-						// TODO Problème avec le XML
+						// TODO Probleme avec le XML
 						e1.printStackTrace();
 					}
 				}

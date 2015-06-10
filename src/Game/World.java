@@ -181,7 +181,8 @@ public class World
 	 * @param c La coordonnee où l'on cherche l'entité
 	 * @return renvoie l'entité si elle existe, sinon null
 	 */
-	public Entities getEntitiesAt(Coordonnees c) {
+	public Entities getEntitiesAt(Coordonnees c) 
+	{
 		for(Entities b : allList)
 			if(b.getCoord().equals(c))
 				return b;
@@ -222,29 +223,9 @@ public class World
 		
 		return l;
 	}
-
-	/**
-	 * Retourne le block en dessous de la coordonnee passee en parametre
-	 * @param coord La coordonnee a tester
-	 * @return Le block sous la coordonnee, null si rien
-	 */
-	public Block getUnderBlock(Coordonnees coord)
-	{
-		for (Block b : blockList)
-			if (b.getCoord().equals(new Coordonnees(coord.getX(), coord.getY(), coord.getZ() - 1)))
-				return b;
-
-		return null;
-	}
 	
-	public int getStartingOrientation()
-	{
-		return orientStart;
-	}
+	public int getStartingOrientation() {return orientStart;}
 	
-	public Coordonnees getStartingPosition()
-	{
-		return coordStart;
-	}
+	public Coordonnees getStartingCoord() {return coordStart;	}
 
 }

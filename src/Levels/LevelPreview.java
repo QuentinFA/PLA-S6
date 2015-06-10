@@ -21,8 +21,7 @@ public class LevelPreview
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.read(levelPath);
-		Writer.write("levels/test2.xml", World.WORLD, Gui.GUI.getActionList(), 
-				Gui.GUI.getNbrAction(), Gui.GUI.getNbrProc());
+		Writer.write("levels/test2.xml", World.WORLD, Gui.GUI.getActionList(), Gui.GUI.getNbrAction(), Gui.GUI.getNbrProc());
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{

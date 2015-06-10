@@ -8,7 +8,8 @@ import Prog.Light;
 
 public class ChestLight extends Chest 
 {
-	public ChestLight(Coordonnees pos, int ori) {
+	public ChestLight(Coordonnees pos, int ori) 
+	{
 		this.coord = pos;
 		this.orientation = ori;
 		this.action = new Light(Color.DEFAUT);
@@ -17,7 +18,9 @@ public class ChestLight extends Chest
 		setTextureChest();
 	}
 	
-	public void setTextureChest() {//sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));
+	public void setTextureChest()
+	{
+		//sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));
 		//TODO mettre les coordonnees de la texture coffreLight en fonction de l'orientation et de si le coffre est ouvert ou non
 	}
 }
