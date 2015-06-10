@@ -28,6 +28,8 @@ import UI.Menu;
 
 public class Reader 
 {
+	public static final String PACKAGE_ACTION = "Prog.";
+	public static final String PACKAGE_BLOCK = "Entities.";
 	
 	public static Reader READER = new Reader();
 	
@@ -85,7 +87,7 @@ public class Reader
 					
 					try
 					{
-						Class<?> c = Class.forName("Entities." + t);
+						Class<?> c = Class.forName(PACKAGE_BLOCK + t);
 						Constructor<?> constructor = c.getConstructor(Coordonnees.class);
 						lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 					} 
@@ -104,7 +106,7 @@ public class Reader
 				{
 					try
 					{
-						Class<?> c = Class.forName("Actions." + a.getValue());
+						Class<?> c = Class.forName(PACKAGE_ACTION + a.getValue());
 						Constructor<?> constructor = c.getConstructor(Color.class);
 						la.add((Action) constructor.newInstance(Color.DEFAUT));
 					} 
