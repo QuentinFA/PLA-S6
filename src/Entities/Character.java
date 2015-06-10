@@ -1,7 +1,5 @@
 package Entities;
 
-import java.util.List;
-
 import org.jsfml.graphics.IntRect;
 
 import Game.Ressources;
@@ -11,7 +9,7 @@ import Prog.*;
 
 public class Character extends Entities
 {	
-	private List<Action> lActions;
+	private Procedure main;
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
 	private Color couleur;
 	private Chest coffre;
@@ -39,9 +37,10 @@ public class Character extends Entities
 	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(1+82*orientation, 1, 81, 81));}
 	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
+	public void setMain (Procedure m) {main = m;}
+	public Procedure getMain() {return main;}
 	
-	public void add_action(Action a) {lActions.add(a);}
-	
+	/*
 	public void use_Actions() 
 	{
 		Action a;
@@ -54,6 +53,7 @@ public class Character extends Entities
 			this.use_Action(a);
 		}
 	}
+	*/
 	
 	/**
 	 *  Effectue l'action pour le personnage
