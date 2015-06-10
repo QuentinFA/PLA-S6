@@ -39,39 +39,14 @@
 			<x>5</x>
 			<y>0</y>
 		</block>
-		<block type="NormalBlock">
-			<x>6</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>7</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>8</x>
-			<y>0</y>
-		</block>
-	</floor>
-	<floor level="1">
-		<block type="NormalBlock">
-			<x>7</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>8</x>
-			<y>0</y>
-		</block>
-	</floor>
-	<floor level="2">
 		<block type="LightBlock">
-			<x>8</x>
+			<x>6</x>
 			<y>0</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
-		<action>Jump</action>
 		<!--<action>For</action>-->
 	</action_list>
 	<functions>

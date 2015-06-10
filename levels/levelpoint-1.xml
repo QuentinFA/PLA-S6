@@ -13,7 +13,7 @@
 
 <map>
 	<level_name>1-1</level_name>
-	<starting_dir>NORTH</starting_dir>
+	<starting_dir>EAST</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
 			<x>0</x>
@@ -23,69 +23,14 @@
 			<x>1</x>
 			<y>0</y>
 		</block>
+		
 		<block type="NormalBlock">
-			<x>2</x>
+			<x>3</x>
 			<y>0</y>
 		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>2</y>
-		</block>
 		<block type="LightBlock">
-			<x>1</x>
-			<y>1</y>
-		</block>
-		<block type="TeleporterBlock">
-			<x>2</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>1</y>
-		</block>
-		<block type="TeleporterBlock">
-			<x>2</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>7</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>5</y>
-		</block>
-		<block type="LightBlock">
-			<x>1</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>7</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>7</y>
+			<x>4</x>
+			<y>0</y>
 		</block>
 	</floor>
 	<action_list>
