@@ -64,7 +64,6 @@ public class Gui
 				
 			spriteList.add(spr);
 		}
-	    System.out.println(spriteList.size());
 		nbrAction = nbrA;
 		nbrProc = nbrP;
 		actionList = nameList;
