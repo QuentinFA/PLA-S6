@@ -13,11 +13,9 @@ import org.jdom2.output.XMLOutputter;
 
 import Entities.Block;
 import Entities.BlockComparator;
-import Entities.NormalBlock;
+import Game.World;
 import Prog.Action;
-import Prog.Color;
 import Prog.Coordonnees;
-import Prog.Forward;
 import Prog.Orientation;
 
 public class Writer
@@ -35,8 +33,7 @@ public class Writer
 	 * @param nbActionMain : Le nombre d'actions possibles dans la procédure main
 	 * @param nbProcedures : Le nombre de procédure autorisées pour le niveau
 	 */
-	public static void write(String fileName, String levelName, List<Block> blockList,
-			int startingOrientation, Coordonnees startingPosition, List<Action> allowedActions,
+	public static void write(String fileName, World w, List<Action> allowedActions,
 			int nbActionMain, int nbProcedures)
 	{
 		Element root = new Element(BeaconXML.B_MAP);
@@ -45,7 +42,7 @@ public class Writer
 		String strtDir;
 		int floor_level;
 		
-		switch(startingOrientation)
+		switch(w.getStartingOrientation())
 		{
 			case Orientation.NORTH :
 				strtDir = "NORTH";
@@ -62,16 +59,16 @@ public class Writer
 				break;
 		}
 		
-		content.add(new Element(BeaconXML.B_LEVEL_NAME).setText(levelName));
+		content.add(new Element(BeaconXML.B_LEVEL_NAME).setText(w.getName()));
 		content.add(new Element(BeaconXML.B_STARTING_DIRECTION).setText(strtDir));
 		
-		blockList.sort(new BlockComparator());
+		w.getBlockList().sort(new BlockComparator());
 		
 		Element floor = new Element(BeaconXML.B_FLOOR);
 		floor_level = 0;
 		floor.setAttribute(new Attribute(BeaconXML.B_LEVEL, String.valueOf(floor_level)));
 		
-		for(Block b : blockList)
+		for(Block b : w.getBlockList())
 		{
 			if(b.getCoord().getZ() != floor_level)
 			{
@@ -81,7 +78,9 @@ public class Writer
 				floor.setAttribute(new Attribute(BeaconXML.B_LEVEL, String.valueOf(floor_level)));
 			}
 			Element block = new Element(BeaconXML.B_BLOCK);
-			if(b.getCoord().equals(startingPosition))
+			if(b.getCoord().equals(new Coordonnees(w.getStartingPosition().getX(), 
+					w.getStartingPosition().getY(),
+					w.getStartingPosition().getZ() - 1)))
 				block.setAttribute(BeaconXML.B_STARTING_BLOCK, "true");
 			block.setAttribute(BeaconXML.B_BLOCK_TYPE, b.getClass().getSimpleName());
 			block.addContent(new Element(BeaconXML.B_X).setText(String.valueOf(b.getCoord().getX())));
@@ -115,19 +114,5 @@ public class Writer
 			out.output(doc, new FileOutputStream(fileName));
 		}
 		catch (java.io.IOException e){}
-		
-	}
-	
-	public static void main(String args[])
-	{
-		List<Block> bl = new ArrayList<Block>();
-		bl.add(new NormalBlock(new Coordonnees(0, 0, 0)));
-		bl.add(new NormalBlock(new Coordonnees(1, 0, 0)));
-		bl.add(new NormalBlock(new Coordonnees(1, 0, 1)));
-		
-		List<Action> ba = new ArrayList<Action>();
-		ba.add(new Forward(Color.DEFAUT));
-		
-		write("levels/test.xml", "test", bl, Orientation.NORTH, new Coordonnees(0, 0, 0), ba, 1, 1);
 	}
 }

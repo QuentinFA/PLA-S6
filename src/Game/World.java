@@ -236,5 +236,15 @@ public class World
 
 		return null;
 	}
+	
+	public int getStartingOrientation()
+	{
+		return orientStart;
+	}
+	
+	public Coordonnees getStartingPosition()
+	{
+		return coordStart;
+	}
 
 }

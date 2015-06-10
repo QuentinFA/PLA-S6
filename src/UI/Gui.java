@@ -7,13 +7,20 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
-import Entities.Chest;
 import Game.Input;
-import Game.Ressources;
 import Game.Input.BUTTON;
+import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import Prog.*;
+import Prog.Action;
+import Prog.Forward;
+import Prog.Jump;
+import Prog.Left_turn;
+import Prog.Light;
+import Prog.OpenChest;
+import Prog.Right_turn;
+import Prog.Teleporter;
+import Prog.UseChest;
 
 public class Gui 
 {
@@ -94,5 +101,20 @@ public class Gui
 				}
 			}
 		}
+	}
+
+	public int getNbrAction()
+	{
+		return nbrAction;
+	}
+
+	public int getNbrProc()
+	{
+		return nbrProc;
+	}
+	
+	public List<Action> getActionList()
+	{
+		return actionList;
 	}
 }

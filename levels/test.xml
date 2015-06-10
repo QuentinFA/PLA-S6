@@ -3,7 +3,7 @@
   <level_name>test</level_name>
   <starting_dir>NORTH</starting_dir>
   <floor level="0">
-    <block is_start="true" type="NormalBlock">
+    <block type="NormalBlock">
       <x>0</x>
       <y>0</y>
     </block>
@@ -22,7 +22,6 @@
     <action>Forward</action>
   </action_list>
   <functions>
-    <main nb_action="1" />
-    <procedure nb_proc="1" />
+    <main nb_action="0" />
   </functions>
 </map>
