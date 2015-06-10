@@ -2,19 +2,20 @@ package Prog;
 
 public class Coordonnees 
 {
-	private int x; //Cordonnee x
-	private int y; //Cordonnee y
-	private int z; //Cordonnee z
+	private float x; //Cordonnee x
+	private float y; //Cordonnee y
+	private float z; //Cordonnee z
 	
 	//Constructeur
 	public Coordonnees() {x = 0; y = 0; z = 0;}
 	public Coordonnees(int _x, int _y, int _z) {x = _x; y = _y; z = _z;}
+	public Coordonnees(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
 	public Coordonnees(Coordonnees pos) {x = pos.x; y = pos.y; z = pos.z;}
 	
 	//Get
-	public int getX() {return x;}
-	public int getY() {return this.y;}
-	public int getZ() {return this.z;}
+	public float getX() {return x;}
+	public float getY() {return this.y;}
+	public float getZ() {return this.z;}
 	
 	//Set
 	public void setX(int _x) {x = _x;}
