@@ -7,6 +7,7 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
+import Entities.Chest;
 import Game.Input;
 import Game.Ressources;
 import Game.Input.BUTTON;
@@ -49,10 +50,14 @@ public class Gui
 				spr.setTextureRect(new IntRect(325, 1, 80, 80));
 			else if (act instanceof Teleporter)
 				spr.setTextureRect(new IntRect(406, 1, 80, 80));
+			else if (act instanceof OpenChest)
+				spr.setTextureRect(new IntRect(487, 1, 80, 80));
+			else if (act instanceof UseChest)
+				spr.setTextureRect(new IntRect(568, 1, 80, 80));
 				
 			spriteList.add(spr);
 		}
-		
+	    System.out.println(spriteList.size());
 		nbrAction = nbrA;
 		nbrProc = nbrP;
 		actionList = nameList;
