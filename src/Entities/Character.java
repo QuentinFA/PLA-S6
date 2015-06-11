@@ -7,6 +7,7 @@ import java.util.Iterator;
 import org.jsfml.graphics.IntRect;
 
 import Game.Controler;
+import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.*;
@@ -87,7 +88,8 @@ public class Character extends Entities
 		return true;
 	}
 	
-	public void next() {
+	public void next()
+	{
 		Action a = Interpreter.INTERPRETER.eval(this);
 		if(a!=null)
 		{
