@@ -12,15 +12,7 @@ import Game.Input.BUTTON;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import Prog.Action;
-import Prog.Forward;
-import Prog.Jump;
-import Prog.Left_turn;
-import Prog.Light;
-import Prog.OpenChest;
-import Prog.Right_turn;
-import Prog.Teleporter;
-import Prog.UseChest;
+import Prog.*;
 
 public class Gui 
 {
@@ -71,7 +63,13 @@ public class Gui
 				spr.setTextureRect(new IntRect(487, 1, 80, 80));
 			else if (act instanceof UseChest)
 				spr.setTextureRect(new IntRect(568, 1, 80, 80));
-
+			else if (act instanceof Pipette)
+				spr.setTextureRect(new IntRect(649, 1, 80, 80));
+			else if (act instanceof Shower)
+				spr.setTextureRect(new IntRect(730, 1, 80, 80));
+			else if (act instanceof Des)
+				spr.setTextureRect(new IntRect(1, 82, 80, 80));
+			
 			spriteList.add(spr);
 		}
 		nbrAction = nbrA;
