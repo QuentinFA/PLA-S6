@@ -6,21 +6,21 @@ import java.util.Comparator;
 public class EntitieComparator implements Comparator<Entities> 
 {
 	public int compare(Entities b1, Entities b2) 
-	{		
-		if (b1.getCoord().getY() > b2.getCoord().getY())
+	{
+		if ((int)(b1.getCoord().getZ()) > (int)(b2.getCoord().getZ()))
+			return 1;
+		else if ((int)(b1.getCoord().getZ()) < (int)(b2.getCoord().getZ()))
 			return -1;
-		else if (b1.getCoord().getY() < b2.getCoord().getY())
+		
+		if ((int)(b1.getCoord().getY()+0.9999999f) > (int)(b2.getCoord().getY()+0.9999999f))
+			return -1;
+		else if ((int)(b1.getCoord().getY()+0.9999999f) < (int)(b2.getCoord().getY()+0.9999999f))
 			return 1;
 		
-		if (b1.getCoord().getX() > b2.getCoord().getX())
+		if ((int)(b1.getCoord().getX()) > (int)(b2.getCoord().getX()))
 			return -1;
-		else if (b1.getCoord().getX() < b2.getCoord().getX())
+		else if ((int)(b1.getCoord().getX()) < (int)(b2.getCoord().getX()))
 			return 1;
-		
-		if (b1.getCoord().getZ() > b2.getCoord().getZ())
-			return 1;
-		else if (b1.getCoord().getZ() < b2.getCoord().getZ())
-			return -1;
 		
 		return 0;
 	}

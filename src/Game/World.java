@@ -10,6 +10,7 @@ import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
+import Entities.TypeCharacter;
 import Prog.Action;
 import Prog.Coordonnees;
 import UI.Graphic;
@@ -47,7 +48,7 @@ public class World
 		for (Block b : lb)
 			addBlock(b);
 		
-		addCharacter(new Character(coordStart, orientStart));
+		addCharacter(new Character(coordStart, orientStart, TypeCharacter.DEFAULT));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
@@ -174,8 +175,8 @@ public class World
 	 */
 	public boolean isValidPosition(Coordonnees c)
 	{
-		for(Entities b : allList)
-			if(b.getCoord().equals(c))
+		for (Block b : blockList)
+			if (b.getCoord().int_equals(c))
 				return false;
 		
 		return true;
@@ -188,8 +189,8 @@ public class World
 	 */
 	public Entities getEntitiesAt(Coordonnees c) 
 	{
-		for(Entities b : allList)
-			if(b.getCoord().equals(c))
+		for (Entities b : allList)
+			if (b.getCoord().int_equals(c))
 				return b;
 		
 		return null;

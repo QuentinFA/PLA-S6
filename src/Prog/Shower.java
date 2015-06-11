@@ -6,5 +6,10 @@ public class Shower extends Action
 {
 		public Shower(Color c) {couleur = c;}
 		
-		public void execute(Character p) {p.setColor(Color.DEFAUT);}
+		public boolean execute(Character p) 
+		{
+			p.setColor(Color.DEFAUT);
+			
+			return true;
+		}
 }

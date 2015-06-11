@@ -3,7 +3,7 @@
   <level_name>test</level_name>
   <starting_dir>NORTH</starting_dir>
   <floor level="0">
-    <block type="NormalBlock">
+    <block type="LightBlock">
       <x>0</x>
       <y>0</y>
     </block>
@@ -13,7 +13,7 @@
     </block>
   </floor>
   <floor level="1">
-    <block type="NormalBlock">
+    <block type="NormalBlock" is_start="true">
       <x>1</x>
       <y>0</y>
     </block>
