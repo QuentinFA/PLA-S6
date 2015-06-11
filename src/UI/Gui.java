@@ -28,15 +28,19 @@ public class Gui
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
+	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
+	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
+	private Sprite proc1 = new Sprite();
+	private Sprite proc2 = new Sprite();
 	private Sprite returnMenu = new Sprite();
 	private Sprite gui_main = new Sprite();
 	private List<Action> actionList = World.WORLD.getActionList();
-	private Vector2f main1 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-50,
+	private Vector2f main1 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
 			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/3.f);
-    private Vector2f main2 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-50,
-				Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y*5/12.f); 
-    private Vector2f main;
+	private Vector2f main2 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
+			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/2.f); 
+	private Vector2f main;
 	private int nbrAction;
 	private int nbrProc;
 
@@ -83,11 +87,24 @@ public class Gui
 		for (int i=0; i < nbrAction; i++)
 		{  
 			Sprite temp = new Sprite();
-			 temp.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED));
-		     temp.setPosition(new Vector2f((i%4)*80+main.x, 
-				        80*(i/4)+main.y+30));	
-		     spriteList_occupied.add(temp);
+			temp.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED));
+			temp.setPosition(new Vector2f((i%4)*80+main.x, 
+					80*(i/4)+main.y+30));	
+			spriteList_occupied.add(temp);
 		}
+		if(nbrProc == 1 )
+		{
+			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+30);
+		}
+		if(nbrProc == 2 )
+		{
+			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+30);
+			proc2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+			proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+30);
+		}
+
 		GUI = this;
 	}
 
@@ -102,14 +119,22 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_main)
 			Graphic.SFML.draw(spr);
+		if(nbrProc == 1 )
+		Graphic.SFML.draw(this.proc1);
+		if(nbrProc == 2)
+		{
+			Graphic.SFML.draw(this.proc1);
+			Graphic.SFML.draw(this.proc2);
+		}
 		
+
 	}
 
 	public void gerer()
 	{
 		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
 
-		gui_main.setPosition(main1);
+		gui_main.setPosition(main);
 		for (int i=0; i < spriteList.size(); i++)
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, 
 					Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
@@ -122,16 +147,16 @@ public class Gui
 				Gui.GUI = null;
 				Menu.change_menu(Menu.MENU.LEVEL);
 			}
-				
+
 			for (int i=0; i < spriteList.size(); i++)
-					if (Graphic.isOnSprite(spriteList.get(i)))
-					{
-						if(spriteList_main.size()<nbrAction)
-						{ 
-							Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
-						    spriteList_main.add(temp);
-						}
+				if (Graphic.isOnSprite(spriteList.get(i)))
+				{
+					if(spriteList_main.size()<nbrAction)
+					{ 
+						Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
+						spriteList_main.add(temp);
 					}
+				}
 			for (int i=0; i < spriteList_main.size(); i++)
 				if (Graphic.isOnSprite(spriteList_main.get(i)))
 				{
@@ -140,8 +165,8 @@ public class Gui
 		}
 		for (int i=0; i < spriteList_main.size(); i++)
 		{  
-		     spriteList_main.get(i).setPosition(new Vector2f((i%4)*80+main.x, 
-				        80*(i/4)+main.y+30));	   
+			spriteList_main.get(i).setPosition(new Vector2f((i%4)*80+main.x, 
+					80*(i/4)+main.y+30));	   
 		}
 	}
 
