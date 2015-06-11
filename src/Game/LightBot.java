@@ -32,8 +32,8 @@ public class LightBot
 			if (Gui.GUI != null)
 				Gui.GUI.gerer();
 			
-			if (World.WORLD != null)
-				World.WORLD.gerer();
+//			if (World.WORLD != null)
+//				World.WORLD.gerer();
 			
 			Graphic.SFML.afficher();
 		}

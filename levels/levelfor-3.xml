@@ -211,7 +211,7 @@
 		<!--  <action>For</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="12"/>
-		<!-- <procedure nb_proc="1"/> -->
+		<main nb_action="10"/>
+		<procedure nb_proc="2"/>
 	</functions>
 </map>

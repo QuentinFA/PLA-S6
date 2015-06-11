@@ -72,7 +72,9 @@
 		<action>Forward</action>
 		<action>Light</action>
 		<action>Jump</action>
-		<!--<action>For</action>-->
+		<action>Pipette</action>
+		<action>Shower</action>
+		<action>Des</action>
 	</action_list>
 	<functions>
 		<main nb_action="6"/>
