@@ -58,7 +58,9 @@ public class Character extends Entities
 		Iterator<Prog> it = main.iterator();
 		pile.put(it);
 	}
-
+	public List<Prog> getMain(){
+			return main;
+	}
 	public void setMovingCoord(Coordonnees c) {moving_coord = c;}
 	public Coordonnees getMovingCoord() {return moving_coord;}
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
