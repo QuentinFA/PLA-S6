@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import Game.Input;
 import Game.Ressources;
-import Game.World;
 import UI.Graphic;
 import UI.Gui;
 import UI.Menu;
@@ -21,7 +20,6 @@ public class LevelPreview
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.read(levelPath);
-		Writer.write("levels/test2.xml", World.WORLD, Gui.GUI.getNbrAction(), Gui.GUI.getNbrProc());
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{
