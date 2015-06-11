@@ -1,6 +1,7 @@
 package Structures;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 
 /**
@@ -11,27 +12,40 @@ import java.util.List;
 public class LIFO<E>
 {
 	private List<E> l;
+	private int index;
 	
 	public LIFO()
 	{
 		this.l = new ArrayList<E>();
+		index = 0;
 	}
 	
 	public void put(E e)
 	{
 		this.l.add(e);
+		index++;
 	}
 	
 	public void putAll(List<E> e)
 	{
 		this.l.addAll(e);
+		index += e.size();
 	}
 	
-	public E get()
+	public E get() throws EmptyStackException
 	{
-		int i = l.size() - 1;
-		E e = l.get(i);
-		l.remove(i);
+		index--;
+		
+		if(index < 0)
+			throw new EmptyStackException();
+		
+		E e = l.get(index);
+		l.remove(index);
 		return e;
+	}
+	
+	public String toString()
+	{
+		return l.toString();
 	}
 }
