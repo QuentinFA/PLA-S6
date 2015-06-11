@@ -13,14 +13,14 @@ import Structures.LIFO;
 
 public class Interpreter {
 
-	public static Interpreter Interpreter;
+	public static Interpreter INTERPRETER;
 
 
-	public Action interpret(Character p)
+	public Interpreter() {
+		INTERPRETER = this;
+	}
+	public Action eval(Character p)
 	{
-		Interpreter= this;
-
-
 		LIFO<Iterator<Prog>> pile = p.getPile();
 		Iterator<Prog> save1;
 		Iterator<Prog> it;
@@ -52,7 +52,7 @@ public class Interpreter {
 					List<Prog> l = ((Procedure)act).getListProcedure();
 					Iterator <Prog> it2 = l.iterator();
 					pile.put(it2);
-					act = this.interpret(p);
+					act = this.eval(p);
 					
 				}
 			}
@@ -63,7 +63,7 @@ public class Interpreter {
 				if(it.hasNext())
 					pile.put(it);
 				pile.put(it2);
-				act = this.interpret(p);
+				act = this.eval(p);
 			}
 			else //C'est une action
 			{
