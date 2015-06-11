@@ -62,6 +62,8 @@ public class World
 	 */
 	public void gerer()
 	{
+		for (Character p : characterList)
+			p.gerer();
 	}
 	
 	/**
