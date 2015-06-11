@@ -4,6 +4,7 @@ public class For extends Prog {
 	private int i; //nombre d'itération
 	
 	
+	public int getForValue(){return i;}
 	public void setFor(int a){this.i=a;}
 	public int decrementer()
 	{
