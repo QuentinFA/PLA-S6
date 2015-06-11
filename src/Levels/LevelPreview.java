@@ -4,14 +4,13 @@ import java.io.IOException;
 
 import Game.Input;
 import Game.Ressources;
-import Game.World;
 import UI.Graphic;
 import UI.Gui;
 import UI.Menu;
 
 public class LevelPreview
 {
-	private static String levelPath = "levels/level1-1.xml"; //Le level a charger
+	private static String levelPath = "levels/test.xml"; //Le level a charger
 	
 	public static void main(String[] args)
 	{
@@ -21,7 +20,6 @@ public class LevelPreview
 		catch (IOException e) {e.printStackTrace();}
 		
 		Reader.read(levelPath);
-		Writer.write("levels/test2.xml", World.WORLD, Gui.GUI.getActionList(), Gui.GUI.getNbrAction(), Gui.GUI.getNbrProc());
 		
 		while (!Input.INPUT.gerer()) //Boucle principale
 		{

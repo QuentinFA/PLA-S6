@@ -43,7 +43,7 @@ public class Reader
 		Document doc;
 		List<Block> lb = new ArrayList<Block>();
 		List<Action> la = new ArrayList<Action>();
-		Coordonnees bng = null;
+		Coordonnees bng = new Coordonnees();
 		
 		try
 		{
@@ -93,8 +93,8 @@ public class Reader
 					} 
 					catch (ClassNotFoundException | SecurityException | IllegalArgumentException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e1)
 					{
-						// TODO Probleme avec le XML
-						e1.printStackTrace();
+						System.out.println("Invalid XML format :\n\t" + e1.toString());
+						return;
 					}
 				}
 			}
@@ -112,8 +112,8 @@ public class Reader
 					} 
 					catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1)
 					{
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						System.out.println("Invalid XML format :\n\t" + e1.toString());
+						return;
 					}
 				}
 			}
@@ -121,17 +121,9 @@ public class Reader
 			{
 				for(Element f : e.getChildren())
 				{
-					if(f.getValue().equals(BeaconXML.B_MAIN))
+					if(f.getName().equals(BeaconXML.B_MAIN))
 					{
-						try
-						{
-							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
-						} 
-						catch (DataConversionException e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						nbA = Integer.valueOf(f.getAttribute(BeaconXML.B_ACTION_MAIN).getValue());
 					}
 					else if(f.getValue().equals(BeaconXML.B_PROCEDURE))
 					{

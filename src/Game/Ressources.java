@@ -25,7 +25,9 @@ public class Ressources
 		NUAGE(),
 		CURSOR(),
 		RETURN_MENU(),
-		CHEST();
+		CHEST(),
+		GUI_MAIN(),
+		BLOCK_OCCUPIED();
 
 		private Texture texture;
 		
@@ -65,6 +67,9 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/return.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHEST, Paths.get("images/chest.png"));
+		TEXTURE.loadFromFile(TEXTURE.GUI_MAIN, Paths.get("images/gui_main.png"));
+		TEXTURE.loadFromFile(TEXTURE.BLOCK_OCCUPIED, Paths.get("images/block_occupied.png"));
+		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
 }

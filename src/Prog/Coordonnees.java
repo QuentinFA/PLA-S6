@@ -35,8 +35,8 @@ public class Coordonnees
 	
 	public boolean equals(Object o)
 	{
-		if (!(o instanceof Coordonnees)) return false;
 		if (o == this) return true;
+		if (!(o instanceof Coordonnees)) return false;
 		
 		Coordonnees t = (Coordonnees) o;
 		return t.getX() == x && t.getY() == y && t.getZ() == z;

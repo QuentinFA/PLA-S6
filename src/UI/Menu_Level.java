@@ -67,8 +67,8 @@ public class Menu_Level extends Menu
 		fleche_right.setTextureRect(new IntRect(1 , 1 , 100 , 100));
 		fleche_right.setOrigin(new Vector2f(fleche_right.getTextureRect().width/2.f, fleche_right.getTextureRect().height/2.f));
 		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
-
 		fleche_left.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_FLECHE));
+		
 		fleche_left.setTextureRect(new IntRect(102 , 1 , 100 , 100));
 		fleche_left.setOrigin(new Vector2f(fleche_left.getTextureRect().width/2.f, fleche_left.getTextureRect().height/2.f));
 		fleche_left.setPosition(Graphic.SFML.getCenterCamera().x - Graphic.SFML.getSizeCamera().x/2.f + fleche_left.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
@@ -127,7 +127,6 @@ public class Menu_Level extends Menu
 						monde_list.get(j).getGlobalBounds().top + monde_list.get(j).getTextureRect().height));
 
 		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
-
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
 			for (int i = 0; i< nbr_level_list.size() ; i++)

@@ -6,7 +6,7 @@ import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
 
-public class BlueBlock extends Block 
+public class BlueBlock extends ColorBlock 
 {
 	public BlueBlock(Coordonnees c)
 	{
