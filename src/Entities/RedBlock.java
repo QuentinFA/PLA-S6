@@ -7,7 +7,7 @@ import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
 
-public class RedBlock extends Block
+public class RedBlock extends ColorBlock
 {
 	public RedBlock(Coordonnees pos)
 	{

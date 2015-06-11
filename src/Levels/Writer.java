@@ -33,7 +33,7 @@ public class Writer
 	 * @param nbActionMain : Le nombre d'actions possibles dans la procédure main
 	 * @param nbProcedures : Le nombre de procedure autorisees pour le niveau
 	 */
-	public static void write(String fileName, World w, List<Action> allowedActions, int nbActionMain, int nbProcedures)
+	public static void write(String fileName, World w, int nbActionMain, int nbProcedures)
 	{
 		Element root = new Element(BeaconXML.B_MAP);
 		Document doc = new Document(root);
@@ -90,7 +90,7 @@ public class Writer
 		
 		Element a_elem = new Element(BeaconXML.B_ACTION_LIST);
 		
-		for(Action a : allowedActions)
+		for(Action a : w.getActionList())
 			a_elem.addContent(new Element(BeaconXML.B_ACTION).setText(a.getClass().getSimpleName()));
 		
 		content.add(a_elem);
