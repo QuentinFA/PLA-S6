@@ -23,6 +23,9 @@ public class Gui
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
+	private boolean courant_main = true;
+	private boolean courant_proc1 = false;
+	private boolean courant_proc2 = false;
 	private Sprite proc1 = new Sprite();
 	private Sprite proc2 = new Sprite();
 	private Sprite returnMenu = new Sprite();
@@ -73,7 +76,7 @@ public class Gui
 				spr.setTextureRect(new IntRect(730, 1, 80, 80));
 			else if (act instanceof Des)
 				spr.setTextureRect(new IntRect(1, 82, 80, 80));
-			
+
 			spriteList.add(spr);
 		}
 		nbrAction = nbrA;
@@ -90,17 +93,15 @@ public class Gui
 					80*(i/4)+main.y+30));	
 			spriteList_occupied.add(temp);
 		}
-		if(nbrProc == 1 )
+		if(nbrProc != 0 )
 		{
 			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
 			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20);
-		}
-		if(nbrProc == 2 )
-		{
-			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20);
-			proc2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-			proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20);
+			if(nbrProc == 2)
+			{
+				proc2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+				proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20);
+			}
 		}
 
 		GUI = this;
@@ -108,23 +109,27 @@ public class Gui
 
 	public void afficher()
 	{
-		for (Sprite spr : spriteList)
-			Graphic.SFML.draw(spr);
+		
 
 		Graphic.SFML.draw(this.returnMenu);
 		Graphic.SFML.draw(this.gui_main);
+		if(nbrProc != 0 )
+		{
+			Graphic.SFML.draw(this.proc1);
+		    if(nbrProc == 2)
+			Graphic.SFML.draw(this.proc2);
+		}
+		for (Sprite spr : spriteList)
+			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_occupied)
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_main)
 			Graphic.SFML.draw(spr);
-		if(nbrProc == 1 )
-		Graphic.SFML.draw(this.proc1);
-		if(nbrProc == 2)
-		{
-			Graphic.SFML.draw(this.proc1);
-			Graphic.SFML.draw(this.proc2);
-		}
-		
+		for (Sprite spr : spriteList_proc1)
+			Graphic.SFML.draw(spr);
+		for (Sprite spr : spriteList_proc2)
+			Graphic.SFML.draw(spr);
+
 
 	}
 
@@ -145,27 +150,63 @@ public class Gui
 				Gui.GUI = null;
 				Menu.change_menu(Menu.MENU.LEVEL);
 			}
-
+            if (Graphic.isOnSprite(this.gui_main))
+            {
+            	this.courant_main = true;
+            	this.courant_proc1 = false;
+            	this.courant_proc2 = false;
+            }
+            if (Graphic.isOnSprite(this.proc1))
+            {
+            	this.courant_main = false;
+            	this.courant_proc1 = true;
+            	this.courant_proc2 = false;
+            }
+            if (Graphic.isOnSprite(this.proc2))
+            {
+            	this.courant_main = false;
+            	this.courant_proc1 = false;
+            	this.courant_proc2 = true;
+            }
 			for (int i=0; i < spriteList.size(); i++)
 				if (Graphic.isOnSprite(spriteList.get(i)))
 				{
-					if(spriteList_main.size()<nbrAction)
-					{ 
-						Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
-						
+					Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
+					if(spriteList_main.size()<nbrAction && courant_main)						
 						spriteList_main.add(temp);
-					}
+					else if(spriteList_proc1.size()<8 && courant_proc1)
+						spriteList_proc1.add(temp);
+					else if(spriteList_proc2.size()<8 && courant_proc2)
+						spriteList_proc2.add(temp);
 				}
 			for (int i=0; i < spriteList_main.size(); i++)
 				if (Graphic.isOnSprite(spriteList_main.get(i)))
 				{
 					spriteList_main.remove(i);
 				}
+			for (int i=0; i < spriteList_proc1.size(); i++)
+				if (Graphic.isOnSprite(spriteList_proc1.get(i)))
+				{
+					spriteList_proc1.remove(i);
+				}
+			for (int i=0; i < spriteList_proc2.size(); i++)
+				if (Graphic.isOnSprite(spriteList_proc2.get(i)))
+				{
+					spriteList_proc2.remove(i);
+				}
 		}
 		for (int i=0; i < spriteList_main.size(); i++)
 		{  
-			spriteList_main.get(i).setPosition(new Vector2f((i%4)*80+main.x, 
-					80*(i/4)+main.y+30));	   
+			spriteList_main.get(i).setPosition((i%4)*80+main.x, 
+					80*(i/4)+main.y+30);	   
+		}
+		for (int i = 0; i < spriteList_proc1.size(); i++)
+		{
+			spriteList_proc1.get(i).setPosition((i%4)*80+main.x,80*(i/4)+main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20+30);
+		}
+		for (int i = 0; i < spriteList_proc2.size(); i++)
+		{
+			spriteList_proc2.get(i).setPosition((i%4)*80+main.x,80*(i/4)+proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20+30);
 		}
 	}
 

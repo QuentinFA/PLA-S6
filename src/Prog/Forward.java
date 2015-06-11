@@ -6,7 +6,7 @@ public class Forward extends Action
 {
 	public Forward(Color c) {couleur = c;}
 	private int frame = 0;
-	private int last_frame_phase1 = 18;
+	private int last_frame_phase1 = 20;
 	
 	private Coordonnees delta;
 	private Coordonnees futur_coord;
@@ -24,6 +24,7 @@ public class Forward extends Action
 		{
 			Coordonnees coord = p.getCoord();
 			Coordonnees check;
+			
 			switch (p.getOrientation())
 			{
 				case Orientation.NORTH:
@@ -80,6 +81,7 @@ public class Forward extends Action
 			}
 		}
 		
+		//System.out.println(p.getCoord());
 		p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		
 		return false;

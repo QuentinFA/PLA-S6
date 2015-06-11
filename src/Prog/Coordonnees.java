@@ -12,10 +12,12 @@ public class Coordonnees
 	public Coordonnees(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
 	public Coordonnees(Coordonnees pos) {x = pos.x; y = pos.y; z = pos.z;}
 	
+	public float round(float nbr) {return Math.round(nbr*100)/100.f;}
+	
 	//Get
 	public float getX() {return x;}
-	public float getY() {return this.y;}
-	public float getZ() {return this.z;}
+	public float getY() {return y;}
+	public float getZ() {return z;}
 	
 	//Set
 	public void setX(int _x) {x = _x;}
@@ -23,14 +25,14 @@ public class Coordonnees
 	public void setZ(int _z) {z = _z;}
 	
 	//Incrementer d'une valeur
-	public void incrX(int incr) {x += incr;}
-	public void incrY(int incr) {y += incr;}
-	public void incrZ(int incr) {z += incr;}
+	public void incrX(int incr) {x = round(x + incr);}
+	public void incrY(int incr) {y = round(y + incr);}
+	public void incrZ(int incr) {z = round(z + incr);}
 	public void increment(Coordonnees coord) 
 	{
-		x += coord.x;
-		y += coord.y;
-		z += coord.z;
+		x = round(x + coord.x);
+		y = round(y + coord.y);
+		z = round(z + coord.z);
 	}
 	
 	public boolean equals(Object o)
