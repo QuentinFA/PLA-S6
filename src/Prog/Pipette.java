@@ -10,11 +10,12 @@ public class Pipette extends Action{
 	
 	public Pipette(Color c){couleur = c;}
 	
-	public void execute(Character p) 
+	public boolean execute(Character p) 
 	{
 		Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
 		if(!(b instanceof ColorBlock))
 			((Block) b).perform(p);
-		// else garde sa couleur
+
+		return true;
 	}
 }
