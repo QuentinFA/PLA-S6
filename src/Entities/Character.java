@@ -24,11 +24,11 @@ public class Character extends Entities
 	//private TypeCharacter type;
 	private Action actionCourante;
 	LIFO<Iterator<Prog>> pile = new LIFO<Iterator<Prog>>();
-	
+
 	public Character(Coordonnees pos, int ori, TypeCharacter t) 
 	{
 		coord = pos;
-		
+
 		orientation = ori;
 		couleur = Color.DEFAUT;
 		coffre = null;
@@ -36,7 +36,7 @@ public class Character extends Entities
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
-	
+
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
@@ -60,20 +60,20 @@ public class Character extends Entities
 		pile.put(it);
 	}
 	public List<Prog> getMain(){
-			return main;
+		return main;
 	}
-	
+
 	public LIFO<Iterator<Prog>> getPile(){
-			return pile;
+		return pile;
 	}
 
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
-	
+
 	public boolean gerer() 
 	{
 		if (this.actionCourante != null)
 		{
-			
+
 			if (actionCourante.execute(this))
 			{
 				Controler.CONTROLER.manage(this);
@@ -81,38 +81,44 @@ public class Character extends Entities
 				return true;
 			}
 		}
-		
+
 		else 
 			Controler.CONTROLER.manage(this);
 
 		return true;
 	}
-	
+
 	public void next()
 	{
 		Action a = Interpreter.INTERPRETER.eval(this);
-		if(a!=null)
-		{
+
+		if (a != null) {
+			while ((a.getColor() == Color.DEFAUT) || (a.getColor() == this.couleur))
+			{
+				a = Interpreter.INTERPRETER.eval(this);
+				if (a == null)
+					return;
+			}
 			use_Action(a);
-		}
 
+		}
 	}
 
-	/**
-	 *  Effectue l'action pour le personnage
-	 * @param a Action a effectuer par le personnage
-	 * @throws CloneNotSupportedException 
-	 */
-	public void use_Action(Action a)
-	{
-		try
+		/**
+		 *  Effectue l'action pour le personnage
+		 * @param a Action a effectuer par le personnage
+		 * @throws CloneNotSupportedException 
+		 */
+		public void use_Action(Action a)
 		{
-			if (actionCourante == null)
-				actionCourante = (Action) a.clone();
-		}
-		catch (CloneNotSupportedException e) 
-		{
-			e.printStackTrace();
+			try
+			{
+				if (actionCourante == null)
+					actionCourante = (Action) a.clone();
+			}
+			catch (CloneNotSupportedException e) 
+			{
+				e.printStackTrace();
+			}
 		}
 	}
-}

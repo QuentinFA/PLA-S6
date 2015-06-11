@@ -1,19 +1,20 @@
 package Prog;
 
 public class For extends Prog {
-	private int i; //nombre d'itération
 	
+	private int nbBouclesRestantes; //nombre d'itï¿½ration
 	
-	public int getForValue(){return i;}
-	public void setFor(int a){this.i=a;}
-	public int decrementer()
+	public For(int i) {nbBouclesRestantes = i;}
+	public int getForValue(){return nbBouclesRestantes;}
+	public void setFor(int a){this.nbBouclesRestantes = a;}
+	
+	public void decrementer()
 	{
-		this.i = i-1;
-		return i;
+		this.nbBouclesRestantes -= 1;
 	}
 	
 	public boolean isZero(){
-		if(i<=0)
+		if (nbBouclesRestantes<=0)
 			return true;
 		else 
 			return false;
