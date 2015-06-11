@@ -26,6 +26,12 @@ public class Coordonnees
 	public void incrX(int incr) {x += incr;}
 	public void incrY(int incr) {y += incr;}
 	public void incrZ(int incr) {z += incr;}
+	public void increment(Coordonnees coord) 
+	{
+		x += coord.x;
+		y += coord.y;
+		z += coord.z;
+	}
 	
 	public boolean equals(Object o)
 	{
@@ -35,4 +41,15 @@ public class Coordonnees
 		Coordonnees t = (Coordonnees) o;
 		return t.getX() == x && t.getY() == y && t.getZ() == z;
 	}
+	
+	public boolean int_equals(Object o)
+	{
+		if (!(o instanceof Coordonnees)) return false;
+		if (o == this) return true;
+		
+		Coordonnees t = (Coordonnees) o;
+		return (int)(t.getX()) == (int)(x) && (int)(t.getY()) == (int)(y) && (int)(t.getZ()) == (int)(z);
+	}
+	
+	public String toString() {return "(" + x  + ", " + y + ", " + z + ")";}
 }

@@ -13,13 +13,11 @@ public class Character extends Entities
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
 	private Color couleur;
 	private Action action_courant = null;
-	private Coordonnees moving_coord;
 	private Chest coffre;
 	
 	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
-		moving_coord = new Coordonnees(pos);
 		
 		orientation = ori;
 		couleur = Color.DEFAUT;
@@ -44,8 +42,6 @@ public class Character extends Entities
 	public void setMain (Procedure m) {main = m;}
 	public Procedure getMain() {return main;}
 	
-	public void setMovingCoord(Coordonnees c) {moving_coord = c;}
-	public Coordonnees getMovingCoord() {return moving_coord;}
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
 	
 	public boolean gerer() 

@@ -174,8 +174,8 @@ public class World
 	 */
 	public boolean isValidPosition(Coordonnees c)
 	{
-		for(Entities b : allList)
-			if(b.getCoord().equals(c))
+		for (Block b : blockList)
+			if (b.getCoord().int_equals(c))
 				return false;
 		
 		return true;
@@ -188,8 +188,8 @@ public class World
 	 */
 	public Entities getEntitiesAt(Coordonnees c) 
 	{
-		for(Entities b : allList)
-			if(b.getCoord().equals(c))
+		for (Entities b : allList)
+			if (b.getCoord().int_equals(c))
 				return b;
 		
 		return null;
