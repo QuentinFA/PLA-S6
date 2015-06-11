@@ -10,6 +10,7 @@ import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
+import Prog.Action;
 import Prog.Coordonnees;
 import UI.Graphic;
 
@@ -25,6 +26,7 @@ public class World
 	private Coordonnees coordStart; //Coordonnees du d�part
 	private int orientStart; //Orientation du d�part
 	private Vector2f centerWorld = null;
+	private List<Action> actionList;
 	
 	private String name;
 	
@@ -35,11 +37,12 @@ public class World
 	 * @param cStart Les coordonnees de depart du personnage
 	 * @param oStart L'orientation de depart du personnage
 	 */
-	public World(String n, List<Block> lb, Coordonnees cStart, int oStart) 
+	public World(String n, List<Block> lb, Coordonnees cStart, int oStart, List<Action> allowedActions) 
 	{
 		name = n;
 		coordStart = cStart;
 		orientStart = oStart;
+		this.actionList = allowedActions;
 		
 		for (Block b : lb)
 			addBlock(b);
@@ -228,4 +231,8 @@ public class World
 	
 	public Coordonnees getStartingCoord() {return coordStart;	}
 
+	public List<Action> getActionList()
+	{
+		return actionList;
+	}
 }

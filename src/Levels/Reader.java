@@ -173,8 +173,8 @@ public class Reader
 		lb = new ArrayList<Block>(set);
 		
 		Menu.Mymenu = null;
-		World.WORLD = new World(name, lb, bng, dir);
-		Gui.GUI = new Gui(la, nbA, nbP);
+		World.WORLD = new World(name, lb, bng, dir, la);
+		Gui.GUI = new Gui(nbA, nbP);
 	}
 	
 }
