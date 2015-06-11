@@ -168,7 +168,6 @@ public class Reader
 		Set<Block> set = new HashSet<Block>();
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
-		System.out.println(nbP);
 		Menu.Mymenu = null;
 		World.WORLD = new World(name, lb, bng, dir, la);
 		Gui.GUI = new Gui(nbA, nbP);
