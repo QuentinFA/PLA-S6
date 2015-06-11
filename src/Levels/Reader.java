@@ -121,17 +121,9 @@ public class Reader
 			{
 				for(Element f : e.getChildren())
 				{
-					if(f.getValue().equals(BeaconXML.B_MAIN))
+					if(f.getName().equals(BeaconXML.B_MAIN))
 					{
-						try
-						{
-							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
-						} 
-						catch (DataConversionException e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						nbA = Integer.valueOf(f.getAttribute(BeaconXML.B_ACTION_MAIN).getValue());
 					}
 					else if(f.getValue().equals(BeaconXML.B_PROCEDURE))
 					{
