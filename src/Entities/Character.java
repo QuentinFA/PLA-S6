@@ -61,6 +61,10 @@ public class Character extends Entities
 	public List<Prog> getMain(){
 			return main;
 	}
+	
+	public LIFO<Iterator<Prog>> getPile(){
+			return pile;
+	}
 	public void setMovingCoord(Coordonnees c) {moving_coord = c;}
 	public Coordonnees getMovingCoord() {return moving_coord;}
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
