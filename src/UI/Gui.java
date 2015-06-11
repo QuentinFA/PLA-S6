@@ -31,7 +31,7 @@ public class Gui
 	private Vector2f main1 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
 			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/3.f);
 	private Vector2f main2 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
-			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/2.f); 
+			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y*2/5.f); 
 	private Vector2f main;
 	private int nbrAction;
 	private int nbrProc;
@@ -93,14 +93,14 @@ public class Gui
 		if(nbrProc == 1 )
 		{
 			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+30);
+			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20);
 		}
 		if(nbrProc == 2 )
 		{
 			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+30);
+			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20);
 			proc2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-			proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+30);
+			proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20);
 		}
 
 		GUI = this;
@@ -152,6 +152,7 @@ public class Gui
 					if(spriteList_main.size()<nbrAction)
 					{ 
 						Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
+						
 						spriteList_main.add(temp);
 					}
 				}
