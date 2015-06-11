@@ -117,11 +117,12 @@ public class Gui
 			for (int i=0; i < spriteList.size(); i++)
 					if (Graphic.isOnSprite(spriteList.get(i)))
 					{
-						if(spriteList_main.size()<nbrAction)
+						World.WORLD.getCharacterList().get(0).use_Action(actionList.get(i));
+						/*if(spriteList_main.size()<nbrAction)
 						{ 
 							Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
 						    spriteList_main.add(temp);
-						}
+						}*/
 					}
 			for (int i=0; i < spriteList_main.size(); i++)
 				if (Graphic.isOnSprite(spriteList_main.get(i)))
