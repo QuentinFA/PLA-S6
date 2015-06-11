@@ -46,7 +46,7 @@ public class World
 		
 		for (Block b : lb)
 			addBlock(b);
-
+		
 		addCharacter(new Character(coordStart, orientStart));
 		
 		for (Block b : blockList)
@@ -81,7 +81,7 @@ public class World
 	public Vector2f placeMe(Coordonnees c)
 	{
 		float pos_x, pos_y;
-
+		
 		pos_x = 40 * c.getX() - 40 * c.getY();
 		pos_y = - 23 * c.getX() - 23 * c.getY() - 26 * c.getZ();
 		
@@ -229,8 +229,8 @@ public class World
 	
 	public int getStartingOrientation() {return orientStart;}
 	
-	public Coordonnees getStartingCoord() {return coordStart;	}
-
+	public Coordonnees getStartingCoord() {return coordStart;}
+	
 	public List<Action> getActionList()
 	{
 		return actionList;

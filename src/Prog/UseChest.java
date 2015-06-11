@@ -14,6 +14,7 @@ public class UseChest extends Action
 			{
 				Action a = c.getAction();
 				a.execute(p);
+				p.setChest(null);
 			}
 		}
 	}
