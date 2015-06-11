@@ -10,6 +10,7 @@ import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
+import Entities.TypeCharacter;
 import Prog.Action;
 import Prog.Coordonnees;
 import UI.Graphic;
@@ -47,7 +48,7 @@ public class World
 		for (Block b : lb)
 			addBlock(b);
 		
-		addCharacter(new Character(coordStart, orientStart));
+		addCharacter(new Character(coordStart, orientStart, TypeCharacter.DEFAULT));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
