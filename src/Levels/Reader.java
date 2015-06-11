@@ -123,9 +123,14 @@ public class Reader
 				{
 					if(f.getName().equals(BeaconXML.B_MAIN))
 					{
-						nbA = Integer.valueOf(f.getAttribute(BeaconXML.B_ACTION_MAIN).getValue());
+						try {
+							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
+						} 
+						catch (DataConversionException e1) {
+ 							e1.printStackTrace();
+						}
 					}
-					else if(f.getValue().equals(BeaconXML.B_PROCEDURE))
+					else if(f.getName().equals(BeaconXML.B_PROCEDURE))
 					{
 						try
 						{
@@ -163,7 +168,7 @@ public class Reader
 		Set<Block> set = new HashSet<Block>();
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
-		
+		System.out.println(nbP);
 		Menu.Mymenu = null;
 		World.WORLD = new World(name, lb, bng, dir, la);
 		Gui.GUI = new Gui(nbA, nbP);
