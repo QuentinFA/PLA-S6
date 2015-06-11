@@ -27,7 +27,9 @@ public class Ressources
 		RETURN_MENU(),
 		CHEST(),
 		GUI_MAIN(),
-		BLOCK_OCCUPIED();
+		BLOCK_OCCUPIED(),
+		PROC1(),
+		PROC2();
 
 		private Texture texture;
 		
@@ -69,6 +71,8 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.CHEST, Paths.get("images/chest.png"));
 		TEXTURE.loadFromFile(TEXTURE.GUI_MAIN, Paths.get("images/gui_main.png"));
 		TEXTURE.loadFromFile(TEXTURE.BLOCK_OCCUPIED, Paths.get("images/block_occupied.png"));
+		TEXTURE.loadFromFile(TEXTURE.PROC1, Paths.get("images/proc1.png"));
+		TEXTURE.loadFromFile(TEXTURE.PROC2, Paths.get("images/proc2.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
