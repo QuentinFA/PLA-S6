@@ -28,19 +28,20 @@ public class Gui
 	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private Sprite returnMenu = new Sprite();
-	private List<Action> actionList = new ArrayList<Action>();
+	private List<Action> actionList = World.WORLD.getActionList();
 	private int nbrAction;
 	private int nbrProc;
 	
-	public Gui(List<Action> nameList, int nbrA, int nbrP)
+	public Gui(int nbrA, int nbrP)
 	{
 		Sprite spr;
 		
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
+		actionList = World.WORLD.getActionList();
 		
 		
-		for (Action act : nameList)
+		for (Action act : actionList)
 		{
 			spr = new Sprite();
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
@@ -66,7 +67,6 @@ public class Gui
 		}
 		nbrAction = nbrA;
 		nbrProc = nbrP;
-		actionList = nameList;
 		GUI = this;
 	}
 	
