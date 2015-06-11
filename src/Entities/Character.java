@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import org.jsfml.graphics.IntRect;
 
+import Game.Controler;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.*;
@@ -72,14 +73,26 @@ public class Character extends Entities
 			
 			if (actionCourante.execute(this))
 			{
+				Controler.CONTROLER.manage(this);
 				actionCourante = null;
 				return true;
 			}
 		}
+		
+		else 
+			Controler.CONTROLER.manage(this);
+
 		return true;
 	}
 	
-	
+	public void next() {
+		Action a = Interpreter.INTERPRETER.eval(this);
+		if(a!=null)
+		{
+			use_Action(a);
+		}
+
+	}
 
 	/**
 	 *  Effectue l'action pour le personnage
