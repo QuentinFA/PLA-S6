@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import org.jsfml.graphics.IntRect;
 
+import Game.Controler;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.*;
@@ -61,6 +62,10 @@ public class Character extends Entities
 	public List<Prog> getMain(){
 			return main;
 	}
+	
+	public LIFO<Iterator<Prog>> getPile(){
+			return pile;
+	}
 	public void setMovingCoord(Coordonnees c) {moving_coord = c;}
 	public Coordonnees getMovingCoord() {return moving_coord;}
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
@@ -72,14 +77,26 @@ public class Character extends Entities
 			
 			if (actionCourante.execute(this))
 			{
+				Controler.CONTROLER.manage(this);
 				actionCourante = null;
 				return true;
 			}
 		}
+		
+		else 
+			Controler.CONTROLER.manage(this);
+
 		return true;
 	}
 	
-	
+	public void next() {
+		Action a = Interpreter.INTERPRETER.eval(this);
+		if(a!=null)
+		{
+			use_Action(a);
+		}
+
+	}
 
 	/**
 	 *  Effectue l'action pour le personnage
