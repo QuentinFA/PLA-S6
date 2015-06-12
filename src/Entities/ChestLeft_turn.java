@@ -14,7 +14,6 @@ public class ChestLeft_turn extends Chest
 		this.coord = pos;
 		this.orientation = ori;
 		this.action = new Left_turn(Color.DEFAUT);
-		this.open = false;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}

@@ -30,7 +30,7 @@ public class OpenChest extends Action
 		if (World.WORLD.isValidPosition(check))
 		{
 			Entities e = World.WORLD.getEntitiesAt(check);
-			if (e != null && e instanceof Chest && !((Chest)e).isOpen())
+			if (e != null && e instanceof Chest)
 			{
 				switch (p.getOrientation())
 				{

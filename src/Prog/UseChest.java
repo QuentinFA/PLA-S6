@@ -18,7 +18,7 @@ public class UseChest extends Action
 			{
 				Action a = c.getAction();
 				a.execute(p);
-				p.setChest(null);
+				//p.setChest(null); //TODO A réflechir
 			}
 		}
 		else if (frame == 8)

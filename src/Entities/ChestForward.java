@@ -13,7 +13,6 @@ public class ChestForward extends Chest
 		this.coord = pos;
 		this.orientation = ori;
 		this.action = new Forward(Color.DEFAUT);
-		this.open = false;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}

@@ -13,7 +13,6 @@ public class ChestJump extends Chest
 		this.coord = pos;
 		this.orientation = ori;
 		this.action = new Jump(Color.DEFAUT);
-		this.open = false;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}
