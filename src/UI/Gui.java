@@ -12,48 +12,43 @@ import Game.Input.BUTTON;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
+import Prog.NormalActions.*;
 import Prog.*;
 
 public class Gui 
 {
 	public static Gui GUI = null;
 
+	private Sprite sprite_return = new Sprite();
+	
+	private Sprite sprite_main = new Sprite();
+	private Sprite sprite_proc1 = null;
+	private Sprite sprite_proc2 = null;
+	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
-	private int position_de_des = -1;
-	private int counteur_des_main = 0;
-	private int counteur_des_proc1 = 0;
-	private int counteur_des_proc2 = 0;
-	private boolean courant_main = true;
-	private boolean courant_proc1 = false;
-	private boolean courant_proc2 = false;
-	private Sprite proc1 = new Sprite();
-	private Sprite proc2 = new Sprite();
-	private Sprite returnMenu = new Sprite();
-	private Sprite gui_main = new Sprite();
-	private List<Action> actionList = World.WORLD.getActionList();
-	private Vector2f main1 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
-			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/3.f);
-	private Vector2f main2 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
-			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y*2/5.f); 
-	private Vector2f main;
+	
+	private List<Procedure> final_actionList = new ArrayList<Procedure>();
+	
 	private int nbrAction;
 	private int nbrProc;
+
+	private int wichProc = 0;
+	
+	private List<Action> actionList;
 
 	public Gui(int nbrA, int nbrP)
 	{
 		Sprite spr;
 
-		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
-		returnMenu.setTextureRect(new IntRect(1,1,100,100));
-		gui_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
+		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
+		
 		actionList = World.WORLD.getActionList();
 
-
-		//for (Action act : actionList)
 		for(int i = 0; i < actionList.size(); i++)
 		{
 			Action act = actionList.get(i); 
@@ -80,54 +75,75 @@ public class Gui
 				spr.setTextureRect(new IntRect(649, 1, 80, 80));
 			else if (act instanceof Shower)
 				spr.setTextureRect(new IntRect(730, 1, 80, 80));
-			else if (act instanceof Des)
-			{
-				this.position_de_des = i;
+			else if (act instanceof For)
 				spr.setTextureRect(new IntRect(1, 82, 80, 80));
-			}
 
 			spriteList.add(spr);
 		}
+		
 		nbrAction = nbrA;
 		nbrProc = nbrP;
-		if(nbrProc == 0)
-			main = main1;
-		else 
-			main = main2;
+		
 		for (int i=0; i < nbrAction; i++)
-		{  
-			Sprite temp = new Sprite();
-			temp.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED));
-			temp.setPosition(new Vector2f((i%4)*80+main.x, 
-					80*(i/4)+main.y+30));	
-			spriteList_occupied.add(temp);
-		}
-		if(nbrProc != 0 )
+			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
+		
+		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		
+		if (nbrProc >= 1)
 		{
-			proc1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			proc1.setPosition(main.x,main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20);
-			if(nbrProc == 2)
-			{
-				proc2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-				proc2.setPosition(main.x, proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20);
-			}
+			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
+		if (nbrProc >= 2)
+		{
+			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
 
 		GUI = this;
+		placeGui();
+	}
+	
+	public void placeGui()
+	{
+		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
+		
+		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
+				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20));
+		
+		if (sprite_proc1 != null)
+			sprite_proc1.setPosition(new Vector2f(sprite_main.getPosition().x, sprite_main.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y + 20));
+		if (sprite_proc2 != null)
+			sprite_proc2.setPosition(new Vector2f(sprite_proc1.getPosition().x, sprite_proc1.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y + 20));
+		
+		for (int i=0; i < spriteList.size(); i++)
+			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
+			
+		for (int i=0; i < nbrAction; i++)
+			spriteList_occupied.get(i).setPosition(new Vector2f((i%4)*80 + sprite_main.getPosition().x + 1, 80*(i/4) + sprite_main.getPosition().y + 25));
+		
+		//Arranger les positions des actions dans la fenetre
+		for (int i=0; i < spriteList_main.size(); i++)
+			spriteList_main.get(i).setPosition((i%4)*80 + sprite_main.getPosition().x + 1, 80*(i/4) + sprite_main.getPosition().y + 25);	   
+		
+		for (int i = 0; i < spriteList_proc1.size(); i++)
+			spriteList_proc1.get(i).setPosition((i%4)*80 + sprite_proc1.getPosition().x, 80*(i/4) + sprite_proc1.getPosition().y + 25);	 
+		
+		for (int i = 0; i < spriteList_proc2.size(); i++)
+			spriteList_proc2.get(i).setPosition((i%4)*80 + sprite_proc2.getPosition().x, 80*(i/4) + sprite_proc2.getPosition().y + 25);	 
 	}
 
 	public void afficher()
 	{
-
-
-		Graphic.SFML.draw(this.returnMenu);
-		Graphic.SFML.draw(this.gui_main);
-		if(nbrProc != 0 )
-		{
-			Graphic.SFML.draw(this.proc1);
-			if(nbrProc == 2)
-				Graphic.SFML.draw(this.proc2);
-		}
+		Graphic.SFML.draw(sprite_return);
+		
+		Graphic.SFML.draw(sprite_main);
+		if (sprite_proc1 != null)
+			Graphic.SFML.draw(sprite_proc1);
+		if (sprite_proc2 != null)
+			Graphic.SFML.draw(sprite_proc2);
+			
 		for (Sprite spr : spriteList)
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_occupied)
@@ -138,167 +154,141 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_proc2)
 			Graphic.SFML.draw(spr);
-
-
 	}
 
 	public void gerer()
 	{
-		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-
-		gui_main.setPosition(main);
-		for (int i=0; i < spriteList.size(); i++)
-			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, 
-					Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
-
 		if (Input.INPUT.again(BUTTON.MLEFT))
 		{
-			if (Graphic.isOnSprite(this.returnMenu))
+			if (Graphic.isOnSprite(sprite_return)) //Retour
 			{
 				World.WORLD = null;
 				Gui.GUI = null;
 				Menu.change_menu(Menu.MENU.LEVEL);
+				
+				return;
 			}
-			//pour choisir la fenetre d'ajouter les actions
-			if (Graphic.isOnSprite(this.gui_main))
-			{
-				this.courant_main = true;
-				this.courant_proc1 = false;
-				this.courant_proc2 = false;
-			}
-			if (Graphic.isOnSprite(this.proc1))
-			{
-				this.courant_main = false;
-				this.courant_proc1 = true;
-				this.courant_proc2 = false;
-			}
-			if (Graphic.isOnSprite(this.proc2))
-			{
-				this.courant_main = false;
-				this.courant_proc1 = false;
-				this.courant_proc2 = true;
-			}
-			//ajouter les actions dans la fenentre
-			for (int i=0; i < spriteList.size(); i++)
-				if (Graphic.isOnSprite(spriteList.get(i)))
-				{
-					Sprite temp = new Sprite(spriteList.get(i).getTexture(),spriteList.get(i).getTextureRect());
-					if(spriteList_main.size() <= nbrAction && courant_main)						
-					{
-						int j = spriteList_main.size();
-						//j>0  il y a les elements dans le spriteList_main
-						//i == this.position_de_des  utilisateur clique sur le bouton de des
-						//this.counteur_des_main!=0  l'operation precedente est le des
-						if ( j>0 && i == this.position_de_des && this.counteur_des_main!= 0)
-						{
-							if(this.counteur_des_main == 9)
-							{
-								this.counteur_des_main = 1;
-								spriteList_main.get(j-1).setTextureRect(new IntRect(1, 82, 80, 80));
-							}
-							else
-							{
-								this.counteur_des_main++;
-								spriteList_main.get(j-1).setTextureRect(new IntRect(80*(this.counteur_des_main-1)+this.counteur_des_main, 82, 80, 80));
-							}								   
-						}
-						//ici on peut ajouter le block des dans la derniere place
-						else if(j < nbrAction)
-						{
-							if(i == this.position_de_des)
-								this.counteur_des_main = 1;
-							else
-								this.counteur_des_main = 0;
-							spriteList_main.add(temp);
-						}
-					}
-					else if(spriteList_proc1.size()<=8 && courant_proc1)
-					{
-						int j = spriteList_proc1.size();
-						if ( j>0 && i == this.position_de_des && this.counteur_des_proc1!= 0)
-						{
-							if(this.counteur_des_proc1 == 9)
-							{
-								this.counteur_des_proc1 = 1;
-								spriteList_proc1.get(j-1).setTextureRect(new IntRect(1, 82, 80, 80));
-							}
-							else
-							{
-								this.counteur_des_proc1++;
-								spriteList_proc1.get(j-1).setTextureRect(new IntRect(80*(this.counteur_des_proc1-1)+this.counteur_des_proc1, 82, 80, 80));
-							}								   
-						}
-						else if(j < 8)
-						{
-							if(i == this.position_de_des)
-								this.counteur_des_proc1 = 1;
-							else
-								this.counteur_des_proc1 = 0;
-							spriteList_proc1.add(temp);
-						}
-					}
-
-					else if(spriteList_proc2.size()<=8 && courant_proc2)
-					{
-						int j = spriteList_proc2.size();
-						if ( j>0 && i == this.position_de_des && this.counteur_des_proc2!= 0)
-						{
-							if(this.counteur_des_proc2 == 9)
-							{
-								this.counteur_des_proc2 = 1;
-								spriteList_proc2.get(j-1).setTextureRect(new IntRect(1, 82, 80, 80));
-							}
-							else
-							{
-								this.counteur_des_proc2++;
-								spriteList_proc2.get(j-1).setTextureRect(new IntRect(80*(this.counteur_des_proc2-1)+this.counteur_des_proc2, 82, 80, 80));
-							}								   
-						}
-						else if(j < 8)
-						{
-							if(i == this.position_de_des)
-								this.counteur_des_proc2 = 1;
-							else
-								this.counteur_des_proc2 = 0;
-							spriteList_proc2.add(temp);
-						}
-					}
-				}
-			//si on clique sur la fenentre de main , proc1 ou proc2, il efface l'action
-			for (int i=0; i < spriteList_main.size(); i++)
-				if (Graphic.isOnSprite(spriteList_main.get(i)))
-				{
-					spriteList_main.remove(i);
-				}
-			for (int i=0; i < spriteList_proc1.size(); i++)
-				if (Graphic.isOnSprite(spriteList_proc1.get(i)))
-				{
-					spriteList_proc1.remove(i);
-				}
-			for (int i=0; i < spriteList_proc2.size(); i++)
-				if (Graphic.isOnSprite(spriteList_proc2.get(i)))
-				{
-					spriteList_proc2.remove(i);
-				}
 		}
-		//arranger les positions des actions dans la fenetred
-		for (int i=0; i < spriteList_main.size(); i++)
-		{  
-			spriteList_main.get(i).setPosition((i%4)*80+main.x, 80*(i/4)+main.y+30);	   
-		}
-		for (int i = 0; i < spriteList_proc1.size(); i++)
+		
+		if (Input.INPUT.again(BUTTON.MRIGHT))
 		{
-			spriteList_proc1.get(i).setPosition((i%4)*80+main.x,80*(i/4)+main.y+Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y+20+30);
+			World.WORLD.setPlaying(true);
+			List<Entities.Character> l =  World.WORLD.getCharacterList();
+			for (int i=0; i < l.size(); i++)
+				l.get(i).setMain(final_actionList.get(i));
 		}
-		for (int i = 0; i < spriteList_proc2.size(); i++)
+		
+		if (!World.WORLD.isPlaying())
 		{
-			spriteList_proc2.get(i).setPosition((i%4)*80+main.x,80*(i/4)+proc1.getPosition().y+Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y+20+30);
+			if (Input.INPUT.again(BUTTON.MLEFT))
+			{
+				//Pour choisir la fenetre d'ajouter les actions
+				if (Graphic.isOnSprite(sprite_main))
+				{
+					sprite_main.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+					sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
+					sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+					wichProc = 0;
+				}
+				if (sprite_proc1 != null && Graphic.isOnSprite(sprite_proc1))
+				{
+					sprite_proc1.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+					sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
+					sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+					wichProc = 1;
+				}
+				if (sprite_proc2 != null && Graphic.isOnSprite(sprite_proc2))
+				{
+					sprite_proc2.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+					sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
+					sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
+					wichProc = 2;
+				}
+				
+				//Ajouter les actions dans la fenentre
+				for (int i=0; i < spriteList.size(); i++)
+					if (Graphic.isOnSprite(spriteList.get(i)))
+					{
+						Sprite temp = new Sprite(spriteList.get(i).getTexture(), spriteList.get(i).getTextureRect());
+						if (spriteList_main.size() <= nbrAction)						
+						{
+							int j, max_action;
+							List<Sprite> sprite_list;
+							
+							if (wichProc == 0)
+							{
+								j = spriteList_main.size();
+								max_action = nbrAction;
+								sprite_list = spriteList_main;
+							}
+							else if (wichProc == 1)
+							{
+								j = spriteList_proc1.size();
+								max_action = 8;
+								sprite_list = spriteList_proc1;
+							}
+							else
+							{
+								j = spriteList_proc2.size();
+								max_action = 8;
+								sprite_list = spriteList_proc2;
+							}
+							
+							if (j < max_action) 
+							{
+								if (actionList.get(i) instanceof For && j != 0)
+								{
+									Prog action = final_actionList.get(wichProc).getListProcedure().get(final_actionList.get(wichProc).getListProcedure().size() - 1);
+									if (action instanceof For)
+									{
+										((For) action).incrementer();
+										sprite_list.get(sprite_list.size()-1).setTextureRect(new IntRect(1+81*(((For) action).getForValue()-1), 82, 80, 80));
+									}
+									else
+									{
+										final_actionList.get(wichProc).addProg(actionList.get(i));
+										sprite_list.add(temp);
+									}
+								}
+								else
+								{
+									final_actionList.get(wichProc).addProg(actionList.get(i));
+									sprite_list.add(temp);
+								}
+							}
+						}
+					}
+				
+				//Effacer des actions
+				for (int i=0; i < spriteList_main.size(); i++)
+					if (Graphic.isOnSprite(spriteList_main.get(i)))
+					{
+						spriteList_main.remove(i);
+						final_actionList.get(0).getListProcedure().remove(i);
+					}
+				for (int i=0; i < spriteList_proc1.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc1.get(i)))
+					{
+						spriteList_proc1.remove(i);
+						final_actionList.get(1).getListProcedure().remove(i);
+					}
+				for (int i=0; i < spriteList_proc2.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc2.get(i)))
+					{
+						spriteList_proc2.remove(i);
+						final_actionList.get(2).getListProcedure().remove(i);
+					}
+			}
 		}
+		else
+		{
+			
+		}
+		
+		placeGui();
 	}
 
 	public int getNbrAction() {return nbrAction;}
-
 	public int getNbrProc() {return nbrProc;}
-
 	public List<Action> getActionList() {return actionList;}
 }

@@ -31,6 +31,8 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>For</action>
+		<action>Jump</action>
 		<action>OpenChest</action>
 		<action>UseChest</action>
 	</action_list>

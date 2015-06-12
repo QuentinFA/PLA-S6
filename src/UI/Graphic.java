@@ -42,7 +42,7 @@ public class Graphic
 	boolean mute = true;
 	Sprite boutonSound = new Sprite();
 	private List<Sprite> nuages = new ArrayList<Sprite>();
-	static int wait = 0;
+	int wait = 0;
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS); //Fond
 	
 	//Fonctions

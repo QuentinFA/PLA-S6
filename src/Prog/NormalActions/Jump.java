@@ -1,6 +1,11 @@
-package Prog;
+package Prog.NormalActions;
 import Entities.Character;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Orientation;
+
 import java.lang.Math;
 
 public class Jump extends Action

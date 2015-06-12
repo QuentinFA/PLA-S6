@@ -1,10 +1,11 @@
-package Entities;
+package Entities.Chests;
 
+import Entities.Chest;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
-import Prog.Left_turn;
+import Prog.NormalActions.Left_turn;
 
 public class ChestLeft_turn extends Chest 
 {

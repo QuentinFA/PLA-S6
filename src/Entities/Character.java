@@ -1,22 +1,21 @@
 package Entities;
 
-
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Stack;
 
 import org.jsfml.graphics.IntRect;
 
 import Game.Controler;
 import Game.Interpreter;
 import Game.Ressources;
+import Game.World;
 import Game.Ressources.TEXTURE;
 import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Procedure;
 import Prog.Prog;
-import Structures.LIFO;
-
 
 public class Character extends Entities
 {	
@@ -25,9 +24,8 @@ public class Character extends Entities
 
 	private Chest coffre;
 	private Procedure main;
-	//private TypeCharacter type;
 	private Action actionCourante;
-	LIFO<ListIterator<Prog>> pile = new LIFO<ListIterator<Prog>>();
+	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
 
 	public Character(Coordonnees pos, int ori) 
 	{
@@ -54,51 +52,46 @@ public class Character extends Entities
 	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(1+82*orientation, 1, 81, 81));}
 	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
-	//public void setType (TypeCharacter m) {type = m;}
-	//public TypeCharacter getType() {return type;}
-	public void setActionCourante(Action a) {this.actionCourante = a;}
+	public void setActionCourante(Action a) {actionCourante = a;}
 	public Action getAction () {return actionCourante;}
-	public void setMain(Procedure l) {
+	public void setMain(Procedure l) 
+	{
 		this.main = l;
-		List<Prog>t =l.getListProcedure();
+		List<Prog>t = l.getListProcedure();
 		ListIterator<Prog> it = t.listIterator();
-		pile.put(it);
+		pile.push(it);
 	}
-	public Procedure getMain(){
-		return main;
-	}
+	public Procedure getMain() {return main;}
 
-	public LIFO<ListIterator<Prog>> getPile(){
-		return pile;
-	}
+	public Stack<ListIterator<Prog>> getPile() {return pile;}
 
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
 
 	public boolean gerer() 
 	{
-		if (this.actionCourante != null)
+		if (World.WORLD.isPlaying())
 		{
-			if (actionCourante.execute(this))
+			if (actionCourante != null)
 			{
-				Controler.CONTROLER.manage(this);
-				actionCourante = null;
-				return true;
+				if (actionCourante.execute(this))
+				{
+					actionCourante = null;
+					Controler.CONTROLER.manage(this);
+					return true;
+				}
 			}
+			else 
+				Controler.CONTROLER.manage(this);
 		}
-
-		else 
-			Controler.CONTROLER.manage(this);
 
 		return true;
 	}
 
-	public void next() 
+	public void next()
 	{
 		Action a = Interpreter.INTERPRETER.eval(this);
-		if(a!=null)
-		{
+		if (a != null)
 			use_Action(a);
-		}
 	}
 
 	/**
@@ -108,14 +101,7 @@ public class Character extends Entities
 	 */
 	public void use_Action(Action a)
 	{
-		try
-		{
-			if (actionCourante == null)
-				actionCourante = (Action) a.clone();
-		}
-		catch (CloneNotSupportedException e) 
-		{
-			e.printStackTrace();
-		}
+		try {actionCourante = (Action) a.clone();}
+		catch (CloneNotSupportedException e) {e.printStackTrace();}
 	}
 }

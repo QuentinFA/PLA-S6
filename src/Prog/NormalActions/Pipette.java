@@ -1,10 +1,13 @@
-package Prog;
+package Prog.NormalActions;
 
 import Entities.Block;
 import Entities.Character;
 import Entities.ColorBlock;
 import Entities.Entities;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
 
 public class Pipette extends Action{
 	

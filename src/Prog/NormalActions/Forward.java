@@ -1,6 +1,10 @@
-package Prog;
+package Prog.NormalActions;
 import Entities.Character;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Orientation;
 
 public class Forward extends Action
 {
@@ -28,6 +32,7 @@ public class Forward extends Action
 			switch (p.getOrientation())
 			{
 				case Orientation.NORTH:
+					System.out.println("lol");
 					check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ());
 					delta = new Coordonnees(0, 1.f/last_frame_phase1, 0);
 					break;

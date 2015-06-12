@@ -1,7 +1,9 @@
-package Entities;
+package Entities.Blocks;
 
 import org.jsfml.graphics.IntRect;
 
+import Entities.Character;
+import Entities.ColorBlock;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
