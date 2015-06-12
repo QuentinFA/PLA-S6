@@ -30,6 +30,7 @@ public class Gui
 	private boolean courant_main = true;
 	private boolean courant_proc1 = false;
 	private boolean courant_proc2 = false;
+	private org.jsfml.graphics.Color color;
 	private Sprite proc1 = new Sprite();
 	private Sprite proc2 = new Sprite();
 	private Sprite returnMenu = new Sprite();
@@ -51,7 +52,7 @@ public class Gui
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
 		gui_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
 		actionList = World.WORLD.getActionList();
-
+        color = gui_main.getColor();
 
 		//for (Action act : actionList)
 		for(int i = 0; i < actionList.size(); i++)
@@ -162,18 +163,30 @@ public class Gui
 			//pour choisir la fenetre d'ajouter les actions
 			if (Graphic.isOnSprite(this.gui_main))
 			{
+				if(this.nbrProc != 0)
+				{
+					gui_main.setColor(new org.jsfml.graphics.Color(180,209,212));
+				    proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+				    proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+				}
 				this.courant_main = true;
 				this.courant_proc1 = false;
 				this.courant_proc2 = false;
 			}
 			if (Graphic.isOnSprite(this.proc1))
 			{
+				gui_main.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+				proc1.setColor(new org.jsfml.graphics.Color(180,209,212));
+				proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
 				this.courant_main = false;
 				this.courant_proc1 = true;
 				this.courant_proc2 = false;
 			}
 			if (Graphic.isOnSprite(this.proc2))
-			{
+			{	
+				gui_main.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+			    proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+			    proc2.setColor(new org.jsfml.graphics.Color(180,209,212));
 				this.courant_main = false;
 				this.courant_proc1 = false;
 				this.courant_proc2 = true;
