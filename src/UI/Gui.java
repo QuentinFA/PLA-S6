@@ -23,7 +23,7 @@ public class Gui
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
-	private int position_de_des;
+	private int position_de_des = -1;
 	private int counteur_des_main = 0;
 	private int counteur_des_proc1 = 0;
 	private int counteur_des_proc2 = 0;
