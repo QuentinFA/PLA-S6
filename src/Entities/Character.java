@@ -2,7 +2,7 @@ package Entities;
 
 
 import java.util.List;
-import java.util.Iterator;
+import java.util.ListIterator;
 
 import org.jsfml.graphics.IntRect;
 
@@ -10,7 +10,11 @@ import Game.Controler;
 import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
-import Prog.*;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Procedure;
+import Prog.Prog;
 import Structures.LIFO;
 
 
@@ -20,15 +24,15 @@ public class Character extends Entities
 	private Color couleur;
 
 	private Chest coffre;
-	private List<Prog> main;
+	private Procedure main;
 	//private TypeCharacter type;
 	private Action actionCourante;
-	LIFO<Iterator<Prog>> pile = new LIFO<Iterator<Prog>>();
-	
-	public Character(Coordonnees pos, int ori, TypeCharacter t) 
+	LIFO<ListIterator<Prog>> pile = new LIFO<ListIterator<Prog>>();
+
+	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
-		
+
 		orientation = ori;
 		couleur = Color.DEFAUT;
 		coffre = null;
@@ -36,7 +40,7 @@ public class Character extends Entities
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
-	
+
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
@@ -54,47 +58,47 @@ public class Character extends Entities
 	//public TypeCharacter getType() {return type;}
 	public void setActionCourante(Action a) {this.actionCourante = a;}
 	public Action getAction () {return actionCourante;}
-	public void setMain(List<Prog> l) {
+	public void setMain(Procedure l) {
 		this.main = l;
-		Iterator<Prog> it = main.iterator();
+		List<Prog>t =l.getListProcedure();
+		ListIterator<Prog> it = t.listIterator();
 		pile.put(it);
 	}
-	public List<Prog> getMain(){
-			return main;
+	public Procedure getMain(){
+		return main;
 	}
-	
-	public LIFO<Iterator<Prog>> getPile(){
-			return pile;
+
+	public LIFO<ListIterator<Prog>> getPile(){
+		return pile;
 	}
 
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
-	
+
 	public boolean gerer() 
 	{
 		if (this.actionCourante != null)
 		{
 			if (actionCourante.execute(this))
 			{
-				//Controler.CONTROLER.manage(this);
+				Controler.CONTROLER.manage(this);
 				actionCourante = null;
 				return true;
 			}
 		}
-		
-	//	else 
-			//Controler.CONTROLER.manage(this);
+
+		else 
+			Controler.CONTROLER.manage(this);
 
 		return true;
 	}
-	
+
 	public void next() 
 	{
-		/*Action a = Interpreter.INTERPRETER.eval(this);
+		Action a = Interpreter.INTERPRETER.eval(this);
 		if(a!=null)
 		{
 			use_Action(a);
-		}*/
-
+		}
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package Prog;
+import Entities.Character;
 
-public class For extends Prog {
+public class For extends Action {
 	
 	private int nbBouclesRestantes; //nombre d'it�ration
 	
@@ -19,4 +20,6 @@ public class For extends Prog {
 		else 
 			return false;
 	}
+	
+	public boolean execute(Character p) {return false;}
 }

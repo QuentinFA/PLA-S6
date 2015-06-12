@@ -48,7 +48,7 @@ public class World
 		for (Block b : lb)
 			addBlock(b);
 		
-		addCharacter(new Character(coordStart, orientStart, TypeCharacter.DEFAULT));
+		addCharacter(new Character(coordStart, orientStart));
 		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
