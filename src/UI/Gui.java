@@ -102,6 +102,7 @@ public class Gui
 		}
 
 		GUI = this;
+		
 		placeGui();
 	}
 	
