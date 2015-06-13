@@ -29,7 +29,9 @@ public class Ressources
 		GUI_MAIN(),
 		BLOCK_OCCUPIED(),
 		PROC1(),
-		PROC2();
+		PROC2(),
+		PLAY_ACTION(),
+		RETRY_ACTION();
 
 		private Texture texture;
 		
@@ -73,6 +75,8 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.BLOCK_OCCUPIED, Paths.get("images/block_occupied.png"));
 		TEXTURE.loadFromFile(TEXTURE.PROC1, Paths.get("images/proc1.png"));
 		TEXTURE.loadFromFile(TEXTURE.PROC2, Paths.get("images/proc2.png"));
+		TEXTURE.loadFromFile(TEXTURE.PLAY_ACTION, Paths.get("images/play_action.png"));
+		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}

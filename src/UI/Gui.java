@@ -20,11 +20,12 @@ public class Gui
 	public static Gui GUI = null;
 
 	private Sprite sprite_return = new Sprite();
-	
+
 	private Sprite sprite_main = new Sprite();
 	private Sprite sprite_proc1 = null;
 	private Sprite sprite_proc2 = null;
-	
+	private Sprite sprite_play_retry = new Sprite();
+
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
@@ -38,6 +39,7 @@ public class Gui
 	private boolean courant_main = true;
 	private boolean courant_proc1 = false;
 	private boolean courant_proc2 = false;
+	private boolean play_action = true;
 	private org.jsfml.graphics.Color color;
 	private Sprite proc1 = new Sprite();
 	private Sprite proc2 = new Sprite();
@@ -50,16 +52,16 @@ public class Gui
 			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y*2/5.f); 
 	private Vector2f main;
 
-	
+
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
-	
+
 
 	private int nbrAction;
 	private int nbrProc;
 
 	private int wichProc = 0;
-	
-//	private List<Action> actionList;
+
+	//	private List<Action> actionList;
 
 	public Gui(int nbrA, int nbrP)
 	{
@@ -67,10 +69,11 @@ public class Gui
 
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
-		
+		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+
 		actionList = World.WORLD.getActionList();
 
-        color = gui_main.getColor();
+		color = gui_main.getColor();
 
 		for(int i = 0; i < actionList.size(); i++)
 		{
@@ -103,16 +106,16 @@ public class Gui
 
 			spriteList.add(spr);
 		}
-		
+
 		nbrAction = nbrA;
 		nbrProc = nbrP;
-		
+
 		for (int i=0; i < nbrAction; i++)
 			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
-		
+
 		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
 		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-		
+
 		if (nbrProc >= 1)
 		{
 			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
@@ -125,35 +128,37 @@ public class Gui
 		}
 
 		GUI = this;
-		
+
 		placeGui();
 	}
-	
+
 	public void placeGui()
 	{
 		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-		
+        sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
+        		Graphic.SFML.getPositionCamera_f().y+ Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
+
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20));
-		
+
 		if (sprite_proc1 != null)
 			sprite_proc1.setPosition(new Vector2f(sprite_main.getPosition().x, sprite_main.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y + 20));
 		if (sprite_proc2 != null)
 			sprite_proc2.setPosition(new Vector2f(sprite_proc1.getPosition().x, sprite_proc1.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y + 20));
-		
+
 		for (int i=0; i < spriteList.size(); i++)
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
-			
+
 		for (int i=0; i < nbrAction; i++)
 			spriteList_occupied.get(i).setPosition(new Vector2f((i%4)*80 + sprite_main.getPosition().x + 1, 80*(i/4) + sprite_main.getPosition().y + 25));
-		
+
 		//Arranger les positions des actions dans la fenetre
 		for (int i=0; i < spriteList_main.size(); i++)
 			spriteList_main.get(i).setPosition((i%4)*80 + sprite_main.getPosition().x + 1, 80*(i/4) + sprite_main.getPosition().y + 25);	   
-		
+
 		for (int i = 0; i < spriteList_proc1.size(); i++)
 			spriteList_proc1.get(i).setPosition((i%4)*80 + sprite_proc1.getPosition().x, 80*(i/4) + sprite_proc1.getPosition().y + 25);	 
-		
+
 		for (int i = 0; i < spriteList_proc2.size(); i++)
 			spriteList_proc2.get(i).setPosition((i%4)*80 + sprite_proc2.getPosition().x, 80*(i/4) + sprite_proc2.getPosition().y + 25);	 
 	}
@@ -161,13 +166,13 @@ public class Gui
 	public void afficher()
 	{
 		Graphic.SFML.draw(sprite_return);
-		
+        Graphic.SFML.draw(sprite_play_retry);
 		Graphic.SFML.draw(sprite_main);
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
 		if (sprite_proc2 != null)
 			Graphic.SFML.draw(sprite_proc2);
-			
+
 		for (Sprite spr : spriteList)
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_occupied)
@@ -189,7 +194,7 @@ public class Gui
 				World.WORLD = null;
 				Gui.GUI = null;
 				Menu.change_menu(Menu.MENU.LEVEL);
-				
+
 				return;
 			}
 
@@ -199,8 +204,8 @@ public class Gui
 				if(this.nbrProc != 0)
 				{
 					gui_main.setColor(new org.jsfml.graphics.Color(180,209,212));
-				    proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				    proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+					proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+					proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
 				}
 				this.courant_main = true;
 				this.courant_proc1 = false;
@@ -218,18 +223,33 @@ public class Gui
 			if (Graphic.isOnSprite(this.proc2))
 			{	
 				gui_main.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-			    proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-			    proc2.setColor(new org.jsfml.graphics.Color(180,209,212));
+				proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
+				proc2.setColor(new org.jsfml.graphics.Color(180,209,212));
 				this.courant_main = false;
 				this.courant_proc1 = false;
 				this.courant_proc2 = true;
 			}
-//			//ajouter les actions dans la fenentre
-//			for (int i=0; i < spriteList.size(); i++)
-//				if (Graphic.isOnSprite(spriteList.get(i)))
-//=======
+			if(Graphic.isOnSprite(this.sprite_play_retry))
+			{
+				if(play_action)
+				{
+					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
+					play_action = false;
+				}
+				else
+				{
+					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+					play_action = true;
+				}
+				
+
+			}
+			//			//ajouter les actions dans la fenentre
+			//			for (int i=0; i < spriteList.size(); i++)
+			//				if (Graphic.isOnSprite(spriteList.get(i)))
+			//=======
 		}
-		
+
 		if (!World.WORLD.isPlaying() && Input.INPUT.again(BUTTON.MRIGHT))
 		{
 			World.WORLD.setPlaying(true);
@@ -237,13 +257,13 @@ public class Gui
 			for (int i=0; i < l.size(); i++)
 				l.get(i).setMain(final_actionList.get(i));
 		}
-		
+
 		if (!World.WORLD.isPlaying())
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{
 				selecPanneau();
-				
+
 				//Ajouter les actions dans la fenentre
 				for (int i=0; i < spriteList.size(); i++)
 					if (Graphic.isOnSprite(spriteList.get(i)))
@@ -253,7 +273,7 @@ public class Gui
 						{
 							int j, max_action;
 							List<Sprite> sprite_list;
-							
+
 							if (wichProc == 0)
 							{
 								j = spriteList_main.size();
@@ -272,7 +292,7 @@ public class Gui
 								max_action = 8;
 								sprite_list = spriteList_proc2;
 							}
-							
+
 							if (j < max_action) 
 							{
 								if (actionList.get(i) instanceof For && j != 0)
@@ -297,7 +317,7 @@ public class Gui
 							}
 						}
 					}
-				
+
 				//Effacer des actions
 				for (int i=0; i < spriteList_main.size(); i++)
 					if (Graphic.isOnSprite(spriteList_main.get(i)))
@@ -321,16 +341,16 @@ public class Gui
 		}
 		else
 		{
-			
+
 		}
-		
+
 		placeGui();
 	}
 
 	public int getNbrAction() {return nbrAction;}
 	public int getNbrProc() {return nbrProc;}
 	public List<Action> getActionList() {return actionList;}
-	
+
 	public void selecPanneau()
 	{
 		//Pour choisir la fenetre d'ajouter les actions
