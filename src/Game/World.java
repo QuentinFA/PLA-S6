@@ -53,17 +53,27 @@ public class World
 		for (Block b : lb)
 			addBlock(b);
 		
-		addCharacter(new Character(coordStart, orientStart));
-		
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
 		
-		for (Character c : characterList)
-			c.setPosSprite(placeMe(c.getCoord()));
+		initialiser();
 		
 		WORLD = this;
 		
 		Graphic.SFML.setCenterCamera(getCenterWorld());
+	}
+	
+	public void initialiser()
+	{
+		Interpreter.INTERPRETER = new Interpreter();
+		Controler.CONTROLER = new Controler(); 
+		
+		for (Character p : characterList)
+			allList.remove(p);
+		
+		characterList.clear();
+		addCharacter(new Character(new Coordonnees(coordStart), orientStart));
+		characterList.get(0).setPosSprite(placeMe(coordStart));
 	}
 	
 	/**

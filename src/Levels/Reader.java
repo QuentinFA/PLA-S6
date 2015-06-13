@@ -195,8 +195,6 @@ public class Reader
 		
 		World.WORLD = new World(name, lb, bng, dir, la);
 		Gui.GUI = new Gui(nbA, nbP);
-		Interpreter.INTERPRETER = new Interpreter();
-		Controler.CONTROLER = new Controler(); 
 		
 		Menu.Mymenu = null;
 	}

@@ -34,26 +34,7 @@ public class Gui
 	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
 
-	private int position_de_des = -1;
-	private int counteur_des_main = 0;
-	private int counteur_des_proc1 = 0;
-	private int counteur_des_proc2 = 0;
-	private boolean courant_main = true;
-	private boolean courant_proc1 = false;
-	private boolean courant_proc2 = false;
-	private boolean play_action = true;
-	private org.jsfml.graphics.Color color;
-	private Sprite proc1 = new Sprite();
-	private Sprite proc2 = new Sprite();
-	private Sprite returnMenu = new Sprite();
-	private Sprite gui_main = new Sprite();
 	private List<Action> actionList = World.WORLD.getActionList();
-	private Vector2f main1 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
-			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y/3.f);
-	private Vector2f main2 = new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x-20,
-			Graphic.SFML.getCenterCamera().y-Graphic.SFML.getSizeCamera().y*2/5.f); 
-	private Vector2f main;
-
 
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
 
@@ -74,8 +55,6 @@ public class Gui
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
 
 		actionList = World.WORLD.getActionList();
-
-		color = gui_main.getColor();
 
 		for(int i = 0; i < actionList.size(); i++)
 		{
@@ -137,8 +116,9 @@ public class Gui
 	public void placeGui()
 	{
 		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-        sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
-        		Graphic.SFML.getPositionCamera_f().y+ Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
+       
+		sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
+        		Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
 
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20));
@@ -203,64 +183,26 @@ public class Gui
 				return;
 			}
 
-			//pour choisir la fenetre d'ajouter les actions
-			if (Graphic.isOnSprite(this.gui_main))
+			if (Graphic.isOnSprite(sprite_play_retry))
 			{
-				if(this.nbrProc != 0)
-				{
-					gui_main.setColor(new org.jsfml.graphics.Color(180,209,212));
-					proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-					proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				}
-				this.courant_main = true;
-				this.courant_proc1 = false;
-				this.courant_proc2 = false;
-			}
-			if (Graphic.isOnSprite(this.proc1))
-			{
-				gui_main.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				proc1.setColor(new org.jsfml.graphics.Color(180,209,212));
-				proc2.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				this.courant_main = false;
-				this.courant_proc1 = true;
-				this.courant_proc2 = false;
-			}
-			if (Graphic.isOnSprite(this.proc2))
-			{	
-				gui_main.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				proc1.setColor(new org.jsfml.graphics.Color(this.color.a,this.color.b,this.color.g));
-				proc2.setColor(new org.jsfml.graphics.Color(180,209,212));
-				this.courant_main = false;
-				this.courant_proc1 = false;
-				this.courant_proc2 = true;
-			}
-			if(Graphic.isOnSprite(this.sprite_play_retry))
-			{
-				if(play_action)
+				if (World.WORLD.isPlaying())
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
-					play_action = false;
+					
+					World.WORLD.setPlaying(false);
+					World.WORLD.initialiser();
 				}
 				else
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
-					play_action = true;
+					
+					World.WORLD.setPlaying(true);
+					List<Entities.Character> l =  World.WORLD.getCharacterList();
+					
+					for (int i=0; i < l.size(); i++)
+						l.get(i).setMain(final_actionList.get(i));
 				}
-				
-
 			}
-			//			//ajouter les actions dans la fenentre
-			//			for (int i=0; i < spriteList.size(); i++)
-			//				if (Graphic.isOnSprite(spriteList.get(i)))
-			//=======
-		}
-
-		if (!World.WORLD.isPlaying() && Input.INPUT.again(BUTTON.MRIGHT))
-		{
-			World.WORLD.setPlaying(true);
-			List<Entities.Character> l =  World.WORLD.getCharacterList();
-			for (int i=0; i < l.size(); i++)
-				l.get(i).setMain(final_actionList.get(i));
 		}
 
 		if (!World.WORLD.isPlaying())

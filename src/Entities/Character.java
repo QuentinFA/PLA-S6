@@ -50,9 +50,10 @@ public class Character extends Entities
 	public Action getAction () {return actionCourante;}
 	public void setMain(Procedure l) 
 	{
-		this.main = l;
-		List<Prog>t = l.getListProcedure();
+		main = l;
+		List<Prog> t = l.getListProcedure();
 		ListIterator<Prog> it = t.listIterator();
+		pile.clear();
 		pile.push(it);
 	}
 	public Procedure getMain() {return main;}
