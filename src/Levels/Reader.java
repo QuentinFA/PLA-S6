@@ -18,6 +18,8 @@ import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
 import Entities.Blocks.TeleporterBlock;
+import Game.Controler;
+import Game.Interpreter;
 import Game.World;
 import Prog.Action;
 import Prog.Color;
@@ -190,9 +192,13 @@ public class Reader
 		Set<Block> set = new HashSet<Block>();
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
-		Menu.Mymenu = null;
+		
 		World.WORLD = new World(name, lb, bng, dir, la);
 		Gui.GUI = new Gui(nbA, nbP);
+		Interpreter.INTERPRETER = new Interpreter();
+		Controler.CONTROLER = new Controler(); 
+		
+		Menu.Mymenu = null;
 	}
 	
 }

@@ -1,4 +1,6 @@
 package Prog.NormalActions;
+import org.jsfml.graphics.IntRect;
+
 import Entities.Character;
 import Game.World;
 import Prog.Action;
@@ -32,7 +34,6 @@ public class Forward extends Action
 			switch (p.getOrientation())
 			{
 				case Orientation.NORTH:
-					System.out.println("lol");
 					check = new Coordonnees(coord.getX(), coord.getY()+1, coord.getZ());
 					delta = new Coordonnees(0, 1.f/last_frame_phase1, 0);
 					break;
@@ -54,8 +55,10 @@ public class Forward extends Action
 			if (World.WORLD.isValidPosition(check))
 				futur_coord = check;
 			else
+			{
+				futur_coord = p.getCoord();
 				delta = new Coordonnees(0, 0, 0);
-			
+			}
 			phase = PHASE.P1;
 		}
 		else if (frame == last_frame_phase1)
@@ -63,11 +66,14 @@ public class Forward extends Action
 			phase = PHASE.CHUTE;
 			delta = new Coordonnees(0, 0, -0.2f);
 		}
-		//TODO other animation
+		
 		frame ++;
 		
 		if (phase == PHASE.P1)
+		{
 			p.getCoord().increment(delta);
+			animation(p);
+		}
 		else if (phase == PHASE.CHUTE)
 		{
 			Coordonnees check = new Coordonnees(p.getCoord());
@@ -75,6 +81,7 @@ public class Forward extends Action
 			
 			if (World.WORLD.isValidPosition(check))
 			{
+				p.setTextureRect(new IntRect(83, 329+p.getOrientation()*82, 81, 81));
 				p.getCoord().increment(delta);
 				futur_coord = new Coordonnees((int)(p.getCoord().getX()), (int)(p.getCoord().getY()), (int)(p.getCoord().getZ()));
 			}
@@ -86,9 +93,20 @@ public class Forward extends Action
 			}
 		}
 		
-		//System.out.println(p.getCoord());
 		p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		
 		return false;
+	}
+	
+	private int anim = 0;
+	private void animation(Character p)
+	{
+		if (anim % 5 == 0)
+			p.setTextureRect(new IntRect(1+anim/5*82, 1+p.getOrientation()*82, 81, 81));
+		
+		anim++;
+		
+		if (anim == 20)
+			anim = 0;
 	}
 }

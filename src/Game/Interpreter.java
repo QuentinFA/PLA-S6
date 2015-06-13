@@ -16,7 +16,7 @@ import Prog.NormalActions.For;
 
 public class Interpreter 
 {
-	public static Interpreter INTERPRETER = new Interpreter();
+	public static Interpreter INTERPRETER = null;
 
 	public Action eval(Character p)
 	{

@@ -20,36 +20,30 @@ import Prog.Prog;
 public class Character extends Entities
 {	
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
-	private Color couleur;
+	private Color couleur = Color.DEFAUT;;
 
-	private Chest coffre;
+	private Chest coffre = null;
 	private Procedure main;
-	private Action actionCourante;
+	private Action actionCourante = null;
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
 
 	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
-
 		orientation = ori;
-		couleur = Color.DEFAUT;
-		coffre = null;
-		actionCourante = null;
+
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
+	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(247, 329+82*orientation, 81, 81));}
 
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
-	public void setOrientation(int ori) 
-	{
-		orientation = ori;
-		setTextureOrientation();
-	}
+	public void setOrientation(int ori) {orientation = ori;}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
-	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(1+82*orientation, 1, 81, 81));}
+	
 	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
 	public void setActionCourante(Action a) {actionCourante = a;}
@@ -77,11 +71,13 @@ public class Character extends Entities
 				{
 					actionCourante = null;
 					Controler.CONTROLER.manage(this);
-					return true;
 				}
 			}
 			else 
 				Controler.CONTROLER.manage(this);
+			
+			if (actionCourante == null)
+				setTextureOrientation();
 		}
 
 		return true;
@@ -90,17 +86,12 @@ public class Character extends Entities
 	public void next()
 	{
 		Action a=null;
-		try {
-			 a = Interpreter.INTERPRETER.eval(this);
-		}catch(StackOverflowError e) 
-		{
-			throw new StackOverflowError();
-		}
-		if(a!=null)
-		{
+		try {a = Interpreter.INTERPRETER.eval(this);}
+		catch(StackOverflowError e) 
+		{throw new StackOverflowError();}
+		
+		if (a!=null)
 			use_Action(a);
-
-		}
 	}
 
 	/**

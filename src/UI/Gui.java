@@ -7,7 +7,9 @@ import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
+import Game.Controler;
 import Game.Input;
+import Game.Interpreter;
 import Game.Input.BUTTON;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
@@ -165,6 +167,9 @@ public class Gui
 			{
 				World.WORLD = null;
 				Gui.GUI = null;
+				Interpreter.INTERPRETER = null;
+				Controler.CONTROLER = null;
+				
 				Menu.change_menu(Menu.MENU.LEVEL);
 				
 				return;

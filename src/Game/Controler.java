@@ -20,7 +20,7 @@ public class Controler
 	}
 	
 	List<PersonnageTravaille> lPT = new ArrayList<PersonnageTravaille>();
-	public static Controler CONTROLER = new Controler();
+	public static Controler CONTROLER = null;
 	
 	public void addCharacter(Character p)
 	{
@@ -42,10 +42,11 @@ public class Controler
 			if (pt.travail == true)
 				return;
 		
-		for (PersonnageTravaille pt : lPT) {
-			try {
-				pt.p.next();
-			}catch (StackOverflowError e) {
+		for (PersonnageTravaille pt : lPT) 
+		{
+			try {pt.p.next();}
+			catch (StackOverflowError e) 
+			{
 				//TODO Affichier message à l'utilisateur : erreur, boucle infinie
 			}
 			pt.travail = true;
