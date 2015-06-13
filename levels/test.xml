@@ -7,15 +7,13 @@
       <x>0</x>
       <y>0</y>
     </block>
-    <block type="NormalBlock">
-      <x>1</x>
-      <y>0</y>
-    </block>
-  </floor>
-  <floor level="1">
     <block type="NormalBlock" is_start="true">
       <x>1</x>
       <y>0</y>
+    </block>
+    <block type="TeleporterBlock" destination="4,4,0">
+      <x>2</x>
+      <y>2</y>
     </block>
   </floor>
   <action_list>

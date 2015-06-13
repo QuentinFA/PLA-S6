@@ -19,4 +19,5 @@ public abstract class BeaconXML
 	public static final String B_PROCEDURE = "procedure";
 	public static final String B_PROCEDURE_NB = "nb_proc";
 	public static final String B_STARTING_DIRECTION = "starting_dir";
+	public static final String B_TP_DEST = "destination";
 }

@@ -2,7 +2,6 @@ package UI;
 
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
-import org.jsfml.system.Vector2i;
 
 import Game.Input;
 import Game.Ressources;
