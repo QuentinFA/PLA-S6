@@ -187,14 +187,14 @@ public class Gui
 			{
 				if (World.WORLD.isPlaying())
 				{
-					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
+					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
 					
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
 				}
 				else
 				{
-					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
 					
 					World.WORLD.setPlaying(true);
 					List<Entities.Character> l =  World.WORLD.getCharacterList();
