@@ -23,6 +23,20 @@ public class TeleporterBlock extends Block
 		couleur = col;
 	}
 	
+	public TeleporterBlock(Coordonnees c)
+	{
+		coord = c;
+		couleur = Color.DEFAUT;
+		this.destination = null;
+	}
+	
+	public TeleporterBlock(Coordonnees c, TeleporterBlock dest)
+	{
+		coord = c;
+		this.destination = dest;
+		couleur = Color.DEFAUT;
+	}
+	
 	public void lier(TeleporterBlock dest) {destination = dest;}
 	
 	Coordonnees getSortie() 
@@ -38,5 +52,10 @@ public class TeleporterBlock extends Block
 		Coordonnees s = getSortie();
 		if (s != null)
 			p.setCoord(s);
+	}
+	
+	public TeleporterBlock getDest()
+	{
+		return this.destination;
 	}
 }

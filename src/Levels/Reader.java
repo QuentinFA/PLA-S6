@@ -17,6 +17,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
+import Entities.TeleporterBlock;
 import Game.World;
 import Prog.Action;
 import Prog.Color;
@@ -30,6 +31,7 @@ public class Reader
 {
 	public static final String PACKAGE_ACTION = "Prog.";
 	public static final String PACKAGE_BLOCK = "Entities.";
+	public static final String CLASS_TP = "TeleporterBlock";
 	
 	public static Reader READER = new Reader();
 	
@@ -88,10 +90,29 @@ public class Reader
 					try
 					{
 						Class<?> c = Class.forName(PACKAGE_BLOCK + t);
-						Constructor<?> constructor = c.getConstructor(Coordonnees.class);
-						lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
+						if(t.equals(CLASS_TP))
+						{
+							String d = block.getAttribute(BeaconXML.B_TP_DEST).getValue();
+							Constructor<?> constructor = 
+									c.getConstructor(Coordonnees.class, TeleporterBlock.class);
+							Constructor<?> constructor2 = c.getConstructor(Coordonnees.class);
+							int xx = Integer.valueOf(d.split(",")[0]),
+									yy = Integer.valueOf(d.split(",")[1]),
+									zz = Integer.valueOf(d.split(",")[2]);
+							Block tp = (Block) constructor.newInstance(new Coordonnees(x, y, z), 
+									constructor2.newInstance(new Coordonnees(xx, yy, zz)));
+							lb.add(tp);
+							lb.add(((TeleporterBlock) tp).getDest());
+						}
+						else
+						{
+							Constructor<?> constructor = c.getConstructor(Coordonnees.class);
+							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
+						}
 					} 
-					catch (ClassNotFoundException | SecurityException | IllegalArgumentException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e1)
+					catch (ClassNotFoundException | SecurityException | IllegalArgumentException 
+							| NoSuchMethodException | InstantiationException | IllegalAccessException 
+							| InvocationTargetException e1)
 					{
 						System.out.println("Invalid XML format :\n\t" + e1.toString());
 						return;
@@ -110,7 +131,9 @@ public class Reader
 						Constructor<?> constructor = c.getConstructor(Color.class);
 						la.add((Action) constructor.newInstance(Color.DEFAUT));
 					} 
-					catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1)
+					catch (ClassNotFoundException | NoSuchMethodException | SecurityException 
+							| InstantiationException | IllegalAccessException | IllegalArgumentException 
+							| InvocationTargetException e1)
 					{
 						System.out.println("Invalid XML format :\n\t" + e1.toString());
 						return;
@@ -127,7 +150,7 @@ public class Reader
 							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
 						} 
 						catch (DataConversionException e1) {
- 							e1.printStackTrace();
+							e1.printStackTrace();
 						}
 					}
 					else if(f.getName().equals(BeaconXML.B_PROCEDURE))
