@@ -1,27 +1,13 @@
 package Game;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import Game.Ressources.MUSIC;
-import Prog.Action;
-import Prog.ReturnProc;
-import Prog.Color;
-import Prog.Coordonnees;
-import Prog.For;
-import Prog.Forward;
-import Prog.Left_turn;
-import Prog.Light;
-import Prog.Procedure;
-import Prog.Prog;
-import Prog.Right_turn;
-import Prog.TypeProcedure;
 import UI.Graphic;
 import UI.Gui;
 import UI.Menu;
 import UI.Menu.MENU;
-import Entities.Character;
+
 public class LightBot
 {
 	public static void main(String[] args)
@@ -77,8 +63,8 @@ public class LightBot
 			if (Gui.GUI != null)
 				Gui.GUI.gerer();
 			
-//			if (World.WORLD != null)
-//				World.WORLD.gerer();
+			if (World.WORLD != null)
+				World.WORLD.gerer();
 			
 			Graphic.SFML.afficher();
 		}

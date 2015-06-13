@@ -28,8 +28,8 @@ import UI.Menu;
 
 public class Reader 
 {
-	public static final String PACKAGE_ACTION = "Prog.";
-	public static final String PACKAGE_BLOCK = "Entities.";
+	public static final String PACKAGE_ACTION = "Prog.NormalActions.";
+	public static final String PACKAGE_BLOCK = "Entities.Blocks.";
 	
 	public static Reader READER = new Reader();
 	
@@ -45,10 +45,7 @@ public class Reader
 		List<Action> la = new ArrayList<Action>();
 		Coordonnees bng = new Coordonnees();
 		
-		try
-		{
-			doc = sxb.build(new File(arg));
-		} 
+		try {doc = sxb.build(new File(arg));} 
 		catch (JDOMException | IOException e)
 		{
 			e.printStackTrace();
@@ -58,31 +55,28 @@ public class Reader
 		root = doc.getRootElement();
 		le = root.getChildren();
 		
-		for(Element e : le)
+		for (Element e : le)
 		{
 			// Recuperation des blocks d'un etage
-			if(e.getName().equals(BeaconXML.B_FLOOR))
+			if (e.getName().equals(BeaconXML.B_FLOOR))
 			{
 				int z;
 				
-				try
-				{
-					z = e.getAttribute(BeaconXML.B_LEVEL).getIntValue();
-				} 
+				try {z = e.getAttribute(BeaconXML.B_LEVEL).getIntValue();} 
 				catch (DataConversionException e1)
 				{
 					e1.printStackTrace();
 					return;
 				}
 				
-				for(Element block : e.getChildren())
+				for (Element block : e.getChildren())
 				{
 					String t = block.getAttribute(BeaconXML.B_BLOCK_TYPE).getValue();
 					Attribute begin = block.getAttribute(BeaconXML.B_STARTING_BLOCK);
 					int x = Integer.valueOf(block.getChild(BeaconXML.B_X).getValue());
 					int y = Integer.valueOf(block.getChild(BeaconXML.B_Y).getValue());
 					
-					if(begin != null)
+					if (begin != null)
 						bng = new Coordonnees(x, y, z + 1);
 					
 					try
@@ -98,12 +92,10 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(BeaconXML.B_LEVEL_NAME))
+			else if (e.getName().equals(BeaconXML.B_LEVEL_NAME))
 				name = e.getValue();
-			else if(e.getName().equals(BeaconXML.B_ACTION_LIST))
-			{
+			else if (e.getName().equals(BeaconXML.B_ACTION_LIST))
 				for(Element a : e.getChildren())
-				{
 					try
 					{
 						Class<?> c = Class.forName(PACKAGE_ACTION + a.getValue());
@@ -115,37 +107,17 @@ public class Reader
 						System.out.println("Invalid XML format :\n\t" + e1.toString());
 						return;
 					}
-				}
-			}
-			else if(e.getName().equals(BeaconXML.B_FUNCTIONS))
+			else if (e.getName().equals(BeaconXML.B_FUNCTIONS))
 			{
-				for(Element f : e.getChildren())
-				{
-					if(f.getName().equals(BeaconXML.B_MAIN))
-					{
-						try {
-							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
-						} 
-						catch (DataConversionException e1) {
- 							e1.printStackTrace();
-						}
-					}
-					else if(f.getName().equals(BeaconXML.B_PROCEDURE))
-					{
-						try
-						{
-							nbP = f.getAttribute(BeaconXML.B_PROCEDURE_NB).getIntValue();
-						} 
-						catch (DataConversionException e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					}
-				}
+				for (Element f : e.getChildren())
+					if (f.getName().equals(BeaconXML.B_MAIN))
+						try {nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();} 
+						catch (DataConversionException e1) {e1.printStackTrace();}
+					else if (f.getName().equals(BeaconXML.B_PROCEDURE))
+						try {nbP = f.getAttribute(BeaconXML.B_PROCEDURE_NB).getIntValue();} 
+						catch (DataConversionException e1) {e1.printStackTrace();}
 			}
-			else if(e.getName().equals(BeaconXML.B_STARTING_DIRECTION))
-			{
+			else if (e.getName().equals(BeaconXML.B_STARTING_DIRECTION))
 				switch(e.getValue())
 				{
 					case "NORTH" :
@@ -162,7 +134,6 @@ public class Reader
 						dir = Orientation.WEST;
 						break;
 				}
-			}
 		}
 		
 		Set<Block> set = new HashSet<Block>();

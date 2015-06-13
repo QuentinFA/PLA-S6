@@ -10,7 +10,6 @@ import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
-import Entities.TypeCharacter;
 import Prog.Action;
 import Prog.Coordonnees;
 import UI.Graphic;
@@ -21,15 +20,20 @@ public class World
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
-	
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
-	private Coordonnees coordStart; //Coordonnees du d�part
-	private int orientStart; //Orientation du d�part
+	private Coordonnees coordStart; //Coordonnees du depart
+	private int orientStart; //Orientation du depart
+	
 	private Vector2f centerWorld = null;
-	private List<Action> actionList;
+	
+	private boolean playing = false;
+	public void setPlaying(boolean p) {playing = p;}
+	public boolean isPlaying() {return playing;}
 	
 	private String name;
+	
+	private List<Action> actionList;
 	
 	/**
 	 * Constructeur de niveau
@@ -43,7 +47,8 @@ public class World
 		name = n;
 		coordStart = cStart;
 		orientStart = oStart;
-		this.actionList = allowedActions;
+		
+		actionList = allowedActions;
 		
 		for (Block b : lb)
 			addBlock(b);
@@ -85,8 +90,8 @@ public class World
 	{
 		float pos_x, pos_y;
 		
-		pos_x = 40 * c.getX() - 40 * c.getY();
-		pos_y = - 23 * c.getX() - 23 * c.getY() - 26 * c.getZ();
+		pos_x = -40 * c.getX() + 40 * c.getY();
+		pos_y = 23 * c.getX() + 23 * c.getY() - 26 * c.getZ();
 		
 		return new Vector2f(pos_x, pos_y);
 	}
@@ -118,8 +123,8 @@ public class World
 					max_y = blockList.get(i).getCoord().getY();
 			}
 			centerWorld = new Vector2f(
-					(int)(40*(max_x+min_x)/2 - 40*(max_y+min_y)/2 + 81/2.f), 
-					(int)(- 23*(max_x+min_x)/2 - 23*(max_y+min_y)/2 + 81/2.f)
+					(int)(-40*(max_x+min_x)/2 + 40*(max_y+min_y)/2 + 81/2.f), 
+					(int)(23*(max_x+min_x)/2 + 23*(max_y+min_y)/2 + 81/2.f)
 					);
 		}
 		return centerWorld;
@@ -169,8 +174,8 @@ public class World
 	
 	/**
 	 * Verification de la validite d'une coordonne</br>
-	 * Si quelque chose se trouve�a cette coordonne, la coordonne n'est pas valide
-	 * @param c La coordonne a�verifier
+	 * Si quelque chose se trouve a cette coordonne, la coordonne n'est pas valide
+	 * @param c La coordonne a sverifier
 	 * @return True si valide, false sinon
 	 */
 	public boolean isValidPosition(Coordonnees c)
@@ -183,9 +188,9 @@ public class World
 	}
 	
 	/**
-	 * Renvoie l'entité qui se trouve à la coordonnée donnée
-	 * @param c La coordonnee où l'on cherche l'entité
-	 * @return renvoie l'entité si elle existe, sinon null
+	 * Renvoie l'entite qui se trouve a la coordonnee donnee
+	 * @param c La coordonnee ou l'on cherche l'entite
+	 * @return renvoie l'entite si elle existe, sinon null
 	 */
 	public Entities getEntitiesAt(Coordonnees c) 
 	{
@@ -216,14 +221,14 @@ public class World
 	/**
 	 * Recupere la liste des entities d'un type</br>
 	 * Exemple d'utilisation : getEntitiesByType(Entities.class)
-	 * @param EntitesType Le type de l'entité a recuperer
+	 * @param EntitesType Le type de l'entite a recuperer
 	 * @return La liste des entities du type entitiesType
 	 */
 	public List<Entities> getEntitiesByType(Class<? extends Entities> EntitiesType)
 	{
 		List<Entities> l = new ArrayList<Entities>();
 		
-		for(Entities e : this.allList)
+		for(Entities e : allList)
 			if(e.getClass().equals(EntitiesType))
 				l.add(e);
 		
@@ -234,8 +239,5 @@ public class World
 	
 	public Coordonnees getStartingCoord() {return coordStart;}
 	
-	public List<Action> getActionList()
-	{
-		return actionList;
-	}
+	public List<Action> getActionList() {return actionList;}
 }

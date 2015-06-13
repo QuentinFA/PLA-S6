@@ -1,8 +1,8 @@
 package Prog;
 import Entities.Character;
 
-public class PersonnageIndice {
-	
+public class PersonnageIndice 
+{
 	private Character p;
 	private int index;
 	private Procedure proc;

@@ -19,35 +19,31 @@ public class Controler
 		}
 	}
 	
-	List<PersonnageTravaille> lPT;
-	public static Controler CONTROLER;
-	
-	public Controler() 
-	{
-		CONTROLER = this;
-		lPT = new ArrayList<PersonnageTravaille>();
-	}
+	List<PersonnageTravaille> lPT = new ArrayList<PersonnageTravaille>();
+	public static Controler CONTROLER = new Controler();
 	
 	public void addCharacter(Character p)
 	{
-		for (PersonnageTravaille pt : lPT) {
-			if(pt.p == p) 
+		for (PersonnageTravaille pt : lPT)
+			if (pt.p == p) 
 			{
-				pt.travail = true;
+				pt.travail = false;
 				return;
 			}
-		}
-		lPT.add(new PersonnageTravaille(p,false));
+
+		lPT.add(new PersonnageTravaille(p, false));
 	}
 	
-	public void manage(Character p) {
+	public void manage(Character p) 
+	{
 		addCharacter(p);
-		for (PersonnageTravaille pt : lPT) {
-			if(pt.travail == true)
-				return;
-		}
 		
-		for (PersonnageTravaille pt : lPT) {
+		for (PersonnageTravaille pt : lPT)
+			if (pt.travail == true)
+				return;
+		
+		for (PersonnageTravaille pt : lPT) 
+		{
 			pt.p.next();
 			pt.travail = true;
 		}

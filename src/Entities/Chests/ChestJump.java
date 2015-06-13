@@ -1,10 +1,11 @@
-package Entities;
+package Entities.Chests;
 
+import Entities.Chest;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
-import Prog.Jump;
+import Prog.NormalActions.Jump;
 
 public class ChestJump extends Chest 
 {

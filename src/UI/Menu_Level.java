@@ -31,17 +31,17 @@ public class Menu_Level extends Menu
 		Graphic.SFML.visible_cursor();
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
+		
 		Sprite spr;
-		for(int i = 0 ; i < 3 ; i++)
+		for (int i = 0 ; i < 3 ; i++)
 		{
 			spr = new Sprite();
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.MONDE));
 			spr.setTextureRect(new IntRect(1+i*401, 1, 400, 400));
 			spr.setOrigin(new Vector2f(spr.getTextureRect().width/2.f, spr.getTextureRect().height/2.f));
-			spr.setPosition(Graphic.SFML.getCenterCamera());
 			monde_list.add(spr);
+			
 			spr = new Sprite();
-
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.AURA));
 			spr.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.AURA));
 			aura_list.add(spr);
@@ -66,12 +66,30 @@ public class Menu_Level extends Menu
 		fleche_right.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_FLECHE));
 		fleche_right.setTextureRect(new IntRect(1 , 1 , 100 , 100));
 		fleche_right.setOrigin(new Vector2f(fleche_right.getTextureRect().width/2.f, fleche_right.getTextureRect().height/2.f));
-		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
-		fleche_left.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_FLECHE));
 		
+		fleche_left.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_FLECHE));
 		fleche_left.setTextureRect(new IntRect(102 , 1 , 100 , 100));
 		fleche_left.setOrigin(new Vector2f(fleche_left.getTextureRect().width/2.f, fleche_left.getTextureRect().height/2.f));
+		
+		placeMenu();
+	}
+	
+	public void placeMenu()
+	{
+		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
 		fleche_left.setPosition(Graphic.SFML.getCenterCamera().x - Graphic.SFML.getSizeCamera().x/2.f + fleche_left.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
+		
+		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
+		for (int i = 0 ; i < monde_list.size(); i++)
+			monde_list.get(i).setPosition(new Vector2f((i-nbr_monde)*Graphic.SFML.getSizeCamera().x+Graphic.SFML.getCenterCamera().x , Graphic.SFML.getCenterCamera().y));
+		
+		for(int i = 0; i < aura_list.size(); i++)
+			aura_list.get(i).setPosition(monde_list.get(i).getPosition());
+		
+		for (int j=0; j < nbr_level_list.size(); j++)
+			for (int i=0; i < nbr_level_list.get(j).size(); i++)
+				nbr_level_list.get(j).get(i).setPosition(new Vector2f(monde_list.get(j).getPosition().x + (i-1.5f)*nbr_level_list.get(j).get(i).getTextureRect().width, 
+						monde_list.get(j).getGlobalBounds().top + monde_list.get(j).getTextureRect().height));
 	}
 
 	public void afficher()
@@ -97,14 +115,8 @@ public class Menu_Level extends Menu
 
 	public void gerer()
 	{
-
-		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-		for (int i = 0 ; i < monde_list.size(); i++)
-			monde_list.get(i).setPosition(new Vector2f((i-nbr_monde)*Graphic.SFML.getSizeCamera().x+Graphic.SFML.getCenterCamera().x , Graphic.SFML.getCenterCamera().y));
-		
 		for(int i = 0; i < aura_list.size(); i++)
 		{
-			aura_list.get(i).setPosition(monde_list.get(i).getPosition());
 			aura_list.get(i).setScale(title_scale, title_scale);
 			aura_list.get(i).setRotation(aura_list.get(i).getRotation()+1);
 		}
@@ -121,12 +133,6 @@ public class Menu_Level extends Menu
 				increase_title_scale = true;
 		}
 
-		for (int j=0; j < nbr_level_list.size(); j++)
-			for (int i=0; i < nbr_level_list.get(j).size(); i++)
-				nbr_level_list.get(j).get(i).setPosition(new Vector2f(monde_list.get(j).getPosition().x + (i-1.5f)*nbr_level_list.get(j).get(i).getTextureRect().width, 
-						monde_list.get(j).getGlobalBounds().top + monde_list.get(j).getTextureRect().height));
-
-		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
 			for (int i = 0; i< nbr_level_list.size() ; i++)
@@ -172,5 +178,7 @@ public class Menu_Level extends Menu
 			if (Graphic.isOnSprite(this.returnMenu))
 				Menu.change_menu(Menu.MENU.MAIN);
 		}
+		
+		placeMenu();
 	}
 }
