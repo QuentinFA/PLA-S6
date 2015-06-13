@@ -171,7 +171,7 @@ public class Gui
 			}
 		}
 		
-		if (Input.INPUT.again(BUTTON.MRIGHT))
+		if (!World.WORLD.isPlaying() && Input.INPUT.again(BUTTON.MRIGHT))
 		{
 			World.WORLD.setPlaying(true);
 			List<Entities.Character> l =  World.WORLD.getCharacterList();
