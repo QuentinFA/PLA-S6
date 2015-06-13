@@ -89,9 +89,18 @@ public class Character extends Entities
 
 	public void next()
 	{
-		Action a = Interpreter.INTERPRETER.eval(this);
-		if (a != null)
+		Action a=null;
+		try {
+			 a = Interpreter.INTERPRETER.eval(this);
+		}catch(StackOverflowError e) 
+		{
+			throw new StackOverflowError();
+		}
+		if(a!=null)
+		{
 			use_Action(a);
+
+		}
 	}
 
 	/**

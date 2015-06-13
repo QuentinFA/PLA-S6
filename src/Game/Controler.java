@@ -42,9 +42,12 @@ public class Controler
 			if (pt.travail == true)
 				return;
 		
-		for (PersonnageTravaille pt : lPT) 
-		{
-			pt.p.next();
+		for (PersonnageTravaille pt : lPT) {
+			try {
+				pt.p.next();
+			}catch (StackOverflowError e) {
+				//TODO Affichier message à l'utilisateur : erreur, boucle infinie
+			}
 			pt.travail = true;
 		}
 	}
