@@ -1,9 +1,12 @@
-package Prog;
+package Prog.NormalActions;
 
 import Entities.Character;
 import Entities.Entities;
-import Entities.TeleporterBlock;
+import Entities.Blocks.TeleporterBlock;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
 
 public class Teleporter extends Action
 {

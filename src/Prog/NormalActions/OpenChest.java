@@ -1,9 +1,13 @@
-package Prog;
+package Prog.NormalActions;
 
 import Entities.Character;
 import Entities.Chest;
 import Entities.Entities;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
+import Prog.Orientation;
 
 public class OpenChest extends Action
 {

@@ -1,5 +1,7 @@
-package Entities;
+package Entities.Blocks;
 
+import Entities.Block;
+import Entities.Character;
 import Prog.Color;
 import Prog.Coordonnees;
 

@@ -74,7 +74,7 @@
 		<action>Jump</action>
 		<action>Pipette</action>
 		<action>Shower</action>
-		<action>Des</action>
+		<action>For</action>
 	</action_list>
 	<functions>
 		<main nb_action="6"/>

@@ -17,13 +17,10 @@ public class Procedure extends Prog
 	
 	public TypeProcedure getTypeProcedure() {return t;}
 	public void setTypeProcedure(TypeProcedure type) {t = type;}
-	public List<Prog> getListProcedure() { return l;}
+	public List<Prog> getListProcedure() {return l;}
 	public void addProg(Prog p) 
 	{
-		l.add(p);
+		try {l.add((Prog) p.clone());} 
+		catch (CloneNotSupportedException e) {e.printStackTrace();}
 	}
-	
-
-	
-	
 }

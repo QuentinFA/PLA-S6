@@ -17,7 +17,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
-import Entities.TeleporterBlock;
+import Entities.Blocks.TeleporterBlock;
 import Game.World;
 import Prog.Action;
 import Prog.Color;
@@ -29,8 +29,8 @@ import UI.Menu;
 
 public class Reader 
 {
-	public static final String PACKAGE_ACTION = "Prog.";
-	public static final String PACKAGE_BLOCK = "Entities.";
+	public static final String PACKAGE_ACTION = "Prog.NormalActions.";
+	public static final String PACKAGE_BLOCK = "Entities.Blocks.";
 	public static final String CLASS_TP = "TeleporterBlock";
 	
 	public static Reader READER = new Reader();
@@ -47,7 +47,8 @@ public class Reader
 		List<Action> la = new ArrayList<Action>();
 		Coordonnees bng = new Coordonnees();
 		
-		try
+		// Chacun son style informatique, merci de ne pas changer
+		try 
 		{
 			doc = sxb.build(new File(arg));
 		} 
@@ -60,14 +61,14 @@ public class Reader
 		root = doc.getRootElement();
 		le = root.getChildren();
 		
-		for(Element e : le)
+		for (Element e : le)
 		{
 			// Recuperation des blocks d'un etage
-			if(e.getName().equals(BeaconXML.B_FLOOR))
+			if (e.getName().equals(BeaconXML.B_FLOOR))
 			{
 				int z;
 				
-				try
+				try 
 				{
 					z = e.getAttribute(BeaconXML.B_LEVEL).getIntValue();
 				} 
@@ -77,14 +78,14 @@ public class Reader
 					return;
 				}
 				
-				for(Element block : e.getChildren())
+				for (Element block : e.getChildren())
 				{
 					String t = block.getAttribute(BeaconXML.B_BLOCK_TYPE).getValue();
 					Attribute begin = block.getAttribute(BeaconXML.B_STARTING_BLOCK);
 					int x = Integer.valueOf(block.getChild(BeaconXML.B_X).getValue());
 					int y = Integer.valueOf(block.getChild(BeaconXML.B_Y).getValue());
 					
-					if(begin != null)
+					if (begin != null)
 						bng = new Coordonnees(x, y, z + 1);
 					
 					try
@@ -119,12 +120,11 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(BeaconXML.B_LEVEL_NAME))
+			else if (e.getName().equals(BeaconXML.B_LEVEL_NAME))
 				name = e.getValue();
-			else if(e.getName().equals(BeaconXML.B_ACTION_LIST))
+			else if (e.getName().equals(BeaconXML.B_ACTION_LIST))
 			{
 				for(Element a : e.getChildren())
-				{
 					try
 					{
 						Class<?> c = Class.forName(PACKAGE_ACTION + a.getValue());
@@ -138,9 +138,8 @@ public class Reader
 						System.out.println("Invalid XML format :\n\t" + e1.toString());
 						return;
 					}
-				}
 			}
-			else if(e.getName().equals(BeaconXML.B_FUNCTIONS))
+			else if (e.getName().equals(BeaconXML.B_FUNCTIONS))
 			{
 				for(Element f : e.getChildren())
 				{
@@ -167,7 +166,7 @@ public class Reader
 					}
 				}
 			}
-			else if(e.getName().equals(BeaconXML.B_STARTING_DIRECTION))
+			else if (e.getName().equals(BeaconXML.B_STARTING_DIRECTION))
 			{
 				switch(e.getValue())
 				{

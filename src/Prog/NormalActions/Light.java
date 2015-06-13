@@ -1,8 +1,11 @@
-package Prog;
+package Prog.NormalActions;
 import Entities.Character;
 import Entities.Entities;
-import Entities.LightBlock;
+import Entities.Blocks.LightBlock;
 import Game.World;
+import Prog.Action;
+import Prog.Color;
+import Prog.Coordonnees;
 
 public class Light extends Action
 {

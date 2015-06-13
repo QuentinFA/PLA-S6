@@ -1,6 +1,8 @@
-package Prog;
+package Prog.NormalActions;
 import Entities.Character;
 import Entities.Chest;
+import Prog.Action;
+import Prog.Color;
 
 public class UseChest extends Action 
 {

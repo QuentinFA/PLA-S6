@@ -1,6 +1,8 @@
-package Entities;
+package Entities.Blocks;
 
 import java.util.Comparator;
+
+import Entities.Block;
 
 public class BlockComparator implements Comparator<Block>
 {
