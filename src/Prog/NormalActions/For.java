@@ -6,22 +6,31 @@ import Prog.Color;
 public class For extends Action 
 {	
 	private int nbBouclesRestantes; //Nombre d'iteration
+	//pour memoriser le nombre d'iteration
+	private int nbBoucles;
 	
-	public For(Color c) {couleur = c; nbBouclesRestantes = 1;}
+	public For(Color c) {couleur = c; nbBouclesRestantes = 1;nbBoucles = 1;}
 	public int getForValue() {return nbBouclesRestantes;}
 	
 	public void incrementer()
 	{
 		nbBouclesRestantes += 1;
+		nbBoucles = nbBouclesRestantes;
 		if (nbBouclesRestantes == 10)
+			{
 			nbBouclesRestantes = 1;
+			nbBoucles = nbBouclesRestantes;
+			}
 	}
 	public void decrementer() {nbBouclesRestantes -= 1;}
 	
 	public boolean isZero()
 	{
 		if (nbBouclesRestantes <= 0)
+			{
+			nbBouclesRestantes = nbBoucles;
 			return true;
+			}
 		else 
 			return false;
 	}
