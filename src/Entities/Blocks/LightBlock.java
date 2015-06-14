@@ -8,9 +8,9 @@ import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Coordonnees;
 
-public class LightBlock extends Block 
+public class LightBlock extends Block
 {
-	private boolean isOn;
+	private boolean isOn = false;
 	
 	/**
 	 * Cree un bloc lumiere eteind. Peut etre allume.
@@ -19,11 +19,12 @@ public class LightBlock extends Block
 	public LightBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
-		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
-		
 		coord = pos;
-		isOn = false;
+	
+		initialiser();
 	}
+	
+	public void initialiser() {sprite.setTextureRect(new IntRect(1, 83, 81, 81));}
 	
 	public boolean getLight() {return isOn;}
 	

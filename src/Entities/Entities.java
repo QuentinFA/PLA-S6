@@ -7,7 +7,7 @@ import org.jsfml.system.Vector2f;
 import Prog.Coordonnees;
 import UI.Graphic;
 
-public abstract class Entities 
+public abstract class Entities
 {
 	protected Sprite sprite = new Sprite(); //Sprite du block ou personnage ou chest
 	protected Coordonnees coord;

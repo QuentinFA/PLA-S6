@@ -22,6 +22,7 @@ public class World
 	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
+	private List<Block> blockListStart;
 	private Coordonnees coordStart; //Coordonnees du depart
 	private int orientStart; //Orientation du depart
 	
@@ -47,14 +48,8 @@ public class World
 		name = n;
 		coordStart = cStart;
 		orientStart = oStart;
-		
 		actionList = allowedActions;
-		
-		for (Block b : lb)
-			addBlock(b);
-		
-		for (Block b : blockList)
-			b.setPosSprite(placeMe(b.getCoord()));
+		blockListStart = lb;
 		
 		initialiser();
 		
@@ -68,11 +63,24 @@ public class World
 		Interpreter.INTERPRETER = new Interpreter();
 		Controler.CONTROLER = new Controler(); 
 		
-		for (Character p : characterList)
-			allList.remove(p);
-		
+		allList.clear();
+		blockList.clear();
 		characterList.clear();
+		
+		for (Block b : blockListStart)
+			try 
+			{
+				Block bl = (Block) b.clone();
+				bl.initialiser();
+				
+				addBlock(bl);
+			}
+			catch (CloneNotSupportedException e) {e.printStackTrace();}
+
 		addCharacter(new Character(new Coordonnees(coordStart), orientStart));
+		
+		for (Block b : blockList)
+			b.setPosSprite(placeMe(b.getCoord()));
 		characterList.get(0).setPosSprite(placeMe(coordStart));
 	}
 	

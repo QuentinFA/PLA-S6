@@ -3,7 +3,6 @@ package Entities.Blocks;
 import org.jsfml.graphics.IntRect;
 
 import Entities.Block;
-import Entities.Character;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Coordonnees;
@@ -17,6 +16,4 @@ public class NormalBlock extends Block
 		
 		coord = pos;
 	}
-	
-	public void perform(Character p) {} //Ne fait rien
 }
