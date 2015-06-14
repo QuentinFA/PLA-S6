@@ -18,8 +18,6 @@ import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
 import Entities.Blocks.TeleporterBlock;
-import Game.Controler;
-import Game.Interpreter;
 import Game.World;
 import Prog.Action;
 import Prog.Color;

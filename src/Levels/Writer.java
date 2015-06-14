@@ -12,7 +12,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import Entities.Block;
-import Entities.BlockComparator;
+import Entities.Blocks.BlockComparator;
 import Game.World;
 import Prog.Action;
 import Prog.Coordonnees;
