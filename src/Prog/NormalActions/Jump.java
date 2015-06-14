@@ -8,11 +8,14 @@ import Prog.Orientation;
 
 import java.lang.Math;
 
+import org.jsfml.graphics.IntRect;
+
 public class Jump extends Action
 {
 	public Jump(Color c) {couleur = c;}
 	private int frame = 0;
 	
+	private int last_frame_phase0 = 9;
 	private int last_frame_phase1 = 9;
 	private int last_frame_phase2 = 18;
 	
@@ -26,6 +29,7 @@ public class Jump extends Action
 	private PHASE phase;
 	private enum PHASE
 	{
+		P0,
 		P1,
 		P2,
 		CHUTE
@@ -33,7 +37,7 @@ public class Jump extends Action
 	
 	public boolean execute(Character p)
 	{
-		if (frame == 0) //Phase verticale
+		if (frame == last_frame_phase0) //Phase verticale
 		{
 			Coordonnees coord = p.getCoord();
 			Coordonnees check = new Coordonnees(coord.getX(), coord.getY(), coord.getZ()+1);
@@ -46,7 +50,7 @@ public class Jump extends Action
 			phase = PHASE.P1;
 			delta = new Coordonnees(0, 0, 1.f/last_frame_phase1);
 		}
-		else if (frame == last_frame_phase1 - 1)
+		else if (frame == last_frame_phase0 + last_frame_phase1 - 1)
 		{
 			Coordonnees coord = futur_coord;
 			Coordonnees check;
@@ -83,7 +87,7 @@ public class Jump extends Action
 			phase = PHASE.P2;
 			angle = 0;
 		}
-		else if (frame == last_frame_phase1 + last_frame_phase2)
+		else if (frame == last_frame_phase0 + last_frame_phase1 + last_frame_phase2)
 		{
 			phase = PHASE.CHUTE;
 			delta = new Coordonnees(0, 0, -0.2f);
@@ -91,6 +95,8 @@ public class Jump extends Action
 		frame ++;
 		
 		///////////////////////////////////////////////////////////////////////////////////////////
+		animation(p);
+		
 		if (phase == PHASE.P1)
 			p.getCoord().increment(delta);
 		else if (phase == PHASE.P2)
@@ -139,5 +145,16 @@ public class Jump extends Action
 		p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		
 		return false;
+	}
+	
+	private int anim = 0;
+	private void animation(Character p)
+	{
+		if (anim == 0)
+			p.setTextureRect(new IntRect(1, 329+p.getOrientation()*82, 81, 81));
+		if (anim == last_frame_phase0)
+			p.setTextureRect(new IntRect(83, 329+p.getOrientation()*82, 81, 81));
+		
+		anim++;
 	}
 }

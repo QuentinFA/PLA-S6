@@ -135,6 +135,7 @@
 		</block>
 		</floor>
 	<action_list>
+		<action>Jump</action>
 		<action>Forward</action>
 		<action>Light</action>
 	</action_list>

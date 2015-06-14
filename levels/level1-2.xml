@@ -104,6 +104,7 @@
 		<action>Light</action>
 		<action>Pipette</action>
 		<action>Shower</action>
+		<action>Jump</action>
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
