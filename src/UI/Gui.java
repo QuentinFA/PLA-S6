@@ -110,6 +110,7 @@ public class Gui
 
 		GUI = this;
 
+		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 		placeGui();
 	}
 
@@ -303,7 +304,7 @@ public class Gui
 		//Pour choisir la fenetre d'ajouter les actions
 		if (Graphic.isOnSprite(sprite_main))
 		{
-			sprite_main.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+			sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			if (sprite_proc1 != null)
 				sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null)
@@ -312,7 +313,7 @@ public class Gui
 		}
 		if (sprite_proc1 != null && Graphic.isOnSprite(sprite_proc1))
 		{
-			sprite_proc1.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+			sprite_proc1.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null)
 				sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
@@ -320,7 +321,7 @@ public class Gui
 		}
 		if (sprite_proc2 != null && Graphic.isOnSprite(sprite_proc2))
 		{
-			sprite_proc2.setColor(new org.jsfml.graphics.Color(128, 128, 128));
+			sprite_proc2.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			wichProc = 2;
