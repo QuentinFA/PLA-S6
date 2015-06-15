@@ -10,6 +10,7 @@
 		- Actions dans main : attribut action_nb
 		- Si procédures : <procedure nb_proc="2"/>
 -->
+<!-- David 15/06 : Il faut rajouter le bouton for, sinon tout est ok -->
 
 <map>
 	<level_name>for-1</level_name>

@@ -135,12 +135,13 @@
 		</block>
 		</floor>
 	<action_list>
-		<action>Jump</action>
 		<action>Forward</action>
+		<action>Jump</action>
 		<action>Light</action>
+		<action>Right_turn</action>
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<procedure nb_proc="1"/>
 	</functions>
 </map>

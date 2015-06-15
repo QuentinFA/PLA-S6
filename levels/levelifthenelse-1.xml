@@ -52,9 +52,12 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>Pipette</action>
+		<action>Right_turn</action>
+		<!--  <action>Procedure</action> -->
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<procedure nb_proc="1"/>
 	</functions>
 </map>
