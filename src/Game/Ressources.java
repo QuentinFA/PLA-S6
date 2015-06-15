@@ -31,7 +31,9 @@ public class Ressources
 		PROC1(),
 		PROC2(),
 		PLAY_ACTION(),
-		RETRY_ACTION();
+		RETRY_ACTION(),
+		END_OF_GAME(),
+		NEXT();
 
 		private Texture texture;
 		
@@ -77,6 +79,8 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.PROC2, Paths.get("images/proc2.png"));
 		TEXTURE.loadFromFile(TEXTURE.PLAY_ACTION, Paths.get("images/play_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
+		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
+		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}

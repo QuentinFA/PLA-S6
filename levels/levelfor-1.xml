@@ -48,6 +48,7 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>For</action>>
 		<!--<action>For</action>-->
 	</action_list>
 	<functions>
