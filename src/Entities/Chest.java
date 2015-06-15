@@ -1,6 +1,7 @@
 package Entities;
 
 import Prog.Action;
+import Entities.Character;
 
 public abstract class Chest extends Block 
 {
@@ -18,4 +19,9 @@ public abstract class Chest extends Block
 		return this;
 	}
 	public abstract void setTextureChest();
+	
+	public void perform(Character c) 
+	{
+		c.setChest(this);
+	}
 }

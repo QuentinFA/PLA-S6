@@ -25,17 +25,18 @@ public class Interpreter
 
 		try {it = pile.pop();}
 		catch (EmptyStackException e) {return null;}
-	
-		if(!it.hasNext())
-			return null;
-		
+
+		if (!it.hasNext())
+			return eval(p);
+
 		Prog act = it.next();
-		
+
 		if (act instanceof For)
 		{
 			For actFor = (For) act;
 			actFor.decrementer();
-
+			if (!it.hasNext())
+				return eval(p);
 			act = it.next();
 			if (!actFor.isZero()) 
 			{ 
@@ -45,14 +46,22 @@ public class Interpreter
 
 			if (it.hasNext())
 				pile.push(it);
-
+			if(act instanceof Break) {
+				if(!(it.hasNext()))
+					return eval(p);
+				it.previous();
+				pile.push(it);
+				return eval(p);
+			}
 			if (act instanceof Procedure)
 			{
 				List<Prog> l = ((Procedure) act).getListProcedure();
 				ListIterator <Prog> it2 = l.listIterator();
 				pile.push(it2);
-				act = eval(p);
+				return eval(p);
 			}
+			p.incrementNbActions();
+			return (Action) act;
 		}
 		else if (act instanceof Procedure)
 		{
@@ -61,31 +70,42 @@ public class Interpreter
 			if(it.hasNext())
 				pile.push(it);
 			pile.push(it2);
-			act = eval(p);
+			return eval(p);
 		}
 		else if (act instanceof Break)
 		{
 			ListIterator <Prog> it2;
 			try {it2 = pile.pop();}
 			catch (EmptyStackException e) {return null;}
+			if (!it2.hasNext()) 
+			{
+				pile.push(it2);
+				pile.push(it);
+				return eval(p);
+			}
 			Prog a = it2.next();
-			if(a instanceof For) {
-				if(!it2.hasNext())
-					return null;
+			if (a instanceof For) {
+				if (!it2.hasNext())
+					return eval(p);
 				it2.next();
 				pile.push(it2);
+				return eval(p);
 			}
 			else {
 				it2.previous();
 				pile.push(it2);
 				pile.push(it);
+				return eval(p);
 			}
+
 		}
 		else //C'est une action
 		{
 			if (it.hasNext())
 				pile.push(it);
+			p.incrementNbActions();
+			return (Action) act;
 		}
-		return (Action) act;
+		
 	}
 }
