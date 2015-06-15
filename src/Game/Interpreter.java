@@ -2,12 +2,12 @@ package Game;
 import java.util.EmptyStackException;
 import java.util.ListIterator;
 import java.util.List;
-
 import java.util.Stack;
 
 import Entities.Character;
 import Prog.Action;
 import Prog.Break;
+import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
 import Prog.NormalActions.For;
@@ -16,7 +16,7 @@ import Prog.NormalActions.For;
 
 public class Interpreter 
 {
-	public static Interpreter INTERPRETER = new Interpreter();
+	public static Interpreter INTERPRETER;
 
 	public Action eval(Character p)
 	{
@@ -31,6 +31,12 @@ public class Interpreter
 
 		Prog act = it.next();
 
+		if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
+			if (it.hasNext())
+				pile.push(it);
+			return eval(p);
+		}
+		
 		if (act instanceof For)
 		{
 			For actFor = (For) act;
@@ -38,6 +44,14 @@ public class Interpreter
 			if (!it.hasNext())
 				return eval(p);
 			act = it.next();
+			
+			if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
+				if (it.hasNext())
+					pile.push(it);
+				return eval(p);
+				
+			}
+				
 			if (!actFor.isZero()) 
 			{ 
 				it.previous();
@@ -46,13 +60,12 @@ public class Interpreter
 
 			if (it.hasNext())
 				pile.push(it);
-			if(act instanceof Break) {
-				if(!(it.hasNext()))
-					return eval(p);
-				it.previous();
-				pile.push(it);
-				return eval(p);
+			
+			if (act instanceof Break) {
+				p.incrementNbActions();
+				return null;			
 			}
+			
 			if (act instanceof Procedure)
 			{
 				List<Prog> l = ((Procedure) act).getListProcedure();
@@ -60,9 +73,11 @@ public class Interpreter
 				pile.push(it2);
 				return eval(p);
 			}
+			
 			p.incrementNbActions();
 			return (Action) act;
 		}
+		
 		else if (act instanceof Procedure)
 		{
 			List<Prog> l = ((Procedure) act).getListProcedure();
@@ -74,31 +89,10 @@ public class Interpreter
 		}
 		else if (act instanceof Break)
 		{
-			ListIterator <Prog> it2;
-			try {it2 = pile.pop();}
-			catch (EmptyStackException e) {return null;}
-			if (!it2.hasNext()) 
-			{
-				pile.push(it2);
-				pile.push(it);
-				return eval(p);
-			}
-			Prog a = it2.next();
-			if (a instanceof For) {
-				if (!it2.hasNext())
-					return eval(p);
-				it2.next();
-				pile.push(it2);
-				return eval(p);
-			}
-			else {
-				it2.previous();
-				pile.push(it2);
-				pile.push(it);
-				return eval(p);
-			}
-
+			p.incrementNbActions();
+			return null;	
 		}
+		
 		else //C'est une action
 		{
 			if (it.hasNext())

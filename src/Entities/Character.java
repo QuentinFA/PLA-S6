@@ -20,10 +20,8 @@ import Prog.Prog;
 public class Character extends Entities
 {	
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
-	private Color couleur = Color.DEFAUT;;
-	
+	private Color couleur = Color.ROUGE;
 	private Chest coffre = null;
-	private Procedure main;
 	private Action actionCourante = null;
 	private int compteurActions;
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
@@ -54,13 +52,11 @@ public class Character extends Entities
 	public int getNbActions() {return this.compteurActions;}
 	public void setMain(Procedure l) 
 	{
-		main = l;
 		List<Prog> t = l.getListProcedure();
 		ListIterator<Prog> it = t.listIterator();
 		pile.clear();
 		pile.push(it);
 	}
-	public Procedure getMain() {return main;}
 
 	public Stack<ListIterator<Prog>> getPile() {return pile;}
 
