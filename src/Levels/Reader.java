@@ -35,6 +35,10 @@ public class Reader
 	
 	public static Reader READER = new Reader();
 	
+	/**
+	 * Lecture d'un fichie XML correspondant à un niveau
+	 * @param arg : Le nom du fichiers
+	 */
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();

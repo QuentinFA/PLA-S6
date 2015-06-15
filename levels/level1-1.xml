@@ -38,7 +38,7 @@
 		<action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="5"/>
+		<main nb_action="3"/>
 		<!-- <procedure nb_proc="0"/> -->
 	</functions>
 </map>

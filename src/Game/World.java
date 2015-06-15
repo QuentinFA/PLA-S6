@@ -10,6 +10,7 @@ import Entities.Block;
 import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
+import Entities.Blocks.LightBlock;
 import Prog.Action;
 import Prog.Coordonnees;
 import UI.Graphic;
@@ -222,16 +223,18 @@ public class World
 	/**
 	 * Recupere la liste des blocks d'un type</br>
 	 * Exemple d'utilisation : getBlocksT(Block.class)
+	 * @param <T>
 	 * @param blockType Le type de blocs a recuperer
 	 * @return La liste des blocks du type blockType
 	 */
-	public List<Block> getBlocksByType(Class<? extends Block> blockType)
+	@SuppressWarnings("unchecked") // TypeSafe : Check c'est un block de type T puis cast en T
+	public <T> List<T> getBlocksByType(Class<? extends Block> blockType)
 	{
-		List<Block> l = new ArrayList<Block>();
+		List<T> l = new ArrayList<T>();
 		
 		for(Block b : blockList)
 			if(b.getClass().equals(blockType))
-				l.add(b);
+				l.add((T) b);
 		
 		return l;
 	}
@@ -258,4 +261,18 @@ public class World
 	public Coordonnees getStartingCoord() {return coordStart;}
 	
 	public List<Action> getActionList() {return actionList;}
+	
+	/**
+	 * Vérifie si un monde est gagné (tous les blocs lumière allumés)
+	 */
+	public boolean isComplete()
+	{
+		List<LightBlock> llb = this.getBlocksByType(LightBlock.class);
+		boolean win = true;
+		
+		for(LightBlock lb : llb)
+			win = win && lb.getLight();
+		
+		return win;
+	}
 }

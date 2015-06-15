@@ -10,8 +10,12 @@ public class For extends Action
 	private int nbBoucles;
 	
 	public For(Color c) {couleur = c; nbBouclesRestantes = 1;nbBoucles = 1;}
+	
 	public int getForValue() {return nbBouclesRestantes;}
 	
+	/**
+	 * Incrémente le nombre de boucles restantes
+	 */
 	public void incrementer()
 	{
 		nbBouclesRestantes += 1;
@@ -22,15 +26,23 @@ public class For extends Action
 			nbBoucles = nbBouclesRestantes;
 			}
 	}
+	
+	/**
+	 * Décrémente le nombre de boucles restantes
+	 */
 	public void decrementer() {nbBouclesRestantes -= 1;}
 	
+	/**
+	 * Vérification du nombre de boucle et réinisialisation si = 0
+	 * @return Si le nombre de boucles restantes est à 0 ou non
+	 */
 	public boolean isZero()
 	{
 		if (nbBouclesRestantes <= 0)
-			{
+		{
 			nbBouclesRestantes = nbBoucles;
 			return true;
-			}
+		}
 		else 
 			return false;
 	}
