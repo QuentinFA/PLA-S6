@@ -21,6 +21,8 @@ public class Gui
 {
 	public static Gui GUI = null;
 
+	private boolean level_completed = false;
+	
 	private Sprite sprite_return = new Sprite();
 
 	private Sprite sprite_main = new Sprite();
@@ -38,7 +40,8 @@ public class Gui
 
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
 
-
+	public void setLevelCompleted(boolean t) {this.level_completed = t;}
+	
 	private int nbrAction;
 	private int nbrProc;
 
@@ -170,6 +173,19 @@ public class Gui
 
 	public void gerer()
 	{
+		if(level_completed)
+		{
+			World.WORLD = null;
+			Gui.GUI = null;
+			Interpreter.INTERPRETER = null;
+			Controler.CONTROLER = null;
+			
+			//TODO Afficher bravo et passer au niveau suivant
+			
+			Menu.change_menu(Menu.MENU.LEVEL);
+			
+			return;
+		}
 		if (Input.INPUT.again(BUTTON.MLEFT))
 		{
 			if (Graphic.isOnSprite(sprite_return)) //Retour
