@@ -1,4 +1,4 @@
-package Entities.Chests;
+package Entities.Blocks.Chests;
 
 import org.jsfml.graphics.IntRect;
 
@@ -7,21 +7,21 @@ import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
-import Prog.NormalActions.Jump;
+import Prog.NormalActions.Light;
 
-public class ChestJump extends Chest 
+public class ChestLight extends Chest 
 {
-	public ChestJump(Coordonnees pos, int ori) 
+	public ChestLight(Coordonnees pos, int ori) 
 	{
 		this.coord = pos;
 		this.orientation = ori;
-		this.action = new Jump(Color.DEFAUT);
+		this.action = new Light(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}
 	
-	public void setTextureChest() 
+	public void setTextureChest()
 	{
-		sprite.setTextureRect(new IntRect(1, 1, 81, 81));	
+		sprite.setTextureRect(new IntRect(1, 1, 81, 81));
 	}
 }

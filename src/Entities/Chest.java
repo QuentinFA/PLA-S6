@@ -2,7 +2,7 @@ package Entities;
 
 import Prog.Action;
 
-public abstract class Chest extends Entities 
+public abstract class Chest extends Block 
 {
 	protected int orientation;
 	protected Action action;

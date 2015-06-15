@@ -1,4 +1,4 @@
-package Entities.Chests;
+package Entities.Blocks.Chests;
 
 import org.jsfml.graphics.IntRect;
 

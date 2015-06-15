@@ -1,4 +1,4 @@
-package Entities.Chests;
+package Entities.Blocks.Chests;
 
 import org.jsfml.graphics.IntRect;
 
@@ -7,15 +7,16 @@ import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
-import Prog.NormalActions.Forward;
+import Prog.NormalActions.Left_turn;
 
-public class ChestForward extends Chest 
+public class ChestLeft_turn extends Chest 
 {
-	public ChestForward(Coordonnees pos, int ori) 
+
+	public ChestLeft_turn(Coordonnees pos, int ori) 
 	{
 		this.coord = pos;
 		this.orientation = ori;
-		this.action = new Forward(Color.DEFAUT);
+		this.action = new Left_turn(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}
