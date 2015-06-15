@@ -57,10 +57,10 @@
 		<action>Light</action>
 		<action>Left_turn</action>
 		<action>Right_turn</action>
-		<!--  <action>Fork</action> -->
+		<action>Clone</action>
 	</action_list>
 	<functions>
 		<main nb_action="8"/>
-		<!-- <procedure nb_proc="1"/> -->
+		<procedure nb_proc="0"/>
 	</functions>
 </map>
