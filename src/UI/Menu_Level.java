@@ -26,6 +26,7 @@ public class Menu_Level extends Menu
 
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
+	public void set_nbr_monde(int nb){this.nbr_monde = nb;}
 	
 	public Menu_Level()
 	{	

@@ -206,7 +206,7 @@ public class Gui
 		}
 		if (Input.INPUT.again(BUTTON.MLEFT))
 		{
-			if (Graphic.isOnSprite(sprite_return)) //Retour
+			if (Graphic.isOnSprite(sprite_return)||Graphic.isOnSprite(sprite_return_eog)) //Retour
 			{
 				World.WORLD = null;
 				Gui.GUI = null;
@@ -214,17 +214,7 @@ public class Gui
 				Controler.CONTROLER = null;
 
 				Menu.change_menu(Menu.MENU.LEVEL);
-
-				return;
-			}
-			if (Graphic.isOnSprite(sprite_return_eog)) //Retour
-			{
-				World.WORLD = null;
-				Gui.GUI = null;
-				Interpreter.INTERPRETER = null;
-				Controler.CONTROLER = null;
-
-				Menu.change_menu(Menu.MENU.LEVEL);
+				((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x());
 
 				return;
 			}
