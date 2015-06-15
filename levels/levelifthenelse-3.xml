@@ -100,6 +100,7 @@
 		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
+		<action>Pipette</action>
 	</action_list>
 	<functions>
 		<main nb_action="6" />
