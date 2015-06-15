@@ -70,11 +70,10 @@
 	</floor>
 	<action_list>
 		<action>Forward</action>
-		<action>Light</action>
-		<action>Jump</action>
-		<action>Left_turn</action>
 		<action>Right_turn</action>
-		<!--  <action>Des</action> -->
+		<action>Left_turn</action>
+		<action>Jump</action>
+		<action>Light</action>
 		<!--  <action>Fork</action> -->
 	</action_list>
 	<functions>
