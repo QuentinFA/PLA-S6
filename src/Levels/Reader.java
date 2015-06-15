@@ -17,20 +17,24 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
+import Entities.Blocks.NormalBlock;
 import Entities.Blocks.TeleporterBlock;
+import Entities.Blocks.Chests.ChestForward;
 import Game.World;
 import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Orientation;
+import Prog.NormalActions.Forward;
 import UI.Gui;
 import UI.Menu;
 
 
 public class Reader 
 {
-	public static final String PACKAGE_ACTION = "Prog.NormalActions.";
-	public static final String PACKAGE_BLOCK = "Entities.Blocks.";
+	public static final String PACKAGE_ACTION = Forward.class.getPackage().getName() + ".";
+	public static final String PACKAGE_BLOCK = NormalBlock.class.getPackage().getName() + ".";
+	public static final String PACKAGE_BLOCK_CHEST = ChestForward.class.getPackage().getName() + ".";
 	public static final String CLASS_TP = "TeleporterBlock";
 	
 	public static Reader READER = new Reader();
@@ -115,12 +119,26 @@ public class Reader
 							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 						}
 					} 
-					catch (ClassNotFoundException | SecurityException | IllegalArgumentException 
+					catch (SecurityException | IllegalArgumentException 
 							| NoSuchMethodException | InstantiationException | IllegalAccessException 
 							| InvocationTargetException e1)
 					{
 						System.out.println("Invalid XML format :\n\t" + e1.toString());
 						return;
+					}
+					catch (ClassNotFoundException e1)
+					{
+						try
+						{
+							Class<?> c = Class.forName(PACKAGE_BLOCK_CHEST + t);
+							Constructor<?> constructor = c.getConstructor(Coordonnees.class, int.class);
+							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z), 1));
+						} catch (ClassNotFoundException | NoSuchMethodException | SecurityException 
+								| InstantiationException | IllegalAccessException | IllegalArgumentException 
+								| InvocationTargetException e2)
+						{
+							System.out.println("Invalid XML format CHEST :\n\t" + e2.toString());
+						}
 					}
 				}
 			}
