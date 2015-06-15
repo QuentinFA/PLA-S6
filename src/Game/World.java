@@ -34,6 +34,7 @@ public class World
 	public boolean isPlaying() {return playing;}
 	
 	private String name;
+	private int minStar, maxStar;
 	
 	private List<Action> actionList;
 	
@@ -44,13 +45,16 @@ public class World
 	 * @param cStart Les coordonnees de depart du personnage
 	 * @param oStart L'orientation de depart du personnage
 	 */
-	public World(String n, List<Block> lb, Coordonnees cStart, int oStart, List<Action> allowedActions) 
+	public World(String n, List<Block> lb, Coordonnees cStart, int oStart, 
+			List<Action> allowedActions, int minStar, int maxStar) 
 	{
 		name = n;
 		coordStart = cStart;
 		orientStart = oStart;
 		actionList = allowedActions;
 		blockListStart = lb;
+		this.minStar = minStar;
+		this.maxStar = maxStar;
 		
 		initialiser();
 		

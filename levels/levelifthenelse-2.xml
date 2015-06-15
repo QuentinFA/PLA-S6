@@ -1,16 +1,11 @@
 <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
-<!-- Un fichier par level
-	Heigth = Hauteur
-	Length = Longueur
-	Width = Largeur
-	is_start : Uniquement sur le block de départ /!\ Un seul départ possible
-	Type des blocks = Nom des classes
-	Nom des actions disponnibles : Nom des classes
-	Procédures et nombre d'actions :
-		- Actions dans main : attribut action_nb
-		- Si procédures : <procedure nb_proc="2"/>
--->
-<!-- While easy, limite le nombre d'instruction dans le main, mettre que P1 -->
+<!-- Un fichier par level Heigth = Hauteur Length = Longueur Width = Largeur 
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible 
+	Type des blocks = Nom des classes Nom des actions disponnibles : Nom des 
+	classes Procédures et nombre d'actions : - Actions dans main : attribut action_nb 
+	- Si procédures : <procedure nb_proc="2"/> -->
+<!-- While easy, limite le nombre d'instruction dans le main, mettre que 
+	P1 -->
 <map>
 	<level_name>1-1</level_name>
 	<starting_dir>SOUTH</starting_dir>
@@ -45,7 +40,7 @@
 		</block>
 	</floor>
 	<floor level="1">
-	<block type="NormalBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>2</y>
 		</block>
@@ -71,7 +66,7 @@
 		</block>
 	</floor>
 	<floor level="2">
-	<block type="NormalBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>1</y>
 		</block>
@@ -83,7 +78,7 @@
 			<x>1</x>
 			<y>-2</y>
 		</block>
-			<block type="NormalBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>0</y>
 		</block>
@@ -92,8 +87,8 @@
 			<y>-2</y>
 		</block>
 	</floor>
-		<floor level="3">
-			<block type="NormalBlock">
+	<floor level="3">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>-1</y>
 		</block>
@@ -101,7 +96,7 @@
 			<x>1</x>
 			<y>-2</y>
 		</block>
-			<block type="NormalBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>0</y>
 		</block>
@@ -109,13 +104,13 @@
 			<x>0</x>
 			<y>-2</y>
 		</block>
-		</floor>
-		<floor level="4">
-			<block type="NormalBlock">
+	</floor>
+	<floor level="4">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>-2</y>
 		</block>
-			<block type="NormalBlock">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>-1</y>
 		</block>
@@ -123,8 +118,8 @@
 			<x>0</x>
 			<y>-2</y>
 		</block>
-		</floor>
-		<floor level="5">
+	</floor>
+	<floor level="5">
 		<block type="RedBlock">
 			<x>1</x>
 			<y>-2</y>
@@ -133,14 +128,17 @@
 			<x>0</x>
 			<y>-2</y>
 		</block>
-		</floor>
+	</floor>
 	<action_list>
-		<action>Jump</action>
 		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>Jump</action>
 		<action>Light</action>
+		<action>Pipette</action>
 	</action_list>
 	<functions>
-		<main nb_action="3"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<main nb_action="3" />
+		<procedure nb_proc="1" />
 	</functions>
 </map>
