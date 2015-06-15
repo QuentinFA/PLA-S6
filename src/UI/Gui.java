@@ -87,6 +87,10 @@ public class Gui
 				spr.setTextureRect(new IntRect(730, 1, 80, 80));
 			else if (act instanceof For)
 				spr.setTextureRect(new IntRect(1, 82, 80, 80));
+			else if (act instanceof P1)
+				spr.setTextureRect(new IntRect(811, 1, 80, 80));
+			else if (act instanceof P2)
+				spr.setTextureRect(new IntRect(892, 1, 80, 80));
 
 			spriteList.add(spr);
 		}
