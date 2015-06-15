@@ -1,5 +1,7 @@
 package Entities.Chests;
 
+import org.jsfml.graphics.IntRect;
+
 import Entities.Chest;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
@@ -20,7 +22,6 @@ public class ChestRight_turn extends Chest
 	
 	public void setTextureChest()
 	{
-		//sprite.setTextureRect(new IntRect(1+82*ori, 1, 81, 81));
-		//TODO mettre les coordonnees de la texture coffreRight_turn en fonction de l'orientation et de si le coffre est ouvert ou non
+		sprite.setTextureRect(new IntRect(1, 1, 81, 81));
 	}
 }
