@@ -46,7 +46,7 @@ public class Reader
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int nbA = 0, nbP = 0, dir = 0;
+		int nbA = 0, nbP = 0, dir = 0, min = 0, max = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -131,13 +131,34 @@ public class Reader
 						try
 						{
 							Class<?> c = Class.forName(PACKAGE_BLOCK_CHEST + t);
+							
+							String s_direct = block.getAttribute(BeaconXML.B_CHEST_DIR).getValue();
+							int direct = 0;
+							
+							switch(s_direct)
+							{
+								case "NORTH" :
+									direct = Orientation.NORTH;
+									break;
+								case "SOUTH" :
+									direct = Orientation.SOUTH;
+									break;
+								case "EAST" :
+									direct = Orientation.EAST;
+									break;
+								case "WEST" :
+								default :
+									direct = Orientation.WEST;
+									break;
+							}
+							
 							Constructor<?> constructor = c.getConstructor(Coordonnees.class, int.class);
-							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z), 1));
+							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z), direct));
 						} catch (ClassNotFoundException | NoSuchMethodException | SecurityException 
 								| InstantiationException | IllegalAccessException | IllegalArgumentException 
 								| InvocationTargetException e2)
 						{
-							System.out.println("Invalid XML format CHEST :\n\t" + e2.toString());
+							System.out.println("Invalid XML format :\n\t" + e2.toString());
 						}
 					}
 				}
@@ -207,13 +228,23 @@ public class Reader
 						break;
 				}
 			}
+			else if(e.getName().equals(BeaconXML.B_SCORE))
+			{
+				for(Element el : e.getChildren())
+				{
+					if(el.getName().equals(BeaconXML.B_SCORE_MIN))
+						min = Integer.valueOf(el.getValue());
+					if(el.getName().equals(BeaconXML.B_SCORE_MAX))
+						max = Integer.valueOf(el.getValue());
+				}
+			}
 		}
 		
 		Set<Block> set = new HashSet<Block>();
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
 		
-		World.WORLD = new World(name, lb, bng, dir, la);
+		World.WORLD = new World(name, lb, bng, dir, la, min, max);
 		Gui.GUI = new Gui(nbA, nbP);
 		
 		Menu.Mymenu = null;
