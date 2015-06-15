@@ -279,4 +279,14 @@ public class World
 		
 		return win;
 	}
+	
+	public int getMinStar()
+	{
+		return minStar;
+	}
+	
+	public int getMaxStar()
+	{
+		return maxStar;
+	}
 }
