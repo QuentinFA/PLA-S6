@@ -25,6 +25,9 @@ public class Interpreter
 
 		try {it = pile.pop();}
 		catch (EmptyStackException e) {return null;}
+	
+		if(!it.hasNext())
+			return null;
 		
 		Prog act = it.next();
 		
@@ -32,8 +35,7 @@ public class Interpreter
 		{
 			For actFor = (For) act;
 			actFor.decrementer();
-			if(!it.hasNext())
-				return null;
+
 			act = it.next();
 			if (!actFor.isZero()) 
 			{ 
