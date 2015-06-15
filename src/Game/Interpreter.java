@@ -7,7 +7,7 @@ import java.util.Stack;
 
 import Entities.Character;
 import Prog.Action;
-import Prog.ReturnProc;
+import Prog.Break;
 import Prog.Procedure;
 import Prog.Prog;
 import Prog.NormalActions.For;
@@ -16,7 +16,7 @@ import Prog.NormalActions.For;
 
 public class Interpreter 
 {
-	public static Interpreter INTERPRETER = null;
+	public static Interpreter INTERPRETER = new Interpreter();
 
 	public Action eval(Character p)
 	{
@@ -32,6 +32,8 @@ public class Interpreter
 		{
 			For actFor = (For) act;
 			actFor.decrementer();
+			if(!it.hasNext())
+				return null;
 			act = it.next();
 			if (!actFor.isZero()) 
 			{ 
@@ -59,8 +61,24 @@ public class Interpreter
 			pile.push(it2);
 			act = eval(p);
 		}
-		else if (act instanceof ReturnProc) 
-			act = eval(p);
+		else if (act instanceof Break)
+		{
+			ListIterator <Prog> it2;
+			try {it2 = pile.pop();}
+			catch (EmptyStackException e) {return null;}
+			Prog a = it2.next();
+			if(a instanceof For) {
+				if(!it2.hasNext())
+					return null;
+				it2.next();
+				pile.push(it2);
+			}
+			else {
+				it2.previous();
+				pile.push(it2);
+				pile.push(it);
+			}
+		}
 		else //C'est une action
 		{
 			if (it.hasNext())
