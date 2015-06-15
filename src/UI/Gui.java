@@ -34,7 +34,11 @@ public class Gui
 	private Sprite sprite_play_retry = new Sprite();
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
-
+	//apres  utilise  la list pour traiter les etoiles
+	private Sprite sprite_star1 = new Sprite();
+	private Sprite sprite_star2 = new Sprite();
+	private Sprite sprite_star3 = new Sprite();
+	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
@@ -185,6 +189,10 @@ public class Gui
 		Graphic.SFML.draw(sprite_end_of_game);
 		Graphic.SFML.draw(sprite_return_eog);
 		Graphic.SFML.draw(sprite_next);
+		Graphic.SFML.draw(sprite_star1);
+		Graphic.SFML.draw(sprite_star2);
+		Graphic.SFML.draw(sprite_star3);
+		
 	}
 
 	public void gerer()
@@ -198,7 +206,20 @@ public class Gui
 			sprite_return_eog.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 			sprite_return_eog.setTextureRect(new IntRect(1, 1, 100, 100));
 			sprite_return_eog.setPosition(Graphic.SFML.getCenterCamera().x-200 , Graphic.SFML.getCenterCamera().y-10);
-
+          
+			sprite_star1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+			sprite_star1.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+			sprite_star1.setPosition(Graphic.SFML.getCenterCamera().x,Graphic.SFML.getCenterCamera().y-100);
+			
+			sprite_star2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+			sprite_star2.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+			sprite_star2.setPosition(Graphic.SFML.getCenterCamera().x-200,Graphic.SFML.getCenterCamera().y-100);
+			
+			sprite_star3.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
+			sprite_star3.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_EMPTY));
+			sprite_star3.setPosition(Graphic.SFML.getCenterCamera().x+200,Graphic.SFML.getCenterCamera().y-100);
+			
+			 
 			sprite_next.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
 			sprite_next.setTextureRect(new IntRect(1, 1, 128, 85));
 			sprite_next.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y);

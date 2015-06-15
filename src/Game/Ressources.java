@@ -33,7 +33,9 @@ public class Ressources
 		PLAY_ACTION(),
 		RETRY_ACTION(),
 		END_OF_GAME(),
-		NEXT();
+		NEXT(),
+		STAR_FULL(),
+		STAR_EMPTY();
 
 		private Texture texture;
 		
@@ -81,6 +83,8 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
 		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
+		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
+		TEXTURE.loadFromFile(TEXTURE.STAR_EMPTY, Paths.get("images/star_empty.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}
