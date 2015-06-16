@@ -10,8 +10,8 @@ public class Fork extends Action{
 	
 	
 	public boolean execute(Character p) {
-		// TODO Auto-generated method stub
-		return false;
+		World.WORLD.setClone(new Coordonnees(p.getCoord()), p.getOrientation());
+		return true;
 	}
 
 }
