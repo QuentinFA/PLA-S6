@@ -84,6 +84,11 @@ public class Gui
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+		
+		sprite_switch.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
+		sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
+		sprite_switch.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x,Graphic.SFML.getPositionCamera_f().y+500));
+		
 		for(int i = 0 ; i < 3 ; i ++)
 		{
 			Sprite temp = new Sprite();
@@ -92,7 +97,9 @@ public class Gui
 
         load_sprite(actionList, Color.NOIR);
 
-		nbrAction = nbrA;
+
+
+        nbrAction = nbrA;
 		nbrProc = nbrP;
 
 		for (int i=0; i < nbrAction; i++)
@@ -124,14 +131,14 @@ public class Gui
 		{
 			Action act = actionList.get(i); 
 			Sprite spr = new Sprite();
-			if(c == Color.NOIR)
+			if(c == Color.DEFAUT)
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
-			else if(c == Color.BLEU)
+			/*else if(c == Color.BLEU)
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));	
 			else if(c == Color.VERT)
 				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));
 			else if(c == Color.ROUGE)
-				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_ROUGE));
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_ROUGE));*/
 
 			if (act instanceof Forward)
 				spr.setTextureRect(new IntRect(1, 1, 80, 80));
@@ -195,6 +202,7 @@ public class Gui
 
 		for (int i = 0; i < spriteList_proc2.size(); i++)
 			spriteList_proc2.get(i).setPosition((i%4)*80 + sprite_proc2.getPosition().x, 80*(i/4) + sprite_proc2.getPosition().y + 25);	 
+		
 	}
 
 	public void afficher()
@@ -346,19 +354,23 @@ public class Gui
 				compteur_couleur=(compteur_couleur+1)%nbcouleurs;
 				if(compteur_couleur == 0)
 				{
-					load_sprite(actionList,Color.NOIR);
+					load_sprite(actionList,Color.DEFAUT);
+					sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
 				}
 				if(compteur_couleur == 1)
 				{
 					load_sprite(actionList,Color.ROUGE);
+					sprite_switch.setTextureRect(new IntRect(82, 1, 80, 80));
 				}
 				if(compteur_couleur == 2)
 				{
 					load_sprite(actionList,Color.VERT);
+					sprite_switch.setTextureRect(new IntRect(163, 1, 80, 80));
 				}
 				if(compteur_couleur == 3)
 				{
 					load_sprite(actionList,Color.BLEU);
+					sprite_switch.setTextureRect(new IntRect(244, 1, 80, 80));
 				}
 			}
 		}
