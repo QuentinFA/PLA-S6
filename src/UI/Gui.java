@@ -50,6 +50,7 @@ public class Gui
 	private Sprite sprite_play_retry = new Sprite();
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
+	private Sprite sprite_end_of_game_text = new Sprite();
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -217,6 +218,8 @@ public class Gui
 		Graphic.SFML.draw(sprite_return_eog);
 		if(Graphic.SFML.get_level_y()<3)
 			Graphic.SFML.draw(sprite_next);
+		if(Graphic.SFML.get_level_y() == 3)
+			Graphic.SFML.draw(sprite_end_of_game_text);
 		for (Sprite spr : sprite_star)
 			Graphic.SFML.draw(spr);
 
@@ -269,6 +272,9 @@ public class Gui
 			sprite_next.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
 			sprite_next.setTextureRect(new IntRect(1, 1, 128, 85));
 			sprite_next.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y);
+			sprite_end_of_game_text.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.END_OF_GAME_TEXT));
+			sprite_end_of_game_text.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME_TEXT));
+			sprite_end_of_game_text.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y+50);
 
 		}
 		if (Input.INPUT.again(BUTTON.MLEFT))
