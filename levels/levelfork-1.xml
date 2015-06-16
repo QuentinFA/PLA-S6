@@ -58,6 +58,9 @@
 		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
+		<action>Pipette</action>
+		<action>Shower</action>
+		<action>For</action>
 		<action>Fork</action>
 	</action_list>
 	<functions>
