@@ -86,11 +86,47 @@ public class Gui
 
 		actionList = World.WORLD.getActionList();
 
+        load_sprite(actionList, Color.NOIR);
+
+		nbrAction = nbrA;
+		nbrProc = nbrP;
+
+		for (int i=0; i < nbrAction; i++)
+			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
+
+		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+
+		if (nbrProc >= 1)
+		{
+			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
+		if (nbrProc >= 2)
+		{
+			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
+
+		GUI = this;
+
+		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
+		placeGui();
+	}
+	public void load_sprite(List<Action> actionList, Color c)
+	{
 		for(int i = 0; i < actionList.size(); i++)
 		{
 			Action act = actionList.get(i); 
-			spr = new Sprite();
+			Sprite spr = new Sprite();
+			if(c == Color.NOIR)
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
+			else if(c == Color.BLEU)
+			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));	
+			else if(c == Color.VERT)
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));
+			else if(c == Color.ROUGE)
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_ROUGE));
 
 			if (act instanceof Forward)
 				spr.setTextureRect(new IntRect(1, 1, 80, 80));
@@ -123,33 +159,7 @@ public class Gui
 
 			spriteList.add(spr);
 		}
-
-		nbrAction = nbrA;
-		nbrProc = nbrP;
-
-		for (int i=0; i < nbrAction; i++)
-			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
-
-		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
-		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-
-		if (nbrProc >= 1)
-		{
-			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-		}
-		if (nbrProc >= 2)
-		{
-			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-		}
-
-		GUI = this;
-
-		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
-		placeGui();
 	}
-
 	public void placeGui()
 	{
 		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
@@ -206,7 +216,7 @@ public class Gui
 		Graphic.SFML.draw(sprite_end_of_game);
 		Graphic.SFML.draw(sprite_return_eog);
 		if(Graphic.SFML.get_level_y()<3)
-		    Graphic.SFML.draw(sprite_next);
+			Graphic.SFML.draw(sprite_next);
 		for (Sprite spr : sprite_star)
 			Graphic.SFML.draw(spr);
 
@@ -223,7 +233,7 @@ public class Gui
 			sprite_return_eog.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 			sprite_return_eog.setTextureRect(new IntRect(1, 1, 100, 100));
 			sprite_return_eog.setPosition(Graphic.SFML.getCenterCamera().x-200 , Graphic.SFML.getCenterCamera().y-10);
-			
+
 			for(int i = 0 ; i < 3 ; i ++)
 			{
 				if(World.WORLD.getCharacterList().get(0).getNbActions() <= World.WORLD.getMinStar())
