@@ -20,20 +20,7 @@ import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
 import Prog.TypeProcedure;
-import Prog.NormalActions.Fork;
-import Prog.NormalActions.For;
-import Prog.NormalActions.Forward;
-import Prog.NormalActions.Jump;
-import Prog.NormalActions.Left_turn;
-import Prog.NormalActions.Light;
-import Prog.NormalActions.OpenChest;
-import Prog.NormalActions.P1;
-import Prog.NormalActions.P2;
-import Prog.NormalActions.Pipette;
-import Prog.NormalActions.Right_turn;
-import Prog.NormalActions.Shower;
-import Prog.NormalActions.Teleporter;
-import Prog.NormalActions.UseChest;
+import Prog.NormalActions.*;
 
 public class Gui 
 {
@@ -157,6 +144,8 @@ public class Gui
 			else if (act instanceof P2)
 				spr.setTextureRect(new IntRect(811, 82, 80, 80));
 			else if (act instanceof Fork)
+				spr.setTextureRect(new IntRect(811, 1, 80, 80));
+			else if (act instanceof Break)
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 
 			spriteList.add(spr);
