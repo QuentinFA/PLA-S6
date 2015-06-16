@@ -113,6 +113,11 @@ public class Gui
 			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
 			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
+		if(avoir_fork)			
+		{
+			sprite_fork.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.FORK));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
 
 		GUI = this;
 
@@ -238,6 +243,8 @@ public class Gui
 		for (Sprite spr : spriteList_proc1)
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_proc2)
+			Graphic.SFML.draw(spr);
+		for (Sprite spr : spriteList_fork)
 			Graphic.SFML.draw(spr);
 		Graphic.SFML.draw(sprite_end_of_game);
 		Graphic.SFML.draw(sprite_return_eog);
@@ -502,6 +509,12 @@ public class Gui
 					{
 						spriteList_proc2.remove(i);
 						final_actionList.get(2).getListProcedure().remove(i);
+					}
+				for (int i=0; i < spriteList_fork.size(); i++)
+					if (Graphic.isOnSprite(spriteList_fork.get(i)))
+					{
+						spriteList_fork.remove(i);
+						final_actionList.get(3).getListProcedure().remove(i);
 					}
 			}
 		}
