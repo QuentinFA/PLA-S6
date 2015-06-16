@@ -54,10 +54,6 @@ public class Gui
 	private Sprite sprite_end_of_game_text = new Sprite();
 
 	private Sprite sprite_switch = new Sprite();
-<<<<<<< HEAD
-
-=======
->>>>>>> ac1e2b6ebc7a8ba8f1486ba944623c2d08977b77
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -250,14 +246,19 @@ public class Gui
 
 			for(int i = 0 ; i < 3 ; i ++)
 			{
-				if(World.WORLD.getCharacterList().get(0).getNbActions() <= World.WORLD.getMinStar())
+				int compteur = 0;
+				for(Entities.Character ch: World.WORLD.getCharacterList())
+				{
+					compteur = compteur+ch.getNbActions();
+				}
+				if(compteur <= World.WORLD.getMinStar())
 				{
 					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
-				else if(World.WORLD.getCharacterList().get(0).getNbActions() < World.WORLD.getMaxStar() &&
-						World.WORLD.getCharacterList().get(0).getNbActions() > World.WORLD.getMinStar())
+				else if(compteur < World.WORLD.getMaxStar() &&
+						compteur > World.WORLD.getMinStar())
 				{
 					if(i == 0)
 					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
