@@ -50,10 +50,6 @@ public class Gui
 	private Sprite sprite_play_retry = new Sprite();
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
-	//apres  utilise  la list pour traiter les etoiles
-	//	private Sprite sprite_star1 = new Sprite();
-	//	private Sprite sprite_star2 = new Sprite();
-	//	private Sprite sprite_star3 = new Sprite();
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -209,10 +205,8 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		Graphic.SFML.draw(sprite_end_of_game);
 		Graphic.SFML.draw(sprite_return_eog);
-		Graphic.SFML.draw(sprite_next);
-		//		Graphic.SFML.draw(sprite_star1);
-		//		Graphic.SFML.draw(sprite_star2);
-		//		Graphic.SFML.draw(sprite_star3);
+		if(Graphic.SFML.get_level_y()<3)
+		    Graphic.SFML.draw(sprite_next);
 		for (Sprite spr : sprite_star)
 			Graphic.SFML.draw(spr);
 
@@ -232,14 +226,14 @@ public class Gui
 			
 			for(int i = 0 ; i < 3 ; i ++)
 			{
-				if(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() <= World.WORLD.getMinStar())
+				if(World.WORLD.getCharacterList().get(0).getNbActions() <= World.WORLD.getMinStar())
 				{
 					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
-				if(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() < World.WORLD.getMaxStar() &&
-						spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() > World.WORLD.getMinStar())
+				else if(World.WORLD.getCharacterList().get(0).getNbActions() < World.WORLD.getMaxStar() &&
+						World.WORLD.getCharacterList().get(0).getNbActions() > World.WORLD.getMinStar())
 				{
 					if(i == 0)
 					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
@@ -251,8 +245,12 @@ public class Gui
 				}
 				else
 				{
-					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
-					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+					if(i == 2)
+					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));}
+					else
+					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
+					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_EMPTY));}
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
 			}
