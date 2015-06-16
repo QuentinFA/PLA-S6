@@ -12,6 +12,7 @@ import Entities.EntitieComparator;
 import Entities.Entities;
 import Entities.Blocks.LightBlock;
 import Prog.Action;
+import Prog.Coordation;
 import Prog.Coordonnees;
 import UI.Graphic;
 
@@ -21,6 +22,7 @@ public class World
 	
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
+	private List<Coordation> cloneList = new ArrayList<Coordation>(); //Liste des coordonnes des clones
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
 	private List<Block> blockListStart;
@@ -96,6 +98,15 @@ public class World
 	{
 		for (Character p : characterList)
 			p.gerer();
+	}
+	
+	/**
+	 * Gere la creation des clones
+	 */
+	public void popClone(){
+		for(Coordation c : cloneList)
+			if(isValidPosition(c.getCoord()))
+				addCharacter(new Character(new Coordonnees(c.getCoord()), c.getOrientation() ));
 	}
 	
 	/**
@@ -288,5 +299,12 @@ public class World
 	public int getMaxStar()
 	{
 		return maxStar;
+	}
+	
+	/**
+	 * remplit la liste des coordonnee des clones
+	 */
+	public void setClone(Coordonnees xyz, int o){
+		this.cloneList.add(new Coordation(xyz, o));
 	}
 }

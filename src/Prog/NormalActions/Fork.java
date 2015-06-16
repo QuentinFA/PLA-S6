@@ -1,8 +1,10 @@
 package Prog.NormalActions;
 
 import Entities.Character;
+import Game.World;
 import Prog.Action;
 import Prog.Color;
+import Prog.Coordonnees;
 
 public class Fork extends Action{
 	
@@ -10,8 +12,8 @@ public class Fork extends Action{
 	
 	
 	public boolean execute(Character p) {
-		// TODO Auto-generated method stub
-		return false;
+		World.WORLD.setClone(new Coordonnees(p.getCoord()), p.getOrientation());
+		return true;
 	}
 
 }
