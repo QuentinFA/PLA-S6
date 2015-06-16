@@ -207,9 +207,14 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>Jump</action>
+		<action>Left_turn</action>
+		<action>Right_turn</action>
+		<action>For</action>
+		<action>Clone</action>
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<procedure nb_proc="0"/>
 	</functions>
 </map>

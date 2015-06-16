@@ -40,20 +40,20 @@ public class OpenChest extends Action
 				{
 					case Orientation.NORTH:
 						if (((Chest)e).getOrientation() == Orientation.SOUTH) 
-							p.setChest(((Chest)e).openChest());
+							((Chest)e).perform(p);
 						break;
 					case Orientation.EAST:
 						if (((Chest)e).getOrientation() == Orientation.WEST) 
-							p.setChest(((Chest)e).openChest());
+							((Chest)e).perform(p);
 						break;
 					case Orientation.SOUTH:
 						if (((Chest)e).getOrientation() == Orientation.NORTH) 
-							p.setChest(((Chest)e).openChest());
+							((Chest)e).perform(p);
 						break;
 					case Orientation.WEST:
 					default:
 						if (((Chest)e).getOrientation() == Orientation.EAST) 
-							p.setChest(((Chest)e).openChest());
+							((Chest)e).perform(p);
 						break;
 				}
 			}

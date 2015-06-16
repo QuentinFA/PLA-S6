@@ -20,18 +20,19 @@ import Prog.Prog;
 public class Character extends Entities
 {	
 	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
-	private Color couleur = Color.DEFAUT;;
-
+	private Color couleur = Color.ROUGE;
 	private Chest coffre = null;
-	private Procedure main;
 	private Action actionCourante = null;
+	private int compteurActions;
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
+	
 
 	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
 		orientation = ori;
-
+		compteurActions = 0;
+		
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
@@ -43,20 +44,19 @@ public class Character extends Entities
 	public void setOrientation(int ori) {orientation = ori;}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
-	
-	public Chest getChest() {return coffre;}
+		public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
 	public void setActionCourante(Action a) {actionCourante = a;}
 	public Action getAction () {return actionCourante;}
+	public void incrementNbActions() {this.compteurActions++;}
+	public int getNbActions() {return this.compteurActions;}
 	public void setMain(Procedure l) 
 	{
-		main = l;
 		List<Prog> t = l.getListProcedure();
 		ListIterator<Prog> it = t.listIterator();
 		pile.clear();
 		pile.push(it);
 	}
-	public Procedure getMain() {return main;}
 
 	public Stack<ListIterator<Prog>> getPile() {return pile;}
 

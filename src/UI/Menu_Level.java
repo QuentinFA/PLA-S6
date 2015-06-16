@@ -19,13 +19,15 @@ public class Menu_Level extends Menu
 	ArrayList<Sprite> aura_list = new ArrayList<Sprite>();
 
 	private static float title_scale;
+
 	private boolean increase_title_scale;
 	private int nbr_monde = 0;
 	private Sprite returnMenu = new Sprite();
 
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
-
+	public void set_nbr_monde(int nb){this.nbr_monde = nb;}
+	
 	public Menu_Level()
 	{	
 		Graphic.SFML.visible_cursor();
@@ -140,6 +142,7 @@ public class Menu_Level extends Menu
 				{	
 					if (i == 0 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
+						Graphic.SFML.store_level(i, j);
 						if (j == 0)
 							Reader.read("levels/level1-1.xml");
 						else if (j == 1)
@@ -151,13 +154,17 @@ public class Menu_Level extends Menu
 					}
 					else if(i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
+						Graphic.SFML.store_level(i, j);
 						if (j == 0)
 							Reader.read("levels/levelfor-1.xml");
 						else if (j == 1)
 							Reader.read("levels/levelfor-2.xml");
+						else if (j == 2)
+							Reader.read("levels/levelfor-3.xml");
 					}
 					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
+						Graphic.SFML.store_level(i, j);
 						if (j == 0)
 							Reader.read("levels/levelfork-1.xml");
 						else if (j == 1)

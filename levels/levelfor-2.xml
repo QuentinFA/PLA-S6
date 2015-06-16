@@ -75,7 +75,8 @@
 		<action>Jump</action>
 		<action>Light</action>
 		<action>For</action>
-		<!-- <action>P1</action> -->
+		<action>P1</action>
+		<action>P2</action>
 	</action_list>
 	<functions>
 		<main nb_action="6"/>

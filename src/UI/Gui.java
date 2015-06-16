@@ -9,27 +9,52 @@ import org.jsfml.system.Vector2f;
 
 import Game.Controler;
 import Game.Input;
-import Game.Interpreter;
 import Game.Input.BUTTON;
+import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import Prog.NormalActions.*;
-import Prog.*;
+import Levels.Reader;
+import Prog.Action;
+import Prog.Color;
+import Prog.Procedure;
+import Prog.Prog;
+import Prog.TypeProcedure;
+import Prog.NormalActions.Clone;
+import Prog.NormalActions.For;
+import Prog.NormalActions.Forward;
+import Prog.NormalActions.Jump;
+import Prog.NormalActions.Left_turn;
+import Prog.NormalActions.Light;
+import Prog.NormalActions.OpenChest;
+import Prog.NormalActions.P1;
+import Prog.NormalActions.P2;
+import Prog.NormalActions.Pipette;
+import Prog.NormalActions.Right_turn;
+import Prog.NormalActions.Shower;
+import Prog.NormalActions.Teleporter;
+import Prog.NormalActions.UseChest;
 
 public class Gui 
 {
 	public static Gui GUI = null;
 
 	private boolean level_completed = false;
-	
+
 	private Sprite sprite_return = new Sprite();
+	private Sprite sprite_return_eog = new Sprite();
 
 	private Sprite sprite_main = new Sprite();
 	private Sprite sprite_proc1 = null;
 	private Sprite sprite_proc2 = null;
 	private Sprite sprite_play_retry = new Sprite();
-
+	private Sprite sprite_end_of_game = new Sprite();
+	private Sprite sprite_next = new Sprite();
+	//apres  utilise  la list pour traiter les etoiles
+	private Sprite sprite_star1 = new Sprite();
+	private Sprite sprite_star2 = new Sprite();
+	private Sprite sprite_star3 = new Sprite();
+	
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
@@ -41,7 +66,7 @@ public class Gui
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
 
 	public void setLevelCompleted(boolean t) {this.level_completed = t;}
-	
+
 	private int nbrAction;
 	private int nbrProc;
 
@@ -56,6 +81,7 @@ public class Gui
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+
 
 		actionList = World.WORLD.getActionList();
 
@@ -87,6 +113,12 @@ public class Gui
 				spr.setTextureRect(new IntRect(730, 1, 80, 80));
 			else if (act instanceof For)
 				spr.setTextureRect(new IntRect(1, 82, 80, 80));
+			else if (act instanceof P1)
+				spr.setTextureRect(new IntRect(730, 82, 80, 80));
+			else if (act instanceof P2)
+				spr.setTextureRect(new IntRect(811, 82, 80, 80));
+			else if (act instanceof Clone)
+				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 
 			spriteList.add(spr);
 		}
@@ -120,9 +152,9 @@ public class Gui
 	public void placeGui()
 	{
 		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-       
+
 		sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
-        		Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
+				Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
 
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20));
@@ -152,8 +184,9 @@ public class Gui
 	public void afficher()
 	{
 		Graphic.SFML.draw(sprite_return);
-        Graphic.SFML.draw(sprite_play_retry);
+		Graphic.SFML.draw(sprite_play_retry);
 		Graphic.SFML.draw(sprite_main);
+
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
 		if (sprite_proc2 != null)
@@ -169,53 +202,95 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_proc2)
 			Graphic.SFML.draw(spr);
+		Graphic.SFML.draw(sprite_end_of_game);
+		Graphic.SFML.draw(sprite_return_eog);
+		Graphic.SFML.draw(sprite_next);
+		Graphic.SFML.draw(sprite_star1);
+		Graphic.SFML.draw(sprite_star2);
+		Graphic.SFML.draw(sprite_star3);
+		
 	}
 
 	public void gerer()
 	{
 		if(level_completed)
 		{
-			World.WORLD = null;
-			Gui.GUI = null;
-			Interpreter.INTERPRETER = null;
-			Controler.CONTROLER = null;
+
+			sprite_end_of_game.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.END_OF_GAME));
+			sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
+			sprite_end_of_game.setPosition(Graphic.SFML.getCenterCamera());
+			sprite_return_eog.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
+			sprite_return_eog.setTextureRect(new IntRect(1, 1, 100, 100));
+			sprite_return_eog.setPosition(Graphic.SFML.getCenterCamera().x-200 , Graphic.SFML.getCenterCamera().y-10);
+          
+			sprite_star1.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+			sprite_star1.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+			sprite_star1.setPosition(Graphic.SFML.getCenterCamera().x,Graphic.SFML.getCenterCamera().y-100);
 			
-			//TODO Afficher bravo et passer au niveau suivant
+			sprite_star2.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+			sprite_star2.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+			sprite_star2.setPosition(Graphic.SFML.getCenterCamera().x-200,Graphic.SFML.getCenterCamera().y-100);
 			
-			Menu.change_menu(Menu.MENU.LEVEL);
+			sprite_star3.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
+			sprite_star3.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_EMPTY));
+			sprite_star3.setPosition(Graphic.SFML.getCenterCamera().x+200,Graphic.SFML.getCenterCamera().y-100);
 			
-			return;
+			 
+			sprite_next.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
+			sprite_next.setTextureRect(new IntRect(1, 1, 128, 85));
+			sprite_next.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y);
+
 		}
 		if (Input.INPUT.again(BUTTON.MLEFT))
 		{
-			if (Graphic.isOnSprite(sprite_return)) //Retour
+			if (Graphic.isOnSprite(sprite_return)||Graphic.isOnSprite(sprite_return_eog)) //Retour
 			{
 				World.WORLD = null;
 				Gui.GUI = null;
 				Interpreter.INTERPRETER = null;
 				Controler.CONTROLER = null;
-				
+
 				Menu.change_menu(Menu.MENU.LEVEL);
+				((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x());
 
 				return;
 			}
+			if (Graphic.isOnSprite(sprite_next)) //Retour
+			{
+				if(Graphic.SFML.get_level_x() == 0 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/level1-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
+				else if(Graphic.SFML.get_level_x() == 1 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/levelfor-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
+				else if(Graphic.SFML.get_level_x() == 2 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/levelfork-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
 
+				return;
+			}
 			if (Graphic.isOnSprite(sprite_play_retry))
 			{
 				if (World.WORLD.isPlaying())
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
-					
+
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
 				}
 				else
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
-					
+
 					World.WORLD.setPlaying(true);
 					List<Entities.Character> l =  World.WORLD.getCharacterList();
-					
+
 					for (int i=0; i < l.size(); i++)
 						l.get(i).setMain(final_actionList.get(i));
 				}
@@ -274,7 +349,7 @@ public class Gui
 									}
 								}
 								else
-								{
+								{	
 									final_actionList.get(wichProc).addProg(actionList.get(i));
 									sprite_list.add(temp);
 								}
