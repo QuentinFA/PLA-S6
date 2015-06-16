@@ -234,11 +234,13 @@ public class Gui
 			{
 				if(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() <= World.WORLD.getMinStar())
 				{
+					System.out.println(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size());
+					System.out.println(World.WORLD.getMinStar());
 					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
-				if(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() < World.WORLD.getMaxStar() &&
+				else if(spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() < World.WORLD.getMaxStar() &&
 						spriteList_proc1.size()+spriteList_proc2.size()+spriteList_main.size() > World.WORLD.getMinStar())
 				{
 					if(i == 0)
@@ -251,8 +253,12 @@ public class Gui
 				}
 				else
 				{
-					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
-					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
+					if(i == 2)
+					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
+					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));}
+					else
+					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
+					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_EMPTY));}
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
 			}
