@@ -148,10 +148,10 @@
 		<action>Jump</action>
 	</action_list>
 	<functions>
-		<main nb_action="6"/>
+		<main nb_action="12"/>
 	</functions>
 	<score>
-		<min>6</min>
-		<max>8</max>
+		<min>9</min>
+		<max>12</max>
 	</score>
 </map>
