@@ -20,20 +20,7 @@ import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
 import Prog.TypeProcedure;
-import Prog.NormalActions.Fork;
-import Prog.NormalActions.For;
-import Prog.NormalActions.Forward;
-import Prog.NormalActions.Jump;
-import Prog.NormalActions.Left_turn;
-import Prog.NormalActions.Light;
-import Prog.NormalActions.OpenChest;
-import Prog.NormalActions.P1;
-import Prog.NormalActions.P2;
-import Prog.NormalActions.Pipette;
-import Prog.NormalActions.Right_turn;
-import Prog.NormalActions.Shower;
-import Prog.NormalActions.Teleporter;
-import Prog.NormalActions.UseChest;
+import Prog.NormalActions.*;
 
 public class Gui 
 {
@@ -158,6 +145,8 @@ public class Gui
 				spr.setTextureRect(new IntRect(811, 82, 80, 80));
 			else if (act instanceof Fork)
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
+			else if (act instanceof Break)
+				spr.setTextureRect(new IntRect(892, 1, 80, 80));
 
 			spriteList.add(spr);
 		}
@@ -243,20 +232,20 @@ public class Gui
 			for(int i = 0 ; i < 3 ; i ++)
 			{
 				int compteur = 0;
-				for(Entities.Character ch: World.WORLD.getCharacterList())
-				{
-					compteur = compteur+ch.getNbActions();
-				}
-				if(compteur <= World.WORLD.getMinStar())
+				
+				for (Entities.Character ch: World.WORLD.getCharacterList())
+					compteur = compteur+ch.getNbActions();	
+				
+				if (compteur <= World.WORLD.getMinStar())
 				{
 					sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_FULL));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x+(1-i)*200,Graphic.SFML.getCenterCamera().y-100);
 				}
-				else if(compteur < World.WORLD.getMaxStar() &&
+				else if (compteur < World.WORLD.getMaxStar() &&
 						compteur > World.WORLD.getMinStar())
 				{
-					if(i == 0)
+					if (i == 0)
 					{sprite_star.get(i).setTexture(Ressources.TEXTURE.getTexture(TEXTURE.STAR_EMPTY));
 					sprite_star.get(i).setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.STAR_EMPTY));}
 					else
@@ -345,7 +334,7 @@ public class Gui
 				if(compteur_couleur == 0)
 				{
 					for (Sprite spr : spriteList)
-						spr.setColor(org.jsfml.graphics.Color.BLACK);
+						spr.setColor(org.jsfml.graphics.Color.WHITE);
 					sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
 				}
 				if(compteur_couleur == 1)

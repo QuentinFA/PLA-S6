@@ -135,7 +135,15 @@
 		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
+		<action>P1</action>
+		<!-- <action>P2</action> -->
+		<action>For</action>
 		<action>Pipette</action>
+		<action>Shower</action>
+		<!-- <action>Break</action> -->
+		<!-- <action>Teleporter</action> -->
+		<!-- <action>Fork</action> -->
+		<!-- <action>UseChest</action> -->
 	</action_list>
 	<functions>
 		<main nb_action="3" />

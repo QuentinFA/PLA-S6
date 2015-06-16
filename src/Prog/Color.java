@@ -12,5 +12,5 @@ public enum Color
 	JAUNE,
 	MAGENTA,
 	AZUR,
-	NOIR
+	NOIR;
 }

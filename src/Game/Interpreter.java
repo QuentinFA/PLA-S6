@@ -6,10 +6,10 @@ import java.util.Stack;
 
 import Entities.Character;
 import Prog.Action;
-import Prog.Break;
 import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
+import Prog.NormalActions.Break;
 import Prog.NormalActions.For;
 
 
@@ -30,7 +30,7 @@ public class Interpreter
 			return eval(p);
 
 		Prog act = it.next();
-
+		
 		if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
 			if (it.hasNext())
 				pile.push(it);
@@ -58,13 +58,15 @@ public class Interpreter
 				it.previous();
 			}
 
-			if (it.hasNext())
-				pile.push(it);
-			
 			if (act instanceof Break) {
 				p.incrementNbActions();
 				return null;			
 			}
+			
+			if (it.hasNext())
+				pile.push(it);
+			
+
 			
 			if (act instanceof Procedure)
 			{
