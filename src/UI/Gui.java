@@ -201,6 +201,7 @@ public class Gui
 		Graphic.SFML.draw(sprite_return);
 		Graphic.SFML.draw(sprite_play_retry);
 		Graphic.SFML.draw(sprite_main);
+		Graphic.SFML.draw(sprite_switch);
 
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
