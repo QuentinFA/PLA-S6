@@ -40,7 +40,7 @@
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>6</x>
+			<x>6</x><action>For</action>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
@@ -76,6 +76,7 @@
 		<action>Light</action>
 		<action>For</action>
 		<action>P1</action>
+		<action>Break</action>
 		<!--<action>P2</action>-->
 	</action_list>
 	<functions>

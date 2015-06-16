@@ -146,7 +146,7 @@ public class Gui
 			else if (act instanceof Fork)
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 			else if (act instanceof Break)
-				spr.setTextureRect(new IntRect(811, 1, 80, 80));
+				spr.setTextureRect(new IntRect(892, 1, 80, 80));
 
 			spriteList.add(spr);
 		}
