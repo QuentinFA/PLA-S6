@@ -58,13 +58,15 @@ public class Interpreter
 				it.previous();
 			}
 
-			if (it.hasNext())
-				pile.push(it);
-			
 			if (act instanceof Break) {
 				p.incrementNbActions();
 				return null;			
 			}
+			
+			if (it.hasNext())
+				pile.push(it);
+			
+
 			
 			if (act instanceof Procedure)
 			{
