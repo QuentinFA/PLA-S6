@@ -54,7 +54,10 @@ public class Gui
 	private Sprite sprite_end_of_game_text = new Sprite();
 
 	private Sprite sprite_switch = new Sprite();
+<<<<<<< HEAD
 
+=======
+>>>>>>> ac1e2b6ebc7a8ba8f1486ba944623c2d08977b77
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -205,6 +208,7 @@ public class Gui
 		Graphic.SFML.draw(sprite_return);
 		Graphic.SFML.draw(sprite_play_retry);
 		Graphic.SFML.draw(sprite_main);
+		Graphic.SFML.draw(sprite_switch);
 
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
