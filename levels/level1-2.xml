@@ -12,7 +12,7 @@
 -->
 
 <map>
-	<level_name>1-1</level_name>
+	<level_name>1-2</level_name>
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">

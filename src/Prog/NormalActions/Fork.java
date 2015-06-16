@@ -4,9 +4,9 @@ import Entities.Character;
 import Prog.Action;
 import Prog.Color;
 
-public class Clone extends Action{
+public class Fork extends Action{
 	
-	public Clone(Color c){couleur = c;}
+	public Fork(Color c){couleur = c;}
 	
 	
 	public boolean execute(Character p) {
