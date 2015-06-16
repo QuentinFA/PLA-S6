@@ -102,16 +102,19 @@ public class Gui
 			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
 
 		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		sprite_main.setScale(0.5f, 0.5f);
 		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 
 		if (nbrProc >= 1)
 		{
 			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			sprite_proc1.setScale(0.5f, 0.5f);
 			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
 		if (nbrProc >= 2)
 		{
 			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+			sprite_proc2.setScale(0.5f, 0.5f);
 			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
 
