@@ -46,9 +46,9 @@
 	</floor>
 	<action_list>
 		<action>Forward</action>
-		<action>Light</action>
-		<action>Left_turn</action>
 		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>Light</action>
 	</action_list>
 	<functions>
 		<main nb_action="9"/>

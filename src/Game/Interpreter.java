@@ -6,10 +6,10 @@ import java.util.Stack;
 
 import Entities.Character;
 import Prog.Action;
-import Prog.Break;
 import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
+import Prog.NormalActions.Break;
 import Prog.NormalActions.For;
 
 
