@@ -1,8 +1,10 @@
 package Prog.NormalActions;
 
 import Entities.Character;
+import Game.World;
 import Prog.Action;
 import Prog.Color;
+import Prog.Coordonnees;
 
 public class Fork extends Action{
 	
