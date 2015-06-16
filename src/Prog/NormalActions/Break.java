@@ -1,6 +1,7 @@
-package Prog;
+package Prog.NormalActions;
 
 import Entities.Character;
+import Prog.Action;
 
 public class Break extends Action 
 {
