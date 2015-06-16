@@ -27,6 +27,7 @@ public class Gui
 	public static Gui GUI = null;
 
 	private boolean level_completed = false;
+	private boolean affiche_fork = false;
 
 	private Sprite sprite_return = new Sprite();
 	private Sprite sprite_return_eog = new Sprite();
@@ -37,6 +38,7 @@ public class Gui
 	private Sprite sprite_play_retry = new Sprite();
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
+	private Sprite sprite_fork = new Sprite();
 
 	private Sprite sprite_end_of_game_text = new Sprite();
 
@@ -89,6 +91,9 @@ public class Gui
 			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
 
 		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		if(affiche_fork)			
+		    sprite_fork.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.FORK));
+		
 		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 
 		if (nbrProc >= 1)
@@ -144,7 +149,10 @@ public class Gui
 			else if (act instanceof P2)
 				spr.setTextureRect(new IntRect(811, 82, 80, 80));
 			else if (act instanceof Fork)
+				{
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
+				affiche_fork = true;
+				}
 			else if (act instanceof Break)
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 
@@ -165,7 +173,16 @@ public class Gui
 			sprite_proc1.setPosition(new Vector2f(sprite_main.getPosition().x, sprite_main.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y + 20));
 		if (sprite_proc2 != null)
 			sprite_proc2.setPosition(new Vector2f(sprite_proc1.getPosition().x, sprite_proc1.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y + 20));
-
+        if (affiche_fork)
+        {
+        	if(sprite_proc1 == null)
+        		sprite_fork.setPosition(new Vector2f(sprite_main.getPosition().x, sprite_main.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().y + 20));
+        	else if(sprite_proc1 != null && sprite_proc2 == null)
+        		sprite_fork.setPosition(new Vector2f(sprite_proc1.getPosition().x, sprite_proc1.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y + 20));
+        	else
+        		sprite_fork.setPosition(new Vector2f(sprite_proc2.getPosition().x, sprite_proc2.getPosition().y + Ressources.TEXTURE.getTexture(TEXTURE.PROC1).getSize().y + 20));
+            
+        }
 		for (int i=0; i < spriteList.size(); i++)
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
 
@@ -195,6 +212,8 @@ public class Gui
 			Graphic.SFML.draw(sprite_proc1);
 		if (sprite_proc2 != null)
 			Graphic.SFML.draw(sprite_proc2);
+		if (affiche_fork)
+			Graphic.SFML.draw(sprite_fork);
 
 		for (Sprite spr : spriteList)
 			Graphic.SFML.draw(spr);

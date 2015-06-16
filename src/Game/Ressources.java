@@ -40,7 +40,8 @@ public class Ressources
 		ACTION_BLEU(),
 		ACTION_ROUGE(),
 		ACTION_VERT(),
-		CHOIX_COULEUR();
+		CHOIX_COULEUR(),
+		FORK();
 
 		private Texture texture;
 		
@@ -95,6 +96,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.ACTION_BLEU, Paths.get("images/action_bleu.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION_ROUGE, Paths.get("images/action_rouge.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION_VERT, Paths.get("images/action_vert.png"));
+		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
 		
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
