@@ -96,7 +96,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.ACTION_ROUGE, Paths.get("images/action_rouge.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION_VERT, Paths.get("images/action_vert.png"));
 		
-		int lower = 1;
+		int lower = 0	;
 		int higher = 3;
 
 		int random = (int)(Math.random() * (higher-lower)) + lower;
