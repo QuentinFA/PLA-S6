@@ -79,8 +79,6 @@ public class Gui
 
 	public Gui(int nbrA, int nbrP)
 	{
-		Sprite spr;
-
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
@@ -95,9 +93,7 @@ public class Gui
 			sprite_star.add(temp);
 		}
 
-        load_sprite(actionList, Color.NOIR);
-
-
+        load_sprite();
 
         nbrAction = nbrA;
 		nbrProc = nbrP;
@@ -125,20 +121,14 @@ public class Gui
 		placeGui();
 	}
 	
-	public void load_sprite(List<Action> actionList, Color c)
+	public void load_sprite()
 	{
 		for(int i = 0; i < actionList.size(); i++)
 		{
 			Action act = actionList.get(i); 
 			Sprite spr = new Sprite();
-			if(c == Color.DEFAUT)
+			
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
-			/*else if(c == Color.BLEU)
-			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));	
-			else if(c == Color.VERT)
-				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));
-			else if(c == Color.ROUGE)
-				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_ROUGE));*/
 
 			if (act instanceof Forward)
 				spr.setTextureRect(new IntRect(1, 1, 80, 80));
@@ -354,22 +344,26 @@ public class Gui
 				compteur_couleur=(compteur_couleur+1)%nbcouleurs;
 				if(compteur_couleur == 0)
 				{
-					load_sprite(actionList,Color.DEFAUT);
+					for (Sprite spr : spriteList)
+						spr.setColor(org.jsfml.graphics.Color.BLACK);
 					sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
 				}
 				if(compteur_couleur == 1)
 				{
-					load_sprite(actionList,Color.ROUGE);
+					for (Sprite spr : spriteList)
+						spr.setColor(org.jsfml.graphics.Color.RED);
 					sprite_switch.setTextureRect(new IntRect(82, 1, 80, 80));
 				}
 				if(compteur_couleur == 2)
 				{
-					load_sprite(actionList,Color.VERT);
+					for (Sprite spr : spriteList)
+						spr.setColor(org.jsfml.graphics.Color.GREEN);
 					sprite_switch.setTextureRect(new IntRect(163, 1, 80, 80));
 				}
 				if(compteur_couleur == 3)
 				{
-					load_sprite(actionList,Color.BLEU);
+					for (Sprite spr : spriteList)
+						spr.setColor(org.jsfml.graphics.Color.BLUE);
 					sprite_switch.setTextureRect(new IntRect(244, 1, 80, 80));
 				}
 			}
