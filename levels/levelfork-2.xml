@@ -70,15 +70,19 @@
 	</floor>
 	<action_list>
 		<action>Forward</action>
-		<action>Light</action>
-		<action>Jump</action>
-		<action>Left_turn</action>
 		<action>Right_turn</action>
-		<!--  <action>Des</action> -->
+<<<<<<< HEAD
+		<action>Left_turn</action>
+		<action>Jump</action>
+		<action>Light</action>
 		<!--  <action>Fork</action> -->
+=======
+		<action>For</action>
+		<action>Clone</action>
+>>>>>>> 09cff13832d155a4eaac9c1e73911bbeddf44a9a
 	</action_list>
 	<functions>
 		<main nb_action="8"/>
-		<!-- <procedure nb_proc="1"/> -->
+		<procedure nb_proc="1"/>
 	</functions>
 </map>

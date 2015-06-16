@@ -16,7 +16,7 @@ public class Pipette extends Action{
 	public boolean execute(Character p) 
 	{
 		Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
-		if(!(b instanceof ColorBlock))
+		if(b instanceof ColorBlock)
 			((Block) b).perform(p);
 
 		return true;

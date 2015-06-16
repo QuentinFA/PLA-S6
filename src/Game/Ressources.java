@@ -31,7 +31,15 @@ public class Ressources
 		PROC1(),
 		PROC2(),
 		PLAY_ACTION(),
-		RETRY_ACTION();
+		RETRY_ACTION(),
+		END_OF_GAME(),
+		END_OF_GAME_TEXT(),
+		NEXT(),
+		STAR_FULL(),
+		STAR_EMPTY(),
+		ACTION_BLEU(),
+		ACTION_ROUGE(),
+		ACTION_VERT();
 
 		private Texture texture;
 		
@@ -77,6 +85,14 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.PROC2, Paths.get("images/proc2.png"));
 		TEXTURE.loadFromFile(TEXTURE.PLAY_ACTION, Paths.get("images/play_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
+		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
+		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME_TEXT, Paths.get("images/end_of_game_text.png"));
+		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
+		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
+		TEXTURE.loadFromFile(TEXTURE.STAR_EMPTY, Paths.get("images/star_empty.png"));
+		TEXTURE.loadFromFile(TEXTURE.ACTION_BLEU, Paths.get("images/action_bleu.png"));
+		TEXTURE.loadFromFile(TEXTURE.ACTION_ROUGE, Paths.get("images/action_rouge.png"));
+		TEXTURE.loadFromFile(TEXTURE.ACTION_VERT, Paths.get("images/action_vert.png"));
 		
 		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 	}

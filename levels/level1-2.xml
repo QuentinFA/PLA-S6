@@ -12,60 +12,49 @@
 -->
 
 <map>
-	<level_name>fork-1</level_name>
-	<starting_dir>EAST</starting_dir>
+	<level_name>1-2</level_name>
+	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
-			<x>0</x>
-			<y>0</y>
+			<x>1</x>
+			<y>3</y>
 		</block>
 		<block type="NormalBlock">
 			<x>1</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>3</x>
-			<y>0</y>
-		</block>
-		<block type="LightBlock">
-			<x>4</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
 			<y>2</y>
 		</block>
 		<block type="NormalBlock">
-			<x>0</x>
-			<y>3</y>
+			<x>1</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>2</y>
 		</block>
 		<block type="LightBlock">
-			<x>0</x>
-			<y>4</y>
+			<x>3</x>
+			<y>3</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
-		<action>Right_turn</action>
-<<<<<<< HEAD
-		<action>Left_turn</action>
-		<action>Jump</action>
 		<action>Light</action>
-		<!--  <action>Clone</action> -->
-=======
-		<action>Clone</action>
->>>>>>> 09cff13832d155a4eaac9c1e73911bbeddf44a9a
+		<action>Left_turn</action>
+		<action>Right_turn</action>
 	</action_list>
 	<functions>
-		<main nb_action="8"/>
-		<procedure nb_proc="0"/>
+		<main nb_action="9"/>
 	</functions>
+	<score>
+		<min>9</min>
+		<max>10</max>
+	</score>
 </map>
