@@ -9,52 +9,73 @@ import org.jsfml.system.Vector2f;
 
 import Game.Controler;
 import Game.Input;
-import Game.Interpreter;
 import Game.Input.BUTTON;
+import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import Prog.NormalActions.*;
-import Prog.*;
+import Levels.Reader;
+import Prog.Action;
+import Prog.Color;
+import Prog.Procedure;
+import Prog.Prog;
+import Prog.TypeProcedure;
+import Prog.NormalActions.Fork;
+import Prog.NormalActions.For;
+import Prog.NormalActions.Forward;
+import Prog.NormalActions.Jump;
+import Prog.NormalActions.Left_turn;
+import Prog.NormalActions.Light;
+import Prog.NormalActions.OpenChest;
+import Prog.NormalActions.P1;
+import Prog.NormalActions.P2;
+import Prog.NormalActions.Pipette;
+import Prog.NormalActions.Right_turn;
+import Prog.NormalActions.Shower;
+import Prog.NormalActions.Teleporter;
+import Prog.NormalActions.UseChest;
 
 public class Gui 
 {
 	public static Gui GUI = null;
 
 	private boolean level_completed = false;
-	
+
 	private Sprite sprite_return = new Sprite();
+	private Sprite sprite_return_eog = new Sprite();
 
 	private Sprite sprite_main = new Sprite();
 	private Sprite sprite_proc1 = null;
 	private Sprite sprite_proc2 = null;
 	private Sprite sprite_play_retry = new Sprite();
-<<<<<<< HEAD
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
 
 	private Sprite sprite_end_of_game_text = new Sprite();
 
 	private Sprite sprite_switch = new Sprite();
-=======
->>>>>>> fe1eb028deac77b15e9802e2d315fbde942f214f
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc1 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_proc2 = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
+	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 
 	private List<Action> actionList = World.WORLD.getActionList();
 
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
 
 	public void setLevelCompleted(boolean t) {this.level_completed = t;}
-	
+
 	private int nbrAction;
 	private int nbrProc;
 
 	private int wichProc = 0;
+	private int compteur_couleur=0;
+	private int nbcouleurs=4;
+
+	//	private List<Action> actionList;
 
 	public Gui(int nbrA, int nbrP)
 	{
@@ -63,12 +84,56 @@ public class Gui
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+		for(int i = 0 ; i < 3 ; i ++)
+		{
+			Sprite temp = new Sprite();
+			sprite_star.add(temp);
+		}
 
+		actionList = World.WORLD.getActionList();
+
+        load_sprite(actionList, Color.NOIR);
+
+		nbrAction = nbrA;
+		nbrProc = nbrP;
+
+		for (int i=0; i < nbrAction; i++)
+			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
+
+		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
+		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+
+		if (nbrProc >= 1)
+		{
+			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
+		if (nbrProc >= 2)
+		{
+			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		}
+
+		GUI = this;
+
+		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
+		placeGui();
+	}
+	
+	public void load_sprite(List<Action> actionList, Color c)
+	{
 		for(int i = 0; i < actionList.size(); i++)
 		{
 			Action act = actionList.get(i); 
-			spr = new Sprite();
+			Sprite spr = new Sprite();
+			if(c == Color.NOIR)
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
+			else if(c == Color.BLEU)
+			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));	
+			else if(c == Color.VERT)
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_BLEU));
+			else if(c == Color.ROUGE)
+				spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION_ROUGE));
 
 			if (act instanceof Forward)
 				spr.setTextureRect(new IntRect(1, 1, 80, 80));
@@ -96,42 +161,18 @@ public class Gui
 				spr.setTextureRect(new IntRect(730, 82, 80, 80));
 			else if (act instanceof P2)
 				spr.setTextureRect(new IntRect(811, 82, 80, 80));
+			else if (act instanceof Fork)
+				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 
 			spriteList.add(spr);
 		}
-
-		nbrAction = nbrA;
-		nbrProc = nbrP;
-
-		for (int i=0; i < nbrAction; i++)
-			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
-
-		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
-		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-
-		if (nbrProc >= 1)
-		{
-			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-		}
-		if (nbrProc >= 2)
-		{
-			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
-		}
-
-		GUI = this;
-
-		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
-		placeGui();
 	}
-
 	public void placeGui()
 	{
 		sprite_return.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
-       
+
 		sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
-        		Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
+				Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
 
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20));
@@ -161,8 +202,10 @@ public class Gui
 	public void afficher()
 	{
 		Graphic.SFML.draw(sprite_return);
-        Graphic.SFML.draw(sprite_play_retry);
+		Graphic.SFML.draw(sprite_play_retry);
 		Graphic.SFML.draw(sprite_main);
+		Graphic.SFML.draw(sprite_switch);
+
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
 		if (sprite_proc2 != null)
@@ -178,13 +221,21 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_proc2)
 			Graphic.SFML.draw(spr);
+		Graphic.SFML.draw(sprite_end_of_game);
+		Graphic.SFML.draw(sprite_return_eog);
+		if(Graphic.SFML.get_level_y()<3)
+			Graphic.SFML.draw(sprite_next);
+		if(Graphic.SFML.get_level_y() == 3)
+			Graphic.SFML.draw(sprite_end_of_game_text);
+		for (Sprite spr : sprite_star)
+			Graphic.SFML.draw(spr);
+
 	}
 
 	public void gerer()
 	{
 		if(level_completed)
 		{
-<<<<<<< HEAD
 
 			sprite_end_of_game.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.END_OF_GAME));
 			sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
@@ -237,51 +288,79 @@ public class Gui
 			sprite_end_of_game_text.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME_TEXT));
 			sprite_end_of_game_text.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y+50);
 
-=======
-			World.WORLD = null;
-			Gui.GUI = null;
-			Interpreter.INTERPRETER = null;
-			Controler.CONTROLER = null;
-			
-			//TODO Afficher bravo et passer au niveau suivant
-			
-			Menu.change_menu(Menu.MENU.LEVEL);
-			
-			return;
->>>>>>> fe1eb028deac77b15e9802e2d315fbde942f214f
 		}
 		if (Input.INPUT.again(BUTTON.MLEFT))
 		{
-			if (Graphic.isOnSprite(sprite_return)) //Retour
+			if (Graphic.isOnSprite(sprite_return)||Graphic.isOnSprite(sprite_return_eog)) //Retour
 			{
 				World.WORLD = null;
 				Gui.GUI = null;
 				Interpreter.INTERPRETER = null;
 				Controler.CONTROLER = null;
-				
+
 				Menu.change_menu(Menu.MENU.LEVEL);
+				((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x());
 
 				return;
 			}
+			if (Graphic.isOnSprite(sprite_next)) //Retour
+			{
+				if(Graphic.SFML.get_level_x() == 0 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/level1-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
+				else if(Graphic.SFML.get_level_x() == 1 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/levelfor-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
+				else if(Graphic.SFML.get_level_x() == 2 && Graphic.SFML.get_level_y()<3)
+				{
+					Reader.read("levels/levelfork-"+(Graphic.SFML.get_level_y()+2)+".xml");
+					Graphic.SFML.store_level(Graphic.SFML.get_level_x(),Graphic.SFML.get_level_y()+1);
+				}
 
+				return;
+			}
 			if (Graphic.isOnSprite(sprite_play_retry))
 			{
 				if (World.WORLD.isPlaying())
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
-					
+
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
 				}
 				else
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
-					
+
 					World.WORLD.setPlaying(true);
 					List<Entities.Character> l =  World.WORLD.getCharacterList();
-					
+
 					for (int i=0; i < l.size(); i++)
 						l.get(i).setMain(final_actionList.get(i));
+				}
+			}
+			if (Graphic.isOnSprite(sprite_switch))
+			{
+				compteur_couleur=(compteur_couleur+1)%nbcouleurs;
+				if(compteur_couleur == 0)
+				{
+					load_sprite(actionList,Color.NOIR);
+				}
+				if(compteur_couleur == 1)
+				{
+					load_sprite(actionList,Color.ROUGE);
+				}
+				if(compteur_couleur == 2)
+				{
+					load_sprite(actionList,Color.VERT);
+				}
+				if(compteur_couleur == 3)
+				{
+					load_sprite(actionList,Color.BLEU);
 				}
 			}
 		}
@@ -321,38 +400,27 @@ public class Gui
 								sprite_list = spriteList_proc2;
 							}
 
-						
-							if (actionList.get(i) instanceof For && j != 0)
+							if (j < max_action) 
 							{
-								Prog action = final_actionList.get(wichProc).getListProcedure().get(final_actionList.get(wichProc).getListProcedure().size() - 1);
-								if (action instanceof For)
+								if (actionList.get(i) instanceof For && j != 0)
 								{
-									((For) action).incrementer();
-									sprite_list.get(sprite_list.size()-1).setTextureRect(new IntRect(1+81*(((For) action).getForValue()-1), 82, 80, 80));
-								}
-								else
-								{
-									if (j < max_action) 
+									Prog action = final_actionList.get(wichProc).getListProcedure().get(final_actionList.get(wichProc).getListProcedure().size() - 1);
+									if (action instanceof For)
+									{
+										((For) action).incrementer();
+										sprite_list.get(sprite_list.size()-1).setTextureRect(new IntRect(1+81*(((For) action).getForValue()-1), 82, 80, 80));
+									}
+									else
 									{
 										final_actionList.get(wichProc).addProg(actionList.get(i));
 										sprite_list.add(temp);
 									}
 								}
-							}
-							else if (actionList.get(i) instanceof P1)
-							{
-								final_actionList.get(wichProc).addProg(final_actionList.get(1));
-								sprite_list.add(temp);
-							}
-							else if (actionList.get(i) instanceof P2)
-							{
-								final_actionList.get(wichProc).addProg(final_actionList.get(2));
-								sprite_list.add(temp);
-							}
-							else if (j < max_action) 
-							{
-								final_actionList.get(wichProc).addProg(actionList.get(i));
-								sprite_list.add(temp);
+								else
+								{	
+									final_actionList.get(wichProc).addProg(actionList.get(i));
+									sprite_list.add(temp);
+								}
 							}
 						}
 					}
