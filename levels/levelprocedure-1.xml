@@ -80,12 +80,7 @@
 		<!--<action>P2</action>-->
 	</action_list>
 	<functions>
-<<<<<<< HEAD:levels/levelprocedure-1.xml
-		<main nb_action="1"/>
-		 <procedure nb_proc="1"/> 
-=======
 		<main nb_action="6"/>
 		 <procedure nb_proc="2"/> 
->>>>>>> 34de83b793e57cf12469eed908690c1ffc8d5dff:levels/levelfor-2.xml
 	</functions>
 </map>
