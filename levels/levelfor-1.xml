@@ -55,4 +55,8 @@
 		<main nb_action="6"/>
 		<!-- <procedure nb_proc="0"/> -->
 	</functions>
+	<score>
+		<min>7</min>
+		<max>10</max>
+	</score>
 </map>

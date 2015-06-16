@@ -16,33 +16,64 @@
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
-			<x>1</x>
-			<y>3</y>
+			<x>2</x>
+			<y>2</y>
 		</block>
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>2</y>
 		</block>
-		<block type="LightBlock">
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="1">
+		<block type="NormalBlock">
 			<x>1</x>
 			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="2">
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="3">
+		<block type="LightBlock">
+			<x>1</x>
+			<y>2</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
+		<action>Left_turn</action>
+		<action>Right_turn</action>
 		<action>Jump</action>
-		<!-- <action>For</action>
-		<action>Jump</action>
-		<action>OpenChest</action>
-		<action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="3"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<main nb_action="6"/>
 	</functions>
 	<score>
-		<min>3</min>
-		<max>5</max>
+		<min>6</min>
+		<max>8</max>
 	</score>
 </map>

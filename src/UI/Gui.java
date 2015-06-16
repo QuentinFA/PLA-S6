@@ -6,18 +6,34 @@ import java.util.List;
 import org.jsfml.graphics.IntRect;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
-import org.jsfml.window.ContextActivationException;
 
 import Game.Controler;
 import Game.Input;
-import Game.Interpreter;
 import Game.Input.BUTTON;
+import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
 import Levels.Reader;
-import Prog.NormalActions.*;
-import Prog.*;
+import Prog.Action;
+import Prog.Color;
+import Prog.Procedure;
+import Prog.Prog;
+import Prog.TypeProcedure;
+import Prog.NormalActions.Clone;
+import Prog.NormalActions.For;
+import Prog.NormalActions.Forward;
+import Prog.NormalActions.Jump;
+import Prog.NormalActions.Left_turn;
+import Prog.NormalActions.Light;
+import Prog.NormalActions.OpenChest;
+import Prog.NormalActions.P1;
+import Prog.NormalActions.P2;
+import Prog.NormalActions.Pipette;
+import Prog.NormalActions.Right_turn;
+import Prog.NormalActions.Shower;
+import Prog.NormalActions.Teleporter;
+import Prog.NormalActions.UseChest;
 
 public class Gui 
 {
