@@ -345,7 +345,7 @@ public class Gui
 				if(compteur_couleur == 0)
 				{
 					for (Sprite spr : spriteList)
-						spr.setColor(org.jsfml.graphics.Color.BLACK);
+						spr.setColor(org.jsfml.graphics.Color.WHITE);
 					sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
 				}
 				if(compteur_couleur == 1)
