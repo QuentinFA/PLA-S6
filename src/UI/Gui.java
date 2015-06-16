@@ -90,8 +90,6 @@ public class Gui
 			sprite_star.add(temp);
 		}
 
-		actionList = World.WORLD.getActionList();
-
         load_sprite(actionList, Color.NOIR);
 
 		nbrAction = nbrA;
@@ -400,24 +398,37 @@ public class Gui
 								sprite_list = spriteList_proc2;
 							}
 
-							if (j < max_action) 
+							if (actionList.get(i) instanceof For && j != 0)
 							{
-								if (actionList.get(i) instanceof For && j != 0)
+								Prog action = final_actionList.get(wichProc).getListProcedure().get(final_actionList.get(wichProc).getListProcedure().size() - 1);
+								if (action instanceof For)
 								{
-									Prog action = final_actionList.get(wichProc).getListProcedure().get(final_actionList.get(wichProc).getListProcedure().size() - 1);
-									if (action instanceof For)
-									{
-										((For) action).incrementer();
-										sprite_list.get(sprite_list.size()-1).setTextureRect(new IntRect(1+81*(((For) action).getForValue()-1), 82, 80, 80));
-									}
-									else
+									((For) action).incrementer();
+									sprite_list.get(sprite_list.size()-1).setTextureRect(new IntRect(1+81*(((For) action).getForValue()-1), 82, 80, 80));
+								}
+								else
+								{
+									if (j < max_action) 
 									{
 										final_actionList.get(wichProc).addProg(actionList.get(i));
 										sprite_list.add(temp);
 									}
 								}
-								else
-								{	
+							}
+							else if (j < max_action) 
+							{
+								if (actionList.get(i) instanceof P1)
+								{
+									final_actionList.get(wichProc).addProg(final_actionList.get(1));
+									sprite_list.add(temp);
+								}
+								else if (actionList.get(i) instanceof P2)
+								{
+									final_actionList.get(wichProc).addProg(final_actionList.get(2));
+									sprite_list.add(temp);
+								}
+								else if (j < max_action) 
+								{
 									final_actionList.get(wichProc).addProg(actionList.get(i));
 									sprite_list.add(temp);
 								}
