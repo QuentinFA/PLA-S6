@@ -51,10 +51,11 @@
 		<action>Jump</action>
 		<action>Light</action>
 		<action>For</action>
+		<action>Break</action>
 	</action_list>
 	<functions>
 		<main nb_action="6"/>
-		<!-- <procedure nb_proc="0"/> -->
+		<procedure nb_proc="1"/>
 	</functions>
 	<score>
 		<min>7</min>

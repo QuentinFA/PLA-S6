@@ -30,7 +30,7 @@ public class Interpreter
 			return eval(p);
 
 		Prog act = it.next();
-
+		
 		if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
 			if (it.hasNext())
 				pile.push(it);

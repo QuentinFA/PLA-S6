@@ -96,7 +96,15 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.ACTION_ROUGE, Paths.get("images/action_rouge.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION_VERT, Paths.get("images/action_vert.png"));
 		
-		
-		MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
+		int lower = 1;
+		int higher = 3;
+
+		int random = (int)(Math.random() * (higher-lower)) + lower;
+		switch(random%3) 
+		{
+			case 1 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio1.wav")); break;
+			case 2 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio2.wav")); break;	
+			default : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
+		}
 	}
 }
