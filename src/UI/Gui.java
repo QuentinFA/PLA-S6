@@ -50,6 +50,7 @@ public class Gui
 	private Sprite sprite_play_retry = new Sprite();
 	private Sprite sprite_end_of_game = new Sprite();
 	private Sprite sprite_next = new Sprite();
+	private Sprite sprite_switch = new Sprite();
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -68,6 +69,8 @@ public class Gui
 	private int nbrProc;
 
 	private int wichProc = 0;
+	private int compteur_couleur=0;
+	private int nbcouleurs=4;
 
 	//	private List<Action> actionList;
 
@@ -113,6 +116,7 @@ public class Gui
 		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 		placeGui();
 	}
+	
 	public void load_sprite(List<Action> actionList, Color c)
 	{
 		for(int i = 0; i < actionList.size(); i++)
@@ -323,6 +327,26 @@ public class Gui
 
 					for (int i=0; i < l.size(); i++)
 						l.get(i).setMain(final_actionList.get(i));
+				}
+			}
+			if (Graphic.isOnSprite(sprite_switch))
+			{
+				compteur_couleur=(compteur_couleur+1)%nbcouleurs;
+				if(compteur_couleur == 0)
+				{
+					load_sprite(actionList,Color.NOIR);
+				}
+				if(compteur_couleur == 1)
+				{
+					load_sprite(actionList,Color.ROUGE);
+				}
+				if(compteur_couleur == 2)
+				{
+					load_sprite(actionList,Color.VERT);
+				}
+				if(compteur_couleur == 3)
+				{
+					load_sprite(actionList,Color.BLEU);
 				}
 			}
 		}
