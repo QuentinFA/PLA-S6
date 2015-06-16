@@ -19,7 +19,7 @@ import Prog.Prog;
 
 public class Character extends Entities
 {	
-	private int orientation; //0: haut, 1: droite, 2: bas, 3: gauche, voir Orientation.java
+	private int orientation; // Cf Orientation.java
 	private Color couleur = Color.ROUGE;
 	private Chest coffre = null;
 	private Action actionCourante = null;
@@ -44,7 +44,7 @@ public class Character extends Entities
 	public void setOrientation(int ori) {orientation = ori;}
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
-		public Chest getChest() {return coffre;}
+	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
 	public void setActionCourante(Action a) {actionCourante = a;}
 	public Action getAction () {return actionCourante;}

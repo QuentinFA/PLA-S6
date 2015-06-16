@@ -7,7 +7,7 @@ import Prog.Coordonnees;
 
 public class TeleporterBlock extends Block
 {
-	private TeleporterBlock destination = null;
+	private TeleporterBlock destination;
 	private Color couleur;
 	
 	public TeleporterBlock()
@@ -16,19 +16,26 @@ public class TeleporterBlock extends Block
 		couleur = Color.DEFAUT;
 	}
 	
-	public void setColor(Color c) {couleur = c;}
 	public Color getColor(){return couleur;}
 	
 	public TeleporterBlock(Coordonnees c, Color col)
 	{
 		coord = c;
 		couleur = col;
+		this.destination = null;
 	}
 	
 	public TeleporterBlock(Coordonnees c)
 	{
 		coord = c;
 		couleur = Color.DEFAUT;
+		this.destination = null;
+	}
+	
+	public TeleporterBlock(Color cl, Coordonnees c)
+	{
+		coord = c;
+		couleur = cl;
 		this.destination = null;
 	}
 	
@@ -39,21 +46,10 @@ public class TeleporterBlock extends Block
 		couleur = Color.DEFAUT;
 	}
 	
-	public void lier(TeleporterBlock dest) {destination = dest;}
-	
-	Coordonnees getSortie() 
-	{
-		if (destination != null)
-			return destination.coord;
-		else
-			return null;
-	}
-	
 	public void perform(Character p) 
 	{
-		Coordonnees s = getSortie();
-		if (s != null)
-			p.setCoord(s);
+		if (destination != null)
+			p.setCoord(destination.getCoord());
 	}
 	
 	public TeleporterBlock getDest()
