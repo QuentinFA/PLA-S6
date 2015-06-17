@@ -286,7 +286,7 @@ public class Gui
 		}
 		if(level_completed)
 		{
-
+			World.WORLD.setPlaying(false);
 			sprite_end_of_game.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.END_OF_GAME));
 			sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
 			sprite_end_of_game.setPosition(Graphic.SFML.getCenterCamera());

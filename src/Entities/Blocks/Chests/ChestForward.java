@@ -15,10 +15,9 @@ import UI.Graphic;
 public class ChestForward extends Chest 
 {
 	Sprite sprite_action = new Sprite();
-	public ChestForward(Coordonnees pos, int ori) 
+	public ChestForward(Coordonnees pos) 
 	{
 		this.coord = pos;
-		this.orientation = ori;
 		this.action = new Forward(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));

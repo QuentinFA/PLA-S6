@@ -11,8 +11,13 @@
 		- Si procédures : <procedure nb_proc="2"/>
 -->
 
+<!-- Soluce :  
+	Main : P1
+	P1 : F F F F Light P2
+	P2 : TurnR TurnR F F F F TurnL P1 -->
+	
 <map>
-	<level_name>Procedure-1</level_name>
+	<level_name>procedure-3</level_name>
 	<starting_dir>EAST</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
@@ -31,55 +36,81 @@
 			<x>3</x>
 			<y>0</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>4</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>5</x>
-			<y>0</y>
+			<x>0</x>
+			<y>1</y>
 		</block>
 		<block type="NormalBlock">
-			<x>6</x><action>For</action>
-			<y>0</y>
+			<x>0</x>
+			<y>2</y>
 		</block>
 		<block type="NormalBlock">
-			<x>7</x>
-			<y>0</y>
+			<x>0</x>
+			<y>3</y>
 		</block>
-		<block type="NormalBlock">
-			<x>8</x>
-			<y>0</y>
-		</block>
-	</floor>
-	<floor level="1">
-		<block type="NormalBlock">
-			<x>7</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>8</x>
-			<y>0</y>
-		</block>
-	</floor>
-	<floor level="2">
 		<block type="LightBlock">
-			<x>8</x>
+			<x>0</x>
+			<y>4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
 			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+		<block type="LightBlock">
+			<x>-4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="LightBlock">
+			<x>0</x>
+			<y>-4</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
-		<action>For</action>
+		<action>P1</action>
+	 	<action>P2</action>
+		<!-- <action>For</action>
+		<action>Pipette</action>
+		<action>Shower</action>
+		<action>Break</action>
+		<action>Teleporter</action>
+		<action>Fork</action>
+		<action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="6"/>
-		 <procedure nb_proc="1"/> 
+		<main nb_action="8"/>
+		 <procedure nb_proc="2"/> 
 	</functions>
 	<score>
-		<min>9</min>
-		<max>11</max>
+		<min>41</min>
+		<max>49</max>
 	</score>
 </map>

@@ -1,0 +1,95 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Un fichier par level
+	Heigth = Hauteur
+	Length = Longueur
+	Width = Largeur
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible
+	Type des blocks = Nom des classes
+	Nom des actions disponnibles : Nom des classes
+	Procédures et nombre d'actions :
+		- Actions dans main : attribut action_nb
+		- Si procédures : <procedure nb_proc="2"/>
+-->
+
+<map>
+	<level_name>Procedure-1</level_name>
+	<starting_dir>EAST</starting_dir>
+	<floor level="0">
+		<block type="NormalBlock" is_start="true">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>6</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>7</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>0</y>
+		</block>
+	</floor>
+	<floor level="1">
+		<block type="NormalBlock">
+			<x>7</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>0</y>
+		</block>
+	</floor>
+	<floor level="2">
+		<block type="LightBlock">
+			<x>8</x>
+			<y>0</y>
+		</block>
+	</floor>
+	<action_list>
+		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>Jump</action>
+		<action>Light</action>
+		<action>P1</action>
+		<action>P2</action>
+		<!--  <action>For</action>
+		<action>Pipette</action> 
+		<action>Shower</action> 
+		<action>Break</action> 
+		<action>Teleporter</action> 
+		<action>Fork</action> 
+		<action>UseChest</action> -->
+	</action_list>
+	<functions>
+		<main nb_action="6"/>
+		 <procedure nb_proc="1"/> 
+	</functions>
+	<score>
+		<min>9</min>
+		<max>11</max>
+	</score>
+</map>

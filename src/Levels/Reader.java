@@ -55,6 +55,9 @@ public class Reader
 		List<Action> la = new ArrayList<Action>();
 		Coordonnees bng = new Coordonnees();
 		
+		//Initialisation pre-création
+		TeleporterBlock.initialiseStack();
+		
 		// Chacun son style informatique, merci de ne pas changer
 		try 
 		{
@@ -131,30 +134,9 @@ public class Reader
 					{
 						try
 						{
-							Class<?> c = Class.forName(PACKAGE_BLOCK_CHEST + t);
-							
-							String s_direct = block.getAttribute(BeaconXML.B_CHEST_DIR).getValue();
-							int direct = 0;
-							
-							switch(s_direct)
-							{
-								case "NORTH" :
-									direct = Orientation.NORTH;
-									break;
-								case "SOUTH" :
-									direct = Orientation.SOUTH;
-									break;
-								case "EAST" :
-									direct = Orientation.EAST;
-									break;
-								case "WEST" :
-								default :
-									direct = Orientation.WEST;
-									break;
-							}
-							
-							Constructor<?> constructor = c.getConstructor(Coordonnees.class, int.class);
-							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z), direct));
+							Class<?> c = Class.forName(PACKAGE_BLOCK_CHEST + t);							
+							Constructor<?> constructor = c.getConstructor(Coordonnees.class);
+							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 						} catch (ClassNotFoundException | NoSuchMethodException | SecurityException 
 								| InstantiationException | IllegalAccessException | IllegalArgumentException 
 								| InvocationTargetException e2)

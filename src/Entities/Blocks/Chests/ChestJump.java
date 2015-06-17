@@ -15,10 +15,9 @@ import UI.Graphic;
 public class ChestJump extends Chest 
 {
 	Sprite sprite_action = new Sprite();
-	public ChestJump(Coordonnees pos, int ori) 
+	public ChestJump(Coordonnees pos) 
 	{
 		this.coord = pos;
-		this.orientation = ori;
 		this.action = new Jump(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
