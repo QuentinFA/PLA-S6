@@ -18,6 +18,7 @@ public class Interpreter
 {
 	public static Interpreter INTERPRETER;
 
+	// TODO CLone de chat / Move du clone / Vérification / Si bon : original = clone / Sinon : delete clone
 	public Action eval(Character p)
 	{
 		Stack<ListIterator<Prog>> pile = p.getPile();

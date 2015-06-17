@@ -207,14 +207,29 @@ public class World
 	}
 	
 	/**
-	 * Verification de la validite d'une coordonne</br>
+	 * Verification de la validite d'une coordonne (blocks)</br>
 	 * Si quelque chose se trouve a cette coordonne, la coordonne n'est pas valide
-	 * @param c La coordonne a sverifier
+	 * @param c La coordonne a verifier
 	 * @return True si valide, false sinon
 	 */
 	public boolean isValidPosition(Coordonnees c)
 	{
 		for (Block b : blockList)
+			if (b.getCoord().int_equals(c))
+				return false;
+		
+		return true;
+	}
+	
+	/**
+	 * Verification de la validite d'une coordonne (entities)</br>
+	 * Si quelque chose se trouve a cette coordonne, la coordonne n'est pas valide
+	 * @param c La coordonne a verifier
+	 * @return True si valide, false sinon
+	 */
+	public boolean isFreePosition(Coordonnees c)
+	{
+		for (Entities b : allList)
 			if (b.getCoord().int_equals(c))
 				return false;
 		
