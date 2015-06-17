@@ -15,12 +15,28 @@
 			<x>2</x>
 			<y>0</y>
 		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>6</y>
+		</block>
+	</floor>
+	<floor level="1">
+		<block type="ChestForward" direction="NORTH">
+			<x>4</x>
+			<y>6</y>
+		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
 		<action>Left_turn</action>
 		<action>Teleporter</action>
+		<action>UseChest</action>
+		<!-- <action>OpenChest</action> -->
 	</action_list>
 	<functions>
 		<main nb_action="10" />
