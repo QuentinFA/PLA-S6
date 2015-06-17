@@ -55,6 +55,9 @@ public class Reader
 		List<Action> la = new ArrayList<Action>();
 		Coordonnees bng = new Coordonnees();
 		
+		//Initialisation pre-création
+		TeleporterBlock.initialiseStack();
+		
 		// Chacun son style informatique, merci de ne pas changer
 		try 
 		{

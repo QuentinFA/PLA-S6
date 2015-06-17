@@ -16,8 +16,8 @@ import UI.Graphic;
 
 public class TeleporterBlock extends Block
 {
-	private static Stack<org.jsfml.graphics.Color> colorTaken = initialiseStack();
-	public static Stack<org.jsfml.graphics.Color> initialiseStack()
+	private static Stack<org.jsfml.graphics.Color> colorTaken;
+	public static void initialiseStack()
 	{
 		Stack<org.jsfml.graphics.Color> l = new Stack<org.jsfml.graphics.Color>();
 		
@@ -25,7 +25,7 @@ public class TeleporterBlock extends Block
 		l.push(org.jsfml.graphics.Color.BLUE);
 		l.push(org.jsfml.graphics.Color.RED);
 		
-		return l;
+		colorTaken = l;
 	}
 	
 	private enum TYPE_TP

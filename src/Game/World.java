@@ -75,8 +75,6 @@ public class World
 		blockList.clear();
 		characterList.clear();
 		
-		TeleporterBlock.initialiseStack();
-		
 		for (Block b : blockListStart)
 			try 
 			{
