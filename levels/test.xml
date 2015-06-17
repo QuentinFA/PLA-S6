@@ -13,18 +13,17 @@
 		</block>
 		<block type="TeleporterBlock" destination="4,4,0">
 			<x>2</x>
-			<y>2</y>
-		</block>
-		<block type="ChestForward" direction="NORTH">
-			<x>3</x>
-			<y>3</y>
+			<y>0</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>Teleporter</action>
 	</action_list>
 	<functions>
-		<main nb_action="0" />
+		<main nb_action="10" />
 	</functions>
 	<score>
 		<min>3</min>

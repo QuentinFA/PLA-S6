@@ -106,7 +106,9 @@ public class TeleporterBlock extends Block
 	{
 		if (destination != null)
 		{
-			p.setCoord(new Coordonnees(destination.getCoord().getX(), destination.getCoord().getY(), destination.getCoord().getZ()+1));
+			Coordonnees c = destination.getCoord();
+			p.setCoord(new Coordonnees(c.getX(), c.getY(), c.getZ() + 1));
+
 			p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		}
 	}
