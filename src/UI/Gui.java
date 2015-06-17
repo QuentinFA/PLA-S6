@@ -88,7 +88,7 @@ public class Gui
 
 		sprite_switch.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
 		sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
-		sprite_switch.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x,Graphic.SFML.getPositionCamera_f().y+500));
+		sprite_switch.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x,Graphic.SFML.getPositionCamera_f().y+550));
         
 		for(int i = 0 ; i < 3 ; i ++)
 		{
@@ -402,28 +402,42 @@ public class Gui
 			if (Graphic.isOnSprite(sprite_switch))
 			{
 				compteur_couleur=(compteur_couleur+1)%nbcouleurs;
+				int i = 0;
 				if(compteur_couleur == 0)
 				{
-					for (Sprite spr : spriteList)
+					for (Sprite spr : spriteList){
 						spr.setColor(org.jsfml.graphics.Color.WHITE);
+						actionList.get(i).setColor(Color.DEFAUT);;
+						i++;
+					}
 					sprite_switch.setTextureRect(new IntRect(1, 1, 80, 80));
+					
 				}
 				if(compteur_couleur == 1)
 				{
-					for (Sprite spr : spriteList)
+					for (Sprite spr : spriteList){
 						spr.setColor(org.jsfml.graphics.Color.RED);
+						actionList.get(i).setColor(Color.ROUGE);;
+						i++;
+					}
 					sprite_switch.setTextureRect(new IntRect(82, 1, 80, 80));
 				}
 				if(compteur_couleur == 2)
 				{
-					for (Sprite spr : spriteList)
+					for (Sprite spr : spriteList){
 						spr.setColor(org.jsfml.graphics.Color.GREEN);
+						actionList.get(i).setColor(Color.VERT);;
+						i++;
+					}
 					sprite_switch.setTextureRect(new IntRect(163, 1, 80, 80));
 				}
 				if(compteur_couleur == 3)
 				{
-					for (Sprite spr : spriteList)
+					for (Sprite spr : spriteList){
 						spr.setColor(org.jsfml.graphics.Color.BLUE);
+						actionList.get(i).setColor(Color.BLEU);;
+						i++;
+					}
 					sprite_switch.setTextureRect(new IntRect(244, 1, 80, 80));
 				}
 			}
@@ -440,6 +454,7 @@ public class Gui
 					if (Graphic.isOnSprite(spriteList.get(i)))
 					{
 						Sprite temp = new Sprite(spriteList.get(i).getTexture(), spriteList.get(i).getTextureRect());
+						temp.setColor(spriteList.get(i).getColor());
 						if (spriteList_main.size() <= nbrAction)						
 						{
 							int j, max_action;

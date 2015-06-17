@@ -1,5 +1,6 @@
 package Prog;
 import Entities.Character;
+import Prog.Color;
 
 public abstract class Action extends Prog
 {
