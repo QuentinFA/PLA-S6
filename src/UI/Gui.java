@@ -62,8 +62,14 @@ public class Gui
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
 	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 
+	/**
+	 * Liste des actions disponnibles
+	 */
 	private List<Action> actionList = World.WORLD.getActionList();
 
+	/**
+	 * Liste des actions à exécuter
+	 */
 	private List<Procedure> final_actionList = new ArrayList<Procedure>();
 
 	public void setLevelCompleted(boolean t) {this.level_completed = t;}
@@ -71,11 +77,12 @@ public class Gui
 	private int nbrAction;
 	private int nbrProc;
 
+	/**
+	 * Navigation entre les procéures (main, P1, P2)
+	 */
 	private int wichProc = 0;
 	private int compteur_couleur=0;
 	private int nbcouleurs=4;
-
-	//	private List<Action> actionList;
 
 	public Gui(int nbrA, int nbrP)
 	{
@@ -101,16 +108,19 @@ public class Gui
 		for (int i=0; i < nbrAction; i++)
 			spriteList_occupied.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK_OCCUPIED)));
 
+		// Main
 		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
 		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 
 		if (nbrProc >= 1)
 		{
+			// P1
 			sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
 			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
 		if (nbrProc >= 2)
 		{
+			// P2
 			sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
 			final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
 		}
@@ -240,6 +250,7 @@ public class Gui
 			sprite_return_eog.setTextureRect(new IntRect(1, 1, 100, 100));
 			sprite_return_eog.setPosition(Graphic.SFML.getCenterCamera().x-200 , Graphic.SFML.getCenterCamera().y-10);
 
+			// Gestion des étoiles
 			for(int i = 0 ; i < 3 ; i ++)
 			{
 				int compteur = 0;
@@ -334,9 +345,14 @@ public class Gui
 
 					World.WORLD.setPlaying(true);
 					List<Entities.Character> l =  World.WORLD.getCharacterList();
+					
+					for(Procedure pr : final_actionList)
+						for(Prog pro : pr.getListProcedure())
+							if(pro instanceof For)
+								((For) pro).reset();
 
 					for (int i=0; i < l.size(); i++)
-						l.get(i).setMain(final_actionList.get(i));
+						l.get(i).setMain(new Procedure(final_actionList.get(i)));
 				}
 			}
 			if (Graphic.isOnSprite(sprite_switch))
@@ -374,7 +390,7 @@ public class Gui
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{
 				selecPanneau();
-
+////////////////
 				//Ajouter les actions dans la fenentre
 				for (int i=0; i < spriteList.size(); i++)
 					if (Graphic.isOnSprite(spriteList.get(i)))
@@ -441,6 +457,7 @@ public class Gui
 							}
 						}
 					}
+////////////////
 
 				//Effacer des actions
 				for (int i=0; i < spriteList_main.size(); i++)
