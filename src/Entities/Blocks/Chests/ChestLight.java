@@ -15,10 +15,9 @@ import UI.Graphic;
 public class ChestLight extends Chest 
 {
 	Sprite sprite_action = new Sprite();
-	public ChestLight(Coordonnees pos, int ori) 
+	public ChestLight(Coordonnees pos) 
 	{
 		this.coord = pos;
-		this.orientation = ori;
 		this.action = new Light(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));

@@ -11,6 +11,10 @@
 		- Si procédures : <procedure nb_proc="2"/>
 -->
 
+<!--  Soluce : Main : P1 Light P2
+	P1 : F F F F F F Jump Jump
+	P2 : TurnL Jump Jump F F F Light -->
+
 <map>
 	<level_name>Procedure-1</level_name>
 	<starting_dir>EAST</starting_dir>
@@ -51,6 +55,26 @@
 			<x>8</x>
 			<y>0</y>
 		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>4</y>
+		</block>
+		<block type="LightBlock">
+			<x>8</x>
+			<y>5</y>
+		</block>
 	</floor>
 	<floor level="1">
 		<block type="NormalBlock">
@@ -61,25 +85,36 @@
 			<x>8</x>
 			<y>0</y>
 		</block>
+		<block type="NormalBlock">
+			<x>8</x>
+			<y>1</y>
+		</block>
 	</floor>
 	<floor level="2">
 		<block type="LightBlock">
 			<x>8</x>
 			<y>0</y>
 		</block>
+		
 	</floor>
 	<action_list>
 		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
-		<action>For</action>
+		<action>P1</action>
+		<action>P2</action>
+<!-- 	<action>For</action>
+		<action>Pipette</action>
+		<action>Shower</action>
+		<action>Break</action>
+		<action>Teleporter</action>
+		<action>Fork</action>
+		<action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="6"/>
-		 <procedure nb_proc="1"/> 
+		<main nb_action="3"/>
+		 <procedure nb_proc="2"/> 
 	</functions>
-	<score>
-		<min>9</min>
-		<max>11</max>
-	</score>
 </map>
