@@ -156,11 +156,11 @@ public class Menu_Level extends Menu
 					{
 						Graphic.SFML.store_level(i, j);
 						if (j == 0)
-							Reader.read("levels/levelfor-1.xml");
+							Reader.read("levels/levelprocedure-1.xml");
 						else if (j == 1)
-							Reader.read("levels/levelfor-2.xml");
+							Reader.read("levels/levelprocedure-2.xml");
 						else if (j == 2)
-							Reader.read("levels/levelfor-3.xml");
+							Reader.read("levels/levelprocedure-3.xml");
 						else if( j == 3)
 							Reader.read("levels/test.xml");
 					}
