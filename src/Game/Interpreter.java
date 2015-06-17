@@ -11,6 +11,7 @@ import Prog.Procedure;
 import Prog.Prog;
 import Prog.NormalActions.Break;
 import Prog.NormalActions.For;
+import Prog.NormalActions.Fork;
 
 
 
@@ -30,7 +31,7 @@ public class Interpreter
 			return eval(p);
 
 		Prog act = it.next();
-
+		
 		if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
 			if (it.hasNext())
 				pile.push(it);
@@ -58,13 +59,15 @@ public class Interpreter
 				it.previous();
 			}
 
-			if (it.hasNext())
-				pile.push(it);
-			
 			if (act instanceof Break) {
 				p.incrementNbActions();
 				return null;			
 			}
+			
+			if (it.hasNext())
+				pile.push(it);
+			
+
 			
 			if (act instanceof Procedure)
 			{
@@ -93,6 +96,13 @@ public class Interpreter
 			return null;	
 		}
 		
+	/*(David)	En attente de comprehension
+	 * else if (act instanceof Fork)
+		{
+			
+			p.incrementNbActions();
+			return eval(p);
+		}*/
 		else //C'est une action
 		{
 			if (it.hasNext())

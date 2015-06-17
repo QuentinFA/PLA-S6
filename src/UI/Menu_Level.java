@@ -161,6 +161,8 @@ public class Menu_Level extends Menu
 							Reader.read("levels/levelfor-2.xml");
 						else if (j == 2)
 							Reader.read("levels/levelfor-3.xml");
+						else if( j == 3)
+							Reader.read("levels/test.xml");
 					}
 					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
