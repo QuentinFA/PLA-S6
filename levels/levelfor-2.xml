@@ -72,9 +72,14 @@
 		<action>Forward</action>
 		<action>Jump</action>
 		<action>Light</action>
+		<action>For</action>
 	</action_list>
 	<functions>
 		<main nb_action="6"/>
 		 <procedure nb_proc="1"/> 
 	</functions>
+	<score>
+		<min>9</min>
+		<max>11</max>
+	</score>
 </map>

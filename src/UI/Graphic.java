@@ -50,11 +50,11 @@ public class Graphic
 	private static int level_x;
 	private static int level_y;
 	public void store_level(int x, int y){
-		this.level_x = x;
-		this.level_y = y;
+		level_x = x;
+		level_y = y;
 	}
-	public int get_level_x(){return this.level_x;}
-	public int get_level_y(){return this.level_y;}
+	public int get_level_x(){return level_x;}
+	public int get_level_y(){return level_y;}
 	
 	//Fonctions
 	public void draw(Drawable object) {fenetre.draw(object);} //Dessiner un objet
