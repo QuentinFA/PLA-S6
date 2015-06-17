@@ -76,7 +76,9 @@ public class Jump extends Action
 					break;
 			}
 			
-			if (World.WORLD.isValidPosition(check))
+			Coordonnees check2 = new Coordonnees(check);
+			check2.incrZ(-1);
+			if (World.WORLD.isValidPosition(check) && !World.WORLD.isValidPosition(check2))
 			{
 				futur_coord = check;
 				static_jump = false;
