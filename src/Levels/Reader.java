@@ -112,6 +112,7 @@ public class Reader
 									constructor2.newInstance(new Coordonnees(xx, yy, zz)));
 							lb.add(tp);
 							lb.add(((TeleporterBlock) tp).getDest());
+							((TeleporterBlock) tp).lier();
 						}
 						else
 						{
