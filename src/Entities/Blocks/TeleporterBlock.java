@@ -17,7 +17,7 @@ import UI.Graphic;
 public class TeleporterBlock extends Block
 {
 	private static Stack<org.jsfml.graphics.Color> colorTaken = initialiseStack();
-	private static Stack<org.jsfml.graphics.Color> initialiseStack()
+	public static Stack<org.jsfml.graphics.Color> initialiseStack()
 	{
 		Stack<org.jsfml.graphics.Color> l = new Stack<org.jsfml.graphics.Color>();
 		

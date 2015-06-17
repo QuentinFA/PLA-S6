@@ -11,6 +11,7 @@ import Entities.Character;
 import Entities.EntitieComparator;
 import Entities.Entities;
 import Entities.Blocks.LightBlock;
+import Entities.Blocks.TeleporterBlock;
 import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
@@ -73,6 +74,8 @@ public class World
 		allList.clear();
 		blockList.clear();
 		characterList.clear();
+		
+		TeleporterBlock.initialiseStack();
 		
 		for (Block b : blockListStart)
 			try 
