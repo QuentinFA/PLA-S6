@@ -38,9 +38,13 @@ public class Controler
 	{
 		addCharacter(p);
 		
+		World.WORLD.popClone(); 
+		
 		for (PersonnageTravaille pt : lPT)
 			if (pt.travail == true)
 				return;
+		
+
 		
 		for (PersonnageTravaille pt : lPT) 
 		{
