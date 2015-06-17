@@ -132,7 +132,7 @@ public class Reader
 						try
 						{
 							Class<?> c = Class.forName(PACKAGE_BLOCK_CHEST + t);							
-							Constructor<?> constructor = c.getConstructor(Coordonnees.class, int.class);
+							Constructor<?> constructor = c.getConstructor(Coordonnees.class);
 							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 						} catch (ClassNotFoundException | NoSuchMethodException | SecurityException 
 								| InstantiationException | IllegalAccessException | IllegalArgumentException 
