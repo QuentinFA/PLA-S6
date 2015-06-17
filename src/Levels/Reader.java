@@ -61,8 +61,7 @@ public class Reader
 		// Chacun son style informatique, merci de ne pas changer
 		try 
 		{
-			doc = sxb.build(new File(arg));
-		} 
+			doc = sxb.build(new File(arg));} //Troll
 		catch (JDOMException | IOException e)
 		{
 			e.printStackTrace();
@@ -228,7 +227,7 @@ public class Reader
 		lb = new ArrayList<Block>(set);
 		
 		World.WORLD = new World(name, lb, bng, dir, la, min, max);
-		Gui.GUI = new Gui(nbA, nbP);
+		Gui.GUI = new Gui(nbA);
 		
 		Menu.Mymenu = null;
 	}

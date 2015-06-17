@@ -13,8 +13,17 @@ import Levels.Reader;
 
 public class Menu_Level extends Menu
 {
+	//Monde
 	ArrayList<Sprite> monde_list = new ArrayList<Sprite>();
 	ArrayList<ArrayList<Sprite>> nbr_level_list = new ArrayList<ArrayList<Sprite>>();
+	
+	private static int mem_monde;
+	private static int mem_level;
+	public void storeLevel(int i, int j)
+	{
+		mem_monde = i;
+		mem_level = j;
+	}
 
 	ArrayList<Sprite> aura_list = new ArrayList<Sprite>();
 
@@ -30,7 +39,6 @@ public class Menu_Level extends Menu
 	
 	public Menu_Level()
 	{	
-		Graphic.SFML.visible_cursor();
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
 		
@@ -142,7 +150,7 @@ public class Menu_Level extends Menu
 				{	
 					if (i == 0 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
-						Graphic.SFML.store_level(i, j);
+						storeLevel(i, j);
 						if (j == 0)
 							Reader.read("levels/test.xml");
 						else if (j == 1)
@@ -152,9 +160,9 @@ public class Menu_Level extends Menu
 						else if (j == 3)
 							Reader.read("levels/level1-4.xml");
 					}
-					else if(i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
-						Graphic.SFML.store_level(i, j);
+						storeLevel(i, j);
 						if (j == 0)
 							Reader.read("levels/levelprocedure-1.xml");
 						else if (j == 1)
@@ -166,7 +174,7 @@ public class Menu_Level extends Menu
 					}
 					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
-						Graphic.SFML.store_level(i, j);
+						storeLevel(i, j);
 						if (j == 0)
 							Reader.read("levels/levelfork-1.xml");
 						else if (j == 1)

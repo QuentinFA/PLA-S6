@@ -75,7 +75,6 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));
 		TEXTURE.loadFromFile(TEXTURE.PERSO, Paths.get("images/personnage.png"));
-		TEXTURE.loadFromFile(TEXTURE.CURSOR, Paths.get("images/cursor_hand.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETURN_MENU, Paths.get("images/return.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHEST, Paths.get("images/chest.png"));
 		TEXTURE.loadFromFile(TEXTURE.GUI_MAIN, Paths.get("images/gui_main.png"));
@@ -85,14 +84,12 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.PLAY_ACTION, Paths.get("images/play_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
-		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME_TEXT, Paths.get("images/end_of_game_text.png"));
 		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
 		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
-		TEXTURE.loadFromFile(TEXTURE.STAR_EMPTY, Paths.get("images/star_empty.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHOIX_COULEUR, Paths.get("images/choix_couleur.png"));
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
 		
-		int lower = 0	;
+		int lower = 0;
 		int higher = 4;
 
 		int random = (int)(Math.random() * (higher-lower)) + lower;

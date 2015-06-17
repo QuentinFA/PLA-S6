@@ -3,6 +3,8 @@ package Prog;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsfml.graphics.Sprite;
+
 public class Procedure extends Prog 
 {
 	private List<Prog> l;
@@ -41,9 +43,14 @@ public class Procedure extends Prog
 	 * Ajout d'une Prog à la procédure
 	 * @param p : La Prog à ajouter (clonée)
 	 */
-	public void addProg(Prog p) 
+	public void addProg(Prog p, Sprite spr) 
 	{
-		try {l.add((Prog) p.clone());} 
+		try 
+		{
+			l.add((Prog) p.clone());
+			if (l.get(l.size()-1) instanceof Action)
+				((Action) l.get(l.size()-1)).setSprite(spr);
+		} 
 		catch (CloneNotSupportedException e) {e.printStackTrace();}
 	}
 }

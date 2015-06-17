@@ -44,17 +44,6 @@ public class Graphic
 	private List<Sprite> nuages = new ArrayList<Sprite>();
 	int wait = 0;
 	private VertexArray fond = new VertexArray(PrimitiveType.QUADS); //Fond
-	/**
-	 * level_x, level_y pour memoriser le level on vient de charger
-	 */
-	private static int level_x;
-	private static int level_y;
-	public void store_level(int x, int y){
-		level_x = x;
-		level_y = y;
-	}
-	public int get_level_x(){return level_x;}
-	public int get_level_y(){return level_y;}
 	
 	//Fonctions
 	public void draw(Drawable object) {fenetre.draw(object);} //Dessiner un objet
@@ -67,8 +56,6 @@ public class Graphic
 	public Vector2f getPositionCamera_f() {return Vector2f.sub(camera.getCenter(), Vector2f.div(camera.getSize(), 2));}
 	public Vector2i getPositionCamera_i() {return new Vector2i((int)getPositionCamera_f().x , (int)getPositionCamera_f().y);}
 	
-	public void invisible_cursor() {fenetre.setMouseCursorVisible(false);}
-	public void visible_cursor() {fenetre.setMouseCursorVisible(true);}
 	public Event getEvent() {return fenetre.pollEvent();}
 	
 	/**

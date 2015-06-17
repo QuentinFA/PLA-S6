@@ -103,7 +103,8 @@ public class World
 	/**
 	 * Gere la creation des clones
 	 */
-	public void popClone(){
+	public void popClone()
+	{
 		for(Coordation c : cloneList)
 			if(isValidPosition(c.getCoord()))
 				addCharacter(new Character(new Coordonnees(c.getCoord()), c.getOrientation() ));
@@ -293,7 +294,7 @@ public class World
 	public List<Action> getActionList() {return actionList;}
 	
 	/**
-	 * Vérifie si un monde est gagné (tous les blocs lumière allumés)
+	 * Verifie si un monde est gagne (tous les blocs lumiere allumes)
 	 */
 	public boolean isComplete()
 	{
@@ -306,20 +307,12 @@ public class World
 		return win;
 	}
 	
-	public int getMinStar()
-	{
-		return minStar;
-	}
+	public int getMinStar() {return minStar;}
 	
-	public int getMaxStar()
-	{
-		return maxStar;
-	}
+	public int getMaxStar() {return maxStar;}
 	
 	/**
 	 * remplit la liste des coordonnee des clones
 	 */
-	public void setClone(Coordonnees xyz, int o){
-		this.cloneList.add(new Coordation(xyz, o));
-	}
+	public void setClone(Coordonnees xyz, int o) {cloneList.add(new Coordation(xyz, o));}
 }

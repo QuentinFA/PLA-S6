@@ -1,9 +1,15 @@
 package Prog;
+
+import org.jsfml.graphics.Sprite;
+
 import Entities.Character;
-import Prog.Color;
 
 public abstract class Action extends Prog
 {
+	private Sprite sprite; //Sprite associé
+	public Sprite getSprite() {return sprite;}
+	public void setSprite(Sprite spr) {sprite = spr;}
+	
 	/**
 	 * Application d'une action pour un personnage
 	 * @param p Le personnage dont il est question

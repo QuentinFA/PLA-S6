@@ -6,7 +6,6 @@ import Game.World;
 import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
-import UI.Gui;
 
 public class Light extends Action
 {
@@ -19,11 +18,8 @@ public class Light extends Action
 		if (frame == 0) //Initialisation
 		{
 			Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
-			if (b != null)
-				if (b instanceof LightBlock) {
-					((LightBlock) b).reverseLight();
-					Gui.GUI.setLevelCompleted(World.WORLD.isComplete());
-				}
+			if (b != null && b instanceof LightBlock)
+				((LightBlock) b).reverseLight();
 		}
 		else if (frame == 8)
 		{
