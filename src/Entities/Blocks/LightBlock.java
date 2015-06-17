@@ -7,6 +7,7 @@ import Entities.Character;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Coordonnees;
+import UI.Graphic;
 
 public class LightBlock extends Block
 {
@@ -22,6 +23,28 @@ public class LightBlock extends Block
 		coord = pos;
 	
 		initialiser();
+	}
+	
+	private int anim = 0;
+	private int one_frame = 8;
+	public void gerer() 
+	{
+		if (isOn)
+		{
+			if (anim % one_frame == 0)
+				sprite.setTextureRect(new IntRect(83+anim/one_frame*82, 83, 81, 81));
+
+			anim++;
+		
+			if (anim == one_frame*5)
+				anim = 0;
+		}
+	}
+	
+	public void afficher()
+	{
+		gerer();
+		Graphic.SFML.draw(sprite);
 	}
 	
 	public void initialiser() {sprite.setTextureRect(new IntRect(1, 83, 81, 81));}

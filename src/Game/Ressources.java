@@ -37,9 +37,6 @@ public class Ressources
 		NEXT(),
 		STAR_FULL(),
 		STAR_EMPTY(),
-		ACTION_BLEU(),
-		ACTION_ROUGE(),
-		ACTION_VERT(),
 		CHOIX_COULEUR(),
 		FORK();
 
@@ -93,9 +90,6 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
 		TEXTURE.loadFromFile(TEXTURE.STAR_EMPTY, Paths.get("images/star_empty.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHOIX_COULEUR, Paths.get("images/choix_couleur.png"));
-		TEXTURE.loadFromFile(TEXTURE.ACTION_BLEU, Paths.get("images/action_bleu.png"));
-		TEXTURE.loadFromFile(TEXTURE.ACTION_ROUGE, Paths.get("images/action_rouge.png"));
-		TEXTURE.loadFromFile(TEXTURE.ACTION_VERT, Paths.get("images/action_vert.png"));
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
 		
 		int lower = 0	;
