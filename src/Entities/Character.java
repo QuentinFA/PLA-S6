@@ -1,6 +1,5 @@
 package Entities;
 
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
@@ -9,8 +8,8 @@ import org.jsfml.graphics.IntRect;
 import Game.Controler;
 import Game.Interpreter;
 import Game.Ressources;
-import Game.World;
 import Game.Ressources.TEXTURE;
+import Game.World;
 import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
@@ -52,8 +51,7 @@ public class Character extends Entities
 	public int getNbActions() {return this.compteurActions;}
 	public void setMain(Procedure l) 
 	{
-		List<Prog> t = l.getListProcedure();
-		ListIterator<Prog> it = t.listIterator();
+		ListIterator<Prog> it = l.getListProcedure().listIterator();
 		pile.clear();
 		pile.push(it);
 	}

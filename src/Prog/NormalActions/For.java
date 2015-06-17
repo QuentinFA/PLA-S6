@@ -48,4 +48,9 @@ public class For extends Action
 	}
 	
 	public boolean execute(Character p) {return false;}
+	
+	public void reset()
+	{
+		nbBouclesRestantes = nbBoucles;
+	}
 }

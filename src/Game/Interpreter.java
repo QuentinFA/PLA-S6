@@ -1,7 +1,7 @@
 package Game;
 import java.util.EmptyStackException;
-import java.util.ListIterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Stack;
 
 import Entities.Character;
@@ -95,6 +95,13 @@ public class Interpreter
 			return null;	
 		}
 		
+	/*(David)	En attente de comprehension
+	 * else if (act instanceof Fork)
+		{
+			
+			p.incrementNbActions();
+			return eval(p);
+		}*/
 		else //C'est une action
 		{
 			if (it.hasNext())
