@@ -45,7 +45,7 @@ public class Character extends Entities
 	public Color getColor() {return couleur;}
 	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
-	public void setActionCourante(Action a) {actionCourante = a;}
+	public void setActionCourante(Action a) {this.actionCourante = a;}
 	public Action getAction () {return actionCourante;}
 	public void incrementNbActions() {this.compteurActions++;}
 	public int getNbActions() {return this.compteurActions;}
@@ -99,7 +99,7 @@ public class Character extends Entities
 	 * @throws CloneNotSupportedException 
 	 */
 	public void use_Action(Action a)
-	{
+	{	
 		try {actionCourante = (Action) a.clone();}
 		catch (CloneNotSupportedException e) {e.printStackTrace();}
 	}

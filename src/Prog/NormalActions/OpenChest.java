@@ -31,33 +31,12 @@ public class OpenChest extends Action
 				check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()); break;
 		}
 
-		if (World.WORLD.isValidPosition(check))
-		{
-			Entities e = World.WORLD.getEntitiesAt(check);
+		Entities e = World.WORLD.getEntitiesAt(check);
 			if (e != null && e instanceof Chest)
 			{
-				switch (p.getOrientation())
-				{
-					case Orientation.NORTH:
-						if (((Chest)e).getOrientation() == Orientation.SOUTH) 
-							((Chest)e).perform(p);
-						break;
-					case Orientation.EAST:
-						if (((Chest)e).getOrientation() == Orientation.WEST) 
-							((Chest)e).perform(p);
-						break;
-					case Orientation.SOUTH:
-						if (((Chest)e).getOrientation() == Orientation.NORTH) 
-							((Chest)e).perform(p);
-						break;
-					case Orientation.WEST:
-					default:
-						if (((Chest)e).getOrientation() == Orientation.EAST) 
-							((Chest)e).perform(p);
-						break;
-				}
+				((Chest)e).perform(p);
 			}
-		}
+
 		
 		return true;
 	}

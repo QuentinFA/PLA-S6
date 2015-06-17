@@ -15,10 +15,9 @@ import UI.Graphic;
 public class ChestRight_turn extends Chest 
 {
 	Sprite sprite_action = new Sprite();
-	public ChestRight_turn(Coordonnees pos, int ori) 
+	public ChestRight_turn(Coordonnees pos) 
 	{
 		this.coord = pos;
-		this.orientation = ori;
 		this.action = new Right_turn(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
