@@ -20,7 +20,6 @@ public abstract class BeaconXML
 	public static final String B_PROCEDURE_NB = "nb_proc";
 	public static final String B_STARTING_DIRECTION = "starting_dir";
 	public static final String B_TP_DEST = "destination";
-	public static final String B_CHEST_DIR = "direction";
 	public static final String B_SCORE = "score";
 	public static final String B_SCORE_MIN = "min";
 	public static final String B_SCORE_MAX = "max";
