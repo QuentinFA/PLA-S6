@@ -10,6 +10,7 @@ import Entities.Block;
 import Entities.Character;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
+import Game.World;
 import Prog.Coordonnees;
 import UI.Graphic;
 
@@ -104,7 +105,10 @@ public class TeleporterBlock extends Block
 	public void perform(Character p) 
 	{
 		if (destination != null)
+		{
 			p.setCoord(destination.getCoord());
+			p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
+		}
 	}
 	
 	public TeleporterBlock getDest() {return destination;}
