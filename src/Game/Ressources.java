@@ -93,13 +93,14 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
 		
 		int lower = 0	;
-		int higher = 3;
+		int higher = 4;
 
 		int random = (int)(Math.random() * (higher-lower)) + lower;
-		switch(random%3) 
+		switch(random%4) 
 		{
 			case 1 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio1.wav")); break;
 			case 2 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio2.wav")); break;	
+			case 3 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio3.wav")); break;
 			default : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 		}
 	}
