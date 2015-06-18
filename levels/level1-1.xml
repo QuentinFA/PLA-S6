@@ -44,4 +44,17 @@
 		<min>3</min>
 		<max>5</max>
 	</score>
+	<solution>
+		<main_sol>
+			<instruction color="ROUGE">Forward</instruction>
+			<instruction color="DEFAUT" loop="3">For</instruction>
+		</main_sol>
+		<proc1_sol>
+			<instruction color="VERT">Break</instruction>
+			<instruction color="BLEU" loop="6">For</instruction>
+		</proc1_sol>
+		<fork_sol>
+			<instruction color="VERT" loop="6">For</instruction>
+		</fork_sol>
+	</solution>
 </map>
