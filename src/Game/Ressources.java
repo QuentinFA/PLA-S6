@@ -35,6 +35,7 @@ public class Ressources
 		END_OF_GAME(),
 		END_OF_GAME_TEXT(),
 		NEXT(),
+		RETURN_ON_BILLBOARD(),
 		STAR_FULL(),
 		STAR_EMPTY(),
 		CHOIX_COULEUR(),
@@ -86,6 +87,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
 		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
+		TEXTURE.loadFromFile(TEXTURE.RETURN_ON_BILLBOARD, Paths.get("images/return_on_billboard.png"));
 		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHOIX_COULEUR, Paths.get("images/choix_couleur.png"));
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));

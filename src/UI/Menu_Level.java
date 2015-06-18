@@ -19,23 +19,24 @@ public class Menu_Level extends Menu
 	
 	private static int mem_monde;
 	private static int mem_level;
-	public void storeLevel(int i, int j)
+	public static void storeLevel(int i, int j)
 	{
 		mem_monde = i;
 		mem_level = j;
 	}
-
+    public static int get_monde(){return mem_monde;}
+    public static int get_level(){return mem_level;}
 	ArrayList<Sprite> aura_list = new ArrayList<Sprite>();
 
 	private static float title_scale;
 
 	private boolean increase_title_scale;
-	private int nbr_monde = 0;
+	private static int nbr_monde = 0;
 	private Sprite returnMenu = new Sprite();
 
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
-	public void set_nbr_monde(int nb){this.nbr_monde = nb;}
+	public static void set_nbr_monde(int nb){nbr_monde = nb;}
 	
 	public Menu_Level()
 	{	
@@ -144,7 +145,7 @@ public class Menu_Level extends Menu
 
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
-			for (int i = 0; i< nbr_level_list.size() ; i++)
+			for (int i = 0; i< monde_list.size() ; i++)
 				for (int j=0; j < nbr_level_list.get(i).size(); j++)
 				{	
 					if (i == 0 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
@@ -158,6 +159,7 @@ public class Menu_Level extends Menu
 							Reader.read("levels/level1-3.xml");
 						else if (j == 3)
 							Reader.read("levels/level1-4.xml");
+						
 					}
 					else if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
@@ -175,12 +177,27 @@ public class Menu_Level extends Menu
 					{
 						storeLevel(i, j);
 						if (j == 0)
+							Reader.read("levels/levelifthenelse-1.xml");
+						else if (j == 1)
+							Reader.read("levels/levelifthenelse-3.xml");
+						else if (j == 2)
+							Reader.read("levels/levelifthenelse-3.xml");
+						else if (j == 3)
+							Reader.read("levels/levelifthenelse-4.xml");
+					}
+					else if (i == 3 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					{
+						storeLevel(i, j);
+						if (j == 0)
 							Reader.read("levels/levelfor-1.xml");
 						else if (j == 1)
+							Reader.read("levels/levelfor-2.xml");
+						else if (j == 2)
 							Reader.read("levels/levelfor-3.xml");
-//						else if (j == 2)
-//							Reader.read("levels/levelfork-3.xml");
+						else if( j == 3)
+							Reader.read("levels/levelfor-4.xml");
 					}
+					
 				}
 			
 			if(Graphic.isOnSprite(fleche_right))
