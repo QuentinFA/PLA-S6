@@ -49,6 +49,7 @@ public class Character extends Entities
 	public Action getAction () {return actionCourante;}
 	public void incrementNbActions() {this.compteurActions++;}
 	public int getNbActions() {return this.compteurActions;}
+	
 	public void setMain(Procedure l) 
 	{
 		ListIterator<Prog> it = l.getListProcedure().listIterator();

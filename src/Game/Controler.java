@@ -45,7 +45,7 @@ public class Controler
 			if (pt.travail == true)
 				return;
 		
-		World.WORLD.popClone(); 
+		World.WORLD.popClone();
 		
 		for (PersonnageTravaille pt : lPT) 
 		{

@@ -66,6 +66,8 @@ public class Gui
 
 	private int nbrAction;
 	private int wichProc = 0; //0: Main, 1: P1, 2: P2, <Last>: Fork
+	
+	public List<Procedure> getFinalActionList() {return final_actionList;}
 
 	public Gui(int nbrA)
 	{
@@ -316,20 +318,21 @@ public class Gui
 						{
 							int j, max_action;
 							List<Sprite> sprite_list;
-
+						
+							
 							if (wichProc == 0)
 							{
 								j = spriteList_main.size();
 								max_action = nbrAction;
 								sprite_list = spriteList_main;
 							}
-							else if (wichProc == 1)
+							else if (sprite_proc1 != null && wichProc == 1)
 							{
 								j = spriteList_proc1.size();
 								max_action = 8;
 								sprite_list = spriteList_proc1;
 							}
-							else if (wichProc == 2)
+							else if (sprite_proc2 != null && wichProc == 2)
 							{
 								j = spriteList_proc2.size();
 								max_action = 8;
@@ -546,15 +549,15 @@ public class Gui
 		if (sprite_fork != null && Graphic.isOnSprite(sprite_fork))
 		{
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
-			sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
-			sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 
 			final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
 					- (int)(Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y);
 			if (final_offset < 0)
 				final_offset = 0;
-			wichProc = 3;
+			wichProc = final_actionList.size()-1;
 		}
 		
 	}
