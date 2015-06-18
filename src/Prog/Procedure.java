@@ -10,6 +10,14 @@ public class Procedure extends Prog
 	private List<Prog> l;
 	private int index;
 	public int getIndex() {return index;}
+	private TypeProcedure t;
+	
+	public Procedure(Color c, TypeProcedure type) 
+	{
+		couleur = c;
+		t = type ;
+		l = new ArrayList<Prog>();
+	}
 	
 	public Procedure(Color c, int i) 
 	{
