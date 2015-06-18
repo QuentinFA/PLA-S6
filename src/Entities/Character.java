@@ -57,8 +57,6 @@ public class Character extends Entities
 			this.sprite.setColor(org.jsfml.graphics.Color.GREEN);
 		else
 			this.sprite.setColor(org.jsfml.graphics.Color.WHITE);
-		
-			
 	}
 
 	public Color getColor() {return couleur;}
@@ -96,6 +94,9 @@ public class Character extends Entities
 	{
 		if (World.WORLD.isPlaying())
 		{
+			if (actionCourante == null)
+				setTextureOrientation();
+			
 			if (actionCourante != null)
 			{
 				if (actionCourante.execute(this))
@@ -106,9 +107,6 @@ public class Character extends Entities
 			}
 			else 
 				Controler.CONTROLER.workOver(this);
-			
-			if (actionCourante == null)
-				setTextureOrientation();
 		}
 
 		return true;
