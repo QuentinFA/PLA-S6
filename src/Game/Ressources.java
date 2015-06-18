@@ -38,7 +38,8 @@ public class Ressources
 		STAR_FULL(),
 		STAR_EMPTY(),
 		CHOIX_COULEUR(),
-		FORK();
+		FORK(),
+		FAST_FORWARD();
 
 		private Texture texture;
 		
@@ -88,6 +89,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.STAR_FULL, Paths.get("images/star_full.png"));
 		TEXTURE.loadFromFile(TEXTURE.CHOIX_COULEUR, Paths.get("images/choix_couleur.png"));
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
+		TEXTURE.loadFromFile(TEXTURE.FAST_FORWARD, Paths.get("images/fast_forward.png"));
 		
 		int lower = 0;
 		int higher = 4;
