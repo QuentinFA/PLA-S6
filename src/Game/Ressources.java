@@ -94,14 +94,15 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.FAST_FORWARD, Paths.get("images/fast_forward.png"));
 		
 		int lower = 0;
-		int higher = 4;
+		int higher = 5;
 
 		int random = (int)(Math.random() * (higher-lower)) + lower;
-		switch(random%4) 
+		switch(random%5) 
 		{
 			case 1 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio1.wav")); break;
 			case 2 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio2.wav")); break;	
 			case 3 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio3.wav")); break;
+			case 4 : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio4.wav")); break;
 			default : MUSIC.loadFromFile(MUSIC.MARIO, Paths.get("audio/audio.wav"));
 		}
 	}
