@@ -3,14 +3,27 @@
 	<level_name>test</level_name>
 	<starting_dir>NORTH</starting_dir>
 	<floor level="0">
-		<block type="LightBlock">
+		<block type="LightBlock" destination="8,8,0">
 			<x>0</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock" is_start="true">
-			<x>1</x>
+			<x>-4</x>
 			<y>0</y>
 		</block>
+				<block type="NormalBlock" is_start="true">
+			<x>-3</x>
+			<y>0</y>
+		</block>
+				<block type="NormalBlock" is_start="true">
+			<x>-2</x>
+			<y>0</y>
+		</block>
+				<block type="NormalBlock" is_start="true">
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		
 		<block type="NormalBlock">
 			<x>4</x>
 			<y>5</y>
@@ -37,6 +50,9 @@
 		<action>Teleporter</action>
 		<action>UseChest</action>
 		<action>OpenChest</action> 
+		<action>Pipette</action> 
+		<action>Shower</action> 
+		<action>Fork</action>
 	</action_list>
 	<functions>
 		<main nb_action="10" />

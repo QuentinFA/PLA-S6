@@ -19,7 +19,7 @@ import Prog.Prog;
 public class Character extends Entities
 {	
 	private int orientation; // Cf Orientation.java
-	private Color couleur = Color.ROUGE;
+	private Color couleur = Color.DEFAUT;
 	private Chest coffre = null;
 	private Action actionCourante = null;
 	private int compteurActions;
