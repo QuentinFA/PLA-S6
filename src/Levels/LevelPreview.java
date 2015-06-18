@@ -10,7 +10,7 @@ import UI.Menu;
 
 public class LevelPreview
 {
-	private static String levelPath = "levels/levelifthenelse-1.xml"; //Le level a charger
+	private static String levelPath = "levels/level1-1.xml"; //Le level a charger
 	
 	public static void main(String[] args)
 	{

@@ -277,7 +277,7 @@ public class Reader
 		set.addAll(lb);
 		lb = new ArrayList<Block>(set);
 		
-		World.WORLD = new World(name, lb, bng, dir, la, min, max);
+		World.WORLD = new World(name, lb, bng, dir, la, min, max, listSolution);
 		Gui.GUI = new Gui(nbA);
 		
 		Menu.Mymenu = null;
