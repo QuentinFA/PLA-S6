@@ -96,13 +96,6 @@ public class Interpreter
 			return null;	
 		}
 		
-	/*(David)	En attente de comprehension
-	 * else if (act instanceof Fork)
-		{
-			
-			p.incrementNbActions();
-			return eval(p);
-		}*/
 		else //C'est une action
 		{
 			if (it.hasNext())

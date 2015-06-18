@@ -37,6 +37,7 @@ public class Controler
 	public void workOver(Character p)
 	{
 		addCharacter(p);
+		System.out.println(p);
 	}
 	
 	public void manage() 
