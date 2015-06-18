@@ -12,9 +12,7 @@ import Prog.Prog;
 import Prog.NormalActions.Break;
 import Prog.NormalActions.For;
 
-
-
-public class Interpreter 
+public class Interpreter
 {
 	public static Interpreter INTERPRETER;
 
@@ -41,7 +39,7 @@ public class Interpreter
 		if (act instanceof For)
 		{
 			For actFor = (For) act;
-			actFor.decrementer(p);
+			actFor.decrementer();
 			
 			if (!it.hasNext())
 				return eval(p);
@@ -54,7 +52,7 @@ public class Interpreter
 				return eval(p);
 			}
 				
-			if (!actFor.isZero(p)) 
+			if (!actFor.isZero()) 
 			{
 				it.previous();
 				it.previous();
@@ -95,7 +93,6 @@ public class Interpreter
 			p.incrementNbActions();
 			return null;	
 		}
-		
 		else //C'est une action
 		{
 			if (it.hasNext())

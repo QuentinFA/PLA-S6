@@ -30,6 +30,27 @@
 		
 		<block type="NormalBlock">
 			<x>1</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>5</y>
+		</block>
+		
+		<block type="NormalBlock">
+			<x>1</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
@@ -48,6 +69,47 @@
 			<x>5</x>
 			<y>0</y>
 		</block>
+		
+		<block type="NormalBlock" is_start="true">
+			<x>5</x>
+			<y>0</y>
+		</block>
+		<block type="LightBlock">
+			<x>5</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>6</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>6</x>
+			<y>0</y>
+		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
@@ -56,6 +118,7 @@
 		<action>For</action>
 		<action>Jump</action> 
 		<action>P1</action> 
+		<action>P2</action> 
 		<action>Fork</action>
 	</action_list>
 	<functions>

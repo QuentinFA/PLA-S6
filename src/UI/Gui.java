@@ -19,7 +19,6 @@ import Prog.Action;
 import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
-import Prog.TypeProcedure;
 import Prog.NormalActions.*;
 
 public class Gui 
@@ -101,7 +100,7 @@ public class Gui
 
 		// Main
 		sprite_main.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN));
-		final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+		final_actionList.add(new Procedure(Color.DEFAUT, 0));
 
 		load_sprite();		
 
@@ -147,19 +146,19 @@ public class Gui
 			{
 				spr.setTextureRect(new IntRect(730, 82, 80, 80));
 				sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-				final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+				final_actionList.add(new Procedure(Color.DEFAUT, 1));
 			}	
 			else if (act instanceof P2)
 			{
 				spr.setTextureRect(new IntRect(811, 82, 80, 80));
 				sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-				final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+				final_actionList.add(new Procedure(Color.DEFAUT, 2));
 			}
 			else if (act instanceof Fork)
 			{
 				spr.setTextureRect(new IntRect(811, 1, 80, 80));
 				sprite_fork = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.FORK));
-				final_actionList.add(new Procedure(Color.DEFAUT, TypeProcedure.COMMUN));
+				final_actionList.add(new Procedure(Color.DEFAUT, final_actionList.size()));
 			}
 			else if (act instanceof Break)
 				spr.setTextureRect(new IntRect(892, 1, 80, 80));
@@ -289,21 +288,20 @@ public class Gui
 
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
+					Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 				}
 				else
 				{
 					sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETRY_ACTION));
 
 					World.WORLD.setPlaying(true);
-					List<Entities.Character> l =  World.WORLD.getCharacterList();
-
+					
 					for (Procedure pr : final_actionList)
 						for(Prog pro : pr.getListProcedure())
 							if(pro instanceof For)
 								((For) pro).reset();
 
-					for (int i=0; i < l.size(); i++)
-						l.get(i).setMain(new Procedure(final_actionList.get(i)));
+					World.WORLD.getCharacterList().get(0).setMain();
 				}
 			}
 
@@ -517,23 +515,22 @@ public class Gui
 
 	private void exit()
 	{
+		Graphic.SFML.speedUp(false);
 		World.WORLD = null;
 		Gui.GUI = null;
 		Interpreter.INTERPRETER = null;
 		Controler.CONTROLER = null;
         Menu_Level.set_nbr_monde(Menu_Level.get_monde());
 		Menu.change_menu(Menu.MENU.LEVEL);
-		//((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x()); //TODO
 
 		exitGui = true;
 	}
 
 	private void next()
 	{
-
-		if(Menu_Level.get_monde() == 0)
+		if (Menu_Level.get_monde() == 0)
 			Reader.read("levels/level1"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 1)
+		else if (Menu_Level.get_monde() == 1)
 			Reader.read("levels/levelprocedure"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 2)
 			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");

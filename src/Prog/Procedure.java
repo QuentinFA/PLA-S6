@@ -8,19 +8,19 @@ import org.jsfml.graphics.Sprite;
 public class Procedure extends Prog 
 {
 	private List<Prog> l;
-	private TypeProcedure t;
+	private int index;
+	public int getIndex() {return index;}
 	
-	public Procedure(Color c, TypeProcedure type) 
+	public Procedure(Color c, int i) 
 	{
 		couleur = c;
-		t = type ;
+		index = i;
 		l = new ArrayList<Prog>();
 	}
 	
 	public Procedure(Procedure p) 
 	{
 		couleur = p.getColor();
-		t = p.getTypeProcedure();
 		l = new ArrayList<Prog>();
 		for(Prog pr : p.getListProcedure())
 		{
@@ -35,8 +35,6 @@ public class Procedure extends Prog
 		}
 	}
 	
-	public TypeProcedure getTypeProcedure() {return t;}
-	public void setTypeProcedure(TypeProcedure type) {t = type;}
 	public List<Prog> getListProcedure() {return l;}
 	
 	/**

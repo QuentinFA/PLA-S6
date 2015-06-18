@@ -15,7 +15,6 @@ import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
 import UI.Graphic;
-import UI.Gui;
 
 public class World
 {
@@ -112,9 +111,9 @@ public class World
 			{
 				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()), cloneList.get(i).getOrientation());
 				p.setPosSprite(placeMe(p.getCoord()));
-				
-				p.setMain(Gui.GUI.getFinalActionList().get(Gui.GUI.getFinalActionList().size()-1));
+					
 				addCharacter(p);
+				p.setMain();
 				
 				cloneList.remove(i);
 				i--;
