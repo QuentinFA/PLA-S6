@@ -49,6 +49,7 @@ public class Character extends Entities
 	public Action getAction () {return actionCourante;}
 	public void incrementNbActions() {this.compteurActions++;}
 	public int getNbActions() {return this.compteurActions;}
+	
 	public void setMain(Procedure l) 
 	{
 		ListIterator<Prog> it = l.getListProcedure().listIterator();
@@ -69,11 +70,11 @@ public class Character extends Entities
 				if (actionCourante.execute(this))
 				{
 					actionCourante = null;
-					Controler.CONTROLER.manage(this);
+					Controler.CONTROLER.workOver(this);
 				}
 			}
 			else 
-				Controler.CONTROLER.manage(this);
+				Controler.CONTROLER.workOver(this);
 			
 			if (actionCourante == null)
 				setTextureOrientation();

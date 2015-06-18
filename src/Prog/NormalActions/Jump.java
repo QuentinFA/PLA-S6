@@ -134,7 +134,7 @@ public class Jump extends Action
 			Coordonnees check = new Coordonnees(p.getCoord());
 			check.increment(delta);
 			
-			if (World.WORLD.isValidPosition(check))
+			if (p.getCoord().int_equals(check) || World.WORLD.isValidPosition(check))
 			{
 				p.getCoord().increment(delta);
 				futur_coord = new Coordonnees((int)(p.getCoord().getX()), (int)(p.getCoord().getY()), (int)(p.getCoord().getZ()));

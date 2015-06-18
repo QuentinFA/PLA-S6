@@ -31,6 +31,7 @@ public class Gui
 	//Option
 	private Sprite sprite_return = new Sprite();
 	private Sprite sprite_play_retry = new Sprite();
+	private Sprite sprite_fast_forward = new Sprite();
 	private boolean exitGui = false;
 
 	//Panneaux
@@ -45,6 +46,7 @@ public class Gui
 	private Sprite sprite_return_eog = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 	private boolean level_completed = false;
+	private boolean is_fast_forward = false;
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
@@ -60,12 +62,14 @@ public class Gui
 	private List<Sprite> spriteList_occupied = new ArrayList<Sprite>();
 	
 	private List<Action> actionList = World.WORLD.getActionList(); //Liste des actions disponibles
-	private List<Procedure> final_actionList = new ArrayList<Procedure>(); //Liste des actions a éxécuter
+	private List<Procedure> final_actionList = new ArrayList<Procedure>(); //Liste des actions a ï¿½xï¿½cuter
 
 	////////////////////////////////////////
 
 	private int nbrAction;
 	private int wichProc = 0; //0: Main, 1: P1, 2: P2, <Last>: Fork
+	
+	public List<Procedure> getFinalActionList() {return final_actionList;}
 
 	public Gui(int nbrA)
 	{
@@ -73,6 +77,8 @@ public class Gui
 		sprite_return.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
 		sprite_return.setTextureRect(new IntRect(1, 1, 100, 100));
 		sprite_play_retry.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION));
+		sprite_fast_forward.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.FAST_FORWARD));
+		sprite_fast_forward.setTextureRect(new IntRect(1,1,127,127));
 
 		for (int i=0; i < 4; i++)
 		{
@@ -169,6 +175,8 @@ public class Gui
 
 		sprite_play_retry.setPosition(Graphic.SFML.getPositionCamera_f().x ,
 				Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + 50);
+		sprite_fast_forward.setPosition(Graphic.SFML.getPositionCamera_f().x +3,
+				Graphic.SFML.getPositionCamera_f().y + Ressources.TEXTURE.getTexture(TEXTURE.BOUTON_SOUND).getSize().y + Ressources.TEXTURE.getTexture(TEXTURE.PLAY_ACTION).getSize().y + 100);
 
 		for (int i=0; i < spriteList.size(); i++)
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
@@ -222,6 +230,7 @@ public class Gui
 	{
 		Graphic.SFML.draw(sprite_return);
 		Graphic.SFML.draw(sprite_play_retry);
+		Graphic.SFML.draw(sprite_fast_forward);
 		Graphic.SFML.draw(sprite_main);
 
 		//Color
@@ -294,6 +303,22 @@ public class Gui
 						l.get(i).setMain(new Procedure(final_actionList.get(i)));
 				}
 			}
+			
+			if (Graphic.isOnSprite(sprite_fast_forward))
+			{
+				if (is_fast_forward)
+				{
+					Graphic.SFML.speedUp(false);
+					is_fast_forward = false;
+					sprite_fast_forward.setTextureRect(new IntRect(1, 1, 127, 127));
+				}
+				else
+				{
+					Graphic.SFML.speedUp(true);
+					is_fast_forward = true;
+					sprite_fast_forward.setTextureRect(new IntRect(130, 1, 127, 127));
+				}
+			}
 		}
 
 		if (exitGui)
@@ -316,20 +341,21 @@ public class Gui
 						{
 							int j, max_action;
 							List<Sprite> sprite_list;
-
+						
+							
 							if (wichProc == 0)
 							{
 								j = spriteList_main.size();
 								max_action = nbrAction;
 								sprite_list = spriteList_main;
 							}
-							else if (wichProc == 1)
+							else if (sprite_proc1 != null && wichProc == 1)
 							{
 								j = spriteList_proc1.size();
 								max_action = 8;
 								sprite_list = spriteList_proc1;
 							}
-							else if (wichProc == 2)
+							else if (sprite_proc2 != null && wichProc == 2)
 							{
 								j = spriteList_proc2.size();
 								max_action = 8;
@@ -546,15 +572,15 @@ public class Gui
 		if (sprite_fork != null && Graphic.isOnSprite(sprite_fork))
 		{
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
-			sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
-			sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 
 			final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
 					- (int)(Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y);
 			if (final_offset < 0)
 				final_offset = 0;
-			wichProc = 3;
+			wichProc = final_actionList.size()-1;
 		}
 		
 	}

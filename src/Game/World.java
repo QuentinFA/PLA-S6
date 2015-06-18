@@ -15,6 +15,7 @@ import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
 import UI.Graphic;
+import UI.Gui;
 
 public class World
 {
@@ -73,6 +74,7 @@ public class World
 		allList.clear();
 		blockList.clear();
 		characterList.clear();
+		cloneList.clear();
 		
 		for (Block b : blockListStart)
 			try 
@@ -105,9 +107,18 @@ public class World
 	 */
 	public void popClone()
 	{
-		for(Coordation c : cloneList)
-			if(isValidPosition(c.getCoord()))
-				addCharacter(new Character(new Coordonnees(c.getCoord()), c.getOrientation() ));
+		for (int i=0; i < cloneList.size(); i++)
+			if (isValidPosition(cloneList.get(i).getCoord()))
+			{
+				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()), cloneList.get(i).getOrientation());
+				p.setPosSprite(placeMe(p.getCoord()));
+				
+				p.setMain(Gui.GUI.getFinalActionList().get(Gui.GUI.getFinalActionList().size()-1));
+				addCharacter(p);
+				
+				cloneList.remove(i);
+				i--;
+			}
 	}
 	
 	/**
@@ -215,8 +226,8 @@ public class World
 	 */
 	public boolean isValidPosition(Coordonnees c)
 	{
-		for (Block b : blockList)
-			if (b.getCoord().int_equals(c))
+		for (Entities e : allList)
+			if (e.getCoord().int_equals(c))
 				return false;
 		
 		return true;
