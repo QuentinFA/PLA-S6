@@ -10,7 +10,9 @@
 		- Actions dans main : attribut action_nb
 		- Si procédures : <procedure nb_proc="2"/>
 -->
-
+<!--  Soluce : Main : P1 -->
+<!-- P1 : F TurnR F Light F TurnL F P2  -->
+<!-- P2 : TP TurnL  F TurnL  F  Light-->
 <map>
 	<level_name>1-1</level_name>
 	<starting_dir>NORTH</starting_dir>
@@ -39,7 +41,7 @@
 			<x>1</x>
 			<y>1</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="TeleporterBlock" destination="2,7,0">
 			<x>2</x>
 			<y>2</y>
 		</block>
@@ -59,10 +61,6 @@
 			<x>2</x>
 			<y>6</y>
 		</block>
-		<block type="TeleporterBlock">
-			<x>2</x>
-			<y>7</y>
-		</block>
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>5</y>
@@ -75,7 +73,7 @@
 			<x>1</x>
 			<y>7</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>0</x>
 			<y>5</y>
 		</block>
@@ -108,4 +106,8 @@
 		<main nb_action="3"/>
 		<!-- <procedure nb_proc="2"/> -->
 	</functions>
+	<score>
+		<min>13</min>
+		<max>17</max>
+	</score>
 </map>

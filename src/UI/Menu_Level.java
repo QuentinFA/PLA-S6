@@ -38,7 +38,7 @@ public class Menu_Level extends Menu
 	Sprite fleche_left = new Sprite();
 
 	public static void set_nbr_monde(int nb){nbr_monde = nb;}
-	
+
 	public Menu_Level()
 	{	
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
@@ -153,88 +153,156 @@ public class Menu_Level extends Menu
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/test.xml");
+							return;
+						}
 						else if (j == 1)
+						{
 							Reader.read("levels/level1-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/level1-3.xml");
+							return;
+						}
 						else if (j == 3)
+						{
 							Reader.read("levels/level1-4.xml");
-
+							return;
+						}
 					}
 					else if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelprocedure-1.xml");
+							return;
+						}
 						else if (j == 1)
+						{
 							Reader.read("levels/levelprocedure-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/levelprocedure-3.xml");
-						//						else if( j == 3)
-						//							Reader.read("levels/test.xml");
+							return;
+						}
+
 					}
 					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelfor-1.xml");
+							return;
+						}
 						//						else if (j == 1)
 						//							Reader.read("levels/levelfor-2.xml");
 						else if (j == 2)
+						{
 							Reader.read("levels/levelfor-3.xml");
+							return;
+						}
 
 					}
 					else if (i == 3 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelifthenelse-1.xml");
+							return;
+						}
 						else if (j == 1)
+						{
 							Reader.read("levels/levelifthenelse-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/levelifthenelse-3.xml");
+							return;
+						}
 						//						else if( j == 3)
 						//							Reader.read("levels/levelifthenelse-4.xml");
 					}
 					else if (i == 4 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
-					//Niveau while
+						//Niveau while
 					}
 					else if (i == 5 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelpoint-1.xml");
+							return;
+						}
 						else if (j == 1)
+						{
 							Reader.read("levels/levelpoint-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/levelpoint-3.xml");
+							return;
+						}
 						else if( j == 3)
+						{
 							Reader.read("levels/levelpoint-4.xml");
+							return;
+						}
 					}
 					else if (i == 6 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelfork-1.xml");
+							return;
+						}
 						else if (j == 1)
+						{
 							Reader.read("levels/levelfork-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/levelfork-3.xml");
+							return;
+						}
 						else if( j == 3)
+						{
 							Reader.read("levels/levelfork-4.xml");
+							return;
+						}
 					}
 					else if (i == 7 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
+						{
 							Reader.read("levels/levelchest-1.xml");
+							return;
+						}
 						else if (j == 1)
+
+						{
 							Reader.read("levels/levelchest-2.xml");
+							return;
+						}
 						else if (j == 2)
+						{
 							Reader.read("levels/levelchest-3.xml");
+							return;
+						}
 						//						else if( j == 3)
 						//							Reader.read("levels/levelchest-4.xml");
 					}
@@ -247,7 +315,7 @@ public class Menu_Level extends Menu
 				}
 
 			if(Graphic.isOnSprite(fleche_right))
-				if(nbr_monde < 9) //Nombre de monde
+				if(nbr_monde < 8) //Nombre de monde
 					nbr_monde++;
 
 			if(Graphic.isOnSprite(fleche_left))

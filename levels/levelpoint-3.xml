@@ -10,9 +10,9 @@
 		- Actions dans main : attribut action_nb
 		- Si procédures : <procedure nb_proc="2"/>
 -->
-
+<!--  Anna : Remplace les red block par les teleporteur et leur destination ... Je sais pas comment tu voulais faire ! -->
 <map>
-	<level_name>1-1</level_name>
+	<level_name>Pointeur-3</level_name>
 	<starting_dir>NORTH</starting_dir>
 	<floor level="0">
 		<!-- 1er block -->
@@ -40,7 +40,7 @@
 			<x>1</x>
 			<y>1</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>2</x>
 			<y>2</y>
 		</block>
@@ -62,7 +62,7 @@
 			<x>2</x>
 			<y>5</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>2</x>
 			<y>6</y>
 		</block>
@@ -78,7 +78,7 @@
 			<x>1</x>
 			<y>6</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>0</x>
 			<y>4</y>
 		</block>
@@ -100,7 +100,7 @@
 			<x>5</x>
 			<y>-2</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>6</x>
 			<y>-2</y>
 		</block>
@@ -116,7 +116,7 @@
 			<x>6</x>
 			<y>-3</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>4</x>
 			<y>-4</y>
 		</block>
@@ -138,7 +138,7 @@
 			<x>-2</x>
 			<y>5</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>-2</x>
 			<y>6</y>
 		</block>
@@ -154,7 +154,7 @@
 			<x>-3</x>
 			<y>6</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>-4</x>
 			<y>4</y>
 		</block>
@@ -168,7 +168,7 @@
 		</block>
 		
 		<!-- 5eme bloc -->
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>4</x>
 			<y>0</y>
 		</block>
@@ -200,7 +200,7 @@
 			<x>6</x>
 			<y>1</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>6</x>
 			<y>2</y>
 		</block>
@@ -238,13 +238,13 @@
 			<x>-4</x>
 			<y>-3</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>-4</x>
 			<y>-4</y>
 		</block>
 		
 		<!-- 7eme bloc -->
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>2</x>
 			<y>-2</y>
 		</block>
@@ -276,13 +276,13 @@
 			<x>0</x>
 			<y>-3</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>0</x>
 			<y>-4</y>
 		</block>
 		
 		<!-- 8eme bloc -->
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>-2</x>
 			<y>2</y>
 		</block>
@@ -314,13 +314,13 @@
 			<x>-4</x>
 			<y>1</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>-4</x>
 			<y>0</y>
 		</block>
 		
 		<!-- 9eme bloc -->
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>4</x>
 			<y>4</y>
 		</block>
@@ -352,7 +352,7 @@
 			<x>6</x>
 			<y>5</y>
 		</block>
-		<block type="TeleporterBlock">
+		<block type="RedBlock">
 			<x>6</x>
 			<y>6</y>
 		</block>
@@ -375,6 +375,7 @@
 	</action_list>
 	<functions>
 		<main nb_action="3"/>
-		<!-- <procedure nb_proc="2"/> -->
 	</functions>
+	<score>
+	</score>
 </map>

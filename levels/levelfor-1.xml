@@ -5,6 +5,9 @@
 	classes Procédures et nombre d'actions : - Actions dans main : attribut action_nb 
 	- Si procédures : <procedure nb_proc="2"/> -->
 
+<!-- Soluce : For5 F Light
+NB : On est oblige d enlever P1 pour forcer l utilisation du For -->
+
 <map>
 	<level_name>for-1</level_name>
 	<starting_dir>EAST</starting_dir>
@@ -44,7 +47,7 @@
 		<action>Left_turn</action>
 		<action>Jump</action>
 		<action>Light</action>
-		<action>P1</action>
+		<!-- <action>P1</action> -->
 		<!-- <action>P2</action> -->
 		<action>For</action>
 		<!-- <action>Pipette</action> -->
@@ -55,7 +58,7 @@
 		<!-- <action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="6" />
+		<main nb_action="3" />
 	</functions>
 	<score>
 		<min>7</min>
