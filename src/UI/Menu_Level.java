@@ -59,7 +59,6 @@ public class Menu_Level extends Menu
 
 		title_scale = 1.25f;
 		increase_title_scale = true;
-		System.out.println(monde_list.size());
 		for (int i=0; i < monde_list.size(); i++)
 		{
 			nbr_level_list.add(new ArrayList<Sprite>());
