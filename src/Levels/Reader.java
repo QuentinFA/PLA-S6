@@ -46,7 +46,7 @@ public class Reader
 	public static void read(String arg)
 	{
 		SAXBuilder sxb = new SAXBuilder();
-		int nbA = 0, nbP = 0, dir = 0, min = 0, max = 0;
+		int nbA = 0, dir = 0, min = 0, max = 0;
 		String name = "Failling world !";
 		Element root;
 		List<Element> le;
@@ -55,7 +55,7 @@ public class Reader
 		List<Action> la = new ArrayList<Action>();
 		Coordonnees bng = new Coordonnees();
 		
-		//Initialisation pre-création
+		//Initialisation pre-crï¿½ation
 		TeleporterBlock.initialiseStack();
 		
 		// Chacun son style informatique, merci de ne pas changer
@@ -174,18 +174,6 @@ public class Reader
 							nbA = f.getAttribute(BeaconXML.B_ACTION_MAIN).getIntValue();
 						} 
 						catch (DataConversionException e1) {
-							e1.printStackTrace();
-						}
-					}
-					else if(f.getName().equals(BeaconXML.B_PROCEDURE))
-					{
-						try
-						{
-							nbP = f.getAttribute(BeaconXML.B_PROCEDURE_NB).getIntValue();
-						} 
-						catch (DataConversionException e1)
-						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					}

@@ -98,9 +98,6 @@ public class Writer
 		Element f = new Element(BeaconXML.B_FUNCTIONS);
 		f.addContent(new Element(BeaconXML.B_MAIN).setAttribute(BeaconXML.B_ACTION_MAIN,
 				String.valueOf(nbActionMain)));
-		if (nbProcedures > 0)
-			f.addContent(new Element(BeaconXML.B_PROCEDURE)
-				.setAttribute(BeaconXML.B_PROCEDURE_NB, String.valueOf(nbProcedures)));
 		
 		content.add(f);
 		

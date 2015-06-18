@@ -29,11 +29,14 @@ public class LightBot
 			if (Menu.Mymenu != null)
 				Menu.Mymenu.gerer();
 			
+			if (World.WORLD != null)
+			{
+				Controler.CONTROLER.manage();
+				World.WORLD.gerer();
+			}
+			
 			if (Gui.GUI != null)
 				Gui.GUI.gerer();
-			
-			if (World.WORLD != null)
-				World.WORLD.gerer();
 			
 			Graphic.SFML.afficher();
 		}

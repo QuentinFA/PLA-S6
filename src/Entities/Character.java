@@ -19,7 +19,7 @@ import Prog.Prog;
 public class Character extends Entities
 {	
 	private int orientation; // Cf Orientation.java
-	private Color couleur = Color.ROUGE;
+	private Color couleur = Color.DEFAUT;
 	private Chest coffre = null;
 	private Action actionCourante = null;
 	private int compteurActions;
@@ -69,11 +69,11 @@ public class Character extends Entities
 				if (actionCourante.execute(this))
 				{
 					actionCourante = null;
-					Controler.CONTROLER.manage(this);
+					Controler.CONTROLER.workOver(this);
 				}
 			}
 			else 
-				Controler.CONTROLER.manage(this);
+				Controler.CONTROLER.workOver(this);
 			
 			if (actionCourante == null)
 				setTextureOrientation();

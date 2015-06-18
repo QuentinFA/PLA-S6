@@ -307,12 +307,20 @@ public class World
 		return win;
 	}
 	
-	public int getMinStar() {return minStar;}
+	public int getMinStar()
+	{
+		return minStar;
+	}
 	
-	public int getMaxStar() {return maxStar;}
+	public int getMaxStar()
+	{
+		return maxStar;
+	}
 	
 	/**
 	 * remplit la liste des coordonnee des clones
 	 */
-	public void setClone(Coordonnees xyz, int o) {cloneList.add(new Coordation(xyz, o));}
+	public void setClone(Coordonnees xyz, int o) {
+		cloneList.add(new Coordation(xyz, o));
+	}
 }
