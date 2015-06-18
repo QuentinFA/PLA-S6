@@ -23,8 +23,9 @@ public class Character extends Entities
 	private Chest coffre = null;
 	private Action actionCourante = null;
 	private int compteurActions;
-	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
 	
+	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
+	Stack<Integer> pileFor = new Stack<Integer>();
 
 	public Character(Coordonnees pos, int ori) 
 	{
@@ -41,14 +42,18 @@ public class Character extends Entities
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	public int getOrientation() {return orientation;}
 	public void setOrientation(int ori) {orientation = ori;}
+	
 	public void setColor(Color c) {couleur = c;}
 	public Color getColor() {return couleur;}
+	
 	public Chest getChest() {return coffre;}
 	public void setChest(Chest c) {coffre = c;}
-	public void setActionCourante(Action a) {this.actionCourante = a;}
+	
+	public void setActionCourante(Action a) {actionCourante = a;}
 	public Action getAction () {return actionCourante;}
-	public void incrementNbActions() {this.compteurActions++;}
-	public int getNbActions() {return this.compteurActions;}
+	
+	public void incrementNbActions() {compteurActions++;}
+	public int getNbActions() {return compteurActions;}
 	
 	public void setMain(Procedure l) 
 	{
@@ -58,6 +63,7 @@ public class Character extends Entities
 	}
 
 	public Stack<ListIterator<Prog>> getPile() {return pile;}
+	public Stack<Integer> getPileFor() {return pileFor;}
 
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
 
