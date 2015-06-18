@@ -515,6 +515,7 @@ public class Gui
 
 	private void exit()
 	{
+		Graphic.SFML.speedUp(false);
 		World.WORLD = null;
 		Gui.GUI = null;
 		Interpreter.INTERPRETER = null;
