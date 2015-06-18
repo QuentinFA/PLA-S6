@@ -165,6 +165,7 @@
 		<action>Break</action>
 		<action>Teleporter</action>
 		<action>Fork</action>
+		<action>OpenChest</action>
 		<action>UseChest</action>
 	</action_list>
 	<functions>
