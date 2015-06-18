@@ -17,6 +17,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
+import Entities.Blocks.BlockComparator;
 import Entities.Blocks.NormalBlock;
 import Entities.Blocks.TeleporterBlock;
 import Entities.Blocks.Chests.ChestForward;
