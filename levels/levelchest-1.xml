@@ -10,93 +10,101 @@
 		- Actions dans main : attribut action_nb
 		- Si procédures : <procedure nb_proc="2"/>
 -->
-<!-- coffre level d'introduction easy, pas besoin de limiter les actions-->
+<!-- coffre level d'introduction easy, pas besoin de limiter les actions
+	On apprend l'utilisation des coffres et que les coffres disparaissent apres ouverture-->
 <map>
-	<level_name>1-1</level_name>
+	<level_name>LevelChest-1</level_name>
 	<starting_dir>SOUTH</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
-			<x>1</x>
-			<y>3</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>3</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>3</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>1</y>
-		</block>
-		<block type="LightBlock"> <!--  mettre un coffre ici -->
-			<x>1</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
 			<x>0</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>3</x>
+			<x>1</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>3</x>
-			<y>1</y>
+			<x>-1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>-4</y>
+		</block>
+		<block type="LightBlock">
+			<x>0</x>
+			<y>-5</y>
 		</block>
 	</floor>
+	
 	<floor level="1">
-	<block type="NormalBlock">
-			<x>3</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>3</x>
-			<y>1</y>
-		</block>
-	</floor>
-	<floor level="2">
-	<block type="LightBlock">
-			<x>3</x>
-			<y>0</y>
-		</block>
-		<block type="NormalBlock">
-			<x>3</x>
-			<y>1</y>
+	<block type="ChestLight">
+			<x>0</x>
+			<y>-3</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
-		<action>Light</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>Jump</action>
+		<!-- <action>Light</action> -->
+		<action>P1</action>
+		<action>P2</action>
+		<action>For</action> 
+		<action>Pipette</action>
+		<action>Shower</action> 
+		<action>Break</action> 
+		<action>Teleporter</action> 
+		<action>Fork</action> 
+		<action>UseChest</action>
 	</action_list>
 	<functions>
-		<main nb_action="3"/>
+		<main nb_action="10" />
 	</functions>
+	<score>
+		<min>7</min>
+		<max>9</max>
+	</score>
 </map>

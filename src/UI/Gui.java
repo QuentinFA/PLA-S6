@@ -305,20 +305,21 @@ public class Gui
 						l.get(i).setMain(new Procedure(final_actionList.get(i)));
 				}
 			}
+
 			if (Graphic.isOnSprite(sprite_fast_forward))
 			{
 				if (is_fast_forward)
 				{
+					Graphic.SFML.speedUp(false);
 					is_fast_forward = false;
-					sprite_fast_forward.setTextureRect(new IntRect(1,1,127,127));
-					
+					sprite_fast_forward.setTextureRect(new IntRect(1, 1, 127, 127));
 				}
 				else
 				{
+					Graphic.SFML.speedUp(true);
 					is_fast_forward = true;
-					sprite_fast_forward.setTextureRect(new IntRect(130,1,127,127));
+					sprite_fast_forward.setTextureRect(new IntRect(130, 1, 127, 127));
 				}
-				
 			}
 		}
 

@@ -170,18 +170,18 @@ public class Menu_Level extends Menu
 							Reader.read("levels/levelprocedure-2.xml");
 						else if (j == 2)
 							Reader.read("levels/levelprocedure-3.xml");
-						else if( j == 3)
-							Reader.read("levels/test.xml");
+//						else if( j == 3)
+//							Reader.read("levels/test.xml");
 					}
 					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
-							Reader.read("levels/levelfork-1.xml");
+							Reader.read("levels/levelfor-1.xml");
 						else if (j == 1)
-							Reader.read("levels/levelfork-2.xml");
-						else if (j == 2)
-							Reader.read("levels/levelfork-3.xml");
+							Reader.read("levels/levelfor-3.xml");
+//						else if (j == 2)
+//							Reader.read("levels/levelfork-3.xml");
 					}
 				}
 			

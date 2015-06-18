@@ -78,6 +78,14 @@ public class Graphic
 		return false;
 	}
 	
+	public void speedUp(boolean b)
+	{
+		if (b == true)
+			fenetre.setFramerateLimit(300);
+		else
+			fenetre.setFramerateLimit(60);
+	}
+	
 	/**
 	 * Initialise la fenetre avec une taille
 	 * @param width
@@ -86,7 +94,7 @@ public class Graphic
 	public void initialiser(int w, int h)
 	{
 		fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
-		fenetre.setVerticalSyncEnabled(true);
+		fenetre.setFramerateLimit(60);
 		camera = new View();
 		
 		width = w;
