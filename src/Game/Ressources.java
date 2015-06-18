@@ -40,7 +40,8 @@ public class Ressources
 		STAR_EMPTY(),
 		CHOIX_COULEUR(),
 		FORK(),
-		FAST_FORWARD();
+		FAST_FORWARD(),
+		HELP_ME();
 
 		private Texture texture;
 		
@@ -92,6 +93,8 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.CHOIX_COULEUR, Paths.get("images/choix_couleur.png"));
 		TEXTURE.loadFromFile(TEXTURE.FORK, Paths.get("images/fork.png"));
 		TEXTURE.loadFromFile(TEXTURE.FAST_FORWARD, Paths.get("images/fast_forward.png"));
+		TEXTURE.loadFromFile(TEXTURE.HELP_ME, Paths.get("images/cat?.png"));
+
 		
 		int lower = 0;
 		int higher = 5;

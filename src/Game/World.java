@@ -211,6 +211,11 @@ public class World
 	public List<Character> getCharacterList() {return characterList;}
 	
 	/**
+	 * Recuperer la liste solution du puzzle
+	 * @return La liste des différentes procédures de listes d'action
+	 */
+	public List<Procedure> getListSoluce() {return listSoluce;}
+	/**
 	 * Afficher tous les objets du monde (blocks, personnages, ...)
 	 */
 	public void afficher()
