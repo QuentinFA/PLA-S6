@@ -46,7 +46,21 @@ public class Character extends Entities
 	public int getOrientation() {return orientation;}
 	public void setOrientation(int ori) {orientation = ori;}
 	
-	public void setColor(Color c) {couleur = c;}
+	public void setColor(Color c) 
+	{
+		couleur = c;
+		if (c == Color.BLEU)
+			this.sprite.setColor(org.jsfml.graphics.Color.CYAN);
+		else if (c== Color.ROUGE)
+			this.sprite.setColor(org.jsfml.graphics.Color.RED);
+		else if (c == Color.VERT)
+			this.sprite.setColor(org.jsfml.graphics.Color.GREEN);
+		else
+			this.sprite.setColor(org.jsfml.graphics.Color.WHITE);
+		
+			
+	}
+
 	public Color getColor() {return couleur;}
 	
 	public Chest getChest() {return coffre;}

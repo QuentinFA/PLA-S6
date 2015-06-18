@@ -97,6 +97,7 @@ public class World
 	 */
 	public void gerer()
 	{
+		System.out.println(characterList.size());
 		for (Character p : characterList)
 			p.gerer();
 	}
