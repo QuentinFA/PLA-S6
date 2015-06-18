@@ -521,7 +521,7 @@ public class Gui
 		Gui.GUI = null;
 		Interpreter.INTERPRETER = null;
 		Controler.CONTROLER = null;
-
+        Menu_Level.set_nbr_monde(Menu_Level.get_monde());
 		Menu.change_menu(Menu.MENU.LEVEL);
 		//((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x()); //TODO
 

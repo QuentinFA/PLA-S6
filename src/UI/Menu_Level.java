@@ -31,13 +31,14 @@ public class Menu_Level extends Menu
 	private static float title_scale;
 
 	private boolean increase_title_scale;
-	private int nbr_monde = 0;
+	private static int nbr_monde = 0;
 	private Sprite returnMenu = new Sprite();
 
 	Sprite fleche_right = new Sprite();
 	Sprite fleche_left = new Sprite();
-	public void set_nbr_monde(int nb){this.nbr_monde = nb;}
 
+	public static void set_nbr_monde(int nb){nbr_monde = nb;}
+	
 	public Menu_Level()
 	{	
 		returnMenu.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
