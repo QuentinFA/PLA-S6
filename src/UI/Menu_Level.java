@@ -24,7 +24,8 @@ public class Menu_Level extends Menu
 		mem_monde = i;
 		mem_level = j;
 	}
-
+    public static int get_monde(){return mem_monde;}
+    public static int get_level(){return mem_level;}
 	ArrayList<Sprite> aura_list = new ArrayList<Sprite>();
 
 	private static float title_scale;
@@ -158,6 +159,7 @@ public class Menu_Level extends Menu
 							Reader.read("levels/level1-3.xml");
 						else if (j == 3)
 							Reader.read("levels/level1-4.xml");
+						
 					}
 					else if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{

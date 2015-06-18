@@ -14,6 +14,7 @@ import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
+import Levels.Reader;
 import Prog.Action;
 import Prog.Color;
 import Prog.Procedure;
@@ -43,7 +44,7 @@ public class Gui
 	//Fin
 	private Sprite sprite_next = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
 	private Sprite sprite_end_of_game = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.END_OF_GAME));
-	private Sprite sprite_return_eog = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_MENU));
+	private Sprite sprite_return_eog = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.RETURN_ON_BILLBOARD));
 	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 	private boolean level_completed = false;
 	private boolean is_fast_forward = false;
@@ -263,6 +264,7 @@ public class Gui
 		{
 			Graphic.SFML.draw(sprite_end_of_game);
 			Graphic.SFML.draw(sprite_return_eog);
+			if(Menu_Level.get_level()<3)
 			Graphic.SFML.draw(sprite_next); //TODO no more level
 			for (Sprite spr : sprite_star)
 				Graphic.SFML.draw(spr);
@@ -303,7 +305,7 @@ public class Gui
 						l.get(i).setMain(new Procedure(final_actionList.get(i)));
 				}
 			}
-			if (Graphic.SFML.isOnSprite(sprite_fast_forward))
+			if (Graphic.isOnSprite(sprite_fast_forward))
 			{
 				if (is_fast_forward)
 				{
@@ -490,7 +492,6 @@ public class Gui
 			else //3
 				sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
 
-			sprite_next.setTextureRect(new IntRect(1, 1, 128, 85));
 		}
 
 		if (level_completed == true && Input.INPUT.again(BUTTON.MLEFT))
@@ -518,7 +519,9 @@ public class Gui
 	
 	private void next()
 	{
-		//TODO
+		if(Menu_Level.get_monde() == 0)
+			Reader.read("levels/level1"+"-"+(((Menu_Level)Menu.Mymenu).get_level()+2)+".xml");
+		
 	}
 
 	private void scroll()
