@@ -1,5 +1,6 @@
 package Prog.NormalActions;
 
+import Entities.Block;
 import Entities.Character;
 import Entities.Chest;
 import Entities.Entities;
@@ -35,6 +36,8 @@ public class OpenChest extends Action
 			if (e != null && e instanceof Chest)
 			{
 				((Chest)e).perform(p);
+				System.out.println(e);
+				World.WORLD.deleteBlock(((Block)e));
 			}
 
 		

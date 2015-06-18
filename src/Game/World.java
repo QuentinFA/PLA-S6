@@ -303,7 +303,7 @@ public class World
 	
 	public List<Action> getActionList() {return actionList;}
 	
-	/**
+	/**	
 	 * Verifie si un monde est gagne (tous les blocs lumiere allumes)
 	 */
 	public boolean isComplete()
@@ -315,6 +315,12 @@ public class World
 			win = win && lb.getLight();
 		
 		return win;
+	}
+	
+	public void deleteBlock(Block a) {
+		allList.remove(a);
+		blockList.remove(a);
+		
 	}
 	
 	public int getMinStar() {return minStar;}
