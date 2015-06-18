@@ -25,7 +25,6 @@ public abstract class Prog implements Cloneable
 				if (result.get(i).getListProcedure().get(j) instanceof Procedure)
 				{
 					int index = ((Procedure) result.get(i).getListProcedure().get(j)).getIndex();
-					System.out.println("CACA:" + index);
 					result.get(i).getListProcedure().set(j, result.get(index));
 				}
 			}

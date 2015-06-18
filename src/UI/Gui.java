@@ -521,17 +521,15 @@ public class Gui
 		Controler.CONTROLER = null;
         Menu_Level.set_nbr_monde(Menu_Level.get_monde());
 		Menu.change_menu(Menu.MENU.LEVEL);
-		//((Menu_Level)Menu.Mymenu).set_nbr_monde(Graphic.SFML.get_level_x()); //TODO
 
 		exitGui = true;
 	}
 
 	private void next()
 	{
-
-		if(Menu_Level.get_monde() == 0)
+		if (Menu_Level.get_monde() == 0)
 			Reader.read("levels/level1"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 1)
+		else if (Menu_Level.get_monde() == 1)
 			Reader.read("levels/levelprocedure"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 2)
 			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
