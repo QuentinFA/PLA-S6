@@ -43,7 +43,7 @@ public class Menu_Level extends Menu
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
 		
 		Sprite spr;
-		for (int i = 0 ; i < 3 ; i++)
+		for (int i = 0 ; i < 9 ; i++)
 		{
 			spr = new Sprite();
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.MONDE));
@@ -59,7 +59,7 @@ public class Menu_Level extends Menu
 
 		title_scale = 1.25f;
 		increase_title_scale = true;
-
+		System.out.println(monde_list.size());
 		for (int i=0; i < monde_list.size(); i++)
 		{
 			nbr_level_list.add(new ArrayList<Sprite>());
@@ -104,7 +104,7 @@ public class Menu_Level extends Menu
 
 	public void afficher()
 	{
-		if(nbr_monde < 3)
+		if(nbr_monde < 8)
 			Graphic.SFML.draw(fleche_right);
 		for(Sprite spr: aura_list)
 			Graphic.SFML.draw(spr);
@@ -185,7 +185,7 @@ public class Menu_Level extends Menu
 				}
 			
 			if(Graphic.isOnSprite(fleche_right))
-				if(nbr_monde < 3) //Nombre de monde
+				if(nbr_monde < 9) //Nombre de monde
 					nbr_monde++;
 			
 			if(Graphic.isOnSprite(fleche_left))
