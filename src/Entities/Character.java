@@ -1,6 +1,5 @@
 package Entities;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
@@ -64,8 +63,6 @@ public class Character extends Entities
 		actionList = Prog.clone_actionList(Gui.GUI.getFinalActionList());
 		
 		ListIterator<Prog> it;
-		
-		System.out.println(World.WORLD.getCharacterList().size());
 		
 		if (World.WORLD.getCharacterList().size() == 1)
 			it = actionList.get(0).getListProcedure().listIterator();

@@ -94,7 +94,7 @@ public class Graphic
 	public void initialiser(int w, int h)
 	{
 		fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
-		//fenetre.setFramerateLimit(60);
+		fenetre.setFramerateLimit(60);
 		camera = new View();
 		
 		width = w;

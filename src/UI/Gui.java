@@ -19,7 +19,6 @@ import Prog.Action;
 import Prog.Color;
 import Prog.Procedure;
 import Prog.Prog;
-import Prog.TypeProcedure;
 import Prog.NormalActions.*;
 
 public class Gui 
@@ -289,6 +288,7 @@ public class Gui
 
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
+					Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 				}
 				else
 				{

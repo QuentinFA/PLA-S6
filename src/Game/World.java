@@ -15,7 +15,6 @@ import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
 import UI.Graphic;
-import UI.Gui;
 
 public class World
 {
