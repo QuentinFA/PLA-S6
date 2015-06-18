@@ -34,15 +34,18 @@ public class Controler
 		lPT.add(new PersonnageTravaille(p, false));
 	}
 	
-	public void manage(Character p) 
+	public void workOver(Character p)
 	{
 		addCharacter(p);
-		
-		World.WORLD.popClone(); 
-		
+	}
+	
+	public void manage() 
+	{	
 		for (PersonnageTravaille pt : lPT)
 			if (pt.travail == true)
 				return;
+		
+		World.WORLD.popClone();
 		
 		for (PersonnageTravaille pt : lPT) 
 		{
