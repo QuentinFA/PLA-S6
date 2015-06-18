@@ -112,9 +112,9 @@ public class World
 			{
 				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()), cloneList.get(i).getOrientation());
 				p.setPosSprite(placeMe(p.getCoord()));
-				
-				p.setMain(Gui.GUI.getFinalActionList().get(Gui.GUI.getFinalActionList().size()-1));
+					
 				addCharacter(p);
+				p.setMain();
 				
 				cloneList.remove(i);
 				i--;

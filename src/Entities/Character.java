@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
@@ -15,6 +17,7 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Procedure;
 import Prog.Prog;
+import UI.Gui;
 
 public class Character extends Entities
 {	
@@ -23,6 +26,7 @@ public class Character extends Entities
 	private Chest coffre = null;
 	private Action actionCourante = null;
 	private int compteurActions;
+	private List<Procedure> actionList;
 	
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
 	Stack<Integer> pileFor = new Stack<Integer>();
@@ -55,9 +59,19 @@ public class Character extends Entities
 	public void incrementNbActions() {compteurActions++;}
 	public int getNbActions() {return compteurActions;}
 	
-	public void setMain(Procedure l) 
+	public void setMain() 
 	{
-		ListIterator<Prog> it = l.getListProcedure().listIterator();
+		actionList = Prog.clone_actionList(Gui.GUI.getFinalActionList());
+		
+		ListIterator<Prog> it;
+		
+		System.out.println(World.WORLD.getCharacterList().size());
+		
+		if (World.WORLD.getCharacterList().size() == 1)
+			it = actionList.get(0).getListProcedure().listIterator();
+		else
+			it = actionList.get(actionList.size()-1).getListProcedure().listIterator();	
+		
 		pile.clear();
 		pile.push(it);
 	}
