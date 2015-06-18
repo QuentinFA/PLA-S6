@@ -26,6 +26,9 @@ import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Orientation;
+import Prog.Procedure;
+import Prog.Prog;
+import Prog.TypeProcedure;
 import Prog.NormalActions.Forward;
 import UI.Gui;
 import UI.Menu;
@@ -37,6 +40,7 @@ public class Reader
 	public static final String PACKAGE_BLOCK = NormalBlock.class.getPackage().getName() + ".";
 	public static final String PACKAGE_BLOCK_CHEST = ChestForward.class.getPackage().getName() + ".";
 	public static final String CLASS_TP = "TeleporterBlock";
+	public static final String PACKAGE_PROG = Action.class.getPackage().getName() + ".";
 	
 	public static Reader READER = new Reader();
 	
@@ -54,6 +58,7 @@ public class Reader
 		Document doc;
 		List<Block> lb = new ArrayList<Block>();
 		List<Action> la = new ArrayList<Action>();
+		List<Procedure> listSolution = new ArrayList<Procedure>();
 		Coordonnees bng = new Coordonnees();
 		
 		//Initialisation pre-cr�ation
@@ -207,6 +212,63 @@ public class Reader
 						min = Integer.valueOf(el.getValue());
 					if(el.getName().equals(BeaconXML.B_SCORE_MAX))
 						max = Integer.valueOf(el.getValue());
+				}
+			}
+			
+			else if(e.getName().equals(BeaconXML.B_SOLUTION))
+			{	
+				int i=-1;
+				for(Element proc : e.getChildren())
+				{
+					try{
+						if(proc.getName().equals(BeaconXML.B_MAIN_SOL) || proc.getName().equals(BeaconXML.B_PROC1_SOL) || proc.getName().equals(BeaconXML.B_PROC2_SOL))
+						{	
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, TypeProcedure.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,TypeProcedure.COMMUN));
+							i++;
+						}
+						else if(proc.getName().equals(BeaconXML.B_FORK_SOL))
+						{	
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, TypeProcedure.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,TypeProcedure.FORK));
+							i++;
+						}
+					}
+					catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){
+								e1.printStackTrace();
+					}
+						
+					for(Element act : proc.getChildren())
+					{
+						try {
+							//Recuperation de la couleur dans xml
+							String coolraoul = act.getAttribute(BeaconXML.B_ACTION_SOL_COLOR).getValue();
+							Color cool = Color.DEFAUT;
+							cool.stringToColor(coolraoul);
+							
+							//Recuperation de la valeur du for
+							Attribute des = act.getAttribute(BeaconXML.B_FOR_LOOP);
+								
+							//Ajout de l'actions dans la liste de procedure
+							if( des == null){
+								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
+								Constructor<?> constructor = c.getConstructor(Color.class);
+								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(cool));
+							}
+							else
+							{
+								int valDes = Integer.valueOf(des.getValue());
+								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
+								Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(cool,valDes));
+							}
+						} 
+						catch (ClassNotFoundException | NoSuchMethodException | SecurityException| InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){
+							e1.printStackTrace();
+						}
+					}
 				}
 			}
 		}
