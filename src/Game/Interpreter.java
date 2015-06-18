@@ -18,7 +18,6 @@ public class Interpreter
 {
 	public static Interpreter INTERPRETER;
 
-	// TODO CLone de chat / Move du clone / Vérification / Si bon : original = clone / Sinon : delete clone
 	public Action eval(Character p)
 	{
 		Stack<ListIterator<Prog>> pile = p.getPile();
@@ -27,12 +26,13 @@ public class Interpreter
 		try {it = pile.pop();}
 		catch (EmptyStackException e) {return null;}
 
-		if (!it.hasNext())
+		if (!it.hasNext()) //Retour de fonction
 			return eval(p);
 
-		Prog act = it.next();
+		Prog act = it.next(); //Recuperer l'action a effectuer
 		
-		if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
+		if ( !(act.getColor() == Color.DEFAUT || act.getColor() == p.getColor()) ) 
+		{
 			if (it.hasNext())
 				pile.push(it);
 			return eval(p);
@@ -41,34 +41,34 @@ public class Interpreter
 		if (act instanceof For)
 		{
 			For actFor = (For) act;
-			actFor.decrementer();
+			actFor.decrementer(p);
+			
 			if (!it.hasNext())
 				return eval(p);
 			act = it.next();
 			
-			if ( !((act.getColor() == Color.DEFAUT) || (act.getColor() == p.getColor())) ) {
+			if ( !(act.getColor() == Color.DEFAUT || act.getColor() == p.getColor()) ) 
+			{
 				if (it.hasNext())
 					pile.push(it);
 				return eval(p);
-				
 			}
 				
-			if (!actFor.isZero()) 
-			{ 
+			if (!actFor.isZero(p)) 
+			{
 				it.previous();
 				it.previous();
 			}
 
-			if (act instanceof Break) {
+			if (act instanceof Break) 
+			{
 				p.incrementNbActions();
 				return null;			
 			}
 			
 			if (it.hasNext())
 				pile.push(it);
-			
-
-			
+				
 			if (act instanceof Procedure)
 			{
 				List<Prog> l = ((Procedure) act).getListProcedure();
@@ -85,7 +85,7 @@ public class Interpreter
 		{
 			List<Prog> l = ((Procedure) act).getListProcedure();
 			ListIterator <Prog> it2 = l.listIterator();
-			if(it.hasNext())
+			if (it.hasNext())
 				pile.push(it);
 			pile.push(it2);
 			return eval(p);
