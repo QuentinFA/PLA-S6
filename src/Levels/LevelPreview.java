@@ -10,11 +10,9 @@ import UI.Menu;
 
 public class LevelPreview
 {
-<<<<<<< Updated upstream
-	private static String levelPath = "levels/level1-1.xml"; //Le level a charger
-=======
+
 	private static String levelPath = "levels/Demo1.xml"; //Le level a charger
->>>>>>> Stashed changes
+
 	
 	public static void main(String[] args)
 	{

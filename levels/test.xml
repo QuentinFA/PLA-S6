@@ -95,6 +95,19 @@
 			<y>5</y>
 		</block>
 	</floor>
+	<floor level="1">
+			<block type="ChestDoubleJump">
+			<x>0</x>
+			<y>1</y>
+		</block>
+	</floor>
+	<floor level="2">
+			<block type="NormalBlock">
+			<x>0</x>
+			<y>1</y>
+		</block>
+	</floor>
+	
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
@@ -105,6 +118,8 @@
 		<action>P2</action> 
 		<action>Fork</action>
 		<action>Pipette</action>
+		<action>OpenChest</action>
+		<action>UseChest</action>
 	</action_list>
 	<functions>
 		<main nb_action="10" />
