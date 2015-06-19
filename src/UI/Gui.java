@@ -784,8 +784,24 @@ public class Gui
 					spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
 			}
 		
+		setReference(l);
 		final_actionList = Prog.clone_actionList(l);
 		if (final_actionList.size() == 0)
 			final_actionList.add(new Procedure(Color.DEFAUT, 0));
+	}
+
+	private void setReference(List<Procedure> l) 
+	{
+		for (int i=0; i < l.size(); i++)
+		{
+			List<Prog> liste = l.get(i).getListProcedure();
+			for (int j=0; j < liste.size(); j++)
+			{
+				if (liste.get(j) instanceof P1)
+					liste.set(j, l.get(1));
+				else if (liste.get(j) instanceof P2)
+					liste.set(j, l.get(2));
+			}
+		}
 	}
 }
