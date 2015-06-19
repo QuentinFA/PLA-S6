@@ -278,7 +278,6 @@ public class Gui
 				Graphic.SFML.draw(sprite_next); //TODO no more level
 			for (Sprite spr : sprite_star)
 				Graphic.SFML.draw(spr);
-
 		}
 	}
 

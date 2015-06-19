@@ -10,14 +10,18 @@ public enum Color
 	BLEU,
 	VERT;
 
-	public void stringToColor(String t, Color couleur){
+	public Color stringToColor(String t, Color couleur)
+	{
+		Color c;
 		if(t.equals("ROUGE"))
-			couleur = Color.ROUGE;
+			c = Color.ROUGE;
 		else if(t.equals("BLEU"))
-			couleur =  Color.BLEU;
+			c =  Color.BLEU;
 		else if(t.equals("VERT"))
-			couleur =  Color.VERT;
+			c =  Color.VERT;
 		else
-			couleur = Color.DEFAUT;
+			c = Color.DEFAUT;
+		
+		return c;
 	}
 }
