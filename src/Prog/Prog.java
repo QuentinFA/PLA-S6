@@ -10,6 +10,11 @@ public abstract class Prog implements Cloneable
 	public Color getColor() {return couleur;}
 	public void setColor(Color c) {couleur = c;}
 	
+	public Prog(Color c)
+	{
+		this.couleur = c;
+	}
+	
 	public Object clone() throws CloneNotSupportedException {return super.clone();}
 	
 	public static List<Procedure> clone_actionList(List<Procedure> l)

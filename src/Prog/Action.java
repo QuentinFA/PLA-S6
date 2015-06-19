@@ -12,7 +12,7 @@ public abstract class Action extends Prog
 	
 	public Action(Color c)
 	{
-		this.couleur = c;
+		super(c);
 	}
 	
 	/**
