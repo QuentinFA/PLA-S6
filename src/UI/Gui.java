@@ -83,7 +83,6 @@ public class Gui
 		sprite_fast_forward.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.FAST_FORWARD));
 		sprite_fast_forward.setTextureRect(new IntRect(1,1,127,127));
 		sprite_aide.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.HELP_ME));
-		sprite_aide.setTextureRect(new IntRect(1, 1, 80, 80));
 		
 		for (int i=0; i < 4; i++)
 		{
