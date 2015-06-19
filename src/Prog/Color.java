@@ -10,7 +10,7 @@ public enum Color
 	BLEU,
 	VERT;
 
-	public Color stringToColor(String t, Color couleur)
+	public static Color stringToColor(String t, Color couleur)
 	{
 		Color c;
 		if(t.equals("ROUGE"))
