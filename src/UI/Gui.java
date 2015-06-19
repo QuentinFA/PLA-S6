@@ -87,10 +87,12 @@ public class Gui
 		{
 			Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
 			spr.setTextureRect(new IntRect(34+i*33, 1, 32, 32));
+			spr.setOrigin(spr.getTextureRect().width/2, spr.getTextureRect().height/2);
 			colorList.add(spr);
 		}
 
 		selecteur_color.setTextureRect(new IntRect(1, 1, 32, 32));
+		selecteur_color.setOrigin(selecteur_color.getTextureRect().width/2, selecteur_color.getTextureRect().height/2);
 
 		//EOG
 		sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
@@ -241,10 +243,10 @@ public class Gui
 		Graphic.SFML.draw(sprite_aide);
 		
 		//Color
+		Graphic.SFML.draw(selecteur_color);
 		for (Sprite spr : colorList)
 			Graphic.SFML.draw(spr);
-		Graphic.SFML.draw(selecteur_color);
-
+		
 		//Panneau
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
@@ -456,29 +458,41 @@ public class Gui
 				colorSelected = i;
 
 				if (colorSelected == 0)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.WHITE);
 						actionList.get(j).setColor(Color.DEFAUT);
 					}
+					selecteur_color.setRotation(0);
+				}
 				else if (colorSelected == 1)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.RED);
 						actionList.get(j).setColor(Color.ROUGE);
 					}
+					selecteur_color.setRotation(90);
+				}
 				else if (colorSelected == 2)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
 						actionList.get(j).setColor(Color.VERT);
 					}
+					selecteur_color.setRotation(180);
+				}
 				else
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
 					}
+					selecteur_color.setRotation(270);
+				}
 			}
 	}
     //si on a fini le niveau, on donne les etoiles pour evaluer

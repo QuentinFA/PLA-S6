@@ -2,7 +2,6 @@ package Entities.Blocks;
 
 import org.jsfml.graphics.IntRect;
 
-import Entities.Character;
 import Entities.ColorBlock;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
@@ -17,7 +16,6 @@ public class RedBlock extends ColorBlock
 		sprite.setTextureRect(new IntRect(83, 1, 81, 81));
 		
 		coord = pos;
+		this.color = Color.ROUGE;
 	}
-	
-	public void perform(Character p) {p.setColor(Color.ROUGE);}
 }
