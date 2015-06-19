@@ -54,7 +54,7 @@ public class Gui
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
-	private int colorSelected = 0;
+	private Color colorSelected = Color.DEFAUT;
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -212,22 +212,22 @@ public class Gui
 
 		//Color
 		Vector2f center = new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15);
-		if (colorSelected == 0)
+		if (colorSelected == Color.DEFAUT)
 			colorList.get(0).setPosition(new Vector2f(center.x + 1 - 7, center.y + 1 - 7));
 		else
 			colorList.get(0).setPosition(new Vector2f(center.x + 1, center.y + 1));
 		
-		if (colorSelected == 1)
+		if (colorSelected == Color.ROUGE)
 			colorList.get(1).setPosition(new Vector2f(center.x + 32 + 7, center.y + 1 - 7));
 		else
 			colorList.get(1).setPosition(new Vector2f(center.x + 32, center.y + 1));
 		
-		if (colorSelected == 2)
+		if (colorSelected == Color.BLEU)
 			colorList.get(2).setPosition(new Vector2f(center.x + 32 + 7, center.y + 32 + 7));
 		else
 			colorList.get(2).setPosition(new Vector2f(center.x + 32, center.y + 32));
 		
-		if (colorSelected == 3)
+		if (colorSelected == Color.VERT)
 			colorList.get(3).setPosition(new Vector2f(center.x + 1 - 7, center.y + 32 + 7));
 		else
 			colorList.get(3).setPosition(new Vector2f(center.x + 1, center.y + 32));
@@ -491,6 +491,38 @@ public class Gui
 						checkDoubleFor(final_actionList.get(final_actionList.size()-1), spriteList_fork);
 					}
 			}
+			
+			if (Input.INPUT.again(BUTTON.MRIGHT))
+			{
+				for (int i=0; i < spriteList_main.size(); i++)
+					if (Graphic.isOnSprite(spriteList_main.get(i)))
+					{
+						spriteList_main.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(0).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_proc1.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc1.get(i)))
+					{
+						spriteList_proc1.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(1).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_proc2.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc2.get(i)))
+					{
+						spriteList_proc2.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(2).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_fork.size(); i++)
+					if (Graphic.isOnSprite(spriteList_fork.get(i)))
+					{
+						spriteList_fork.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(final_actionList.size()-1).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+			}
 		}
 
 		placeGui();
@@ -509,38 +541,60 @@ public class Gui
 			}
 	}
 
+    private org.jsfml.graphics.Color org_colorFromColor(Color c)
+    {
+    	if (c == Color.ROUGE)
+    		return org.jsfml.graphics.Color.RED;
+    	if (c == Color.BLEU)
+    		return org.jsfml.graphics.Color.CYAN;
+    	if (c == Color.VERT)
+    		return org.jsfml.graphics.Color.GREEN;
+
+    	return org.jsfml.graphics.Color.WHITE;
+    }
+    
 	//Pour le cas "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
 			if (Graphic.isOnSprite(colorList.get(i)))
 			{
-				colorSelected = i;
-				
 				if (i == 0)
+				{
+					colorSelected = Color.DEFAUT;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.WHITE);
 						actionList.get(j).setColor(Color.DEFAUT);
 					}
+				}
 				else if (i == 1)
+				{
+					colorSelected = Color.ROUGE;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.RED);
 						actionList.get(j).setColor(Color.ROUGE);
 					}
+				}
 				else if (i == 2)
+				{
+					colorSelected = Color.BLEU;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
 					}	
+				}
 				else
+				{
+					colorSelected = Color.VERT;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
 						actionList.get(j).setColor(Color.VERT);
 					}
+				}
 			}
 	}
 	
