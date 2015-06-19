@@ -17,7 +17,6 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import Entities.Block;
-import Entities.Blocks.BlockComparator;
 import Entities.Blocks.NormalBlock;
 import Entities.Blocks.TeleporterBlock;
 import Entities.Blocks.Chests.ChestForward;
@@ -91,11 +90,13 @@ public class Reader
 				
 				for (Element block : e.getChildren())
 				{
+					// Récupération des valeurs carctérisant le bloc
 					String t = block.getAttribute(BeaconXML.B_BLOCK_TYPE).getValue();
 					Attribute begin = block.getAttribute(BeaconXML.B_STARTING_BLOCK);
 					int x = Integer.valueOf(block.getChild(BeaconXML.B_X).getValue());
 					int y = Integer.valueOf(block.getChild(BeaconXML.B_Y).getValue());
 					
+					// Si c'est la position de départ
 					if (begin != null)
 						bng = new Coordonnees(x, y, z + 1);
 					
@@ -104,6 +105,7 @@ public class Reader
 						Class<?> c = Class.forName(PACKAGE_BLOCK + t);
 						if(t.equals(CLASS_TP))
 						{
+							// Si c'est un téléporteur (données supplémentaires)
 							String d = block.getAttribute(BeaconXML.B_TP_DEST).getValue();
 							Constructor<?> constructor = 
 									c.getConstructor(Coordonnees.class, TeleporterBlock.class);
@@ -119,6 +121,7 @@ public class Reader
 						}
 						else
 						{
+							// Sinon : bloc normal
 							Constructor<?> constructor = c.getConstructor(Coordonnees.class);
 							lb.add((Block) constructor.newInstance(new Coordonnees(x, y, z)));
 						}

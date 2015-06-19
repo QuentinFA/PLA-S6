@@ -25,20 +25,18 @@ public class World
 	private List<Coordation> cloneList = new ArrayList<Coordation>(); //Liste des coordonnes des clones
 	private List<Entities> allList = new ArrayList<Entities>(); //Listes de tous les objets
 	
-	private List<Block> blockListStart;
+	private List<Block> blockListStart; // Liste de block qui sera fournie par le reader
 	private Coordonnees coordStart; //Coordonnees du depart
 	private int orientStart; //Orientation du depart
 	
 	private Vector2f centerWorld = null;
 	
 	private boolean playing = false;
-	public void setPlaying(boolean p) {playing = p;}
-	public boolean isPlaying() {return playing;}
 	
-	private String name;
-	private int minStar, maxStar;
+	private String name; // Nom du niveau
+	private int minStar, maxStar; // Rang pour le scoring
 	
-	private List<Action> actionList;
+	private List<Action> actionList; // Liste d'actions utilisables
 	
 	/**
 	 * Constructeur de niveau
@@ -109,7 +107,8 @@ public class World
 		for (int i=0; i < cloneList.size(); i++)
 			if (isValidPosition(cloneList.get(i).getCoord()))
 			{
-				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()), cloneList.get(i).getOrientation());
+				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()),
+						cloneList.get(i).getOrientation());
 				p.setPosSprite(placeMe(p.getCoord()));
 					
 				addCharacter(p);
@@ -328,7 +327,12 @@ public class World
 	public int getMaxStar() {return maxStar;}
 	
 	/**
-	 * remplit la liste des coordonnee des clones
+	 * Remplit la liste des coordonnee des clones
 	 */
-	public void setClone(Coordonnees xyz, int o) {cloneList.add(new Coordation(xyz, o));}
+	public void setClone(Coordonnees xyz, int o) 
+	{cloneList.add(new Coordation(xyz, o));}
+	
+
+	public void setPlaying(boolean p) {playing = p;}
+	public boolean isPlaying() {return playing;}
 }
