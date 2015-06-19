@@ -261,7 +261,7 @@ public class Reader
 							//Recuperation de la couleur dans xml
 							String coolraoul = act.getAttribute(BeaconXML.B_ACTION_SOL_COLOR).getValue();
 							Color erdcjg = Color.DEFAUT;
-							erdcjg.stringToColor(coolraoul,erdcjg);
+							erdcjg = Color.stringToColor(coolraoul,erdcjg);
 							
 							//Recuperation de la valeur du for
 							Attribute des = act.getAttribute(BeaconXML.B_FOR_LOOP);
