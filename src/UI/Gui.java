@@ -40,6 +40,9 @@ public class Gui
 	private Sprite sprite_proc1 = null;
 	private Sprite sprite_proc2 = null;
 	private Sprite sprite_fork = null;
+	
+	//Follower
+	private Sprite follower = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.FOLLOWER));
 
 	//Fin
 	private Sprite sprite_next = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
@@ -301,6 +304,12 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_fork)
 			Graphic.SFML.draw(spr);
+		
+		if (World.WORLD.isPlaying() && World.WORLD.getCharacterList().get(0).getAction() != null)
+		{
+			follower.setPosition(World.WORLD.getCharacterList().get(0).getAction().getSprite().getPosition());
+			Graphic.SFML.draw(follower);
+		}
 
 		if (level_completed)
 		{

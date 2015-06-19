@@ -10,7 +10,8 @@ import Prog.Coordonnees;
 import Prog.Orientation;
 
 
-public class DoubleJump extends Action{
+public class DoubleJump extends Action
+{
 	public DoubleJump(Color c) {couleur = c;}
 	private int frame = 0;
 	
