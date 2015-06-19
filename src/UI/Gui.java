@@ -136,9 +136,8 @@ public class Gui
 		{
 			Action act = actionList.get(i); 
 			Sprite spr = new Sprite();
-
 			
-			spr  =	spriteFromAction(act);
+			spr = spriteFromAction(act);
 			
 			spriteList.add(spr);
 		}
@@ -186,6 +185,8 @@ public class Gui
 			spr.setColor(org.jsfml.graphics.Color.CYAN);
 		else if(act.getColor() == Color.VERT)
 			spr.setColor(org.jsfml.graphics.Color.GREEN);
+		
+		act.setSprite(spr);
 		
 		return spr;
 	}
@@ -325,7 +326,7 @@ public class Gui
 	{
 		completeLevel();
 
-		if (Input.INPUT.again(BUTTON.MLEFT))
+		if (!level_completed && Input.INPUT.again(BUTTON.MLEFT))
 		{
 			if (Graphic.isOnSprite(sprite_return))
 				exit();
@@ -378,7 +379,7 @@ public class Gui
 		if (exitGui)
 			return;
 
-		if (!World.WORLD.isPlaying() && !level_completed)
+		if (!level_completed && !World.WORLD.isPlaying())
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{	
