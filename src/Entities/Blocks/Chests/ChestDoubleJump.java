@@ -9,7 +9,6 @@ import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.SpecialActions.DoubleJump;
-import UI.Graphic;
 
 public class ChestDoubleJump extends Chest 
 {
@@ -34,10 +33,5 @@ public class ChestDoubleJump extends Chest
 	{
 		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
 		sprite_action.setTextureRect(new IntRect(83, 83, 81, 81));
-	}
-	public void afficher() 
-	{
-		Graphic.SFML.draw(sprite);
-		Graphic.SFML.draw(sprite_action);
 	}
 }

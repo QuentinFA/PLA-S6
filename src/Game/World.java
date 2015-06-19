@@ -222,6 +222,8 @@ public class World
 		Collections.sort(allList, new EntitieComparator());
 		for (Entities obj : allList)
 			obj.afficher();
+		for (Bulle b : bulleList)
+			b.afficher();
 	}
 	
 	/**
