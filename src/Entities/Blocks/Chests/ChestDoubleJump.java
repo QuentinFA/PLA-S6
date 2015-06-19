@@ -9,12 +9,10 @@ import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
-import Prog.NormalActions.Jump;
 import Prog.SpecialActions.DoubleJump;
 import UI.Graphic;
 
 public class ChestDoubleJump extends Chest {
-Sprite sprite_action = new Sprite();
 	
 	/**
 	 * Constructeur
