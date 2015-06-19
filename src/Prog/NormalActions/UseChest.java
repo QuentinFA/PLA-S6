@@ -22,7 +22,7 @@ public class UseChest extends Action
 		if (c != null) 
 		{
 			Action a = c.getAction();
-			//a.setSprite(c.getSprite());
+			a.setSprite(this.getSprite());
 			p.setActionCourante(null);
 			p.use_Action(a);
 		}

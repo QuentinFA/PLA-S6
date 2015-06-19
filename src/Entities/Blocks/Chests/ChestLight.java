@@ -26,7 +26,7 @@ public class ChestLight extends Chest
 	public ChestLight(Coordonnees pos) 
 	{
 		this.coord = pos;
-		setAction(new Light(Color.DEFAUT));
+		this.action = new Light(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();

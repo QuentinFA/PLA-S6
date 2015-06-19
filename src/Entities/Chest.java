@@ -14,7 +14,7 @@ public abstract class Chest extends Block
 {
 	protected Action action;
 	protected Sprite sprite_action = new Sprite();
-	
+
 	public Sprite getBulle() {return sprite_action;}
 	
 	public Action getAction() {return action;}
@@ -28,8 +28,5 @@ public abstract class Chest extends Block
 	/**
 	 * Utiliser un Chest equivaut a le ranger dans le personnage.
 	 */
-	public void perform(Character c) 
-	{
-		c.setChest(this);
-	}
+	public void perform(Character p) {p.setChest(this);}
 }
