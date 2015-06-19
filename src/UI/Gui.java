@@ -103,7 +103,24 @@ public class Gui
 		final_actionList.add(new Procedure(Color.DEFAUT, 0));
 
 		load_sprite();		
-
+		
+		for (Action act : actionList)
+			if (act instanceof P1)
+			{
+				sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
+				final_actionList.add(new Procedure(Color.DEFAUT, 1));
+			}	
+			else if (act instanceof P2)
+			{
+				sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
+				final_actionList.add(new Procedure(Color.DEFAUT, 2));
+			}
+			else if (act instanceof Fork)
+			{
+				sprite_fork = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.FORK));
+				final_actionList.add(new Procedure(Color.DEFAUT, final_actionList.size()));
+			}
+		
 		GUI = this;
 
 		sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
@@ -118,55 +135,62 @@ public class Gui
 			Action act = actionList.get(i); 
 			Sprite spr = new Sprite();
 
-			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.ACTION));
-
-			if (act instanceof Forward)
-				spr.setTextureRect(new IntRect(1, 1, 80, 80));
-			else if (act instanceof Left_turn)
-				spr.setTextureRect(new IntRect(82, 1, 80, 80));
-			else if (act instanceof Right_turn)
-				spr.setTextureRect(new IntRect(163, 1, 80, 80));
-			else if (act instanceof Jump)
-				spr.setTextureRect(new IntRect(244, 1, 80, 80));
-			else if (act instanceof Light)
-				spr.setTextureRect(new IntRect(325, 1, 80, 80));
-			else if (act instanceof Teleporter)
-				spr.setTextureRect(new IntRect(406, 1, 80, 80));
-			else if (act instanceof OpenChest)
-				spr.setTextureRect(new IntRect(487, 1, 80, 80));
-			else if (act instanceof UseChest)
-				spr.setTextureRect(new IntRect(568, 1, 80, 80));
-			else if (act instanceof Pipette)
-				spr.setTextureRect(new IntRect(649, 1, 80, 80));
-			else if (act instanceof Shower)
-				spr.setTextureRect(new IntRect(730, 1, 80, 80));
-			else if (act instanceof For)
-				spr.setTextureRect(new IntRect(1, 82, 80, 80));
-			else if (act instanceof P1)
-			{
-				spr.setTextureRect(new IntRect(730, 82, 80, 80));
-				sprite_proc1 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC1));
-				final_actionList.add(new Procedure(Color.DEFAUT, 1));
-			}	
-			else if (act instanceof P2)
-			{
-				spr.setTextureRect(new IntRect(811, 82, 80, 80));
-				sprite_proc2 = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.PROC2));
-				final_actionList.add(new Procedure(Color.DEFAUT, 2));
-			}
-			else if (act instanceof Fork)
-			{
-				spr.setTextureRect(new IntRect(811, 1, 80, 80));
-				sprite_fork = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.FORK));
-				final_actionList.add(new Procedure(Color.DEFAUT, final_actionList.size()));
-			}
-			else if (act instanceof Break)
-				spr.setTextureRect(new IntRect(892, 1, 80, 80));
-
+			
+			spr  =	spriteFromAction(act);
+			
 			spriteList.add(spr);
 		}
 	}
-    //donner les coordonnées a tous les sprites.
+	
+	/*retourne le sprite correspondant à l'action donné en argument
+	 */
+	private Sprite spriteFromAction(Action act){
+		
+		Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.ACTION)); 
+
+		if (act instanceof Forward)
+			spr.setTextureRect(new IntRect(1, 1, 80, 80));
+		else if (act instanceof Left_turn)
+			spr.setTextureRect(new IntRect(82, 1, 80, 80));
+		else if (act instanceof Right_turn)
+			spr.setTextureRect(new IntRect(163, 1, 80, 80));
+		else if (act instanceof Jump)
+			spr.setTextureRect(new IntRect(244, 1, 80, 80));
+		else if (act instanceof Light)
+			spr.setTextureRect(new IntRect(325, 1, 80, 80));
+		else if (act instanceof Teleporter)
+			spr.setTextureRect(new IntRect(406, 1, 80, 80));
+		else if (act instanceof OpenChest)
+			spr.setTextureRect(new IntRect(487, 1, 80, 80));
+		else if (act instanceof UseChest)
+			spr.setTextureRect(new IntRect(568, 1, 80, 80));
+		else if (act instanceof Pipette)
+			spr.setTextureRect(new IntRect(649, 1, 80, 80));
+		else if (act instanceof Shower)
+			spr.setTextureRect(new IntRect(730, 1, 80, 80));
+		else if (act instanceof For)
+			spr.setTextureRect(new IntRect(1+(((For) act).getForValue()-1)*81, 82, 80, 80));
+		else if (act instanceof P1)
+			spr.setTextureRect(new IntRect(730, 82, 80, 80));
+		else if (act instanceof P2)
+			spr.setTextureRect(new IntRect(811, 82, 80, 80));
+		else if (act instanceof Fork)
+			spr.setTextureRect(new IntRect(811, 1, 80, 80));
+		else if (act instanceof Break)
+			spr.setTextureRect(new IntRect(892, 1, 80, 80));
+		
+		if(act.getColor() == Color.ROUGE)
+			spr.setColor(org.jsfml.graphics.Color.RED);
+		else if(act.getColor() == Color.BLEU)
+			spr.setColor(org.jsfml.graphics.Color.CYAN);
+		else if(act.getColor() == Color.VERT)
+			spr.setColor(org.jsfml.graphics.Color.GREEN);
+		
+		return spr;
+	}
+	
+	
+	//donner les coordonnées a tous les sprites.
 	private void placeGui()
 	{
 		scroll();
@@ -342,7 +366,7 @@ public class Gui
 			
 			if(Graphic.isOnSprite(sprite_aide))
 			{
-				//aide(World.WORLD.getListSoluce());
+				aide(World.WORLD.getListSoluce());
 			}
 		}
 
@@ -647,5 +671,38 @@ public class Gui
 			 
 			wichProc = final_actionList.size()-1;
 		}
+	}
+	
+	private void aide(List<Procedure> l){
+		
+		//on vide les panneaux
+		spriteList_main.clear();
+		spriteList_proc1.clear();
+		spriteList_proc2.clear();
+		spriteList_fork.clear();
+		
+		for(int i = 0; i < l.size(); i++)
+			for(int j = 0; j < l.get(i).getListProcedure().size(); j++)
+			{
+				if(i == 0)
+					spriteList_main.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+				else if(i == 1)
+				{
+					if(sprite_proc1 != null)
+						spriteList_proc1.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+					else
+						spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+				}
+				else if(i == 2)
+				{
+					if(sprite_proc2 != null)
+						spriteList_proc2.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+					else
+						spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+				}
+				else
+					spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
+			}
+		final_actionList = l;
 	}
 }
