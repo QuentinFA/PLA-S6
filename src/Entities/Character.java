@@ -5,6 +5,8 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 import org.jsfml.graphics.IntRect;
+import org.jsfml.graphics.Sprite;
+import org.jsfml.system.Vector2f;
 
 import Game.Controler;
 import Game.Interpreter;
@@ -16,6 +18,7 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Procedure;
 import Prog.Prog;
+import UI.Graphic;
 import UI.Gui;
 
 /**
@@ -26,9 +29,10 @@ import UI.Gui;
 public class Character extends Entities
 {	
 	private int orientation; 
-	private Color couleur;
-	private Chest coffre;
-	private Action actionCourante;
+	private Sprite bulle = null;
+	private Color couleur = Color.DEFAUT;
+	private Chest coffre  = null;
+	private Action actionCourante = null;
 	private int compteurActions;	//Permet de donner le nombre d'étoiles à la fin de la resolution d'un niveau
 	private List<Procedure> actionList; //Liste des procedures que le personnage effectue
 	
@@ -45,14 +49,12 @@ public class Character extends Entities
 		coord = pos;
 		orientation = ori;
 		compteurActions = 0;
-		couleur = Color.DEFAUT;
-		coffre  = null;
-		actionCourante = null;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
 	
-	
+	public void setBulle(Sprite spr) {bulle = spr;}
+
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	
@@ -137,6 +139,16 @@ public class Character extends Entities
 		return true;
 	}
 
+	public void afficher()
+	{
+		Graphic.SFML.draw(sprite);
+		if (bulle != null)
+		{
+			bulle.setPosition(new Vector2f(sprite.getPosition().x, sprite.getPosition().y-60));
+			Graphic.SFML.draw(bulle);
+		}
+	}
+	
 	/**
 	 * Fonction appele par le controler pour dire au personnage qu'il peut effectuer sa prochaine action. Celui-ci demande a l'interpreteur qu'elle est cette prochaine action et si elle existe, l'execute
 	 */

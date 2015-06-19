@@ -4,7 +4,6 @@ package Entities.Blocks.Chests;
  * Chest contenant l'action Forward pour introduire le concept d'objet de la programmation.
  */
 import org.jsfml.graphics.IntRect;
-import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 import Entities.Chest;
@@ -17,8 +16,6 @@ import UI.Graphic;
 
 public class ChestForward extends Chest 
 {
-	Sprite sprite_action = new Sprite();
-	
 	/**
 	 * Constructeur
 	 * @param pos : Position du Chest
