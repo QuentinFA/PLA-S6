@@ -87,10 +87,12 @@ public class Gui
 		{
 			Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
 			spr.setTextureRect(new IntRect(34+i*33, 1, 32, 32));
+			spr.setOrigin(spr.getTextureRect().width/2, spr.getTextureRect().height/2);
 			colorList.add(spr);
 		}
 
 		selecteur_color.setTextureRect(new IntRect(1, 1, 32, 32));
+		selecteur_color.setOrigin(selecteur_color.getTextureRect().width/2, selecteur_color.getTextureRect().height/2);
 
 		//EOG
 		sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
@@ -113,7 +115,7 @@ public class Gui
 
 		placeGui();
 	}
-
+    //charger les choix des actions
 	public void load_sprite()
 	{
 		for (int i = 0; i < actionList.size(); i++)
@@ -241,10 +243,10 @@ public class Gui
 		Graphic.SFML.draw(sprite_aide);
 		
 		//Color
+		Graphic.SFML.draw(selecteur_color);
 		for (Sprite spr : colorList)
 			Graphic.SFML.draw(spr);
-		Graphic.SFML.draw(selecteur_color);
-
+		
 		//Panneau
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
@@ -456,29 +458,41 @@ public class Gui
 				colorSelected = i;
 
 				if (colorSelected == 0)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.WHITE);
 						actionList.get(j).setColor(Color.DEFAUT);
 					}
+					selecteur_color.setRotation(0);
+				}
 				else if (colorSelected == 1)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.RED);
 						actionList.get(j).setColor(Color.ROUGE);
 					}
+					selecteur_color.setRotation(90);
+				}
 				else if (colorSelected == 2)
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
 						actionList.get(j).setColor(Color.VERT);
 					}
+					selecteur_color.setRotation(180);
+				}
 				else
+				{
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
 					}
+					selecteur_color.setRotation(270);
+				}
 			}
 	}
 
@@ -505,7 +519,7 @@ public class Gui
 					sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x-30-(1-i)*100 , Graphic.SFML.getCenterCamera().y-100);					
 				}
-			else //3			
+			else //1 etoile			
 			    {
 				    sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));				
 				    sprite_star.get(0).setPosition(Graphic.SFML.getCenterCamera().x-30-100 , Graphic.SFML.getCenterCamera().y-100);
@@ -522,7 +536,7 @@ public class Gui
 				next();
 		}
 	}
-
+    //retourner dans le menu_level
 	private void exit()
 	{
 		Graphic.SFML.speedUp(false);
@@ -535,7 +549,7 @@ public class Gui
 
 		exitGui = true;
 	}
-
+    //entrer dans le niveau suivant
 	private void next()
 	{
 		if (Menu_Level.get_monde() == 0)
@@ -543,9 +557,19 @@ public class Gui
 		else if (Menu_Level.get_monde() == 1)
 			Reader.read("levels/levelprocedure"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 2)
-			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 3)
 			Reader.read("levels/levelfor"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 3)
+			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
+//		else if(Menu_Level.get_monde() == 4)
+//			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 5)
+			Reader.read("levels/levelpoint"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 6)
+			Reader.read("levels/levelfork"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 7)
+			Reader.read("levels/levelchest"+"-"+(Menu_Level.get_level()+2)+".xml");
+//		else if(Menu_Level.get_monde() == 8)
+//			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
 
