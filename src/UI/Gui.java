@@ -40,6 +40,9 @@ public class Gui
 	private Sprite sprite_proc1 = null;
 	private Sprite sprite_proc2 = null;
 	private Sprite sprite_fork = null;
+	
+	//Follower
+	private Sprite follower = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.FOLLOWER));
 
 	//Fin
 	private Sprite sprite_next = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.NEXT));
@@ -51,7 +54,7 @@ public class Gui
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
-	private int colorSelected = 0;
+	private Color colorSelected = Color.DEFAUT;
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -80,7 +83,6 @@ public class Gui
 		sprite_fast_forward.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.FAST_FORWARD));
 		sprite_fast_forward.setTextureRect(new IntRect(1,1,127,127));
 		sprite_aide.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.HELP_ME));
-		sprite_aide.setTextureRect(new IntRect(1, 1, 80, 80));
 		
 		for (int i=0; i < 4; i++)
 		{
@@ -134,18 +136,16 @@ public class Gui
 		{
 			Action act = actionList.get(i); 
 			Sprite spr = new Sprite();
-
 			
-			spr  =	spriteFromAction(act);
+			spr = spriteFromAction(act);
 			
 			spriteList.add(spr);
 		}
 	}
 	
-	/*retourne le sprite correspondant à l'action donné en argument
-	 */
-	private Sprite spriteFromAction(Action act){
-		
+	//retourne le sprite correspondant à l'action donné en argument
+	private Sprite spriteFromAction(Action act)
+	{	
 		Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.ACTION)); 
 
 		if (act instanceof Forward)
@@ -186,6 +186,8 @@ public class Gui
 		else if(act.getColor() == Color.VERT)
 			spr.setColor(org.jsfml.graphics.Color.GREEN);
 		
+		act.setSprite(spr);
+		
 		return spr;
 	}
 	
@@ -210,22 +212,22 @@ public class Gui
 
 		//Color
 		Vector2f center = new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15);
-		if (colorSelected == 0)
+		if (colorSelected == Color.DEFAUT)
 			colorList.get(0).setPosition(new Vector2f(center.x + 1 - 7, center.y + 1 - 7));
 		else
 			colorList.get(0).setPosition(new Vector2f(center.x + 1, center.y + 1));
 		
-		if (colorSelected == 1)
+		if (colorSelected == Color.ROUGE)
 			colorList.get(1).setPosition(new Vector2f(center.x + 32 + 7, center.y + 1 - 7));
 		else
 			colorList.get(1).setPosition(new Vector2f(center.x + 32, center.y + 1));
 		
-		if (colorSelected == 2)
+		if (colorSelected == Color.BLEU)
 			colorList.get(2).setPosition(new Vector2f(center.x + 32 + 7, center.y + 32 + 7));
 		else
 			colorList.get(2).setPosition(new Vector2f(center.x + 32, center.y + 32));
 		
-		if (colorSelected == 3)
+		if (colorSelected == Color.VERT)
 			colorList.get(3).setPosition(new Vector2f(center.x + 1 - 7, center.y + 32 + 7));
 		else
 			colorList.get(3).setPosition(new Vector2f(center.x + 1, center.y + 32));
@@ -302,6 +304,12 @@ public class Gui
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_fork)
 			Graphic.SFML.draw(spr);
+		
+		if (World.WORLD.isPlaying() && World.WORLD.getCharacterList().get(0).getAction() != null)
+		{
+			follower.setPosition(World.WORLD.getCharacterList().get(0).getAction().getSprite().getPosition());
+			Graphic.SFML.draw(follower);
+		}
 
 		if (level_completed)
 		{
@@ -318,7 +326,7 @@ public class Gui
 	{
 		completeLevel();
 
-		if (Input.INPUT.again(BUTTON.MLEFT))
+		if (!level_completed && Input.INPUT.again(BUTTON.MLEFT))
 		{
 			if (Graphic.isOnSprite(sprite_return))
 				exit();
@@ -364,16 +372,14 @@ public class Gui
 				}
 			}
 			
-			if(Graphic.isOnSprite(sprite_aide))
-			{
+			if (Graphic.isOnSprite(sprite_aide))
 				aide(World.WORLD.getListSoluce());
-			}
 		}
 
 		if (exitGui)
 			return;
 
-		if (!World.WORLD.isPlaying())
+		if (!level_completed && !World.WORLD.isPlaying())
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{	
@@ -461,65 +467,138 @@ public class Gui
 					{
 						spriteList_main.remove(i);
 						final_actionList.get(0).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(0), spriteList_main);
 					}
 				for (int i=0; i < spriteList_proc1.size(); i++)
 					if (Graphic.isOnSprite(spriteList_proc1.get(i)))
 					{
 						spriteList_proc1.remove(i);
 						final_actionList.get(1).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(1), spriteList_proc1);
 					}
 				for (int i=0; i < spriteList_proc2.size(); i++)
 					if (Graphic.isOnSprite(spriteList_proc2.get(i)))
 					{
 						spriteList_proc2.remove(i);
 						final_actionList.get(2).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(2), spriteList_proc2);
 					}
 				for (int i=0; i < spriteList_fork.size(); i++)
 					if (Graphic.isOnSprite(spriteList_fork.get(i)))
 					{
 						spriteList_fork.remove(i);
 						final_actionList.get(final_actionList.size()-1).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(final_actionList.size()-1), spriteList_fork);
+					}
+			}
+			
+			if (Input.INPUT.again(BUTTON.MRIGHT))
+			{
+				for (int i=0; i < spriteList_main.size(); i++)
+					if (Graphic.isOnSprite(spriteList_main.get(i)))
+					{
+						spriteList_main.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(0).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_proc1.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc1.get(i)))
+					{
+						spriteList_proc1.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(1).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_proc2.size(); i++)
+					if (Graphic.isOnSprite(spriteList_proc2.get(i)))
+					{
+						spriteList_proc2.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(2).getListProcedure().get(i).setColor(colorSelected);
+						
+					}
+				for (int i=0; i < spriteList_fork.size(); i++)
+					if (Graphic.isOnSprite(spriteList_fork.get(i)))
+					{
+						spriteList_fork.get(i).setColor(org_colorFromColor(colorSelected));
+						final_actionList.get(final_actionList.size()-1).getListProcedure().get(i).setColor(colorSelected);
+						
 					}
 			}
 		}
 
 		placeGui();
 	}
-    //pour le cas  "ifthenelse"
+	
+    private void checkDoubleFor(Procedure proc, List<Sprite> sprite_l) 
+    {
+		List<Prog> l = proc.getListProcedure();
+		
+		for (int i=0; i < l.size(); i++)
+			if (l.get(i) instanceof For && i != l.size()-1 && l.get(i+1) instanceof For)
+			{
+				l.remove(i+1);
+				sprite_l.remove(i+1);
+				break;
+			}
+	}
+
+    private org.jsfml.graphics.Color org_colorFromColor(Color c)
+    {
+    	if (c == Color.ROUGE)
+    		return org.jsfml.graphics.Color.RED;
+    	if (c == Color.BLEU)
+    		return org.jsfml.graphics.Color.CYAN;
+    	if (c == Color.VERT)
+    		return org.jsfml.graphics.Color.GREEN;
+
+    	return org.jsfml.graphics.Color.WHITE;
+    }
+    
+	//Pour le cas "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
 			if (Graphic.isOnSprite(colorList.get(i)))
 			{
-				colorSelected = i;
-				
 				if (i == 0)
+				{
+					colorSelected = Color.DEFAUT;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.WHITE);
 						actionList.get(j).setColor(Color.DEFAUT);
 					}
+				}
 				else if (i == 1)
+				{
+					colorSelected = Color.ROUGE;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.RED);
 						actionList.get(j).setColor(Color.ROUGE);
 					}
+				}
 				else if (i == 2)
+				{
+					colorSelected = Color.BLEU;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
 					}	
+				}
 				else
+				{
+					colorSelected = Color.VERT;
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
 						actionList.get(j).setColor(Color.VERT);
 					}
+				}
 			}
 	}
-    //si on a fini le niveau, on donne les etoiles pour evaluer
+	
+    //Si on a fini le niveau, on donne les etoiles pour evaluer
 	private void completeLevel()
 	{
 		if (level_completed == false && World.WORLD.isComplete())
@@ -560,7 +639,8 @@ public class Gui
 				next();
 		}
 	}
-    //retourner dans le menu_level
+	
+    //Retourner dans le menu_level
 	private void exit()
 	{
 		Graphic.SFML.speedUp(false);
@@ -573,7 +653,8 @@ public class Gui
 
 		exitGui = true;
 	}
-    //entrer dans le niveau suivant
+	
+    //Entrer dans le niveau suivant
 	private void next()
 	{
 	    if (Menu_Level.get_monde() == 0)
@@ -600,6 +681,7 @@ public class Gui
 //			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
+	
     /**
      * si on a les fenetres main proc1 proc2, les ecrans ne sont pas assez d'afficher toutes les fenetres avec fork, 
      * donc on donne un "offset" a la fenetre main pour afficher la fenetre fork.
@@ -621,10 +703,8 @@ public class Gui
     //Pour choisir la fenetre d'ajouter les actions
 	private void selecPanneau()
 	{
-		
 		if (Graphic.isOnSprite(sprite_main))
 		{
-			
 			sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
@@ -657,7 +737,7 @@ public class Gui
 		{    
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
-			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			
 			if (wichProc != final_actionList.size()-1)
@@ -673,8 +753,8 @@ public class Gui
 		}
 	}
 	
-	private void aide(List<Procedure> l){
-		
+	private void aide(List<Procedure> l)
+	{
 		//on vide les panneaux
 		spriteList_main.clear();
 		spriteList_proc1.clear();
@@ -703,6 +783,25 @@ public class Gui
 				else
 					spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
 			}
-		final_actionList = l;
+		
+		setReference(l);
+		final_actionList = Prog.clone_actionList(l);
+		if (final_actionList.size() == 0)
+			final_actionList.add(new Procedure(Color.DEFAUT, 0));
+	}
+
+	private void setReference(List<Procedure> l) 
+	{
+		for (int i=0; i < l.size(); i++)
+		{
+			List<Prog> liste = l.get(i).getListProcedure();
+			for (int j=0; j < liste.size(); j++)
+			{
+				if (liste.get(j) instanceof P1)
+					liste.set(j, l.get(1));
+				else if (liste.get(j) instanceof P2)
+					liste.set(j, l.get(2));
+			}
+		}
 	}
 }

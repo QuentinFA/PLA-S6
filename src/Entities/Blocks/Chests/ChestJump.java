@@ -9,7 +9,6 @@ import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.NormalActions.Jump;
-import UI.Graphic;
 
 /**
  * Chest contenant l'action jump pour introduire le concept d'objet de la programmation.
@@ -40,10 +39,5 @@ public class ChestJump extends Chest
 	{
 		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
 		sprite_action.setTextureRect(new IntRect(247, 1, 81, 81));
-	}
-	public void afficher() 
-	{
-		Graphic.SFML.draw(sprite);
-		Graphic.SFML.draw(sprite_action);
 	}
 }

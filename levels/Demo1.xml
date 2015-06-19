@@ -51,10 +51,23 @@
 		<action>Light</action>
 	</action_list>
 	<functions>
-		<main nb_action="9"/>
+		<main nb_action="12"/>
 	</functions>
 	<score>
 		<min>9</min>
 		<max>10</max>
 	</score>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+		</main_sol>
+	</solution>
 </map>

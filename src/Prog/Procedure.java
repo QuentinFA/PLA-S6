@@ -16,12 +16,6 @@ public class Procedure extends Prog
 	private int index;
 	public int getIndex() {return index;}
 	
-	public Procedure(Color c) 
-	{
-		couleur = c;
-		l = new ArrayList<Prog>();
-	}
-	
 	public Procedure(Color c, int i) 
 	{
 		couleur = c;
@@ -32,6 +26,7 @@ public class Procedure extends Prog
 	public Procedure(Procedure p) 
 	{
 		couleur = p.getColor();
+		index = p.getIndex();
 		l = new ArrayList<Prog>();
 		for(Prog pr : p.getListProcedure())
 		{

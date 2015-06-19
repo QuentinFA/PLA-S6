@@ -1,6 +1,5 @@
 package Prog.NormalActions;
 
-import Entities.Block;
 import Entities.Character;
 import Entities.Chest;
 import Entities.Entities;
@@ -22,13 +21,6 @@ public class OpenChest extends Action
 	private int frame = 0;
 	private int last_frame_phase1 = 20;
 	private Chest chestConcerned = null;
-	
-	private PHASE phase;
-	private enum PHASE
-	{
-		P1
-	}
-
 	
 	/**
 	 * Si un Chest se trouve en face du personnage p, celui-ci l'ouvre. C'est a dire, il le sauvegarde dans son attribue Chest. Le coffre disparait ensuite de la map.
@@ -62,13 +54,11 @@ public class OpenChest extends Action
 			}
 			else
 				return true;
-			phase = PHASE.P1;
 		}
 		
 		frame ++;
 		
-		if (phase == PHASE.P1)
-			chestConcerned.setAlpha((int) (255 - (float)frame/last_frame_phase1*255));
+		chestConcerned.setAlpha((int) (255 - (float)frame/last_frame_phase1*255));
 
 		if (frame == last_frame_phase1)
 		{

@@ -1,7 +1,6 @@
 package Entities.Blocks.Chests;
 
 import org.jsfml.graphics.IntRect;
-import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 import Entities.Chest;
@@ -10,10 +9,9 @@ import Game.Ressources.TEXTURE;
 import Prog.Color;
 import Prog.Coordonnees;
 import Prog.SpecialActions.DoubleJump;
-import UI.Graphic;
 
-public class ChestDoubleJump extends Chest {
-	
+public class ChestDoubleJump extends Chest 
+{
 	/**
 	 * Constructeur
 	 * @param pos : Position du Chest
@@ -35,10 +33,5 @@ public class ChestDoubleJump extends Chest {
 	{
 		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
 		sprite_action.setTextureRect(new IntRect(83, 83, 81, 81));
-	}
-	public void afficher() 
-	{
-		Graphic.SFML.draw(sprite);
-		Graphic.SFML.draw(sprite_action);
 	}
 }

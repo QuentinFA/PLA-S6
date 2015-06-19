@@ -58,10 +58,17 @@ NB : On est oblige d enlever P1 pour forcer l utilisation du For -->
 		<!-- <action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="3" />
+		<main nb_action="6" />
 	</functions>
 	<score>
 		<min>7</min>
 		<max>10</max>
 	</score>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT" loop="6">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+		</main_sol>
+	</solution>
 </map>

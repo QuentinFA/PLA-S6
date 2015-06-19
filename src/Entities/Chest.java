@@ -3,7 +3,7 @@ package Entities;
 import org.jsfml.graphics.Sprite;
 
 import Prog.Action;
-import Entities.Character;
+import UI.Graphic;
 
 /**
  * Classe permettant la representation du concept d'objet (voir doc). Elle herite de block car elle a les mêmes proprietes de base.
@@ -14,7 +14,7 @@ public abstract class Chest extends Block
 {
 	protected Action action;
 	protected Sprite sprite_action = new Sprite();
-	
+
 	public Sprite getBulle() {return sprite_action;}
 	
 	public Action getAction() {return action;}
@@ -25,11 +25,14 @@ public abstract class Chest extends Block
 	
 	public void initialiser() {sprite.setColor(org.jsfml.graphics.Color.WHITE);}
 	
+	public void afficher()
+	{
+		Graphic.SFML.draw(sprite);
+		Graphic.SFML.draw(sprite_action);
+	}
+	
 	/**
 	 * Utiliser un Chest equivaut a le ranger dans le personnage.
 	 */
-	public void perform(Character c) 
-	{
-		c.setChest(this);
-	}
+	public void perform(Character p) {p.setChest(this);}
 }
