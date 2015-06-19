@@ -27,11 +27,9 @@ import Prog.Coordonnees;
 import Prog.Orientation;
 import Prog.Procedure;
 import Prog.Prog;
-import Prog.TypeProcedure;
 import Prog.NormalActions.Forward;
 import UI.Gui;
 import UI.Menu;
-
 
 public class Reader 
 {

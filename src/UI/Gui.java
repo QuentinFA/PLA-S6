@@ -51,8 +51,7 @@ public class Gui
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
-	private Sprite selecteur_color = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
-	private int colorSelected = 0;
+	private Sprite cercleColor = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -86,13 +85,12 @@ public class Gui
 		for (int i=0; i < 4; i++)
 		{
 			Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
-			spr.setTextureRect(new IntRect(34+i*33, 1, 32, 32));
-			spr.setOrigin(spr.getTextureRect().width/2, spr.getTextureRect().height/2);
+			spr.setTextureRect(new IntRect(64+i*31, 1, 30, 30));
+			if (i > 0)
+				spr.setColor(new org.jsfml.graphics.Color(175, 175, 175));
 			colorList.add(spr);
 		}
-
-		selecteur_color.setTextureRect(new IntRect(1, 1, 32, 32));
-		selecteur_color.setOrigin(selecteur_color.getTextureRect().width/2, selecteur_color.getTextureRect().height/2);
+		cercleColor.setTextureRect(new IntRect(1, 1, 62, 62));
 
 		//EOG
 		sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
@@ -190,9 +188,12 @@ public class Gui
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
 
 		//Color
-		for (int i=0; i < colorList.size(); i++)
-			colorList.get(i).setPosition(new Vector2f(spriteList.get(0).getPosition().x + i * 40 + 10, spriteList.get(0).getPosition().y - 40));
-		selecteur_color.setPosition(new Vector2f(colorList.get(colorSelected).getPosition().x, colorList.get(colorSelected).getPosition().y));
+		cercleColor.setPosition(new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15));
+		colorList.get(0).setPosition(new Vector2f(cercleColor.getPosition().x + 1, cercleColor.getPosition().y + 1));
+		colorList.get(1).setPosition(new Vector2f(cercleColor.getPosition().x + 31, cercleColor.getPosition().y + 1));
+		colorList.get(2).setPosition(new Vector2f(cercleColor.getPosition().x + 1, cercleColor.getPosition().y + 31));
+		colorList.get(3).setPosition(new Vector2f(cercleColor.getPosition().x + 31, cercleColor.getPosition().y + 31));
+		
 
 		//Panneau
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
@@ -243,7 +244,7 @@ public class Gui
 		Graphic.SFML.draw(sprite_aide);
 		
 		//Color
-		Graphic.SFML.draw(selecteur_color);
+		Graphic.SFML.draw(cercleColor);
 		for (Sprite spr : colorList)
 			Graphic.SFML.draw(spr);
 		
@@ -455,44 +456,35 @@ public class Gui
 		for (int i=0; i < colorList.size(); i++)
 			if (Graphic.isOnSprite(colorList.get(i)))
 			{
-				colorSelected = i;
-
-				if (colorSelected == 0)
-				{
+				for (int j=0; j < colorList.size(); j++)
+					colorList.get(j).setColor(new org.jsfml.graphics.Color(175, 175, 175));
+				colorList.get(i).setColor(org.jsfml.graphics.Color.WHITE);
+				
+				if (i == 0)
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.WHITE);
 						actionList.get(j).setColor(Color.DEFAUT);
 					}
-					selecteur_color.setRotation(0);
-				}
-				else if (colorSelected == 1)
-				{
+				else if (i == 1)
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.RED);
 						actionList.get(j).setColor(Color.ROUGE);
 					}
-					selecteur_color.setRotation(90);
-				}
-				else if (colorSelected == 2)
-				{
-					for (int j=0; j < spriteList.size(); j++)
-					{
-						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
-						actionList.get(j).setColor(Color.VERT);
-					}
-					selecteur_color.setRotation(180);
-				}
-				else
-				{
+				else if (i == 2)
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
 					}
-					selecteur_color.setRotation(270);
-				}
+				else
+					for (int j=0; j < spriteList.size(); j++)
+					{
+						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
+						actionList.get(j).setColor(Color.VERT);
+					}
+					
 			}
 	}
 
