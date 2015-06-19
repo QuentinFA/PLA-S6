@@ -48,7 +48,6 @@ public class Gui
 	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 	private boolean level_completed = false;
 	private boolean is_fast_forward = false;
-	private boolean afficher_main = true;
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
@@ -593,11 +592,8 @@ public class Gui
 			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
-			if(!afficher_main)
-			{
-				final_offset = 0;
-			    afficher_main = true;
-			}
+			
+			final_offset = 0;
 			wichProc = 0;
 		}
 		if (sprite_proc1 != null && Graphic.isOnSprite(sprite_proc1))
@@ -621,22 +617,22 @@ public class Gui
 			wichProc = 2;
 		}
 		if (sprite_fork != null && Graphic.isOnSprite(sprite_fork))
-		{   
-			   
+		{    
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
-            if(afficher_main)
+			
+			if (wichProc != final_actionList.size()-1)
 			{
-            	final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
-					- (int)(Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y);
-			if (final_offset < 0)
-				final_offset = 0;
-			  afficher_main = false;
+	            final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
+						- (int)(Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y);
+	            
+				if (final_offset < 0)
+					final_offset = 0;
 			}
+			 
 			wichProc = final_actionList.size()-1;
 		}
-
 	}
 }
