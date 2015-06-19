@@ -51,7 +51,7 @@ public class Gui
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
-	private Sprite cercleColor = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
+	private int colorSelected = 0;
 
 	private List<Sprite> spriteList = new ArrayList<Sprite>();
 	private List<Sprite> spriteList_main = new ArrayList<Sprite>();
@@ -85,12 +85,9 @@ public class Gui
 		for (int i=0; i < 4; i++)
 		{
 			Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHOIX_COULEUR));
-			spr.setTextureRect(new IntRect(64+i*31, 1, 30, 30));
-			if (i > 0)
-				spr.setColor(new org.jsfml.graphics.Color(175, 175, 175));
+			spr.setTextureRect(new IntRect(1+i*33, 1, 32, 32));
 			colorList.add(spr);
 		}
-		cercleColor.setTextureRect(new IntRect(1, 1, 62, 62));
 
 		//EOG
 		sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
@@ -188,13 +185,27 @@ public class Gui
 			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
 
 		//Color
-		cercleColor.setPosition(new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15));
-		colorList.get(0).setPosition(new Vector2f(cercleColor.getPosition().x + 1, cercleColor.getPosition().y + 1));
-		colorList.get(1).setPosition(new Vector2f(cercleColor.getPosition().x + 31, cercleColor.getPosition().y + 1));
-		colorList.get(2).setPosition(new Vector2f(cercleColor.getPosition().x + 1, cercleColor.getPosition().y + 31));
-		colorList.get(3).setPosition(new Vector2f(cercleColor.getPosition().x + 31, cercleColor.getPosition().y + 31));
+		Vector2f center = new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15);
+		if (colorSelected == 0)
+			colorList.get(0).setPosition(new Vector2f(center.x + 1 - 7, center.y + 1 - 7));
+		else
+			colorList.get(0).setPosition(new Vector2f(center.x + 1, center.y + 1));
 		
-
+		if (colorSelected == 1)
+			colorList.get(1).setPosition(new Vector2f(center.x + 32 + 7, center.y + 1 - 7));
+		else
+			colorList.get(1).setPosition(new Vector2f(center.x + 32, center.y + 1));
+		
+		if (colorSelected == 2)
+			colorList.get(2).setPosition(new Vector2f(center.x + 32 + 7, center.y + 32 + 7));
+		else
+			colorList.get(2).setPosition(new Vector2f(center.x + 32, center.y + 32));
+		
+		if (colorSelected == 3)
+			colorList.get(3).setPosition(new Vector2f(center.x + 1 - 7, center.y + 32 + 7));
+		else
+			colorList.get(3).setPosition(new Vector2f(center.x + 1, center.y + 32));
+		
 		//Panneau
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20 - offset));
@@ -244,7 +255,6 @@ public class Gui
 		Graphic.SFML.draw(sprite_aide);
 		
 		//Color
-		Graphic.SFML.draw(cercleColor);
 		for (Sprite spr : colorList)
 			Graphic.SFML.draw(spr);
 		
@@ -455,9 +465,7 @@ public class Gui
 		for (int i=0; i < colorList.size(); i++)
 			if (Graphic.isOnSprite(colorList.get(i)))
 			{
-				for (int j=0; j < colorList.size(); j++)
-					colorList.get(j).setColor(new org.jsfml.graphics.Color(175, 175, 175));
-				colorList.get(i).setColor(org.jsfml.graphics.Color.WHITE);
+				colorSelected = i;
 				
 				if (i == 0)
 					for (int j=0; j < spriteList.size(); j++)
@@ -476,14 +484,13 @@ public class Gui
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.CYAN);
 						actionList.get(j).setColor(Color.BLEU);
-					}
+					}	
 				else
 					for (int j=0; j < spriteList.size(); j++)
 					{
 						spriteList.get(j).setColor(org.jsfml.graphics.Color.GREEN);
 						actionList.get(j).setColor(Color.VERT);
 					}
-					
 			}
 	}
     //si on a fini le niveau, on donne les etoiles pour evaluer
