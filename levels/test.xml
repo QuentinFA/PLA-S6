@@ -19,7 +19,7 @@
 			<x>0</x>
 			<y>3</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="BlueBlock">
 			<x>0</x>
 			<y>4</y>
 		</block>
@@ -94,22 +94,6 @@
 			<x>5</x>
 			<y>5</y>
 		</block>
-		<block type="NormalBlock">
-			<x>5</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-1</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>-1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>6</x>
-			<y>0</y>
-		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
@@ -120,6 +104,7 @@
 		<action>P1</action> 
 		<action>P2</action> 
 		<action>Fork</action>
+		<action>Pipette</action>
 	</action_list>
 	<functions>
 		<main nb_action="10" />
