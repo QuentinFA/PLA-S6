@@ -339,6 +339,11 @@ public class Gui
 					sprite_fast_forward.setTextureRect(new IntRect(130, 1, 127, 127));
 				}
 			}
+			
+			/*if(Graphic.isOnSprite(sprite_aide))
+			{
+				
+			}*/
 		}
 
 		if (exitGui)
@@ -348,9 +353,6 @@ public class Gui
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{	
-				//if(Graphic.isOnSprite(sprite_aide))
-				//	World.WORLD.getActionListSoluce().ajoute_actions();
-				//else{
 				selecPanneau();
 				selecColor();
 				
