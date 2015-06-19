@@ -705,5 +705,7 @@ public class Gui
 			}
 		
 		final_actionList = Prog.clone_actionList(l);
+		if (final_actionList.size() == 0)
+			final_actionList.add(new Procedure(Color.DEFAUT, 0));
 	}
 }
