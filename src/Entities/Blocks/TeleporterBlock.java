@@ -14,8 +14,15 @@ import Game.World;
 import Prog.Coordonnees;
 import UI.Graphic;
 
+/**
+ * Bloc illustrant le concept de pointeur. Permet de se teleporter sur une case precise.
+ * @author edwin
+ *
+ */
 public class TeleporterBlock extends Block
 {
+	//TODO : commente ta fonction Anna stp
+	
 	private static Stack<org.jsfml.graphics.Color> colorTaken;
 	public static void initialiseStack()
 	{

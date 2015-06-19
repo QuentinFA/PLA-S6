@@ -5,22 +5,33 @@ import java.util.List;
 
 import org.jsfml.graphics.Sprite;
 
+/**
+ * Permet d'identifier les differentes procedures (Main,P1,P2, Fork...)
+ * @author edwin
+ *
+ */
 public class Procedure extends Prog 
 {
-	private List<Prog> l;
+	private List<Prog> l; //Liste des procedures et actions contenu dans cette Procedure.
 	private int index;
 	public int getIndex() {return index;}
 	
+	public Procedure(Color c) 
+	{
+		couleur = c;
+		l = new ArrayList<Prog>();
+	}
+	
 	public Procedure(Color c, int i) 
 	{
-		super(c);
+		couleur = c;
 		index = i;
 		l = new ArrayList<Prog>();
 	}
 	
 	public Procedure(Procedure p) 
 	{
-		super(p.getColor());
+		couleur = p.getColor();
 		l = new ArrayList<Prog>();
 		for(Prog pr : p.getListProcedure())
 		{

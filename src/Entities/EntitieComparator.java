@@ -2,7 +2,7 @@
 package Entities;
 
 import java.util.Comparator;
-
+//TODO : commentaires
 public class EntitieComparator implements Comparator<Entities> 
 {
 	/* @Override : 

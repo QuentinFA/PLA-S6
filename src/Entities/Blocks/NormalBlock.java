@@ -8,6 +8,11 @@ import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Prog.Coordonnees;
 
+/**
+ * Bloc de base quelconque. Represente par un carre gris.
+ * @author edwin
+ *
+ */
 public class NormalBlock extends Block 
 {
 	public NormalBlock(Coordonnees pos)
@@ -18,5 +23,8 @@ public class NormalBlock extends Block
 		coord = pos;
 	}
 	
+	/**
+	 * Aucun effet.
+	 */
 	public void perform(Character p) {}
 }

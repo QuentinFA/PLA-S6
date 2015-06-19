@@ -9,19 +9,24 @@ import Game.Ressources.TEXTURE;
 import Prog.Coordonnees;
 import UI.Graphic;
 
+/**
+ * Bloc de lumiere. Il faut allumer tout les blocks de lumieres pour terminer un niveau.
+ * @author edwin
+ *
+ */
 public class LightBlock extends Block
 {
-	private boolean isOn = false;
+	private boolean isOn;
 	
 	/**
-	 * Cree un bloc lumiere eteind
+	 * Cree un bloc lumiere eteint
 	 * @param pos Coordonnees de ce bloc
 	 */
 	public LightBlock(Coordonnees pos)
 	{
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		coord = pos;
-	
+		isOn = false;
 		initialiser();
 	}
 	
@@ -68,5 +73,8 @@ public class LightBlock extends Block
 			sprite.setTextureRect(new IntRect(1, 83, 81, 81));
 	}
 	
+	/**
+	 * Appele par l'action Light. Allume le bloc si il est eteint ou l'inverse dans le cas contraire.
+	 */
 	public void perform(Character p) {reverseLight();}
 }

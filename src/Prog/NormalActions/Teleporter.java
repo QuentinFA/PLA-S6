@@ -8,12 +8,20 @@ import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
 
+/** 
+ * Action pour teleporter un personnage
+ * @author edwin
+ *
+ */
 public class Teleporter extends Action
 {
-	public Teleporter(Color c) {super(c);}
+	public Teleporter(Color c) {couleur = c;}
 	private int frame = 0;
 	private int last_frame = 18;
 	
+	/**
+	 * Si le personnage p se trouve sur un bloc teleporteur, il est teleporte sur la case indique par ce bloc.
+	 */
 	public boolean execute(Character p)
 	{
 		if (frame == 0) //Initialisation

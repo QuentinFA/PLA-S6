@@ -4,9 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import Entities.Character;
 
-
+/**
+ * Classe permettant de reguler le deroulement des actions des personnages.
+ * @author edwin
+ *
+ */
 public class Controler 
 {
+	/**
+	 * Sous-Classe permettant de faire une liste des personnages du jeu en sachant s'ils sont en train de travailler ou non.
+	 * @author edwin
+	 *
+	 */
 	public class PersonnageTravaille 
 	{
 		public Character p;
@@ -19,9 +28,13 @@ public class Controler
 		}
 	}
 	
-	List<PersonnageTravaille> lPT = new ArrayList<PersonnageTravaille>();
+	List<PersonnageTravaille> lPT = new ArrayList<PersonnageTravaille>(); //Liste permettant de savoir quel Character travaille ou non.
 	public static Controler CONTROLER = null;
 	
+	/**
+	 * Ajoute un personnage dans la liste de PersonnageTravaille. Si celui-ci est deja dans la liste, cela met juste a jour pour dire qu'il ne travaille plus.
+	 * @param p : Personnage a ajouter.
+	 */
 	public void addCharacter(Character p)
 	{
 		for (PersonnageTravaille pt : lPT)
@@ -34,11 +47,18 @@ public class Controler
 		lPT.add(new PersonnageTravaille(p, false));
 	}
 	
+	/** 
+	 * Si un personnage demande une action effectuer, on l'ajoute a la liste de PersonnageTravaille en disant qu'il ne travaille plus.
+	 * @param p
+	 */
 	public void workOver(Character p)
 	{
 		addCharacter(p);
 	}
 	
+	/**
+	 * Tourne en boucle. Si tout les personnages ont fini de travailler, leur demande de faire leur prochaine action. Gère aussi la création des clones.
+	 */
 	public void manage() 
 	{	
 		for (PersonnageTravaille pt : lPT)

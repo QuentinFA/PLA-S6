@@ -3,7 +3,7 @@ package Entities.Blocks;
 import java.util.Comparator;
 
 import Entities.Block;
-
+//TODO : commentaires
 public class BlockComparator implements Comparator<Block>
 {
 	@Override

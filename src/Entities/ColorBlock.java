@@ -1,16 +1,11 @@
 package Entities;
 
-import Prog.Color;
-
-
+/**
+ * Classe permettant d'identifier les blocs de couleurs avec l'action Pipette	
+ * @author edwin
+ *
+ */
 public abstract class ColorBlock extends Block
 {
-	protected Color color;
-	protected int sprite_pos;
 
-	@Override
-	public void perform(Character p)
-	{
-		p.setColor(this.color);
-	}
 }

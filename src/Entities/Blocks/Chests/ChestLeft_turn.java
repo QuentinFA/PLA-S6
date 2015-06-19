@@ -12,9 +12,20 @@ import Prog.Coordonnees;
 import Prog.NormalActions.Left_turn;
 import UI.Graphic;
 
+/**
+ * Chest contenant l'action left_turn pour introduire le concept d'objet de la programmation.
+ * @author edwin
+ *
+ */
+
 public class ChestLeft_turn extends Chest 
 {
 	Sprite sprite_action = new Sprite();
+	
+	/**
+	 * Constructeur
+	 * @param pos : Position du Chest
+	 */
 	public ChestLeft_turn(Coordonnees pos) 
 	{
 		this.coord = pos;
