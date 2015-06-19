@@ -342,8 +342,7 @@ public class Gui
 			
 			if(Graphic.isOnSprite(sprite_aide))
 			{
-				List<Procedure> lSol;
-				lSol = World.WORLD.getListSoluce();
+				//aide(World.WORLD.getListSoluce());
 			}
 		}
 
