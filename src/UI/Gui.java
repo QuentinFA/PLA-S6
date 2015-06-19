@@ -169,7 +169,7 @@ public class Gui
 			spriteList.add(spr);
 		}
 	}
-
+    //donner les coordonnées a tous les sprites.
 	private void placeGui()
 	{
 		scroll();
@@ -447,7 +447,7 @@ public class Gui
 
 		placeGui();
 	}
-
+    //pour le cas  "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
@@ -481,7 +481,7 @@ public class Gui
 					}
 			}
 	}
-
+    //si on a fini le niveau, on donne les etoiles pour evaluer
 	private void completeLevel()
 	{
 		if (level_completed == false && World.WORLD.isComplete())
@@ -558,7 +558,10 @@ public class Gui
 //			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
-
+    /**
+     * si on a les fenetres main proc1 proc2, les ecrans ne sont pas assez d'afficher toutes les fenetres avec fork, 
+     * donc on donne un "offset" a la fenetre main pour afficher la fenetre fork.
+     */
 	private void scroll()
 	{
 		if (offset < final_offset)
@@ -572,10 +575,11 @@ public class Gui
 			if (offset < final_offset) offset = final_offset;
 		}
 	}
-
+	
+    //Pour choisir la fenetre d'ajouter les actions
 	private void selecPanneau()
 	{
-		//Pour choisir la fenetre d'ajouter les actions
+		
 		if (Graphic.isOnSprite(sprite_main))
 		{
 			sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));

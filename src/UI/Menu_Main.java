@@ -38,7 +38,7 @@ public class Menu_Main extends Menu
 		
 		placeMenu();
 	}
-	
+	//donner les coordonnées aux boutons
 	public void placeMenu()
 	{
 		boutonPlay.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x, Graphic.SFML.getCenterCamera().y + Graphic.SFML.getSizeCamera().y/4.f));
