@@ -31,6 +31,7 @@ import Prog.NormalActions.Forward;
 import UI.Gui;
 import UI.Menu;
 
+
 public class Reader 
 {
 	public static final String PACKAGE_ACTION = Forward.class.getPackage().getName() + ".";
@@ -222,32 +223,18 @@ public class Reader
 				for(Element proc : e.getChildren())
 				{
 					try{
-						if(proc.getName().equals(BeaconXML.B_MAIN_SOL))
+						if(proc.getName().equals(BeaconXML.B_MAIN_SOL) || proc.getName().equals(BeaconXML.B_PROC1_SOL) || proc.getName().equals(BeaconXML.B_PROC2_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,0));
-							i++;
-						}
-						else if(proc.getName().equals(BeaconXML.B_PROC1_SOL))
-						{
-							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,1));
-							i++;
-						}
-						else if (proc.getName().equals(BeaconXML.B_PROC2_SOL))
-						{
-							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,2));
+							Constructor<?> constructor = c.getConstructor(Color.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
 							i++;
 						}
 						else if(proc.getName().equals(BeaconXML.B_FORK_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,3));
+							Constructor<?> constructor = c.getConstructor(Color.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
 							i++;
 						}
 					}
@@ -260,8 +247,8 @@ public class Reader
 						try {
 							//Recuperation de la couleur dans xml
 							String coolraoul = act.getAttribute(BeaconXML.B_ACTION_SOL_COLOR).getValue();
-							Color cool = Color.DEFAUT;
-							cool = Color.stringToColor(coolraoul,cool);
+							Color erdcjg = Color.DEFAUT;
+							erdcjg.stringToColor(coolraoul);
 							
 							//Recuperation de la valeur du for
 							Attribute des = act.getAttribute(BeaconXML.B_FOR_LOOP);
@@ -270,14 +257,14 @@ public class Reader
 							if( des == null){
 								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
 								Constructor<?> constructor = c.getConstructor(Color.class);
-								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(cool));
+								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(erdcjg));
 							}
 							else
 							{
 								int valDes = Integer.valueOf(des.getValue());
 								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
 								Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(cool,valDes));
+								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(erdcjg,valDes));
 							}
 						} 
 						catch (ClassNotFoundException | NoSuchMethodException | SecurityException| InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){

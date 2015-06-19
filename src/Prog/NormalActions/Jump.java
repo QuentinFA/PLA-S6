@@ -10,9 +10,14 @@ import java.lang.Math;
 
 import org.jsfml.graphics.IntRect;
 
+/**
+ *  Action pour faire sauter le personnage
+ * @author edwin
+ *
+ */
 public class Jump extends Action
 {
-	public Jump(Color c) {super(c);}
+	public Jump(Color c) {couleur = c;}
 	private int frame = 0;
 	
 	private int last_frame_phase0 = 9;
@@ -35,6 +40,9 @@ public class Jump extends Action
 		CHUTE
 	}
 	
+	/** 
+	 * Fait sauter le personnage p si c'est possible
+	 */
 	public boolean execute(Character p)
 	{
 		if (frame == last_frame_phase0) //Phase verticale

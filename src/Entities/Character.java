@@ -18,34 +18,52 @@ import Prog.Procedure;
 import Prog.Prog;
 import UI.Gui;
 
+/**
+ * Classe des personnages du jeu (main ou fork). Represente dans le jeu par un chat.
+ * @author edwin
+ *
+ */
 public class Character extends Entities
 {	
-	private int orientation; // Cf Orientation.java
-	private Color couleur = Color.DEFAUT;
-	private Chest coffre = null;
-	private Action actionCourante = null;
-	private int compteurActions;
-	private List<Procedure> actionList;
+	private int orientation; 
+	private Color couleur;
+	private Chest coffre;
+	private Action actionCourante;
+	private int compteurActions;	//Permet de donner le nombre d'étoiles à la fin de la resolution d'un niveau
+	private List<Procedure> actionList; //Liste des procedures que le personnage effectue
 	
-	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>();
-	Stack<Integer> pileFor = new Stack<Integer>();
+	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>(); //Pile permettant de savoir dans l'interpreteur ou en est le personnage dans ses actions
+	Stack<Integer> pileFor = new Stack<Integer>(); //Pile pour savoir a quel for le personnage est
 
+	/**
+	 * Constructeur d'un personnage
+	 * @param pos : Position initiale du personnage
+	 * @param ori : Orientation du personnage
+	 */
 	public Character(Coordonnees pos, int ori) 
 	{
 		coord = pos;
 		orientation = ori;
 		compteurActions = 0;
-		
+		couleur = Color.DEFAUT;
+		coffre  = null;
+		actionCourante = null;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
-	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(247, 329+82*orientation, 81, 81));}
-
+	
+	
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
+	
 	public int getOrientation() {return orientation;}
 	public void setOrientation(int ori) {orientation = ori;}
+	public void setTextureOrientation() {sprite.setTextureRect(new IntRect(247, 329+82*orientation, 81, 81));}
 	
+	/**
+	 * Change la couleur du personnage. Utilise pour le ifthen/else
+	 * @param c Couleur que l'on va donner au personnage
+	 */
 	public void setColor(Color c) 
 	{
 		couleur = c;
@@ -58,7 +76,6 @@ public class Character extends Entities
 		else
 			this.sprite.setColor(org.jsfml.graphics.Color.WHITE);
 	}
-
 	public Color getColor() {return couleur;}
 	
 	public Chest getChest() {return coffre;}
@@ -70,6 +87,9 @@ public class Character extends Entities
 	public void incrementNbActions() {compteurActions++;}
 	public int getNbActions() {return compteurActions;}
 	
+	/**
+	 * Initialise la liste de procedures du personnage et sa pile. Detecte si le personnage est un personnage fork ou non (pas la meme procedure de depart)
+	 */
 	public void setMain() 
 	{
 		actionList = Prog.clone_actionList(Gui.GUI.getFinalActionList());
@@ -90,6 +110,11 @@ public class Character extends Entities
 
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
 
+	/**
+	 * Fonction appele en boucle pour chaque personnage. Si on est en train de jouer et qu'aucune action n'est en cours, le personnage demande au control-
+	 * ler si il peut tenter de faire une action (workOver). 
+	 * @return  Inutile
+	 */
 	public boolean gerer() 
 	{
 		if (World.WORLD.isPlaying())
@@ -112,6 +137,9 @@ public class Character extends Entities
 		return true;
 	}
 
+	/**
+	 * Fonction appele par le controler pour dire au personnage qu'il peut effectuer sa prochaine action. Celui-ci demande a l'interpreteur qu'elle est cette prochaine action et si elle existe, l'execute
+	 */
 	public void next()
 	{
 		Action a=null;

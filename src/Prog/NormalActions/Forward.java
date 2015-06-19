@@ -8,9 +8,14 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Orientation;
 
+/**
+ * Action avance pour le personnage
+ * @author edwin
+ *
+ */
 public class Forward extends Action
 {
-	public Forward(Color c) {super(c);}
+	public Forward(Color c) {couleur = c;}
 	private int frame = 0;
 	private int last_frame_phase1 = 20;
 	
@@ -24,6 +29,9 @@ public class Forward extends Action
 		CHUTE
 	}
 
+	/**
+	 * Avance le personnage p si c'est possible
+	 */
 	public boolean execute(Character p)
 	{
 		if (frame == 0) //Initialisation
@@ -101,6 +109,7 @@ public class Forward extends Action
 	}
 	
 	private int anim = 0;
+	
 	private void animation(Character p)
 	{
 		if (anim % 5 == 0)

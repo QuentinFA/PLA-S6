@@ -1,5 +1,6 @@
 package Prog;
 
+//TODO : Commente Anna stp
 public class Coordation {
 	private Coordonnees coord;
 	private int orientation;

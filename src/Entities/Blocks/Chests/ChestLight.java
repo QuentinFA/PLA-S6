@@ -12,9 +12,20 @@ import Prog.Coordonnees;
 import Prog.NormalActions.Light;
 import UI.Graphic;
 
+/**
+ * Chest contenant l'action Light pour introduire le concept d'objet de la programmation.
+ * @author edwin
+ *
+ */
+
 public class ChestLight extends Chest 
 {
 	Sprite sprite_action = new Sprite();
+	
+	/**
+	 * Constructeur
+	 * @param pos : Position du Chest
+	 */
 	public ChestLight(Coordonnees pos) 
 	{
 		this.coord = pos;

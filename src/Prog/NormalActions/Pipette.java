@@ -9,13 +9,18 @@ import Prog.Action;
 import Prog.Color;
 import Prog.Coordonnees;
 
+/** 
+ * Action pour changer la couleur d'un personnage.
+ * @author edwin
+ *
+ */
 public class Pipette extends Action{
 	
-	public Pipette(Color c)
-	{
-		super(c);
-	}
-
+	public Pipette(Color c){couleur = c;}
+	
+	/**
+	 * Colorie le personnage de la couleur du bloc sous lui si c'est un bloc de couleur
+	 */
 	public boolean execute(Character p) 
 	{
 		Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));

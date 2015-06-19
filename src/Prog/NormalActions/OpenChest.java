@@ -10,10 +10,18 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Orientation;
 
+/**
+ * Permet d'ouvrir un coffre
+ * @author edwin
+ *
+ */
 public class OpenChest extends Action
 {
-	public OpenChest(Color c) {super(c);}
+	public OpenChest(Color c) {couleur = c;}
 	
+	/**
+	 * Si un Chest se trouve en face du personnage p, celui-ci l'ouvre. C'est a dire, il le sauvegarde dans son attribue Chest. Le coffre disparait ensuite de la map.
+	 */
 	public boolean execute(Character p)
 	{
 		Coordonnees coord = p.getCoord();

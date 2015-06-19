@@ -1,5 +1,10 @@
 package Prog;
 
+/**
+ * Coordonnees des Entities. Permet de les afficher a l'ecran
+ * @author edwin
+ *
+ */
 public class Coordonnees 
 {
 	private float x; //Cordonnee x

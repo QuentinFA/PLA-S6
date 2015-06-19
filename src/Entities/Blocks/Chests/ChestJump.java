@@ -12,9 +12,20 @@ import Prog.Coordonnees;
 import Prog.NormalActions.Jump;
 import UI.Graphic;
 
+/**
+ * Chest contenant l'action jump pour introduire le concept d'objet de la programmation.
+ * @author edwin
+ *
+ */
+
 public class ChestJump extends Chest 
 {
 	Sprite sprite_action = new Sprite();
+	
+	/**
+	 * Constructeur
+	 * @param pos : Position du Chest
+	 */
 	public ChestJump(Coordonnees pos) 
 	{
 		this.coord = pos;
