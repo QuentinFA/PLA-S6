@@ -12,7 +12,7 @@ import org.jsfml.graphics.IntRect;
 
 public class Jump extends Action
 {
-	public Jump(Color c) {couleur = c;}
+	public Jump(Color c) {super(c);}
 	private int frame = 0;
 	
 	private int last_frame_phase0 = 9;

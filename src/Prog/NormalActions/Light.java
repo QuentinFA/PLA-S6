@@ -9,7 +9,7 @@ import Prog.Coordonnees;
 
 public class Light extends Action
 {
-	public Light(Color c) {couleur = c;}
+	public Light(Color c) {super(c);}
 	private int frame = 0;
 	private int last_frame = 18;
 

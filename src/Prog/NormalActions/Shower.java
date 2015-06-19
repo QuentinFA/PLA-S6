@@ -6,7 +6,7 @@ import Prog.Color;
 
 public class Shower extends Action 
 {
-		public Shower(Color c) {couleur = c;}
+		public Shower(Color c) {super(c);}
 		
 		public boolean execute(Character p) 
 		{

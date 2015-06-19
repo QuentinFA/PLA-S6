@@ -5,7 +5,7 @@ import Prog.Color;
 
 public class Left_turn extends Action
 {
-	public Left_turn(Color c) {couleur = c;}
+	public Left_turn(Color c) {super(c);}
 
 	public boolean execute(Character p) 
 	{

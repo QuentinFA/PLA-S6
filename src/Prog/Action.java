@@ -10,6 +10,11 @@ public abstract class Action extends Prog
 	public Sprite getSprite() {return sprite;}
 	public void setSprite(Sprite spr) {sprite = spr;}
 	
+	public Action(Color c)
+	{
+		this.couleur = c;
+	}
+	
 	/**
 	 * Application d'une action pour un personnage
 	 * @param p Le personnage dont il est question

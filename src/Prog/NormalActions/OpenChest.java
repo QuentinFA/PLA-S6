@@ -12,7 +12,7 @@ import Prog.Orientation;
 
 public class OpenChest extends Action
 {
-	public OpenChest(Color c) {couleur = c;}
+	public OpenChest(Color c) {super(c);}
 	
 	public boolean execute(Character p)
 	{
