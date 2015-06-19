@@ -18,16 +18,14 @@ public class UseChest extends Action
 	 */
 	public boolean execute(Character p) 
 	{
-
 		Chest c = p.getChest();
 		if (c != null) 
 		{
 			Action a = c.getAction();
+			//a.setSprite(c.getSprite());
 			p.setActionCourante(null);
 			p.use_Action(a);
-			//a.execute(p);
-			//p.setChest(null); //TODO A réflechir
 		}
-				return false;
+		return false;
 	}
 }

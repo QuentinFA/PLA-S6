@@ -467,24 +467,28 @@ public class Gui
 					{
 						spriteList_main.remove(i);
 						final_actionList.get(0).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(0), spriteList_main);
 					}
 				for (int i=0; i < spriteList_proc1.size(); i++)
 					if (Graphic.isOnSprite(spriteList_proc1.get(i)))
 					{
 						spriteList_proc1.remove(i);
 						final_actionList.get(1).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(1), spriteList_proc1);
 					}
 				for (int i=0; i < spriteList_proc2.size(); i++)
 					if (Graphic.isOnSprite(spriteList_proc2.get(i)))
 					{
 						spriteList_proc2.remove(i);
 						final_actionList.get(2).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(2), spriteList_proc2);
 					}
 				for (int i=0; i < spriteList_fork.size(); i++)
 					if (Graphic.isOnSprite(spriteList_fork.get(i)))
 					{
 						spriteList_fork.remove(i);
 						final_actionList.get(final_actionList.size()-1).getListProcedure().remove(i);
+						checkDoubleFor(final_actionList.get(final_actionList.size()-1), spriteList_fork);
 					}
 			}
 		}
@@ -492,7 +496,20 @@ public class Gui
 		placeGui();
 	}
 	
-    //Pour le cas "ifthenelse"
+    private void checkDoubleFor(Procedure proc, List<Sprite> sprite_l) 
+    {
+		List<Prog> l = proc.getListProcedure();
+		
+		for (int i=0; i < l.size(); i++)
+			if (l.get(i) instanceof For && i != l.size()-1 && l.get(i+1) instanceof For)
+			{
+				l.remove(i+1);
+				sprite_l.remove(i+1);
+				break;
+			}
+	}
+
+	//Pour le cas "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
