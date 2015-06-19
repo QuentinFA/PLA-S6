@@ -6,7 +6,7 @@ import Prog.Color;
 
 public class Break extends Action 
 {
-	public Break(Color c) {couleur = c;} //Sert a etre identifier dans l'interpreteur
+	public Break(Color c) {super(c);} //Sert a etre identifier dans l'interpreteur
 	
 	public boolean execute(Character p) {return false;}
 }

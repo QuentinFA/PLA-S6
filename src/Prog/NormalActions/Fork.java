@@ -8,7 +8,7 @@ import Prog.Coordonnees;
 
 public class Fork extends Action{
 	
-	public Fork(Color c) {couleur = c;}
+	public Fork(Color c) {super(c);}
 	
 	public boolean execute(Character p) 
 	{

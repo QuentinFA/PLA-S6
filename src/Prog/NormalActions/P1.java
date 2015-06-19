@@ -11,6 +11,6 @@ public class P1 extends Action{
 
 		return false;
 	}
-	public P1(Color c) {couleur = c;}
+	public P1(Color c) {super(c);}
 
 }

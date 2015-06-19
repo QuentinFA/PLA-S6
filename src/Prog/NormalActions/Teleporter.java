@@ -10,7 +10,7 @@ import Prog.Coordonnees;
 
 public class Teleporter extends Action
 {
-	public Teleporter(Color c) {couleur = c;}
+	public Teleporter(Color c) {super(c);}
 	private int frame = 0;
 	private int last_frame = 18;
 	
