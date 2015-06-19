@@ -113,7 +113,7 @@ public class Gui
 
 		placeGui();
 	}
-
+    //charger les choix des actions
 	public void load_sprite()
 	{
 		for (int i = 0; i < actionList.size(); i++)
@@ -505,7 +505,7 @@ public class Gui
 					sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
 					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x-30-(1-i)*100 , Graphic.SFML.getCenterCamera().y-100);					
 				}
-			else //3			
+			else //1 etoile			
 			    {
 				    sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));				
 				    sprite_star.get(0).setPosition(Graphic.SFML.getCenterCamera().x-30-100 , Graphic.SFML.getCenterCamera().y-100);
@@ -522,7 +522,7 @@ public class Gui
 				next();
 		}
 	}
-
+    //retourner dans le menu_level
 	private void exit()
 	{
 		Graphic.SFML.speedUp(false);
@@ -535,7 +535,7 @@ public class Gui
 
 		exitGui = true;
 	}
-
+    //entrer dans le niveau suivant
 	private void next()
 	{
 		if (Menu_Level.get_monde() == 0)
@@ -543,9 +543,19 @@ public class Gui
 		else if (Menu_Level.get_monde() == 1)
 			Reader.read("levels/levelprocedure"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 2)
-			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 3)
 			Reader.read("levels/levelfor"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 3)
+			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
+//		else if(Menu_Level.get_monde() == 4)
+//			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 5)
+			Reader.read("levels/levelpoint"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 6)
+			Reader.read("levels/levelfork"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 7)
+			Reader.read("levels/levelchest"+"-"+(Menu_Level.get_level()+2)+".xml");
+//		else if(Menu_Level.get_monde() == 8)
+//			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
 
