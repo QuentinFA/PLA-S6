@@ -96,7 +96,9 @@ public class DoubleJump extends Action{
 			check2.incrZ(-1);
 			Coordonnees check3 = new Coordonnees(check2);
 			check3.incrZ(-1);
-			if (World.WORLD.isValidPosition(check) && (!World.WORLD.isValidPosition(check2) || World.WORLD.isValidPosition(check3)))
+			Coordonnees check4 = new Coordonnees(check3);
+			check4.incrZ(-1);
+			if (World.WORLD.isValidPosition(check) && (!World.WORLD.isValidPosition(check2) || !World.WORLD.isValidPosition(check3) || World.WORLD.isValidPosition(check4)))
 			{
 				futur_coord = check;
 				static_jump = false;
