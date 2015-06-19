@@ -228,7 +228,6 @@ public class Reader
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
 							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
 							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,index));
-							index++;
 						}
 						else if(proc.getName().equals(BeaconXML.B_PROC1_SOL))
 						{

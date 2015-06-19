@@ -339,6 +339,11 @@ public class Gui
 					sprite_fast_forward.setTextureRect(new IntRect(130, 1, 127, 127));
 				}
 			}
+			
+			/*if(Graphic.isOnSprite(sprite_aide))
+			{
+				
+			}*/
 		}
 
 		if (exitGui)
@@ -348,9 +353,6 @@ public class Gui
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{	
-				//if(Graphic.isOnSprite(sprite_aide))
-				//	World.WORLD.getActionListSoluce().ajoute_actions();
-				//else{
 				selecPanneau();
 				selecColor();
 				
@@ -550,23 +552,27 @@ public class Gui
     //entrer dans le niveau suivant
 	private void next()
 	{
-		if (Menu_Level.get_monde() == 0)
-			Reader.read("levels/level1"+"-"+(Menu_Level.get_level()+2)+".xml");
+	    if (Menu_Level.get_monde() == 0)
+			Reader.read("levels/Demo"+(Menu_Level.get_level()+2)+".xml");
 		else if (Menu_Level.get_monde() == 1)
+			Reader.read("levels/Demo"+(Menu_Level.get_level()+6)+".xml");
+	    else if (Menu_Level.get_monde() == 2)
+			Reader.read("levels/level1"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if (Menu_Level.get_monde() == 3)
 			Reader.read("levels/levelprocedure"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 2)
+		else if(Menu_Level.get_monde() == 4)
 			Reader.read("levels/levelfor"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 3)
-			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
-//		else if(Menu_Level.get_monde() == 4)
-//			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 5)
-			Reader.read("levels/levelpoint"+"-"+(Menu_Level.get_level()+2)+".xml");
-		else if(Menu_Level.get_monde() == 6)
-			Reader.read("levels/levelfork"+"-"+(Menu_Level.get_level()+2)+".xml");
+			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
+//		else if(Menu_Level.get_monde() == 6)
+//			Reader.read("levels/levelifthenelse"+"-"+(Menu_Level.get_level()+2)+".xml");
 		else if(Menu_Level.get_monde() == 7)
+			Reader.read("levels/levelpoint"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 8)
+			Reader.read("levels/levelfork"+"-"+(Menu_Level.get_level()+2)+".xml");
+		else if(Menu_Level.get_monde() == 9)
 			Reader.read("levels/levelchest"+"-"+(Menu_Level.get_level()+2)+".xml");
-//		else if(Menu_Level.get_monde() == 8)
+//		else if(Menu_Level.get_monde() == 10)
 //			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
