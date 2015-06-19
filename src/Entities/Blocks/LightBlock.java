@@ -14,7 +14,7 @@ public class LightBlock extends Block
 	private boolean isOn = false;
 	
 	/**
-	 * Cree un bloc lumiere eteind. Peut etre allume.
+	 * Cree un bloc lumiere eteind
 	 * @param pos Coordonnees de ce bloc
 	 */
 	public LightBlock(Coordonnees pos)
@@ -27,6 +27,10 @@ public class LightBlock extends Block
 	
 	private int anim = 0;
 	private int one_frame = 8;
+	
+	/**
+	 * Gestion graphique
+	 */
 	public void gerer() 
 	{
 		if (isOn)
@@ -49,6 +53,10 @@ public class LightBlock extends Block
 	
 	public void initialiser() {sprite.setTextureRect(new IntRect(1, 83, 81, 81));}
 	
+	/**
+	 * Permet de connaitre l'état du bloc (allumé ou non)
+	 * @return
+	 */
 	public boolean getLight() {return isOn;}
 	
 	public void reverseLight() 

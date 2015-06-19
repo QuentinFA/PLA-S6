@@ -6,7 +6,7 @@ import Entities.Character;
 
 public abstract class Action extends Prog
 {
-	private Sprite sprite; //Sprite associé
+	private Sprite sprite; //Sprite associe
 	public Sprite getSprite() {return sprite;}
 	public void setSprite(Sprite spr) {sprite = spr;}
 	

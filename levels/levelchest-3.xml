@@ -66,10 +66,6 @@
 			<x>-1</x>
 			<y>-2</y>
 		</block>
-		<block type="LightBlock">
-			<x>-1</x>
-			<y>-3</y>
-		</block>
 		<block type="NormalBlock">
 			<x>-1</x>
 			<y>-4</y>
@@ -88,10 +84,6 @@
 		</block>
 		<block type="NormalBlock">
 			<x>-5</x>
-			<y>-3</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-4</x>
 			<y>-3</y>
 		</block>
 	</floor>
@@ -127,6 +119,7 @@
 		<action>Break</action>
 		<action>Teleporter</action>
 		<action>Fork</action>
+		<action>OpenChest</action>
 		<action>UseChest</action>
 	</action_list>
 	<functions>
