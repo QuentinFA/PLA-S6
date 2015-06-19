@@ -219,23 +219,25 @@ public class Reader
 			
 			else if(e.getName().equals(BeaconXML.B_SOLUTION))
 			{	
-				int i=-1;
+				int index=0;
 				for(Element proc : e.getChildren())
 				{
 					try{
-						if(proc.getName().equals(BeaconXML.B_MAIN_SOL) || proc.getName().equals(BeaconXML.B_PROC1_SOL) || proc.getName().equals(BeaconXML.B_PROC2_SOL))
+						if(proc.getName().equals(BeaconXML.B_MAIN_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
 							Constructor<?> constructor = c.getConstructor(Color.class);
 							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
-							i++;
+							index++;
 						}
+						else if(proc.getName().equals(BeaconXML.B_PROC1_SOL))
+						else if(proc.getName().equals(BeaconXML.B_PROC2_SOL))
 						else if(proc.getName().equals(BeaconXML.B_FORK_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
 							Constructor<?> constructor = c.getConstructor(Color.class);
 							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
-							i++;
+							index++;
 						}
 					}
 					catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){
