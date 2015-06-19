@@ -222,18 +222,32 @@ public class Reader
 				for(Element proc : e.getChildren())
 				{
 					try{
-						if(proc.getName().equals(BeaconXML.B_MAIN_SOL) || proc.getName().equals(BeaconXML.B_PROC1_SOL) || proc.getName().equals(BeaconXML.B_PROC2_SOL))
+						if(proc.getName().equals(BeaconXML.B_MAIN_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, TypeProcedure.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,TypeProcedure.COMMUN));
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,0));
+							i++;
+						}
+						else if(proc.getName().equals(BeaconXML.B_PROC1_SOL))
+						{
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,1));
+							i++;
+						}
+						else if (proc.getName().equals(BeaconXML.B_PROC2_SOL))
+						{
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,2));
 							i++;
 						}
 						else if(proc.getName().equals(BeaconXML.B_FORK_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class, TypeProcedure.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,TypeProcedure.FORK));
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,3));
 							i++;
 						}
 					}
@@ -247,7 +261,7 @@ public class Reader
 							//Recuperation de la couleur dans xml
 							String coolraoul = act.getAttribute(BeaconXML.B_ACTION_SOL_COLOR).getValue();
 							Color erdcjg = Color.DEFAUT;
-							erdcjg.stringToColor(coolraoul);
+							erdcjg.stringToColor(coolraoul,erdcjg);
 							
 							//Recuperation de la valeur du for
 							Attribute des = act.getAttribute(BeaconXML.B_FOR_LOOP);
