@@ -13,14 +13,14 @@ public class Procedure extends Prog
 	
 	public Procedure(Color c, int i) 
 	{
-		couleur = c;
+		super(c);
 		index = i;
 		l = new ArrayList<Prog>();
 	}
 	
 	public Procedure(Procedure p) 
 	{
-		couleur = p.getColor();
+		super(p.getColor());
 		l = new ArrayList<Prog>();
 		for(Prog pr : p.getListProcedure())
 		{

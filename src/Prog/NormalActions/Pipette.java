@@ -11,8 +11,11 @@ import Prog.Coordonnees;
 
 public class Pipette extends Action{
 	
-	public Pipette(Color c){couleur = c;}
-	
+	public Pipette(Color c)
+	{
+		super(c);
+	}
+
 	public boolean execute(Character p) 
 	{
 		Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));

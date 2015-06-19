@@ -48,6 +48,7 @@ public class Gui
 	private List<Sprite> sprite_star = new ArrayList<Sprite>();
 	private boolean level_completed = false;
 	private boolean is_fast_forward = false;
+	private boolean afficher_main = true;
 
 	//Selection de la couleur
 	private List<Sprite> colorList = new ArrayList<Sprite>();
@@ -169,7 +170,7 @@ public class Gui
 			spriteList.add(spr);
 		}
 	}
-
+    //donner les coordonnées a tous les sprites.
 	private void placeGui()
 	{
 		scroll();
@@ -450,7 +451,7 @@ public class Gui
 
 		placeGui();
 	}
-
+    //pour le cas  "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
@@ -487,7 +488,7 @@ public class Gui
 					
 			}
 	}
-
+    //si on a fini le niveau, on donne les etoiles pour evaluer
 	private void completeLevel()
 	{
 		if (level_completed == false && World.WORLD.isComplete())
@@ -564,7 +565,10 @@ public class Gui
 //			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
-
+    /**
+     * si on a les fenetres main proc1 proc2, les ecrans ne sont pas assez d'afficher toutes les fenetres avec fork, 
+     * donc on donne un "offset" a la fenetre main pour afficher la fenetre fork.
+     */
 	private void scroll()
 	{
 		if (offset < final_offset)
@@ -578,18 +582,23 @@ public class Gui
 			if (offset < final_offset) offset = final_offset;
 		}
 	}
-
+	
+    //Pour choisir la fenetre d'ajouter les actions
 	private void selecPanneau()
 	{
-		//Pour choisir la fenetre d'ajouter les actions
+		
 		if (Graphic.isOnSprite(sprite_main))
 		{
+			
 			sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
-
-			final_offset = 0;
+			if(!afficher_main)
+			{
+				final_offset = 0;
+			    afficher_main = true;
+			}
 			wichProc = 0;
 		}
 		if (sprite_proc1 != null && Graphic.isOnSprite(sprite_proc1))
@@ -613,16 +622,20 @@ public class Gui
 			wichProc = 2;
 		}
 		if (sprite_fork != null && Graphic.isOnSprite(sprite_fork))
-		{
+		{   
+			   
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
-
-			final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
+            if(afficher_main)
+			{
+            	final_offset = (int)(sprite_fork.getPosition().y + Ressources.TEXTURE.getHalfSize(TEXTURE.FORK).y*2 + 20)
 					- (int)(Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y);
 			if (final_offset < 0)
 				final_offset = 0;
+			  afficher_main = false;
+			}
 			wichProc = final_actionList.size()-1;
 		}
 

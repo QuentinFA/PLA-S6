@@ -6,7 +6,7 @@ import Prog.Color;
 
 public class UseChest extends Action 
 {
-	public UseChest(Color c) {couleur = c;}
+	public UseChest(Color c) {super(c);}
 
 	public boolean execute(Character p) 
 	{

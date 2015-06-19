@@ -19,6 +19,7 @@ public class Menu_Level extends Menu
 
 	private static int mem_monde;
 	private static int mem_level;
+	//memoriser les niveaux
 	public static void storeLevel(int i, int j)
 	{
 		mem_monde = i;
@@ -84,7 +85,7 @@ public class Menu_Level extends Menu
 
 		placeMenu();
 	}
-
+    //donner les coordonnées aux boutons
 	public void placeMenu()
 	{
 		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
@@ -143,7 +144,7 @@ public class Menu_Level extends Menu
 			if (title_scale <= 1.25f)
 				increase_title_scale = true;
 		}
-
+        //choisir les niveaux
 		if (Input.INPUT.again(Input.BUTTON.MLEFT))
 		{
 			for (int i = 0; i< monde_list.size() ; i++)
