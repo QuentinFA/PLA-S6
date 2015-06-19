@@ -58,7 +58,7 @@ NB : On est oblige d enlever P1 pour forcer l utilisation du For -->
 		<!-- <action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="3" />
+		<main nb_action="6" />
 	</functions>
 	<score>
 		<min>7</min>

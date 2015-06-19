@@ -51,7 +51,7 @@
 		<action>Light</action>
 	</action_list>
 	<functions>
-		<main nb_action="9"/>
+		<main nb_action="12"/>
 	</functions>
 	<score>
 		<min>9</min>

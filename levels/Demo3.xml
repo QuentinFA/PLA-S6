@@ -200,16 +200,33 @@
 		<action>Light</action>
 		<action>P1</action>
 		<action>P2</action>
-		<action>For</action> 
-		<!-- <action>Pipette</action>
-		<action>Shower</action> 
-		<action>Break</action> 
-		<action>Teleporter</action> 
-		<action>Fork</action> 
-		<action>UseChest</action> -->
+		<action>For</action>
+		<!-- <action>Pipette</action> -->
+		<!-- <action>Shower</action> -->
+		<!-- <action>Break</action> -->
+		<!-- <action>Teleporter</action> -->
+		<!-- <action>Fork</action> -->
+		<!-- <action>UseChest</action> --> 
 	</action_list>
 	<functions>
-		<main nb_action="10" />
+		<main nb_action="12" />
 		<procedure nb_proc="2" />
 	</functions>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT" loop="4">For</instruction>
+			<instruction color="DEFAUT">P1</instruction>
+		</main_sol>
+		<proc1_sol>
+			<instruction color="DEFAUT" loop="3">For</instruction>
+			<instruction color="DEFAUT">P2</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+		</proc1_sol>
+		<proc2_sol>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+		</proc2_sol>
+	</solution>
 </map>
