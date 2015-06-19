@@ -142,10 +142,9 @@ public class Gui
 		}
 	}
 	
-	/*retourne le sprite correspondant à l'action donné en argument
-	 */
-	private Sprite spriteFromAction(Action act){
-		
+	//retourne le sprite correspondant à l'action donné en argument
+	private Sprite spriteFromAction(Action act)
+	{	
 		Sprite spr = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.ACTION)); 
 
 		if (act instanceof Forward)
@@ -364,16 +363,14 @@ public class Gui
 				}
 			}
 			
-			if(Graphic.isOnSprite(sprite_aide))
-			{
+			if (Graphic.isOnSprite(sprite_aide))
 				aide(World.WORLD.getListSoluce());
-			}
 		}
 
 		if (exitGui)
 			return;
 
-		if (!World.WORLD.isPlaying())
+		if (!World.WORLD.isPlaying() && !level_completed)
 		{
 			if (Input.INPUT.again(BUTTON.MLEFT))
 			{	
@@ -485,7 +482,8 @@ public class Gui
 
 		placeGui();
 	}
-    //pour le cas  "ifthenelse"
+	
+    //Pour le cas "ifthenelse"
 	private void selecColor()
 	{
 		for (int i=0; i < colorList.size(); i++)
@@ -519,7 +517,8 @@ public class Gui
 					}
 			}
 	}
-    //si on a fini le niveau, on donne les etoiles pour evaluer
+	
+    //Si on a fini le niveau, on donne les etoiles pour evaluer
 	private void completeLevel()
 	{
 		if (level_completed == false && World.WORLD.isComplete())
@@ -560,7 +559,8 @@ public class Gui
 				next();
 		}
 	}
-    //retourner dans le menu_level
+	
+    //Retourner dans le menu_level
 	private void exit()
 	{
 		Graphic.SFML.speedUp(false);
@@ -573,7 +573,8 @@ public class Gui
 
 		exitGui = true;
 	}
-    //entrer dans le niveau suivant
+	
+    //Entrer dans le niveau suivant
 	private void next()
 	{
 	    if (Menu_Level.get_monde() == 0)
@@ -600,6 +601,7 @@ public class Gui
 //			Reader.read("levels/levelexpert"+"-"+(Menu_Level.get_level()+2)+".xml");
 		Menu_Level.storeLevel(Menu_Level.get_monde(), Menu_Level.get_level()+1);
 	}
+	
     /**
      * si on a les fenetres main proc1 proc2, les ecrans ne sont pas assez d'afficher toutes les fenetres avec fork, 
      * donc on donne un "offset" a la fenetre main pour afficher la fenetre fork.
@@ -621,10 +623,8 @@ public class Gui
     //Pour choisir la fenetre d'ajouter les actions
 	private void selecPanneau()
 	{
-		
 		if (Graphic.isOnSprite(sprite_main))
 		{
-			
 			sprite_main.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
@@ -657,7 +657,7 @@ public class Gui
 		{    
 			sprite_main.setColor(org.jsfml.graphics.Color.WHITE);
 			if (sprite_proc2 != null) sprite_proc2.setColor(org.jsfml.graphics.Color.WHITE);
-			if (sprite_fork != null) sprite_fork.setColor(org.jsfml.graphics.Color.WHITE);
+			if (sprite_proc1 != null) sprite_proc1.setColor(org.jsfml.graphics.Color.WHITE);
 			sprite_fork.setColor(new org.jsfml.graphics.Color(128, 255, 128));
 			
 			if (wichProc != final_actionList.size()-1)
@@ -673,8 +673,8 @@ public class Gui
 		}
 	}
 	
-	private void aide(List<Procedure> l){
-		
+	private void aide(List<Procedure> l)
+	{
 		//on vide les panneaux
 		spriteList_main.clear();
 		spriteList_proc1.clear();
@@ -703,6 +703,7 @@ public class Gui
 				else
 					spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
 			}
-		final_actionList = l;
+		
+		final_actionList = Prog.clone_actionList(l);
 	}
 }
