@@ -13,8 +13,8 @@ public class For extends Action
 	private int nbBouclesRestantes; //Nombre d'iteration
 	private int nbBoucles;
 	
-	public For(Color c) {couleur = c; nbBouclesRestantes = 1;nbBoucles = 1;}
-	public For(Color c, int valeur){couleur= c; nbBoucles = valeur;}
+	public For(Color c) {couleur = c; nbBouclesRestantes = 1; nbBoucles = 1;}
+	public For(Color c, int valeur){couleur= c; nbBoucles = valeur; nbBouclesRestantes = valeur;}
 	
 	public int getForValue() {return nbBouclesRestantes;}
 	
