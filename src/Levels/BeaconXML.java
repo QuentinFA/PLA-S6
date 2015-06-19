@@ -21,4 +21,12 @@ public abstract class BeaconXML
 	public static final String B_SCORE = "score";
 	public static final String B_SCORE_MIN = "min";
 	public static final String B_SCORE_MAX = "max";
+	
+	public static final String B_SOLUTION = "solution";
+	public static final String B_MAIN_SOL = "main_sol";
+	public static final String B_PROC1_SOL = "proc1_sol";
+	public static final String B_PROC2_SOL = "proc2_sol";
+	public static final String B_FORK_SOL = "fork_sol";
+	public static final String B_ACTION_SOL_COLOR = "color";
+	public static final String B_FOR_LOOP = "loop";
 }

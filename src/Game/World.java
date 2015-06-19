@@ -14,6 +14,7 @@ import Entities.Blocks.LightBlock;
 import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
+import Prog.Procedure;
 import UI.Graphic;
 
 public class World
@@ -28,6 +29,7 @@ public class World
 	private List<Block> blockListStart; // Liste de block qui sera fournie par le reader
 	private Coordonnees coordStart; //Coordonnees du depart
 	private int orientStart; //Orientation du depart
+	private List<Procedure> listSoluce;
 	
 	private Vector2f centerWorld = null;
 	
@@ -46,7 +48,7 @@ public class World
 	 * @param oStart L'orientation de depart du personnage
 	 */
 	public World(String n, List<Block> lb, Coordonnees cStart, int oStart, 
-			List<Action> allowedActions, int minStar, int maxStar) 
+			List<Action> allowedActions, int minStar, int maxStar, List<Procedure> ls) 
 	{
 		name = n;
 		coordStart = cStart;
@@ -55,6 +57,7 @@ public class World
 		blockListStart = lb;
 		this.minStar = minStar;
 		this.maxStar = maxStar;
+		listSoluce = ls;
 		
 		initialiser();
 		
@@ -206,6 +209,11 @@ public class World
 	 */
 	public List<Character> getCharacterList() {return characterList;}
 	
+	/**
+	 * Recuperer la liste solution du puzzle
+	 * @return La liste des différentes procédures de listes d'action
+	 */
+	public List<Procedure> getListSoluce() {return listSoluce;}
 	/**
 	 * Afficher tous les objets du monde (blocks, personnages, ...)
 	 */
