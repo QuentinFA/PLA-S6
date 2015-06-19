@@ -226,18 +226,30 @@ public class Reader
 						if(proc.getName().equals(BeaconXML.B_MAIN_SOL))
 						{	
 							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,index));
 							index++;
 						}
 						else if(proc.getName().equals(BeaconXML.B_PROC1_SOL))
+						{
+							index++;
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,index));
+						}
 						else if(proc.getName().equals(BeaconXML.B_PROC2_SOL))
+						{
+							index++;
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,index));
+						}
 						else if(proc.getName().equals(BeaconXML.B_FORK_SOL))
 						{	
-							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
-							Constructor<?> constructor = c.getConstructor(Color.class);
-							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT));
 							index++;
+							Class<?> c = Class.forName(PACKAGE_PROG + "Procedure");
+							Constructor<?> constructor = c.getConstructor(Color.class, int.class);
+							listSolution.add((Procedure) constructor.newInstance(Color.DEFAUT,index));
 						}
 					}
 					catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){
@@ -249,8 +261,8 @@ public class Reader
 						try {
 							//Recuperation de la couleur dans xml
 							String coolraoul = act.getAttribute(BeaconXML.B_ACTION_SOL_COLOR).getValue();
-							Color erdcjg = Color.DEFAUT;
-							erdcjg.stringToColor(coolraoul);
+							Color cool = Color.DEFAUT;
+							cool.stringToColor(coolraoul);
 							
 							//Recuperation de la valeur du for
 							Attribute des = act.getAttribute(BeaconXML.B_FOR_LOOP);
@@ -259,14 +271,14 @@ public class Reader
 							if( des == null){
 								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
 								Constructor<?> constructor = c.getConstructor(Color.class);
-								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(erdcjg));
+								listSolution.get(index).getListProcedure().add((Prog) constructor.newInstance(cool));
 							}
 							else
 							{
 								int valDes = Integer.valueOf(des.getValue());
 								Class<?> c = Class.forName(PACKAGE_ACTION + act.getValue());
 								Constructor<?> constructor = c.getConstructor(Color.class, int.class);
-								listSolution.get(i).getListProcedure().add((Prog) constructor.newInstance(erdcjg,valDes));
+								listSolution.get(index).getListProcedure().add((Prog) constructor.newInstance(cool,valDes));
 							}
 						} 
 						catch (ClassNotFoundException | NoSuchMethodException | SecurityException| InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1){
