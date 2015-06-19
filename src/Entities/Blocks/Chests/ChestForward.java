@@ -30,8 +30,8 @@ public class ChestForward extends Chest
 	}
 	public void setTextureChest() 
 	{
-		sprite.setTextureRect(new IntRect(1, 82, 80, 80));
-		sprite_action.setTextureRect(new IntRect(1, 1, 80, 80));
+		sprite.setTextureRect(new IntRect(1, 83, 81, 81));
+		sprite_action.setTextureRect(new IntRect(1, 1, 81, 81));
 	}
 	public void afficher() 
 	{
