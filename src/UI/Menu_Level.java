@@ -46,7 +46,7 @@ public class Menu_Level extends Menu
 		returnMenu.setTextureRect(new IntRect(1,1,100,100));
 
 		Sprite spr;
-		for (int i = 0 ; i < 9 ; i++)
+		for (int i = 0 ; i < 11 ; i++)
 		{
 			spr = new Sprite();
 			spr.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.MONDE));
@@ -106,7 +106,7 @@ public class Menu_Level extends Menu
 
 	public void afficher()
 	{
-		if(nbr_monde < 8)
+		if(nbr_monde < 10)
 			Graphic.SFML.draw(fleche_right);
 		for(Sprite spr: aura_list)
 			Graphic.SFML.draw(spr);
@@ -149,8 +149,56 @@ public class Menu_Level extends Menu
 		{
 			for (int i = 0; i< monde_list.size() ; i++)
 				for (int j=0; j < nbr_level_list.get(i).size(); j++)
-				{	
+				{
 					if (i == 0 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					{
+						storeLevel(i, j);
+						if (j == 0)
+						{
+							Reader.read("levels/Demo1.xml");
+							return;
+						}
+						else if (j == 1)
+						{
+							Reader.read("levels/Demo2.xml");
+							return;
+						}
+						else if (j == 2)
+						{
+							Reader.read("levels/Demo3.xml");
+							return;
+						}
+						else if (j == 3)
+						{
+							Reader.read("levels/Demo4.xml");
+							return;
+						}
+					}
+					if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					{
+						storeLevel(i, j);
+						if (j == 0)
+						{
+							Reader.read("levels/Demo5.xml");
+							return;
+						}
+						else if (j == 1)
+						{
+							Reader.read("levels/Demo6.xml");
+							return;
+						}
+						else if (j == 2)
+						{
+							Reader.read("levels/Demo7.xml");
+							return;
+						}
+						else if (j == 3)
+						{
+							Reader.read("levels/Demo8.xml");
+							return;
+						}
+					}
+					if (i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -174,7 +222,7 @@ public class Menu_Level extends Menu
 							return;
 						}
 					}
-					else if (i == 1 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 3 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -194,7 +242,7 @@ public class Menu_Level extends Menu
 						}
 
 					}
-					else if(i == 2 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if(i == 4 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -211,7 +259,7 @@ public class Menu_Level extends Menu
 						}
 
 					}
-					else if (i == 3 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 5 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -232,12 +280,12 @@ public class Menu_Level extends Menu
 						//						else if( j == 3)
 						//							Reader.read("levels/levelifthenelse-4.xml");
 					}
-					else if (i == 4 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 6 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						//Niveau while
 					}
-					else if (i == 5 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 7 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -261,7 +309,7 @@ public class Menu_Level extends Menu
 							return;
 						}
 					}
-					else if (i == 6 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 8 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -285,7 +333,7 @@ public class Menu_Level extends Menu
 							return;
 						}
 					}
-					else if (i == 7 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 9 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						if (j == 0)
@@ -307,7 +355,7 @@ public class Menu_Level extends Menu
 						//						else if( j == 3)
 						//							Reader.read("levels/levelchest-4.xml");
 					}
-					else if (i == 8 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
+					else if (i == 10 && Graphic.isOnSprite(nbr_level_list.get(i).get(j)))
 					{
 						storeLevel(i, j);
 						//Niveau expert
@@ -316,7 +364,7 @@ public class Menu_Level extends Menu
 				}
 
 			if(Graphic.isOnSprite(fleche_right))
-				if(nbr_monde < 8) //Nombre de monde
+				if(nbr_monde < 10) //Nombre de monde
 					nbr_monde++;
 
 			if(Graphic.isOnSprite(fleche_left))
