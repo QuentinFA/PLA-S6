@@ -26,7 +26,6 @@ public class ChestJump extends Chest
 		super(pos);
 		this.action = new Jump(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
-		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}
 	public void setPosSprite(Vector2f pos) 

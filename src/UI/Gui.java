@@ -343,7 +343,6 @@ public class Gui
 
 					World.WORLD.setPlaying(false);
 					World.WORLD.initialiser();
-					Graphic.SFML.setCenterCamera(World.WORLD.getCenterWorld());
 				}
 				else
 				{

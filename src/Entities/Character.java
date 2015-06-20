@@ -146,10 +146,7 @@ public class Character extends Entities
 	{
 		Graphic.SFML.draw(sprite);
 		if (bulle != null)
-		{
 			bulle.setPosition(new Vector2f(sprite.getPosition().x, sprite.getPosition().y-60));
-			Graphic.SFML.draw(bulle);
-		}
 	}
 
 	/**

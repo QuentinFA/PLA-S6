@@ -26,7 +26,6 @@ public class ChestLeft_turn extends Chest
 		super(pos);
 		this.action = new Left_turn(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
-		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		setTextureChest();
 	}
 	public void setPosSprite(Vector2f pos) 

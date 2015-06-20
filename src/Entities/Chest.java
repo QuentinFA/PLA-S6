@@ -2,9 +2,11 @@ package Entities;
 
 import org.jsfml.graphics.Sprite;
 
+import Game.Ressources;
+import Game.World;
+import Game.Ressources.TEXTURE;
 import Prog.Action;
 import Prog.Coordonnees;
-import UI.Graphic;
 
 /**
  * Classe permettant la representation du concept d'objet (voir doc). Elle herite de block car elle a les mêmes proprietes de base.
@@ -18,7 +20,7 @@ public abstract class Chest extends Block
 	}
 
 	protected Action action;
-	protected Sprite sprite_action = new Sprite();
+	protected Sprite sprite_action = new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 	
 	public Sprite getBulle() {return sprite_action;}
 	
@@ -28,12 +30,10 @@ public abstract class Chest extends Block
 	public abstract void setTextureChest();
 	public void setAlpha(int a) {sprite.setColor(new org.jsfml.graphics.Color(255, 255, 255, a));}
 	
-	public void initialiser() {sprite.setColor(org.jsfml.graphics.Color.WHITE);}
-	
-	public void afficher()
+	public void initialiser() 
 	{
-		Graphic.SFML.draw(sprite);
-		Graphic.SFML.draw(sprite_action);
+		sprite.setColor(org.jsfml.graphics.Color.WHITE);
+		World.WORLD.addFront(sprite_action);
 	}
 	
 	/**

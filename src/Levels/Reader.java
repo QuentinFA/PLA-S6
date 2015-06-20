@@ -296,6 +296,7 @@ public class Reader
 		lb = new ArrayList<Block>(set);
 		
 		World.WORLD = new World(name, lb, bng, dir, la, min, max, listSolution);
+		World.WORLD.initialiser();
 		Gui.GUI = new Gui(nbA);
 		
 		Menu.Mymenu = null;

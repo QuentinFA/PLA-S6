@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.jsfml.graphics.Sprite;
 import org.jsfml.system.Vector2f;
 
 import Entities.Block;
 import Entities.Character;
+import Entities.DepthComparator;
 import Entities.EntitieComparator;
 import Entities.Entities;
 import Entities.Blocks.LightBlock;
@@ -25,6 +27,7 @@ public class World
 {
 	public static World WORLD = null;
 	
+	private List<Sprite> frontList = new ArrayList<Sprite>(); //Sprite à dessiner en dernier (les bulles des chests)
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
 	private List<Coordation> cloneList = new ArrayList<Coordation>(); //Liste des coordonnes des clones
@@ -63,11 +66,7 @@ public class World
 		this.maxStar = maxStar;
 		listSoluce = ls;
 		
-		initialiser();
-		
 		WORLD = this;
-		
-		Graphic.SFML.setCenterCamera(getCenterWorld());
 	}
 	
 	public void initialiser()
@@ -75,6 +74,7 @@ public class World
 		Interpreter.INTERPRETER = new Interpreter();
 		Controler.CONTROLER = new Controler(); 
 		
+		frontList.clear();
 		allList.clear();
 		blockList.clear();
 		characterList.clear();
@@ -95,6 +95,8 @@ public class World
 		for (Block b : blockList)
 			b.setPosSprite(placeMe(b.getCoord()));
 		characterList.get(0).setPosSprite(placeMe(coordStart));
+		
+		Graphic.SFML.setCenterCamera(getCenterWorld());
 	}
 	
 	/**
@@ -226,6 +228,14 @@ public class World
 		Collections.sort(allList, new EntitieComparator());
 		for (Entities obj : allList)
 			obj.afficher();
+		Collections.sort(frontList, new DepthComparator());
+		for (Sprite spr : frontList)
+			Graphic.SFML.draw(spr);
+	}
+	
+	public void addFront(Sprite spr)
+	{
+		frontList.add(spr);
 	}
 	
 	/**
