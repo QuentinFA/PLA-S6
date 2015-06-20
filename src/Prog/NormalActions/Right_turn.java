@@ -13,11 +13,16 @@ public class Right_turn extends Action
 	{
 		super(color);
 	}
+	
+	private int frame = 0;
+	private int last_frame = 10;
 
 	public boolean execute(Character p)  
 	{
-		p.setOrientation((p.getOrientation()+1) % 4);
+		if (frame == 0)
+			p.setOrientation((p.getOrientation()+1) % 4);
+		frame ++;
 		
-		return true;
+		return frame == last_frame;
 	}
 }

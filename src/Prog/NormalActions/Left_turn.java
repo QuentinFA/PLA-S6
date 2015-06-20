@@ -14,10 +14,15 @@ public class Left_turn extends Action
 		super(color);
 	}
 
+	private int frame = 0;
+	private int last_frame = 10;
+	
 	public boolean execute(Character p) 
 	{
-		p.setOrientation((4+p.getOrientation()-1) % 4);
+		if (frame == 0)
+			p.setOrientation((4+p.getOrientation()-1) % 4);
+		frame ++;
 		
-		return true;
+		return frame == last_frame;
 	}
 }
