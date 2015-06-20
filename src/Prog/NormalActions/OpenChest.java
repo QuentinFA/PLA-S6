@@ -11,12 +11,14 @@ import Prog.Orientation;
 
 /**
  * Permet d'ouvrir un coffre
- * @author edwin
  *
  */
 public class OpenChest extends Action
 {
-	public OpenChest(Color c) {couleur = c;}
+	public OpenChest(Color color)
+	{
+		super(color);
+	}
 	
 	private int frame = 0;
 	private int last_frame_phase1 = 20;
@@ -31,7 +33,7 @@ public class OpenChest extends Action
 		{
 			Coordonnees coord = p.getCoord();
 			Coordonnees check;
-		
+			
 			switch (p.getOrientation())
 			{
 				case Orientation.NORTH:
@@ -44,7 +46,7 @@ public class OpenChest extends Action
 				default:
 					check = new Coordonnees(coord.getX()-1, coord.getY(), coord.getZ()); break;
 			}
-		
+			
 			Entities e = World.WORLD.getEntitiesAt(check);
 			if (e != null && e instanceof Chest)
 			{
@@ -59,7 +61,7 @@ public class OpenChest extends Action
 		frame ++;
 		
 		chestConcerned.setAlpha((int) (255 - (float)frame/last_frame_phase1*255));
-
+		
 		if (frame == last_frame_phase1)
 		{
 			World.WORLD.deleteBlock(chestConcerned);

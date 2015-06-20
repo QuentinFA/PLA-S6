@@ -2,7 +2,6 @@ package Prog;
 
 /**
  * Permet de savoir dans quel direction sont orientes les Chests et Characters sur la map.
- * @author edwin
  *
  */
 public abstract class Orientation

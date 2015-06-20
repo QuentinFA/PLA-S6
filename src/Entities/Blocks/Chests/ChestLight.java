@@ -12,7 +12,6 @@ import Prog.NormalActions.Light;
 
 /**
  * Chest contenant l'action Light pour introduire le concept d'objet de la programmation.
- * @author edwin
  *
  */
 
@@ -24,7 +23,7 @@ public class ChestLight extends Chest
 	 */
 	public ChestLight(Coordonnees pos) 
 	{
-		this.coord = pos;
+		super(pos);
 		this.action = new Light(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
@@ -33,7 +32,7 @@ public class ChestLight extends Chest
 	public void setPosSprite(Vector2f pos) 
 	{
 		sprite.setPosition(pos);
-	    sprite_action.setPosition(pos.x,pos.y-60);
+		sprite_action.setPosition(pos.x,pos.y-60);
 	}
 	public void setTextureChest() 
 	{

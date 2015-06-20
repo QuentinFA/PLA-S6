@@ -3,6 +3,10 @@ package UI;
 import java.util.Comparator;
 import org.jsfml.graphics.Sprite;
 
+/**
+ * Comparator pour le défilement des nuages
+ *
+ */
 public class NuageComparator implements Comparator<Sprite> 
 {
 	public int compare(Sprite spr1, Sprite spr2) 

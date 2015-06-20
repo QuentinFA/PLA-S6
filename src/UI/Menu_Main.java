@@ -7,6 +7,10 @@ import Game.Input;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 
+/**
+ * TODO
+ *
+ */
 public class Menu_Main extends Menu
 {
 	private static float boutonPlay_scale;

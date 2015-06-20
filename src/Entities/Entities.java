@@ -9,13 +9,17 @@ import UI.Graphic;
 
 /**
  * Classe qui definit toutes les choses affichables sur un niveau. Les blocks, characters et les chest heritent cette classe.
- * @author edwin
  *
  */
 public abstract class Entities
 {
 	protected Sprite sprite = new Sprite(); //Sprite du block ou personnage ou chest
 	protected Coordonnees coord;
+	
+	public Entities(Coordonnees coord)
+	{
+		this.coord = coord;
+	}
 	
 	public Coordonnees getCoord() {return coord;}
 	

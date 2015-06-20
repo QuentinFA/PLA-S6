@@ -1,12 +1,18 @@
 package Entities;
 
+import Prog.Coordonnees;
+
 /**
  * Classe identifiant les blocs affichable a l'ecran.
- * @author edwin
  *
  */
 public abstract class Block extends Entities implements Cloneable
 {
+	public Block(Coordonnees coord)
+	{
+		super(coord);
+	}
+
 	public Object clone() throws CloneNotSupportedException {return super.clone();} 
 	
 	/**

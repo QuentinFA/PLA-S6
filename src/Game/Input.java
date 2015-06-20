@@ -8,6 +8,10 @@ import org.jsfml.window.event.Event;
 
 import UI.Graphic;
 
+/**
+ * TODO
+ *
+ */
 public class Input 
 {
 	public static Input INPUT = new Input();

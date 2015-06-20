@@ -11,24 +11,23 @@ import UI.Graphic;
 
 /**
  * Bloc de lumiere. Il faut allumer tout les blocks de lumieres pour terminer un niveau.
- * @author edwin
  *
  */
 public class LightBlock extends Block
 {
-	private boolean isOn;
-	
 	/**
 	 * Cree un bloc lumiere eteint
 	 * @param pos Coordonnees de ce bloc
 	 */
-	public LightBlock(Coordonnees pos)
+	public LightBlock(Coordonnees coord)
 	{
+		super(coord);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
-		coord = pos;
 		isOn = false;
 		initialiser();
 	}
+	
+	private boolean isOn;
 	
 	private int anim = 0;
 	private int one_frame = 8;
@@ -42,9 +41,9 @@ public class LightBlock extends Block
 		{
 			if (anim % one_frame == 0)
 				sprite.setTextureRect(new IntRect(83+anim/one_frame*82, 83, 81, 81));
-
+			
 			anim++;
-		
+			
 			if (anim == one_frame*5)
 				anim = 0;
 		}

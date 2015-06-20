@@ -1,5 +1,9 @@
 package Levels;
 
+/**
+ * Balises utilisées dans un document XML pour les niveaux
+ *
+ */
 public abstract class BeaconXML
 {
 	public static final String B_MAP = "map";

@@ -8,6 +8,10 @@ import org.jsfml.audio.Music;
 import org.jsfml.graphics.Texture;
 import org.jsfml.system.Vector2f;
 
+/**
+ * TODO
+ *
+ */
 public class Ressources 
 {
 	public enum TEXTURE

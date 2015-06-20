@@ -9,15 +9,18 @@ import Prog.Coordonnees;
 
 /**
  * Action qui allume une case lumiere sous le personnage si elle est de type LightBlock
- * @author edwin
  *
  */
 public class Light extends Action
 {
-	public Light(Color c) {couleur = c;}
+	public Light(Color color)
+	{
+		super(color);
+	}
+	
 	private int frame = 0;
 	private int last_frame = 18;
-
+	
 	/**
 	 * Allume la case sous le character p si elle est de type LightBlock
 	 */

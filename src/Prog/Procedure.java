@@ -7,7 +7,6 @@ import org.jsfml.graphics.Sprite;
 
 /**
  * Permet d'identifier les differentes procedures (Main,P1,P2, Fork...)
- * @author edwin
  *
  */
 public class Procedure extends Prog 
@@ -16,16 +15,16 @@ public class Procedure extends Prog
 	private int index;
 	public int getIndex() {return index;}
 	
-	public Procedure(Color c, int i) 
+	public Procedure(Color color, int i) 
 	{
-		couleur = c;
+		super(color);
 		index = i;
 		l = new ArrayList<Prog>();
 	}
 	
 	public Procedure(Procedure p) 
 	{
-		couleur = p.getColor();
+		super(p.getColor());
 		index = p.getIndex();
 		l = new ArrayList<Prog>();
 		for(Prog pr : p.getListProcedure())

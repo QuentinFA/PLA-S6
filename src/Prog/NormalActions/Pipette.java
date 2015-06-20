@@ -11,12 +11,13 @@ import Prog.Coordonnees;
 
 /** 
  * Action pour changer la couleur d'un personnage.
- * @author edwin
  *
  */
 public class Pipette extends Action{
-	
-	public Pipette(Color c){couleur = c;}
+	public Pipette(Color color)
+	{
+		super(color);
+	}
 	
 	/**
 	 * Colorie le personnage de la couleur du bloc sous lui si c'est un bloc de couleur
@@ -26,7 +27,7 @@ public class Pipette extends Action{
 		Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
 		if(b instanceof ColorBlock)
 			((Block) b).perform(p);
-
+		
 		return true;
 	}
 }

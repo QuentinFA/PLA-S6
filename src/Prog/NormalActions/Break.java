@@ -6,12 +6,16 @@ import Prog.Color;
 
 /**
  * Concept du return de fonction. Permet aussi de casser les boucles infinies.
- * @author edwin
+ * Sert a etre identifier dans l'interpreteur
  *
  */
 public class Break extends Action 
 {
-	public Break(Color c) {couleur = c;} //Sert a etre identifier dans l'interpreteur
+	
+	public Break(Color color)
+	{
+		super(color);
+	}
 	
 	public boolean execute(Character p) {return false;}
 }

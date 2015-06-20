@@ -18,6 +18,11 @@ import Prog.Action;
 import Prog.Coordonnees;
 import Prog.Orientation;
 
+/**
+ * Ecriture du XML correspondant à un objet World
+ * Not up to date
+ */
+@Deprecated
 public class Writer
 {
 	public static Writer WRITER = new Writer();

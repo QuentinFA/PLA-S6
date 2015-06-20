@@ -16,7 +16,6 @@ import UI.Graphic;
 
 /**
  * Bloc illustrant le concept de pointeur. Permet de se teleporter sur une case precise.
- * @author edwin
  *
  */
 public class TeleporterBlock extends Block
@@ -47,24 +46,24 @@ public class TeleporterBlock extends Block
 	
 	public TeleporterBlock(Coordonnees c)
 	{
+		super(c);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		sprite.setTextureRect(new IntRect(1, 1, 81, 81));
 		portal.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		portal.setTextureRect(new IntRect(1, 165, 81, 81));
 		
-		coord = c;
 		destination = null;
 		type = TYPE_TP.DEST;
 	}
 	
 	public TeleporterBlock(Coordonnees c, TeleporterBlock dest)
 	{
+		super(c);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		sprite.setTextureRect(new IntRect(1, 1, 81, 81));
 		portal.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		portal.setTextureRect(new IntRect(1, 165, 81, 81));
 		
-		coord = c;
 		destination = dest;
 		type = TYPE_TP.SOURCE;
 	}
@@ -115,7 +114,7 @@ public class TeleporterBlock extends Block
 		{
 			Coordonnees c = destination.getCoord();
 			p.setCoord(new Coordonnees(c.getX(), c.getY(), c.getZ() + 1));
-
+			
 			p.setPosSprite(World.WORLD.placeMe(p.getCoord()));
 		}
 	}

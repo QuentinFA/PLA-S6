@@ -10,12 +10,15 @@ import Prog.Coordonnees;
 
 /** 
  * Action pour teleporter un personnage
- * @author edwin
  *
  */
 public class Teleporter extends Action
 {
-	public Teleporter(Color c) {couleur = c;}
+	public Teleporter(Color color)
+	{
+		super(color);
+	}
+	
 	private int frame = 0;
 	private int last_frame = 18;
 	

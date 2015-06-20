@@ -10,17 +10,15 @@ import Prog.Coordonnees;
 
 /**
  * Bloc de base quelconque. Represente par un carre gris.
- * @author edwin
  *
  */
 public class NormalBlock extends Block 
 {
 	public NormalBlock(Coordonnees pos)
 	{
+		super(pos);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.BLOCK));
 		sprite.setTextureRect(new IntRect(1, 1, 81, 81));
-		
-		coord = pos;
 	}
 	
 	/**

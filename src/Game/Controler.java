@@ -6,7 +6,6 @@ import Entities.Character;
 
 /**
  * Classe permettant de reguler le deroulement des actions des personnages.
- * @author edwin
  *
  */
 public class Controler 

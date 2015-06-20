@@ -10,12 +10,15 @@ import Prog.Orientation;
 
 /**
  * Action avance pour le personnage
- * @author edwin
  *
  */
 public class Forward extends Action
 {
-	public Forward(Color c) {couleur = c;}
+	public Forward(Color color)
+	{
+		super(color);
+	}
+
 	private int frame = 0;
 	private int last_frame_phase1 = 20;
 	

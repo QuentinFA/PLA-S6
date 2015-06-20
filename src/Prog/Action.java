@@ -10,6 +10,11 @@ import Entities.Character;
  */
 public abstract class Action extends Prog
 {
+	public Action(Color color)
+	{
+		super(color);
+	}
+
 	private Sprite sprite; //Sprite associe
 	public Sprite getSprite() {return sprite;}
 	public void setSprite(Sprite spr) {sprite = spr;}

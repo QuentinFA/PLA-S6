@@ -31,7 +31,10 @@ import Prog.NormalActions.Forward;
 import UI.Gui;
 import UI.Menu;
 
-
+/**
+ * Lecture d'un XML et création du niveau correspondant
+ *
+ */
 public class Reader 
 {
 	public static final String PACKAGE_ACTION = Forward.class.getPackage().getName() + ".";

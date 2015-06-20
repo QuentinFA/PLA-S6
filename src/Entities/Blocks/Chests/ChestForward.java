@@ -2,6 +2,7 @@ package Entities.Blocks.Chests;
 
 /**
  * Chest contenant l'action Forward pour introduire le concept d'objet de la programmation.
+ * 
  */
 import org.jsfml.graphics.IntRect;
 import org.jsfml.system.Vector2f;
@@ -21,7 +22,7 @@ public class ChestForward extends Chest
 	 */
 	public ChestForward(Coordonnees pos) 
 	{
-		this.coord = pos;
+		super(pos);
 		this.action = new Forward(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
@@ -30,7 +31,7 @@ public class ChestForward extends Chest
 	public void setPosSprite(Vector2f pos) 
 	{
 		sprite.setPosition(pos);
-	    sprite_action.setPosition(pos.x,pos.y-60);
+		sprite_action.setPosition(pos.x,pos.y-60);
 	}
 	public void setTextureChest() 
 	{

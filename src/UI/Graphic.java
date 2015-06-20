@@ -29,6 +29,10 @@ import Game.Ressources.MUSIC;
 import Game.Ressources.TEXTURE;
 import Game.World;
 
+/**
+ * TODO
+ *
+ */
 public class Graphic 
 {
 	public static Graphic SFML = new Graphic();

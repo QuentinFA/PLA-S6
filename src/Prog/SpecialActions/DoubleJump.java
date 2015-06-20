@@ -9,10 +9,13 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.Orientation;
 
-
+/**
+ * TODO
+ *
+ */
 public class DoubleJump extends Action
 {
-	public DoubleJump(Color c) {couleur = c;}
+	public DoubleJump(Color c) {super(c);}
 	private int frame = 0;
 	
 	private int last_frame_phase0 = 9;

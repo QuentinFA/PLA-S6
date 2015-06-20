@@ -5,12 +5,14 @@ import Prog.Color;
 
 /**
  * Action pour faire tourner a gauche le personnage
- * @author edwin
  *
  */
 public class Left_turn extends Action
 {
-	public Left_turn(Color c) {couleur = c;}
+	public Left_turn(Color color)
+	{
+		super(color);
+	}
 
 	public boolean execute(Character p) 
 	{

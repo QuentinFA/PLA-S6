@@ -10,6 +10,10 @@ import Prog.Color;
 import Prog.Coordonnees;
 import Prog.SpecialActions.DoubleJump;
 
+/**
+ * TODO
+ *
+ */
 public class ChestDoubleJump extends Chest 
 {
 	/**
@@ -18,7 +22,7 @@ public class ChestDoubleJump extends Chest
 	 */
 	public ChestDoubleJump(Coordonnees pos) 
 	{
-		this.coord = pos;
+		super(pos);
 		this.action = new DoubleJump(Color.DEFAUT);
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
 		sprite_action.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.CHEST));
@@ -27,7 +31,7 @@ public class ChestDoubleJump extends Chest
 	public void setPosSprite(Vector2f pos) 
 	{
 		sprite.setPosition(pos);
-	    sprite_action.setPosition(pos.x,pos.y-60);
+		sprite_action.setPosition(pos.x,pos.y-60);
 	}
 	public void setTextureChest() 
 	{

@@ -8,6 +8,10 @@ import UI.Gui;
 import UI.Menu;
 import UI.Menu.MENU;
 
+/**
+ * Classe principale. Lance le jeu
+ *
+ */
 public class LightBot
 {
 	public static void main(String[] args)

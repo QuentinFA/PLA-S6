@@ -3,18 +3,23 @@ package Entities;
 import org.jsfml.graphics.Sprite;
 
 import Prog.Action;
+import Prog.Coordonnees;
 import UI.Graphic;
 
 /**
  * Classe permettant la representation du concept d'objet (voir doc). Elle herite de block car elle a les mêmes proprietes de base.
- * @author edwin
  *
  */
 public abstract class Chest extends Block 
 {
+	public Chest(Coordonnees coord)
+	{
+		super(coord);
+	}
+
 	protected Action action;
 	protected Sprite sprite_action = new Sprite();
-
+	
 	public Sprite getBulle() {return sprite_action;}
 	
 	public Action getAction() {return action;}

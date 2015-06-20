@@ -3,7 +3,12 @@ package Entities.Blocks;
 import java.util.Comparator;
 
 import Entities.Block;
-//TODO : commentaires
+
+/**
+ * Comparateur de block utilisé pour le Writter</br>
+ * Range les blocs selon leurs z, puis y, puis x (croissant).
+ *
+ */
 public class BlockComparator implements Comparator<Block>
 {
 	@Override

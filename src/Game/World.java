@@ -17,6 +17,10 @@ import Prog.Coordonnees;
 import Prog.Procedure;
 import UI.Graphic;
 
+/**
+ * TODO
+ *
+ */
 public class World
 {
 	public static World WORLD = null;

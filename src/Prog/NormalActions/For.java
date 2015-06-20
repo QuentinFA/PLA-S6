@@ -5,7 +5,6 @@ import Prog.Color;
 
 /**
  * Concept de la boucle For
- * @author edwin
  *
  */
 public class For extends Action 
@@ -13,8 +12,8 @@ public class For extends Action
 	private int nbBouclesRestantes; //Nombre d'iteration
 	private int nbBoucles;
 	
-	public For(Color c) {couleur = c; nbBouclesRestantes = 1; nbBoucles = 1;}
-	public For(Color c, int valeur){couleur= c; nbBoucles = valeur; nbBouclesRestantes = valeur;}
+	public For(Color color) {super(color); nbBouclesRestantes = 1; nbBoucles = 1;}
+	public For(Color color, int valeur){super(color); nbBoucles = valeur; nbBouclesRestantes = valeur;}
 	
 	public int getForValue() {return nbBouclesRestantes;}
 	

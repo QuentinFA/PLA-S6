@@ -8,6 +8,11 @@ import UI.Graphic;
 import UI.Gui;
 import UI.Menu;
 
+/**
+ * Aperçu rapide d'un niveau (levelpath)</br>
+ * Non jouable
+ *
+ */
 public class LevelPreview
 {
 

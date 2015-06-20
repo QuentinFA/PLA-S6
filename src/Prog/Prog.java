@@ -5,15 +5,19 @@ import java.util.List;
 
 /**
  * Permet de faire la liste d'actions a effectuer par le personnage. Une prog est soit une Action, soit une Procedure contenant une liste de Prog.
- * @author edwin
  *
  */
 public abstract class Prog implements Cloneable
 {
-	protected Color couleur; // Couleur de l'action ou procédure
+	protected Color color; // Couleur de l'action ou procédure
 	
-	public Color getColor() {return couleur;}
-	public void setColor(Color c) {couleur = c;}
+	public Color getColor() {return color;}
+	public void setColor(Color c) {color = c;}
+	
+	public Prog(Color color)
+	{
+		this.color = color;
+	}
 	
 	public Object clone() throws CloneNotSupportedException {return super.clone();}
 	

@@ -14,7 +14,6 @@ import Prog.NormalActions.For;
 
 /**
  * Classe permettant de donner a un personnage sa prochaine action a effectuer.
- * @author edwin
  *
  */
 public class Interpreter

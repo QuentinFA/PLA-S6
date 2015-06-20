@@ -6,20 +6,22 @@ import Prog.Color;
 
 /**
  * Action remettant la couleur d'origine du personnage.
- * @author edwin
  *
  */
 public class Shower extends Action 
 {
-		public Shower(Color c) {couleur = c;}
+	public Shower(Color color)
+	{
+		super(color);
+	}
+	
+	/**
+	 * Couleur du personnage p = defaut
+	 */
+	public boolean execute(Character p) 
+	{
+		p.setColor(Color.DEFAUT);
 		
-		/**
-		 * Couleur du personnage p = defaut
-		 */
-		public boolean execute(Character p) 
-		{
-			p.setColor(Color.DEFAUT);
-			
-			return true;
-		}
+		return true;
+	}
 }

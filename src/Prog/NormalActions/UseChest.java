@@ -6,13 +6,12 @@ import Prog.Color;
 
 /**
  * Action permettant d'utiliser l'action contenu dans le coffre du personnage
- * @author edwin
  *
  */
 public class UseChest extends Action 
 {
-	public UseChest(Color c) {couleur = c;}
-
+	public UseChest(Color c) {super(c);}
+	
 	/**
 	 * Si le personnage p a un Chest sur lui, cela utilise l'action contenu dans ce Chest.
 	 */

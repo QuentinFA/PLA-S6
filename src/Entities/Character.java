@@ -23,7 +23,6 @@ import UI.Gui;
 
 /**
  * Classe des personnages du jeu (main ou fork). Represente dans le jeu par un chat.
- * @author edwin
  *
  */
 public class Character extends Entities
@@ -38,7 +37,7 @@ public class Character extends Entities
 	
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>(); //Pile permettant de savoir dans l'interpreteur ou en est le personnage dans ses actions
 	Stack<Integer> pileFor = new Stack<Integer>(); //Pile pour savoir a quel for le personnage est
-
+	
 	/**
 	 * Constructeur d'un personnage
 	 * @param pos : Position initiale du personnage
@@ -46,7 +45,7 @@ public class Character extends Entities
 	 */
 	public Character(Coordonnees pos, int ori) 
 	{
-		coord = pos;
+		super(pos);
 		orientation = ori;
 		compteurActions = 0;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
@@ -54,7 +53,7 @@ public class Character extends Entities
 	}
 	
 	public void setBulle(Sprite spr) {bulle = spr;}
-
+	
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
 	
@@ -106,12 +105,12 @@ public class Character extends Entities
 		pile.clear();
 		pile.push(it);
 	}
-
+	
 	public Stack<ListIterator<Prog>> getPile() {return pile;}
 	public Stack<Integer> getPileFor() {return pileFor;}
-
+	
 	public void setTextureRect(IntRect rect) {sprite.setTextureRect(rect);}
-
+	
 	/**
 	 * Fonction appele en boucle pour chaque personnage. Si on est en train de jouer et qu'aucune action n'est en cours, le personnage demande au control-
 	 * ler si il peut tenter de faire une action (workOver). 
@@ -135,10 +134,10 @@ public class Character extends Entities
 			else 
 				Controler.CONTROLER.workOver(this);
 		}
-
+		
 		return true;
 	}
-
+	
 	public void afficher()
 	{
 		Graphic.SFML.draw(sprite);
@@ -162,7 +161,7 @@ public class Character extends Entities
 		if (a!=null)
 			use_Action(a);
 	}
-
+	
 	/**
 	 *  Effectue l'action pour le personnage
 	 * @param a Action a effectuer par le personnage
