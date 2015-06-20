@@ -660,6 +660,7 @@ public class Gui
 	//Entrer dans le niveau suivant
 	private void next()
 	{
+		Graphic.SFML.speedUp(false);
 		if (Menu_Level.get_monde() == 0)
 			Reader.read("levels/Demo"+(Menu_Level.get_level()+2)+".xml");
 		else if (Menu_Level.get_monde() == 1)
