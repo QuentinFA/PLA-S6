@@ -122,7 +122,8 @@
 		</main_sol>
 		<proc1_sol>
 			<instruction color="DEFAUT">Fork</instruction>
-			<instruction color="DEFAUT" loop="2">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Fork</instruction>
 			<instruction color="DEFAUT">Forward</instruction>
 			<instruction color="DEFAUT">Fork</instruction>
 			<instruction color="DEFAUT" loop="3">For</instruction>
