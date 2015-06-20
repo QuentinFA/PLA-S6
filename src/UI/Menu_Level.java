@@ -95,7 +95,7 @@ public class Menu_Level extends Menu
 		fleche_right.setPosition(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - fleche_right.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
 		fleche_left.setPosition(Graphic.SFML.getCenterCamera().x - Graphic.SFML.getSizeCamera().x/2.f + fleche_left.getTextureRect().width, Graphic.SFML.getCenterCamera().y);
 
-		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+150,Graphic.SFML.getPositionCamera_f().y));
+		returnMenu.setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x+125,Graphic.SFML.getPositionCamera_f().y));
 		for (int i = 0 ; i < monde_list.size(); i++)
 			monde_list.get(i).setPosition(new Vector2f((i-nbr_monde)*Graphic.SFML.getSizeCamera().x+Graphic.SFML.getCenterCamera().x , Graphic.SFML.getCenterCamera().y));
 

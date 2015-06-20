@@ -35,7 +35,6 @@ public class Ressources
 		PROC1(),
 		PROC2(),
 		PLAY_ACTION(),
-		RETRY_ACTION(),
 		END_OF_GAME(),
 		END_OF_GAME_TEXT(),
 		NEXT(),
@@ -90,7 +89,6 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.PROC1, Paths.get("images/proc1.png"));
 		TEXTURE.loadFromFile(TEXTURE.PROC2, Paths.get("images/proc2.png"));
 		TEXTURE.loadFromFile(TEXTURE.PLAY_ACTION, Paths.get("images/play_action.png"));
-		TEXTURE.loadFromFile(TEXTURE.RETRY_ACTION, Paths.get("images/retry_action.png"));
 		TEXTURE.loadFromFile(TEXTURE.END_OF_GAME, Paths.get("images/end_of_game.png"));
 		TEXTURE.loadFromFile(TEXTURE.NEXT, Paths.get("images/next.png"));
 		TEXTURE.loadFromFile(TEXTURE.RETURN_ON_BILLBOARD, Paths.get("images/return_on_billboard.png"));
