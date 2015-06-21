@@ -19,7 +19,7 @@ public class Light extends Action
 	}
 	
 	private int frame = 0;
-	private int last_frame = 18;
+	private int last_frame = 10;
 	
 	/**
 	 * Allume la case sous le character p si elle est de type LightBlock
@@ -31,16 +31,9 @@ public class Light extends Action
 			Entities b = World.WORLD.getEntitiesAt(new Coordonnees(p.getCoord().getX(), p.getCoord().getY(), p.getCoord().getZ()-1));
 			if (b != null && b instanceof LightBlock)
 				((LightBlock) b).reverseLight();
+			p.setTextureOrientation();
 		}
-		else if (frame == 8)
-		{
-			
-		}
-		else if (frame == 16)
-		{
-			
-		}
-		//TODO other animation
+		
 		frame ++;
 		
 		return frame == last_frame;

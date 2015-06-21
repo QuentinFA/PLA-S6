@@ -43,6 +43,8 @@ public class Graphic
 	private int height; //Taille verticale de la fenetre
 	
 	//Fond
+	boolean speed = false;
+	int cpt_speed = 0;
 	boolean mute = true;
 	Sprite boutonSound = new Sprite();
 	private List<Sprite> nuages = new ArrayList<Sprite>();
@@ -84,10 +86,8 @@ public class Graphic
 	
 	public void speedUp(boolean b)
 	{
-		if (b == true)
-			fenetre.setFramerateLimit(300);
-		else
-			fenetre.setFramerateLimit(60);
+		speed = b;
+		cpt_speed = 0;
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class Graphic
 	public void initialiser(int w, int h)
 	{
 		fenetre = new RenderWindow(new VideoMode(w, h), "LightBot");
-		fenetre.setFramerateLimit(60);
+		fenetre.setVerticalSyncEnabled(true);
 		camera = new View();
 		
 		width = w;
@@ -180,25 +180,32 @@ public class Graphic
 			camera_ini();
 		}
 		
-		fenetre.setView(camera);
-		
-		fenetre.clear(Color.WHITE);
-		fenetre.draw(fond);
-		
-		Collections.sort(nuages, new NuageComparator());
-		for (Sprite spr : nuages)
-			draw(spr);
-		
-		draw(boutonSound);
-		
-		if (World.WORLD != null)
-			World.WORLD.afficher();
-		if (Menu.Mymenu != null)
-			Menu.Mymenu.afficher();
-		if (Gui.GUI != null)
-			Gui.GUI.afficher();
-		
-		fenetre.display();
+		if (!speed || cpt_speed >= 5)
+		{
+			fenetre.setView(camera);
+			
+			fenetre.clear(Color.WHITE);
+			fenetre.draw(fond);
+			
+			Collections.sort(nuages, new NuageComparator());
+			for (Sprite spr : nuages)
+				draw(spr);
+			
+			draw(boutonSound);
+			
+			if (World.WORLD != null)
+				World.WORLD.afficher();
+			if (Menu.Mymenu != null)
+				Menu.Mymenu.afficher();
+			if (Gui.GUI != null)
+				Gui.GUI.afficher();
+			
+			fenetre.display();
+			
+			cpt_speed = 0;
+		}
+		else
+			cpt_speed ++;
 	}
 	
 	/**
