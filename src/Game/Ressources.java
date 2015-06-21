@@ -45,6 +45,7 @@ public class Ressources
 		FORK(),
 		FAST_FORWARD(),
 		FOLLOWER(),
+		FLAG(),
 		HELP_ME();
 
 		private Texture texture;
@@ -98,7 +99,7 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.FAST_FORWARD, Paths.get("images/fast_forward.png"));
 		TEXTURE.loadFromFile(TEXTURE.FOLLOWER, Paths.get("images/follower.png"));
 		TEXTURE.loadFromFile(TEXTURE.HELP_ME, Paths.get("images/catHelp.png"));
-
+		TEXTURE.loadFromFile(TEXTURE.FLAG, Paths.get("images/flag.png"));
 
 		int lower = 0;
 		int higher = 5;

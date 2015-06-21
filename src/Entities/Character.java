@@ -28,7 +28,7 @@ import UI.Gui;
 public class Character extends Entities
 {	
 	private int orientation; 
-	private Coordonnees checkPoint = null;
+	private Flag checkPoint = null;
 	private Sprite bulle = null;
 	private Color couleur = Color.DEFAUT;
 	private Chest coffre  = null;
@@ -44,9 +44,9 @@ public class Character extends Entities
 	 * @param pos : Position initiale du personnage
 	 * @param ori : Orientation du personnage
 	 */
-	public Character(Coordonnees pos, int ori) 
+	public Character(Coordonnees c, int ori) 
 	{
-		super(pos);
+		super(c);
 		orientation = ori;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
@@ -174,13 +174,21 @@ public class Character extends Entities
 		catch (CloneNotSupportedException e) {e.printStackTrace();}
 	}
 
-	public void setCheckPoint(Coordonnees coord) 
+	public void setCheckPoint(Coordonnees c) 
 	{
-		checkPoint = coord;	
+		if (checkPoint == null)
+		{
+			checkPoint = new Flag(c);
+			World.WORLD.addEntitie(checkPoint);
+		}
+		else
+			checkPoint.setCoord(c);
+		
+		checkPoint.setPosSprite(World.WORLD.placeMe(checkPoint.getCoord()));
 	}
 	
 	public Coordonnees getCheckPoint() 
 	{
-		return checkPoint;
+		return checkPoint.getCoord();
 	}
 }

@@ -204,6 +204,11 @@ public class World
 		allList.add(c);
 	}
 	
+	public void addEntitie(Entities e) 
+	{
+		allList.add(e);
+	}
+	
 	/**
 	 * Recuperer la liste des blocks
 	 * @return La liste des blocks
@@ -221,6 +226,7 @@ public class World
 	 * @return La liste des différentes procédures de listes d'action
 	 */
 	public List<Procedure> getListSoluce() {return listSoluce;}
+	
 	/**
 	 * Afficher tous les objets du monde (blocks, personnages, ...)
 	 */
