@@ -13,6 +13,7 @@ import Entities.DepthComparator;
 import Entities.EntitieComparator;
 import Entities.Entities;
 import Entities.Blocks.LightBlock;
+import Game.Ressources.TEXTURE;
 import Prog.Action;
 import Prog.Coordation;
 import Prog.Coordonnees;
@@ -176,7 +177,7 @@ public class World
 					max_y = blockList.get(i).getCoord().getY();
 			}
 			centerWorld = new Vector2f(
-					(int)(-40*(max_x+min_x)/2 + 40*(max_y+min_y)/2 + 81/2.f), 
+					(int)(-40*(max_x+min_x)/2 + 40*(max_y+min_y)/2 + 81/2.f + Ressources.TEXTURE.getHalfSize(TEXTURE.GUI_MAIN).x), 
 					(int)(23*(max_x+min_x)/2 + 23*(max_y+min_y)/2 + 81/2.f)
 					);
 		}
