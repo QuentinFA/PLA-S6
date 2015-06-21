@@ -169,7 +169,7 @@ public class Graphic
 	 */
 	public void afficher()
 	{
-		if (fenetre.getSize().x != width || fenetre.getSize().y != height)
+		if (fenetre.getSize().x/2*2 != width || fenetre.getSize().y/2*2 != height)
 		{
 			width = fenetre.getSize().x;
 			height = fenetre.getSize().y;
