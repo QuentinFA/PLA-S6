@@ -27,6 +27,10 @@ public class TeleporterBlock extends Block
 	{
 		Stack<org.jsfml.graphics.Color> l = new Stack<org.jsfml.graphics.Color>();
 		
+		l.push(new org.jsfml.graphics.Color(128, 128, 128));
+		l.push(org.jsfml.graphics.Color.BLACK);
+		l.push(org.jsfml.graphics.Color.CYAN);
+		l.push(org.jsfml.graphics.Color.MAGENTA);
 		l.push(org.jsfml.graphics.Color.GREEN);
 		l.push(org.jsfml.graphics.Color.BLUE);
 		l.push(org.jsfml.graphics.Color.RED);

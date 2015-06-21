@@ -635,7 +635,7 @@ public class Gui
 
 			int compteur = 0;
 			for (Entities.Character ch: World.WORLD.getCharacterList())
-				compteur = compteur+ch.getNbActions();	
+				compteur = compteur + ch.getNbActions();	
 
 			if (compteur <= World.WORLD.getMinStar()) // 3 etoiles
 				for (int i=0; i<3; i++)
@@ -802,8 +802,9 @@ public class Gui
 					spriteList_fork.add(spriteFromAction((Action)l.get(i).getListProcedure().get(j)));
 			}
 
-		setReference(l);
+	
 		final_actionList = Prog.clone_actionList(l);
+		setReference(final_actionList);
 		if (final_actionList.size() == 0)
 			final_actionList.add(new Procedure(Color.DEFAUT, 0));
 	}
