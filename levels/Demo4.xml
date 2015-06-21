@@ -17,7 +17,7 @@
 			<x>0</x>
 			<y>5</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>0</x>
 			<y>4</y>
 		</block>
@@ -25,7 +25,7 @@
 			<x>1</x>
 			<y>4</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>2</x>
 			<y>4</y>
 		</block>
@@ -33,7 +33,7 @@
 			<x>2</x>
 			<y>3</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>2</x>
 			<y>2</y>
 		</block>
@@ -41,7 +41,7 @@
 			<x>3</x>
 			<y>2</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>4</x>
 			<y>2</y>
 		</block>
@@ -49,17 +49,37 @@
 			<x>4</x>
 			<y>1</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>4</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>5</x>
-			<y>0</y>
+			<x>4</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>-2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>-3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>-4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>-5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>-6</y>
 		</block>
 		<block type="LightBlock">
-			<x>3</x>
-			<y>0</y>
+			<x>4</x>
+			<y>-7</y>
 		</block>
 	</floor>
 	<action_list>
@@ -73,21 +93,26 @@
 		<action>Shower</action>
 		<action>Break</action>
 	</action_list>
+	<score>
+		<min>42</min>
+		<max>55</max>
+	</score>
 	<functions>
-		<main nb_action="4" />
+		<main nb_action="3" />
 		<procedure nb_proc="1" />
 	</functions>
 	<solution>
 		<main_sol>
 			<instruction color="DEFAUT">P1</instruction>
-			<instruction color="DEFAUT">Right_turn</instruction>
-			<instruction color="DEFAUT">Forward</instruction>
-			<instruction color="DEFAUT">Light</instruction>
+			<instruction color="DEFAUT">Shower</instruction>
+			<instruction color="DEFAUT">P1</instruction>
+
 		</main_sol>
 		<proc1_sol>
 			<instruction color="DEFAUT">Forward</instruction>
 			<instruction color="DEFAUT">Pipette</instruction>
 			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
 			<instruction color="ROUGE">Left_turn</instruction>
 			<instruction color="BLEU">Right_turn</instruction>
 			<instruction color="VERT">Break</instruction>
