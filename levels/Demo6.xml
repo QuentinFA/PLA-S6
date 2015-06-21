@@ -16,6 +16,10 @@
 	<starting_dir>NORTH</starting_dir>
 	<floor level="0">
 		<!-- 1er block -->
+		<block type="TeleporterBlock" destination="4,4,0">
+			<x>2</x>
+			<y>2</y>
+		</block>
 		<block type="NormalBlock" is_start="true">
 			<x>0</x>
 			<y>0</y>
@@ -40,10 +44,6 @@
 			<x>1</x>
 			<y>1</y>
 		</block>
-		<block type="RedBlock">
-			<x>2</x>
-			<y>2</y>
-		</block>
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>2</y>
@@ -54,54 +54,26 @@
 		</block>
 		
 		<!-- 2eme block -->
-		<block type="NormalBlock">
+		<block type="TeleporterBlock" destination="-4,-4,0">
 			<x>2</x>
-			<y>4</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>5</y>
-		</block>
-		<block type="RedBlock">
-			<x>2</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>4</y>
+			<y>-2</y>
 		</block>
 		<block type="LightBlock">
-			<x>1</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>6</y>
-		</block>
-		<block type="RedBlock">
 			<x>0</x>
 			<y>4</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>6</y>
 		</block>
 		
 		<!-- 3eme bloc -->
+		<block type="TeleporterBlock" destination="4,0,0">
+			<x>-2</x>
+			<y>2</y>
+		</block>
 		<block type="NormalBlock">
 			<x>4</x>
 			<y>-2</y>
 		</block>
 		<block type="NormalBlock">
 			<x>5</x>
-			<y>-2</y>
-		</block>
-		<block type="RedBlock">
-			<x>6</x>
 			<y>-2</y>
 		</block>
 		<block type="NormalBlock">
@@ -115,10 +87,6 @@
 		<block type="NormalBlock">
 			<x>6</x>
 			<y>-3</y>
-		</block>
-		<block type="RedBlock">
-			<x>4</x>
-			<y>-4</y>
 		</block>
 		<block type="NormalBlock">
 			<x>5</x>
@@ -130,48 +98,16 @@
 		</block>
 	
 		<!-- 4eme bloc -->
-		<block type="NormalBlock">
+		<block type="TeleporterBlock" destination="4,-4,0">
 			<x>-2</x>
-			<y>4</y>
+			<y>-2</y>
 		</block>
 		<block type="NormalBlock">
-			<x>-2</x>
-			<y>5</y>
-		</block>
-		<block type="RedBlock">
-			<x>-2</x>
-			<y>6</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-3</x>
-			<y>4</y>
-		</block>
-		<block type="LightBlock">
-			<x>-3</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-3</x>
-			<y>6</y>
-		</block>
-		<block type="RedBlock">
-			<x>-4</x>
-			<y>4</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-4</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>-4</x>
-			<y>6</y>
+			<x>0</x>
+			<y>3</y>
 		</block>
 		
 		<!-- 5eme bloc -->
-		<block type="RedBlock">
-			<x>4</x>
-			<y>0</y>
-		</block>
 		<block type="NormalBlock">
 			<x>4</x>
 			<y>1</y>
@@ -183,6 +119,10 @@
 		<block type="NormalBlock">
 			<x>5</x>
 			<y>0</y>
+		</block>
+		<block type="BlueBlock" >
+			<x>6</x>
+			<y>2</y>
 		</block>
 		<block type="LightBlock">
 			<x>5</x>
@@ -199,16 +139,12 @@
 		<block type="NormalBlock">
 			<x>6</x>
 			<y>1</y>
-		</block>
-		<block type="RedBlock">
-			<x>6</x>
-			<y>2</y>
 		</block>
 		
 		<!-- 6eme bloc -->
-		<block type="TelepoterBlock">
-			<x>-2</x>
-			<y>-2</y>
+		<block type="TeleporterBlock" destination="0,-4,0">
+			<x>6</x>
+			<y>6</y>
 		</block>
 		<block type="NormalBlock">
 			<x>-2</x>
@@ -237,15 +173,11 @@
 		<block type="NormalBlock">
 			<x>-4</x>
 			<y>-3</y>
-		</block>
-		<block type="RedBlock">
-			<x>-4</x>
-			<y>-4</y>
 		</block>
 		
 		<!-- 7eme bloc -->
-		<block type="RedBlock">
-			<x>2</x>
+		<block type="TeleporterBlock" destination="-4,0,0">
+			<x>6</x>
 			<y>-2</y>
 		</block>
 		<block type="NormalBlock">
@@ -275,17 +207,9 @@
 		<block type="NormalBlock">
 			<x>0</x>
 			<y>-3</y>
-		</block>
-		<block type="RedBlock">
-			<x>0</x>
-			<y>-4</y>
 		</block>
 		
 		<!-- 8eme bloc -->
-		<block type="RedBlock">
-			<x>-2</x>
-			<y>2</y>
-		</block>
 		<block type="NormalBlock">
 			<x>-2</x>
 			<y>1</y>
@@ -313,17 +237,9 @@
 		<block type="NormalBlock">
 			<x>-4</x>
 			<y>1</y>
-		</block>
-		<block type="RedBlock">
-			<x>-4</x>
-			<y>0</y>
 		</block>
 		
 		<!-- 9eme bloc -->
-		<block type="RedBlock">
-			<x>4</x>
-			<y>4</y>
-		</block>
 		<block type="NormalBlock">
 			<x>4</x>
 			<y>5</y>
@@ -351,17 +267,12 @@
 		<block type="NormalBlock">
 			<x>6</x>
 			<y>5</y>
-		</block>
-		<block type="RedBlock">
-			<x>6</x>
-			<y>6</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
 		<action>Left_turn</action>
-		<action>Jump</action>
 		<action>Light</action>
 		<action>P1</action>
 		<action>P2</action>
@@ -370,12 +281,42 @@
 		<action>Shower</action>
 		<action>Break</action>
 		<action>Teleporter</action>
+		<action>SetCheckPoint</action>
+		<action>UseCheckPoint</action>
 		<!-- <action>Fork</action> -->
 		<!-- <action>UseChest</action> -->
 	</action_list>
 	<functions>
-		<main nb_action="3"/>
+		<main nb_action="6"/>
 	</functions>
 	<score>
 	</score>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">SetCheckPoint</instruction>
+			<instruction color="DEFAUT">P2</instruction>
+			<instruction color="DEFAUT">UseCheckPoint</instruction>
+			<instruction color="DEFAUT" loop="4">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+		</main_sol>
+		<proc1_sol>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+		</proc1_sol>
+		<proc2_sol>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">P1</instruction>
+			<instruction color="DEFAUT">Pipette</instruction>
+			<instruction color="BLEU">Break</instruction>
+			<instruction color="DEFAUT">Teleporter</instruction>
+			<instruction color="DEFAUT">P2</instruction>
+		</proc2_sol>
+	</solution>
 </map>
