@@ -1,0 +1,183 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Un fichier par level Heigth = Hauteur Length = Longueur Width = Largeur 
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible 
+	Type des blocks = Nom des classes Nom des actions disponnibles : Nom des 
+	classes Procédures et nombre d'actions : - Actions dans main : attribut action_nb 
+	- Si procédures : <procedure nb_proc="2"/> -->
+
+<map>
+	<level_name>Demo5</level_name>
+	<starting_dir>SOUTH</starting_dir>
+	<floor level="0">
+		<block type="NormalBlock" is_start="true">
+			<x>2</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="1">
+		<block type="ChestDoubleJump">
+			<x>1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="2">
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>-0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-1</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>-0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>-2</x>
+			<y>2</y>
+		</block>
+		<block type="LightBlock">
+			<x>-1</x>
+			<y>-1</y>
+		</block>
+	</floor>
+	<floor level="3">
+		<block type="ChestLight">
+			<x>-2</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<action_list>
+		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>P1</action>
+		<action>UseChest</action>
+		<action>OpenChest</action>
+	</action_list>
+	<functions>
+		<main nb_action="10" />
+		<procedure nb_proc="1" />
+	</functions>
+	<score>
+		<min>18</min>
+		<max>25</max>
+	</score>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">OpenChest</instruction>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">UseChest</instruction>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">P1</instruction>
+		</main_sol>
+		<proc1_sol>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">OpenChest</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">UseChest</instruction>
+		</proc1_sol>
+	</solution>
+</map>
