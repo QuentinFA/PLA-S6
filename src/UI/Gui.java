@@ -98,7 +98,6 @@ public class Gui
 
 		//EOG
 		sprite_end_of_game.setOrigin(Ressources.TEXTURE.getHalfSize(TEXTURE.END_OF_GAME));
-		sprite_return_eog.setTextureRect(new IntRect(1, 1, 100, 100));
 
 		nbrAction = nbrA;
 
@@ -248,9 +247,16 @@ public class Gui
 		if (level_completed)
 		{
 			sprite_end_of_game.setPosition(Graphic.SFML.getCenterCamera());
-			sprite_return_eog.setPosition(Graphic.SFML.getCenterCamera().x-150 , Graphic.SFML.getCenterCamera().y-10);
-			sprite_next.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y);
-			//TODO stars
+			sprite_return_eog.setPosition(sprite_end_of_game.getPosition().x-160 , sprite_end_of_game.getPosition().y+10);
+			sprite_next.setPosition(sprite_end_of_game.getPosition().x+100 , sprite_end_of_game.getPosition().y+10);
+
+			for (int i=0; i < sprite_star.size(); i++)
+				if (i==0)
+					sprite_star.get(i).setPosition(sprite_end_of_game.getPosition().x + 191 - sprite_end_of_game.getOrigin().x, sprite_end_of_game.getPosition().y + 182 - sprite_end_of_game.getOrigin().y);
+				else if (i==1)
+					sprite_star.get(i).setPosition(sprite_end_of_game.getPosition().x + 341 - sprite_end_of_game.getOrigin().x, sprite_end_of_game.getPosition().y + 179 - sprite_end_of_game.getOrigin().y);
+				else if (i==2)
+					sprite_star.get(i).setPosition(sprite_end_of_game.getPosition().x + 268 - sprite_end_of_game.getOrigin().x, sprite_end_of_game.getPosition().y + 155 - sprite_end_of_game.getOrigin().y);
 		}
 		
 		int par_ligne = (int) ((sprite_main.getPosition().x - Graphic.SFML.getPositionCamera_f().x - 50)/spriteList.get(0).getTextureRect().width);
@@ -633,22 +639,12 @@ public class Gui
 
 			if (compteur <= World.WORLD.getMinStar()) // 3 etoiles
 				for (int i=0; i<3; i++)
-				{
 					sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
-					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x-30-(1-i)*100 , Graphic.SFML.getCenterCamera().y-100);
-				}
 			else if (compteur < World.WORLD.getMaxStar() && compteur > World.WORLD.getMinStar()) // 2 etoiles
 				for (int i=0; i<2; i++)
-				{
 					sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
-					sprite_star.get(i).setPosition(Graphic.SFML.getCenterCamera().x-30-(1-i)*100 , Graphic.SFML.getCenterCamera().y-100);					
-				}
 			else //1 etoile			
-			{
-				sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));				
-				sprite_star.get(0).setPosition(Graphic.SFML.getCenterCamera().x-30-100 , Graphic.SFML.getCenterCamera().y-100);
-			}
-
+				sprite_star.add(new Sprite(Ressources.TEXTURE.getTexture(TEXTURE.STAR_FULL)));
 		}
 
 		if (level_completed == true && Input.INPUT.again(BUTTON.MLEFT))

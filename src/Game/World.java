@@ -109,6 +109,11 @@ public class World
 			p.gerer();
 	}
 	
+	public void removeFrontList(Sprite spr)
+	{
+		frontList.remove(spr);
+	}
+	
 	/**
 	 * Gere la creation des clones
 	 */

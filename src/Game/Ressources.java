@@ -36,11 +36,9 @@ public class Ressources
 		PROC2(),
 		PLAY_ACTION(),
 		END_OF_GAME(),
-		END_OF_GAME_TEXT(),
 		NEXT(),
 		RETURN_ON_BILLBOARD(),
 		STAR_FULL(),
-		STAR_EMPTY(),
 		CHOIX_COULEUR(),
 		FORK(),
 		FAST_FORWARD(),
@@ -78,7 +76,6 @@ public class Ressources
 		TEXTURE.loadFromFile(TEXTURE.TITLE, Paths.get("images/title.png"));
 		TEXTURE.loadFromFile(TEXTURE.NUAGE, Paths.get("images/nuages.png"));
 		TEXTURE.loadFromFile(TEXTURE.AURA, Paths.get("images/aura.png"));
-		
 		TEXTURE.loadFromFile(TEXTURE.MONDE, Paths.get("images/monde.png"));
 		TEXTURE.loadFromFile(TEXTURE.NBR_LEVEL, Paths.get("images/nbr_level.png"));
 		TEXTURE.loadFromFile(TEXTURE.ACTION, Paths.get("images/action.png"));

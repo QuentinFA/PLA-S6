@@ -52,7 +52,11 @@ public class Character extends Entities
 		setTextureOrientation();
 	}
 
-	public void setBulle(Sprite spr) {bulle = spr;}
+	public void setBulle(Sprite spr) 
+	{
+		World.WORLD.removeFrontList(bulle);
+		bulle = spr;
+	}
 
 	public Coordonnees getCoord() {return coord;}
 	public void setCoord(Coordonnees pos) {coord = pos;}
