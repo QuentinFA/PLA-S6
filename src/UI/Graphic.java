@@ -174,6 +174,9 @@ public class Graphic
 			width = fenetre.getSize().x;
 			height = fenetre.getSize().y;
 			
+			if (width%2 == 1) width -= 1;
+			if (height%2 == 1) height -= 1;
+			
 			camera_ini();
 		}
 		
