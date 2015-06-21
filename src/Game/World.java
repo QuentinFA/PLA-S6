@@ -247,7 +247,7 @@ public class World
 	public boolean isValidPosition(Coordonnees c)
 	{
 		for (Entities e : allList)
-			if (e.getCoord().int_equals(c))
+			if (e.getCollision() && e.getCoord().int_equals(c))
 				return false;
 		
 		return true;

@@ -15,14 +15,16 @@ public abstract class Entities
 {
 	protected Sprite sprite = new Sprite(); //Sprite du block ou personnage ou chest
 	protected Coordonnees coord;
+	protected boolean collision = true;
 	
 	public Entities(Coordonnees coord)
 	{
 		this.coord = coord;
 	}
 	
-	public Coordonnees getCoord() {return coord;}
+	public boolean getCollision() {return collision;}
 	
+	public Coordonnees getCoord() {return coord;}
 	public Vector2f getPosSprite() {return sprite.getPosition();}
 	public void setPosSprite(Vector2f pos) {sprite.setPosition(pos);}
 	public FloatRect getGlobalBounds() {return sprite.getGlobalBounds();}

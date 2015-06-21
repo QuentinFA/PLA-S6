@@ -28,12 +28,13 @@ import UI.Gui;
 public class Character extends Entities
 {	
 	private int orientation; 
+	private Coordonnees checkPoint = null;
 	private Sprite bulle = null;
 	private Color couleur = Color.DEFAUT;
 	private Chest coffre  = null;
 	private Action actionCourante = null;
-	private int compteurActions;	//Permet de donner le nombre d'étoiles à la fin de la resolution d'un niveau
-	private List<Procedure> actionList; //Liste des procedures que le personnage effectue
+	private int compteurActions = 0;	//Permet de donner le nombre d'étoiles à la fin de la resolution d'un niveau
+	private List<Procedure> actionList = null; //Liste des procedures que le personnage effectue
 
 	Stack<ListIterator<Prog>> pile = new Stack<ListIterator<Prog>>(); //Pile permettant de savoir dans l'interpreteur ou en est le personnage dans ses actions
 	Stack<Integer> pileFor = new Stack<Integer>(); //Pile pour savoir a quel for le personnage est
@@ -47,7 +48,6 @@ public class Character extends Entities
 	{
 		super(pos);
 		orientation = ori;
-		compteurActions = 0;
 		sprite.setTexture(Ressources.TEXTURE.getTexture(TEXTURE.PERSO));
 		setTextureOrientation();
 	}
@@ -172,5 +172,15 @@ public class Character extends Entities
 	{	
 		try {actionCourante = (Action) a.clone();}
 		catch (CloneNotSupportedException e) {e.printStackTrace();}
+	}
+
+	public void setCheckPoint(Coordonnees coord) 
+	{
+		checkPoint = coord;	
+	}
+	
+	public Coordonnees getCheckPoint() 
+	{
+		return checkPoint;
 	}
 }

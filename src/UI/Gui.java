@@ -183,6 +183,10 @@ public class Gui
 			spr.setTextureRect(new IntRect(811, 1, 80, 80));
 		else if (act instanceof Break)
 			spr.setTextureRect(new IntRect(892, 1, 80, 80));
+		else if (act instanceof SetCheckPoint)
+			spr.setTextureRect(new IntRect(892, 82, 80, 80));
+		else if (act instanceof UseCheckPoint)
+			spr.setTextureRect(new IntRect(973, 82, 80, 80));
 
 		if(act.getColor() == Color.ROUGE)
 			spr.setColor(org.jsfml.graphics.Color.RED);

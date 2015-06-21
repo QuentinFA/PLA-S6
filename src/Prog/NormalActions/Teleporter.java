@@ -20,7 +20,7 @@ public class Teleporter extends Action
 	}
 	
 	private int frame = 0;
-	private int last_frame = 18;
+	private int last_frame = 20;
 	
 	/**
 	 * Si le personnage p se trouve sur un bloc teleporteur, il est teleporte sur la case indique par ce bloc.
@@ -33,14 +33,6 @@ public class Teleporter extends Action
 			if (b != null)
 				if (b instanceof TeleporterBlock)
 					((TeleporterBlock) b).perform(p);
-		}
-		else if (frame == 8)
-		{
-			
-		}
-		else if (frame == 16)
-		{
-			
 		}
 		//TODO other animation
 		frame ++;
