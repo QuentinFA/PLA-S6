@@ -1,54 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Un fichier par level Heigth = Hauteur Length = Longueur Width = Largeur 
+	is_start : Uniquement sur le block de départ /!\ Un seul départ possible 
+	Type des blocks = Nom des classes Nom des actions disponnibles : Nom des 
+	classes Procédures et nombre d'actions : - Actions dans main : attribut action_nb 
+	- Si procédures : <procedure nb_proc="2"/> -->
+
 <map>
-	<level_name>test</level_name>
-	<starting_dir>NORTH</starting_dir>
+	<level_name>fork-1</level_name>
+	<starting_dir>EAST</starting_dir>
 	<floor level="0">
 		<block type="NormalBlock" is_start="true">
 			<x>0</x>
 			<y>0</y>
 		</block>
-		<block type="LightBlock">
-			<x>0</x>
-			<y>1</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>2</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>3</y>
-		</block>
-		<block type="BlueBlock">
-			<x>0</x>
-			<y>4</y>
-		</block>
-		<block type="NormalBlock">
-			<x>0</x>
-			<y>5</y>
-		</block>
-		
-		<block type="NormalBlock">
-			<x>1</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>2</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>3</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>4</x>
-			<y>5</y>
-		</block>
-		<block type="NormalBlock">
-			<x>5</x>
-			<y>5</y>
-		</block>
-		
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>0</y>
@@ -61,56 +25,74 @@
 			<x>3</x>
 			<y>0</y>
 		</block>
-		<block type="NormalBlock">
+		<block type="LightBlock">
 			<x>4</x>
 			<y>0</y>
 		</block>
 		<block type="NormalBlock">
-			<x>5</x>
-			<y>0</y>
-		</block>
-		
-		<block type="NormalBlock" is_start="true">
-			<x>5</x>
-			<y>0</y>
-		</block>
-		<block type="LightBlock">
-			<x>5</x>
+			<x>0</x>
 			<y>1</y>
 		</block>
 		<block type="NormalBlock">
-			<x>5</x>
+			<x>0</x>
 			<y>2</y>
 		</block>
 		<block type="NormalBlock">
-			<x>5</x>
+			<x>0</x>
 			<y>3</y>
 		</block>
-		<block type="NormalBlock">
-			<x>5</x>
+		<block type="LightBlock">
+			<x>0</x>
 			<y>4</y>
 		</block>
+	</floor>
+	<floor level="1">
 		<block type="NormalBlock">
-			<x>5</x>
-			<y>5</y>
+			<x>0</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>2</y>
+		</block>
+	</floor>
+	<floor level="2">
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>2</y>
 		</block>
 	</floor>
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
 		<action>Left_turn</action>
-		<action>For</action>
-		<action>Jump</action> 
-		<action>P1</action> 
-		<action>P2</action> 
+		<action>Jump</action>
+		<action>Light</action>
 		<action>Fork</action>
-		<action>Pipette</action>
 	</action_list>
-	<functions>
-		<main nb_action="10" />
-	</functions>
 	<score>
-		<min>3</min>
-		<max>5</max>
+		<min>12</min>
+		<max>15</max>
 	</score>
-</map>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">Fork</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+		</main_sol>
+		<fork_sol>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
+		</fork_sol>
+	</solution>
+	<functions>
+		<main nb_action="6" />
+	</functions>
+</map>	

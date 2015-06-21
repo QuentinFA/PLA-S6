@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<level_name>test</level_name>
+	<starting_dir>NORTH</starting_dir>
+	<floor level="0">
+		<block type="NormalBlock" is_start="true">
+			<x>0</x>
+			<y>0</y>
+		</block>
+		<block type="LightBlock">
+			<x>0</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>0</x>
+			<y>5</y>
+		</block>
+
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>5</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>5</y>
+		</block>
+
+		<block type="NormalBlock">
+			<x>1</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>2</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>3</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>4</x>
+			<y>0</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>0</y>
+		</block>
+
+		<block type="NormalBlock" is_start="true">
+			<x>5</x>
+			<y>0</y>
+		</block>
+		<block type="LightBlock">
+			<x>5</x>
+			<y>1</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>2</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>3</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>4</y>
+		</block>
+		<block type="NormalBlock">
+			<x>5</x>
+			<y>5</y>
+		</block>
+	</floor>
+	<action_list>
+		<action>Forward</action>
+		<action>Right_turn</action>
+		<action>Left_turn</action>
+		<action>For</action>
+		<action>Jump</action>
+		<action>P1</action>
+		<action>P2</action>
+		<action>Fork</action>
+	</action_list>
+	<functions>
+		<main nb_action="1" />
+		<procedure nb_proc="2" />
+	</functions>
+	<score>
+		<min>3</min>
+		<max>5</max>
+	</score>
+	<solution>
+		<main_sol>
+			<instruction color="DEFAUT">P2</instruction>
+		</main_sol>
+		<proc1_sol>
+			<instruction color="DEFAUT">Fork</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Fork</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Fork</instruction>
+			<instruction color="DEFAUT" loop="3">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+		</proc1_sol>
+		<proc2_sol>
+			<instruction color="DEFAUT" loop="4">For</instruction>
+			<instruction color="DEFAUT">P1</instruction>
+			<instruction color="DEFAUT">Right_turn</instruction>
+			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Left_turn</instruction>
+			<instruction color="DEFAUT">P2</instruction>
+		</proc2_sol>
+		<fork_sol>
+			<instruction color="DEFAUT">Fork</instruction>
+			<instruction color="DEFAUT" loop="5">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+		</fork_sol>
+	</solution>
+</map>
