@@ -11,9 +11,8 @@ import Entities.Character;
 public class Controler 
 {
 	/**
-	 * Sous-Classe permettant de faire une liste des personnages du jeu en sachant s'ils sont en train de travailler ou non.
-	 * @author edwin
-	 *
+	 * Sous-Classe permettant de faire une liste des personnages 
+	 * du jeu en sachant s'ils sont en train de travailler ou non.
 	 */
 	public class PersonnageTravaille 
 	{
@@ -56,7 +55,8 @@ public class Controler
 	}
 	
 	/**
-	 * Tourne en boucle. Si tout les personnages ont fini de travailler, leur demande de faire leur prochaine action. Gère aussi la création des clones.
+	 * Tourne en boucle. Si tout les personnages ont fini de travailler, 
+	 * leur demande de faire leur prochaine action. Gère aussi la création des clones.
 	 */
 	public void manage() 
 	{	
