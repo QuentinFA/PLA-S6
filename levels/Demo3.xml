@@ -192,6 +192,10 @@
 			<y>2</y>
 		</block>
 	</floor>
+		<score>
+		<min>28</min>
+		<max>35</max>
+	</score>
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
@@ -225,7 +229,7 @@
 			<instruction color="DEFAUT">Left_turn</instruction>
 		</proc1_sol>
 		<proc2_sol>
-			<instruction color="DEFAUT">Jump</instruction>
+			<instruction color="DEFAUT">Light</instruction>
 			<instruction color="DEFAUT">Forward</instruction>
 		</proc2_sol>
 	</solution>
