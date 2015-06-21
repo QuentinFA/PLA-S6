@@ -10,16 +10,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="Prog.Coordonnees" project="Pla" file="/Pla/src/Prog/Coordonnees.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1094" y="367"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="Prog.NormalActions.P2" project="Pla" file="/Pla/src/Prog/NormalActions/P2.java" 
+  <class id="2" language="java" name="Prog.NormalActions.P2" project="Pla" file="/Pla/src/Prog/NormalActions/P2.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="26" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +19,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Prog.NormalActions.Teleporter" project="Pla" 
+  <class id="3" language="java" name="Prog.NormalActions.Teleporter" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Teleporter.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="128" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Prog.NormalActions.Left_turn" project="Pla" 
+  <class id="4" language="java" name="Prog.NormalActions.Left_turn" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Left_turn.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="231" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Prog.NormalActions.Light" project="Pla" 
+  <class id="5" language="java" name="Prog.NormalActions.Light" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Light.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="333" y="251"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Prog.NormalActions.P1" project="Pla" file="/Pla/src/Prog/NormalActions/P1.java" 
+  <class id="6" language="java" name="Prog.NormalActions.P1" project="Pla" file="/Pla/src/Prog/NormalActions/P1.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="437" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,21 +55,12 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <package id="8" language="java" name="Prog.NormalActions" project="Pla" file="/Pla/src/Prog/NormalActions" 
+  <package id="7" language="java" name="Prog.NormalActions" project="Pla" file="/Pla/src/Prog/NormalActions" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="88" y="39"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <enumeration id="9" language="java" name="Prog.NormalActions.Jump.PHASE" project="Pla" 
-    file="/Pla/src/Prog/NormalActions/Jump.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1479" y="353"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </enumeration>  
-  <class id="10" language="java" name="Prog.NormalActions.Pipette" project="Pla" 
+  <class id="8" language="java" name="Prog.NormalActions.Pipette" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Pipette.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="540" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -87,7 +69,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Prog.NormalActions.Fork" project="Pla" 
+  <class id="9" language="java" name="Prog.NormalActions.Fork" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Fork.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="641" y="252"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -96,7 +78,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Prog.NormalActions.OpenChest" project="Pla" 
+  <class id="10" language="java" name="Prog.NormalActions.OpenChest" project="Pla" 
     file="/Pla/src/Prog/NormalActions/OpenChest.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="739" y="253"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -105,7 +87,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Prog.NormalActions.Forward" project="Pla" 
+  <class id="11" language="java" name="Prog.NormalActions.Forward" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Forward.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="839" y="254"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -114,7 +96,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Prog.NormalActions.Break" project="Pla" 
+  <class id="12" language="java" name="Prog.NormalActions.Break" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Break.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="939" y="252"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -123,7 +105,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Prog.NormalActions.Right_turn" project="Pla" 
+  <class id="13" language="java" name="Prog.NormalActions.Right_turn" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Right_turn.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1038" y="252"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -132,7 +114,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="Prog.NormalActions.Shower" project="Pla" 
+  <class id="14" language="java" name="Prog.NormalActions.Shower" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Shower.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1136" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -141,7 +123,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="Prog.NormalActions.For" project="Pla" file="/Pla/src/Prog/NormalActions/For.java" 
+  <class id="15" language="java" name="Prog.NormalActions.For" project="Pla" file="/Pla/src/Prog/NormalActions/For.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1234" y="249"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -150,16 +132,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <enumeration id="18" language="java" name="Prog.NormalActions.Forward.PHASE" project="Pla" 
-    file="/Pla/src/Prog/NormalActions/Forward.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="840" y="361"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </enumeration>  
-  <class id="19" language="java" name="Prog.NormalActions.Jump" project="Pla" 
+  <class id="16" language="java" name="Prog.NormalActions.Jump" project="Pla" 
     file="/Pla/src/Prog/NormalActions/Jump.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1434" y="254"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -168,7 +141,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="Prog.NormalActions.UseChest" project="Pla" 
+  <class id="17" language="java" name="Prog.NormalActions.UseChest" project="Pla" 
     file="/Pla/src/Prog/NormalActions/UseChest.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1330" y="249"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -177,145 +150,79 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <association id="21">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="22" name="delta"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="24">    
+  <generalization id="18">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="20">    
+    <bendpoint x="1234" y="120"/>    
+    <bendpoint x="1031" y="59"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="21">    
+    <bendpoint x="362" y="114"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="22">    
+    <bendpoint x="901" y="128"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="23">    
     <bendpoint x="218" y="82"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="24">    
+    <bendpoint x="491" y="148"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="25">    
+    <bendpoint x="282" y="102"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <nesting id="25">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="9"/>  
-  </nesting>  
   <generalization id="26">    
-    <bendpoint x="491" y="148"/>    
-    <end type="SOURCE" refId="7"/>    
+    <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="27">    
     <bendpoint x="1133" y="178"/>    
     <bendpoint x="945" y="104"/>    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="28">    
-    <bendpoint x="1234" y="120"/>    
-    <bendpoint x="1031" y="59"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <nesting id="29">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="18"/>  
-  </nesting>  
-  <association id="30">    
-    <bendpoint x="1265" y="354"/>    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="31" name="futur_coord"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="33">    
-    <bendpoint x="901" y="128"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="34">    
-    <bendpoint x="1164" y="138"/>    
-    <bendpoint x="994" y="92"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="35">    
-    <bendpoint x="362" y="114"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="36">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="37">    
-    <bendpoint x="1276" y="384"/>    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="38" name="center_phase2"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="40">    
-    <bendpoint x="427" y="129"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="41">    
-    <bendpoint x="282" y="102"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="44">    
-    <bendpoint x="842" y="144"/>    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="45">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="46" name="phase"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="48">    
-    <end type="SOURCE" refId="14"/>    
+  <generalization id="28">    
+    <bendpoint x="842" y="144"/>    
+    <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="49">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="50" name="phase"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="11"/>    
+  <generalization id="29">    
+    <bendpoint x="1164" y="138"/>    
+    <bendpoint x="994" y="92"/>    
+    <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="53">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="54" name="futur_coord"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="57" name="delta"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="31">    
+    <bendpoint x="427" y="129"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    
