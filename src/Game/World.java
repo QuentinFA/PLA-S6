@@ -28,7 +28,7 @@ public class World
 {
 	public static World WORLD = null;
 	
-	private List<Sprite> frontList = new ArrayList<Sprite>(); //Sprite � dessiner en dernier (les bulles des chests)
+	private List<Sprite> frontList = new ArrayList<Sprite>(); //Sprite à dessiner en dernier (les bulles des chests)
 	private List<Block> blockList = new ArrayList<Block>(); //Liste des blocks
 	private List<Character> characterList = new ArrayList<Character>(); //Liste des personnages
 	private List<Coordation> cloneList = new ArrayList<Coordation>(); //Liste des coordonnes des clones
@@ -112,26 +112,6 @@ public class World
 	public void removeFrontList(Sprite spr)
 	{
 		frontList.remove(spr);
-	}
-	
-	/**
-	 * Gere la creation des clones
-	 */
-	public void popClone()
-	{
-		for (int i=0; i < cloneList.size(); i++)
-			if (isValidPosition(cloneList.get(i).getCoord()))
-			{
-				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()),
-						cloneList.get(i).getOrientation());
-				p.setPosSprite(placeMe(p.getCoord()));
-					
-				addCharacter(p);
-				p.setMain();
-				
-				cloneList.remove(i);
-				i--;
-			}
 	}
 	
 	/**
@@ -297,7 +277,7 @@ public class World
 	/**
 	 * Recupere la liste des blocks d'un type</br>
 	 * Exemple d'utilisation : getBlocksT(Block.class)
-	 * @param <T>
+	 * @param <T> Le type de block à récupérer
 	 * @param blockType Le type de blocs a recuperer
 	 * @return La liste des blocks du type blockType
 	 */
@@ -311,6 +291,20 @@ public class World
 				l.add((T) b);
 		
 		return l;
+	}
+	
+	/**	
+	 * Verifie si un monde est gagné (tous les blocs lumiere allumes)
+	 */
+	public boolean isComplete()
+	{
+		List<LightBlock> llb = this.getBlocksByType(LightBlock.class);
+		boolean win = true;
+		
+		for(LightBlock lb : llb)
+			win = win && lb.getLight();
+		
+		return win;
 	}
 	
 	/**
@@ -336,20 +330,6 @@ public class World
 	
 	public List<Action> getActionList() {return actionList;}
 	
-	/**	
-	 * Verifie si un monde est gagne (tous les blocs lumiere allumes)
-	 */
-	public boolean isComplete()
-	{
-		List<LightBlock> llb = this.getBlocksByType(LightBlock.class);
-		boolean win = true;
-		
-		for(LightBlock lb : llb)
-			win = win && lb.getLight();
-		
-		return win;
-	}
-	
 	public void deleteBlock(Block a) {
 		allList.remove(a);
 		blockList.remove(a);
@@ -366,6 +346,25 @@ public class World
 	public void setClone(Coordonnees xyz, int o) 
 	{cloneList.add(new Coordation(xyz, o));}
 	
+	/**
+	 * Gere la creation des clones
+	 */
+	public void popClone()
+	{
+		for (int i=0; i < cloneList.size(); i++)
+			if (isValidPosition(cloneList.get(i).getCoord()))
+			{
+				Character p = new Character(new Coordonnees(cloneList.get(i).getCoord()),
+						cloneList.get(i).getOrientation());
+				p.setPosSprite(placeMe(p.getCoord()));
+					
+				addCharacter(p);
+				p.setMain();
+				
+				cloneList.remove(i);
+				i--;
+			}
+	}
 
 	public void setPlaying(boolean p) {playing = p;}
 	public boolean isPlaying() {return playing;}

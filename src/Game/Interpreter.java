@@ -45,42 +45,53 @@ public class Interpreter
 			return eval(p);
 		}
 		
-		if (act instanceof For) //Si l'action recupere est un For.
+		//Si l'action recupere est un For.
+		if (act instanceof For)
 		{
 			For actFor = (For) act;
-			actFor.decrementer(); //On decremente de 1 sa valeur  
+			//On decremente de 1 sa valeur  
+			actFor.decrementer();
 			
-			if (!it.hasNext()) //Si il n'y a rien apres, on ignore le For et on sort de la procedure.
+			//Si il n'y a rien apres, on ignore le For et on sort de la procedure.
+			if (!it.hasNext())
 				return eval(p);
-			act = it.next();  //Sinon on regarde l'action apres le For.
+			//Sinon on regarde l'action apres le For.
+			act = it.next();
 			
-			if ( !(act.getColor() == Color.DEFAUT || act.getColor() == p.getColor()) )  //Si elle n'est pas de la bonne couleur, on la passe et on ignore le for aussi.
+			//Si elle n'est pas de la bonne couleur, on la passe et on ignore le for aussi.
+			if ( !(act.getColor() == Color.DEFAUT || act.getColor() == p.getColor()) )
 			{
 				if (it.hasNext())
 					pile.push(it);
 				return eval(p);
 			}
-				
-			if (!actFor.isZero())  //Si il reste des tours de for a faire, on replace l'iterateur sur le for pour la prochaine evaluation.
+			
+			//Si il reste des tours de for a faire, on replace l'iterateur sur le for pour la prochaine evaluation.
+			if (!actFor.isZero())
 			{
 				it.previous();
 				it.previous();
 			}
 
-			if (act instanceof Break)  //Si l'action recupere est un Break, on sort de la procedure mais on ne fait rien. Le Break est considerer comme une action.
+			//Si l'action recupere est un Break, on sort de la procedure mais on ne fait rien. Le Break est considerer comme une action.
+			if (act instanceof Break)
 			{
 				p.incrementNbActions(); 
 				return null;			
 			}
 			
-			if (it.hasNext()) //Si il reste des actions dans la procedure ou l'on se trouve, on remet l'iteratorr dans la pile.
+			//Si il reste des actions dans la procedure ou l'on se trouve, on remet l'iteratorr dans la pile.
+			if (it.hasNext())
 				pile.push(it);
 				
-			if (act instanceof Procedure) //Si l'action recuperer est une procedure, on evalue la premiere action de cette procedure.
+			//Si l'action recuperer est une procedure, on evalue la premiere action de cette procedure.
+			if (act instanceof Procedure)
 			{
 				List<Prog> l = ((Procedure) act).getListProcedure();
-				ListIterator <Prog> it2 = l.listIterator(); //Creation de l'iterator pour cette nouvelle procedure.
-				pile.push(it2);  //On empile au sommet de la pile l'iterator pour la nouvelle procedure et on evalue la premiere action de celle-ci.
+				//Creation de l'iterator pour cette nouvelle procedure.
+				ListIterator <Prog> it2 = l.listIterator();
+				//On empile au sommet de la pile l'iterator pour la nouvelle procedure et on evalue la premiere action de celle-ci.
+				pile.push(it2); 
 				return eval(p);
 			}
 			
