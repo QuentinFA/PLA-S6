@@ -214,32 +214,6 @@ public class Gui
 
 		sprite_aide.setPosition(new Vector2f(sprite_return.getPosition().x+125, sprite_return.getPosition().y));
 
-
-		for (int i=0; i < spriteList.size(); i++)
-			spriteList.get(i).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i * spriteList.get(i).getTextureRect().width, Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - spriteList.get(i).getTextureRect().height));
-
-		//Color
-		Vector2f center = new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15);
-		if (colorSelected == Color.DEFAUT)
-			colorList.get(0).setPosition(new Vector2f(center.x + 1 - 7, center.y + 1 - 7));
-		else
-			colorList.get(0).setPosition(new Vector2f(center.x + 1, center.y + 1));
-
-		if (colorSelected == Color.ROUGE)
-			colorList.get(1).setPosition(new Vector2f(center.x + 32 + 7, center.y + 1 - 7));
-		else
-			colorList.get(1).setPosition(new Vector2f(center.x + 32, center.y + 1));
-
-		if (colorSelected == Color.BLEU)
-			colorList.get(2).setPosition(new Vector2f(center.x + 32 + 7, center.y + 32 + 7));
-		else
-			colorList.get(2).setPosition(new Vector2f(center.x + 32, center.y + 32));
-
-		if (colorSelected == Color.VERT)
-			colorList.get(3).setPosition(new Vector2f(center.x + 1 - 7, center.y + 32 + 7));
-		else
-			colorList.get(3).setPosition(new Vector2f(center.x + 1, center.y + 32));
-
 		//Panneau
 		sprite_main.setPosition(new Vector2f(Graphic.SFML.getCenterCamera().x + Graphic.SFML.getSizeCamera().x/2.f - Ressources.TEXTURE.getTexture(TEXTURE.GUI_MAIN).getSize().x - 20, 
 				Graphic.SFML.getCenterCamera().y - Graphic.SFML.getSizeCamera().y/2.f + 20 - offset));
@@ -278,6 +252,44 @@ public class Gui
 			sprite_next.setPosition(Graphic.SFML.getCenterCamera().x+100 , Graphic.SFML.getCenterCamera().y);
 			//TODO stars
 		}
+		
+		int par_ligne = (int) ((sprite_main.getPosition().x - Graphic.SFML.getPositionCamera_f().x - 50)/spriteList.get(0).getTextureRect().width);
+		float colonnes = (float)spriteList.size()/(float)par_ligne;
+		if (colonnes > (int) colonnes)
+			colonnes = (int) colonnes + 1;
+		
+		for (int j=0; j < colonnes; j++)
+		{
+			for (int i=0; i < par_ligne; i++)
+			{
+				if (i+j*par_ligne >= spriteList.size())
+					break;
+				spriteList.get(i+j*par_ligne).setPosition(new Vector2f(Graphic.SFML.getPositionCamera_f().x + i* spriteList.get(i+j*par_ligne).getTextureRect().width, 
+						Graphic.SFML.getPositionCamera_f().y + Graphic.SFML.getSizeCamera().y - (colonnes-j)*spriteList.get(i+j*par_ligne).getTextureRect().height));
+			}
+		}
+		
+		//Color
+		Vector2f center = new Vector2f(spriteList.get(0).getPosition().x + 15, spriteList.get(0).getPosition().y - 62 - 15);
+		if (colorSelected == Color.DEFAUT)
+			colorList.get(0).setPosition(new Vector2f(center.x + 1 - 7, center.y + 1 - 7));
+		else
+			colorList.get(0).setPosition(new Vector2f(center.x + 1, center.y + 1));
+
+		if (colorSelected == Color.ROUGE)
+			colorList.get(1).setPosition(new Vector2f(center.x + 32 + 7, center.y + 1 - 7));
+		else
+			colorList.get(1).setPosition(new Vector2f(center.x + 32, center.y + 1));
+
+		if (colorSelected == Color.BLEU)
+			colorList.get(2).setPosition(new Vector2f(center.x + 32 + 7, center.y + 32 + 7));
+		else
+			colorList.get(2).setPosition(new Vector2f(center.x + 32, center.y + 32));
+
+		if (colorSelected == Color.VERT)
+			colorList.get(3).setPosition(new Vector2f(center.x + 1 - 7, center.y + 32 + 7));
+		else
+			colorList.get(3).setPosition(new Vector2f(center.x + 1, center.y + 32));
 	}
 
 	public void afficher()
@@ -288,10 +300,6 @@ public class Gui
 		Graphic.SFML.draw(sprite_main);
 		Graphic.SFML.draw(sprite_aide);
 
-		//Color
-		for (Sprite spr : colorList)
-			Graphic.SFML.draw(spr);
-
 		//Panneau
 		if (sprite_proc1 != null)
 			Graphic.SFML.draw(sprite_proc1);
@@ -300,8 +308,14 @@ public class Gui
 		if (sprite_fork != null)
 			Graphic.SFML.draw(sprite_fork);
 
-		for (Sprite spr : spriteList)
-			Graphic.SFML.draw(spr);
+		if (!World.WORLD.isPlaying() && !level_completed)
+		{
+			for (Sprite spr : spriteList)
+				Graphic.SFML.draw(spr);
+			for (Sprite spr : colorList)
+				Graphic.SFML.draw(spr);
+		}
+		
 		for (Sprite spr : spriteList_occupied)
 			Graphic.SFML.draw(spr);
 		for (Sprite spr : spriteList_main)
