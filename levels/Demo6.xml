@@ -290,6 +290,8 @@
 		<main nb_action="6"/>
 	</functions>
 	<score>
+		<min>90</min>
+		<max>100</max>
 	</score>
 	<solution>
 		<main_sol>
