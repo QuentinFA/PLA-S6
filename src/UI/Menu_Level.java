@@ -207,7 +207,7 @@ public class Menu_Level extends Menu
 						storeLevel(i, j);
 						if (j == 0)
 						{
-							Reader.read("levels/test.xml");
+							Reader.read("levels/level1-1.xml");
 							return;
 						}
 						else if (j == 1)

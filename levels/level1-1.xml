@@ -31,13 +31,9 @@
 	<action_list>
 		<action>Forward</action>
 		<action>Light</action>
-		<action>Jump</action>
-		<action>P1</action>
-		<action>Fork</action>
-		<action>UseChest</action>
 	</action_list>
 	<functions>
-		<main nb_action="5"/>
+		<main nb_action="3"/>
 	</functions>
 	<score>
 		<min>3</min>
@@ -45,15 +41,9 @@
 	</score>
 	<solution>
 		<main_sol>
-			<instruction color="ROUGE">Forward</instruction>
-			<instruction color="DEFAUT" loop="3">For</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Forward</instruction>
+			<instruction color="DEFAUT">Light</instruction>
 		</main_sol>
-		<proc1_sol>
-			<instruction color="VERT">Break</instruction>
-			<instruction color="BLEU" loop="6">For</instruction>
-		</proc1_sol>
-		<fork_sol>
-			<instruction color="VERT" loop="6">For</instruction>
-		</fork_sol>
 	</solution>
 </map>
