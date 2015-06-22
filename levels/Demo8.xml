@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Ex test.xml -->
 <map>
 	<level_name>test</level_name>
 	<starting_dir>NORTH</starting_dir>
@@ -27,7 +28,7 @@
 			<x>0</x>
 			<y>5</y>
 		</block>
-
+		
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>5</y>
@@ -48,7 +49,7 @@
 			<x>5</x>
 			<y>5</y>
 		</block>
-
+		
 		<block type="NormalBlock">
 			<x>1</x>
 			<y>0</y>
@@ -69,7 +70,7 @@
 			<x>5</x>
 			<y>0</y>
 		</block>
-
+		
 		<block type="NormalBlock" is_start="true">
 			<x>5</x>
 			<y>0</y>
@@ -95,23 +96,26 @@
 			<y>5</y>
 		</block>
 	</floor>
+	
 	<action_list>
 		<action>Forward</action>
 		<action>Right_turn</action>
 		<action>Left_turn</action>
 		<action>For</action>
-		<action>Jump</action>
-		<action>P1</action>
-		<action>P2</action>
+		<action>Jump</action> 
+		<action>P1</action> 
+		<action>P2</action> 
 		<action>Fork</action>
+		<action>Pipette</action>
+		<action>OpenChest</action>
+		<action>UseChest</action>
 	</action_list>
 	<functions>
-		<main nb_action="1" />
-		<procedure nb_proc="2" />
+		<main nb_action="10" />
 	</functions>
 	<score>
-		<min>3</min>
-		<max>5</max>
+		<min>0</min>
+		<max>0</max>
 	</score>
 	<solution>
 		<main_sol>
