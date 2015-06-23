@@ -9,7 +9,7 @@ import org.jsfml.system.Vector2f;
 import Game.Input;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
-import Levels.Reader;
+import LevelsRW.Reader;
 
 /**
  * TODO

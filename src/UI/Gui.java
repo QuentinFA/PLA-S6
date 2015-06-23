@@ -14,7 +14,7 @@ import Game.Interpreter;
 import Game.Ressources;
 import Game.Ressources.TEXTURE;
 import Game.World;
-import Levels.Reader;
+import LevelsRW.Reader;
 import Prog.Action;
 import Prog.Color;
 import Prog.Procedure;

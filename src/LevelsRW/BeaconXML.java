@@ -1,4 +1,4 @@
-package Levels;
+package LevelsRW;
 
 /**
  * Balises utilisées dans un document XML pour les niveaux
